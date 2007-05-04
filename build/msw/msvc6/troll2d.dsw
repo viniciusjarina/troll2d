@@ -15,6 +15,18 @@ Package=<4>
 
 ###############################################################################
 
+Project: "troll_allegro"=..\..\..\modules\allegro\build\msw\msvc6\troll_allegro.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
 Global:
 
 Package=<5>

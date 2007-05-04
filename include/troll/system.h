@@ -18,6 +18,8 @@ enum ColorDepth
 	depthAuto = -1
 };
 
+class Suface;
+
 class System  
 {
 public:
@@ -25,8 +27,10 @@ public:
 	virtual ~System();
 public:
 	virtual bool Init() = 0;
-	virtual bool SetupScreen(int nWidth,int nHeight,bool fScreen = false,ColorDepth depth = depthAuto) = 0;
-	virtual bool Destroy() = 0;
+	virtual bool SetupScreen(int nWidth,int nHeight,bool fFullScreen = false,ColorDepth depth = depthAuto) = 0;
+	virtual void Destroy() = 0;
+
+	virtual Suface * GetScreen() const = 0;
 };
 
 }
