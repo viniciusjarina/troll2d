@@ -1,4 +1,8 @@
+
+#include "troll/defs.h"
 #include "troll/basic_geo.h"
+
+using namespace Troll;
 
 Rect::Rect(const Point& point1, const Point& point2)
 {
@@ -33,8 +37,7 @@ bool Rect::operator==(const Rect& rect) const
 
 Rect Rect::Union(const Rect& rect) const
 {
-	// TODO:
-/*	Rect r(*this);
+	Rect r(*this);
     // ignore empty rectangles: union with an empty rectangle shouldn't extend
     // this one to (0, 0)
     if ( !width || !height )
@@ -52,10 +55,8 @@ Rect Rect::Union(const Rect& rect) const
         r.width = x2 - x1;
         r.height = y2 - y1;
     }
-    //else: we're not empty and rect is empty
-
-    return r;*/
-	return Rect();
+    
+    return r;
 }
 
 Rect& Rect::Inflate(long dx, long dy)
@@ -78,13 +79,13 @@ Rect& Rect::Inflate(long dx, long dy)
      {
          // Don't allow deflate to eat more height than we have,
          // a well-defined rectangle cannot have negative height.
-         y+=height/2;
+         y += height/2;
          height=0;
      }
      else
      {
          // The inflate is valid.
-         y-=dy;
+         y -= dy;
          height+=2*dy;
      }
 
@@ -105,30 +106,30 @@ bool Rect::Contains(const Rect& rect) const
 }
 
 Rect Rect::Intersect(const Rect& rect) const
-{ // TODO: 
-   /* int x2 = GetRight(),
+{ 
+	Rect r(*this);
+    int x2 = GetRight(),
         y2 = GetBottom();
 
     if ( x < rect.x )
-        x = rect.x;
+        r.x = rect.x;
     if ( y < rect.y )
-        y = rect.y;
+        r.y = rect.y;
     if ( x2 > rect.GetRight() )
         x2 = rect.GetRight();
     if ( y2 > rect.GetBottom() )
         y2 = rect.GetBottom();
 
-    width = x2 - x + 1;
-    height = y2 - y + 1;
+    r.width = x2 - x + 1;
+    r.height = y2 - y + 1;
 
     if ( width <= 0 || height <= 0 )
     {
-        width =
-        height = 0;
+        r.width =
+        r.height = 0;
     }
 
-    return *this;*/
-	return Rect();
+    return r;
 }
 
 bool Rect::Intersects(const Rect& rect) const

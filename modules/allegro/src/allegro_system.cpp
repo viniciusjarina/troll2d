@@ -2,17 +2,21 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#include "troll/system.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-using namespace Troll;
 
-#include "troll/system.h"
-#include "troll/allegro_system.h"
+
+
 
 #include <allegro.h>
+
+#include "troll/allegro_surface.h"
+#include "troll/allegro_system.h"
+
+using namespace Troll;
+
 
 AllegroSystem::AllegroSystem()
 {
@@ -65,5 +69,5 @@ void AllegroSystem::Destroy()
 
 Suface * AllegroSystem::GetScreen() const
 {
-	
+	return NULL;
 }

@@ -3,7 +3,7 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
-Project: "Troll2DBase"=.\Troll2DBase\Troll2DBase.dsp - Package Owner=<4>
+Project: "troll_allegro"=..\..\..\modules\allegro\build\msw\msvc6\troll_allegro.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
@@ -15,7 +15,19 @@ Package=<4>
 
 ###############################################################################
 
-Project: "troll_allegro"=..\..\..\modules\allegro\build\msw\msvc6\troll_allegro.dsp - Package Owner=<4>
+Project: "troll_base"=.\troll_base.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "troll_sdl"=..\..\..\modules\sdl\build\msw\msvc6\troll_sdl.dsp - Package Owner=<4>
 
 Package=<5>
 {{{

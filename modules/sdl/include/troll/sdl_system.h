@@ -2,25 +2,25 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(__ALLEGRO_TROLL2D_SYSTEM_H__
-#define __ALLEGRO_TROLL2D_SYSTEM_H__
+#if !defined(__SDL_TROLL2D_SYSTEM_H__
+#define __SDL_TROLL2D_SYSTEM_H__
 
 #include "troll/system.h"
 
 namespace Troll
 {
 	
-class AllegroSurface;
+class SDLSurface;
 
 
-class AllegroSystem  : public System
+class SDLSystem  : public System
 {
 private:
-	AllegroSurface * m_pScreenBuffer;
+	SDLSurface * m_pScreenBuffer;
 
 public:
-	AllegroSystem();
-	virtual ~AllegroSystem();
+	SDLSystem();
+	virtual ~SDLSystem();
 public:
 	virtual bool Init();
 	virtual bool SetupScreen(int nWidth,int nHeight,bool fScreen = false,ColorDepth depth = depthAuto);

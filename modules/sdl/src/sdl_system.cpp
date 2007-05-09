@@ -1,0 +1,52 @@
+// System.cpp: implementation of the System class.
+//
+//////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+
+
+
+#include <SDL.h>
+
+#include "troll/sdl_surface.h"
+#include "troll/sdl_system.h"
+
+using namespace Troll;
+
+
+SDLSystem::SDLSystem()
+{
+
+}
+
+SDLSystem::~SDLSystem()
+{
+
+}
+
+bool SDLSystem::Init()
+{
+	
+	return false;
+}
+
+bool SDLSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ )
+{
+
+	return false;
+
+}
+
+void SDLSystem::Destroy()
+{
+	SDL_Quit();
+}
+
+Suface * SDLSystem::GetScreen() const
+{
+	return NULL;
+}

@@ -1,6 +1,10 @@
 #if !defined(__TROLL2D_BASIC_GEO_H__
 #define __TROLL2D_BASIC_GEO_H__
 
+namespace Troll
+{
+
+
 class Size
 {
 public:
@@ -52,21 +56,6 @@ public:
     // comparison
     bool operator==(const Point& p) const { return x == p.x && y == p.y; }
     bool operator!=(const Point& p) const { return !(*this == p); }
-
-    // arithmetic operations (component wise)
-    Point operator+(const Point& p) const { return Point(x + p.x, y + p.y); }
-    Point operator-(const Point& p) const { return Point(x - p.x, y - p.y); }
-
-    Point& operator+=(const Point& p) { x += p.x; y += p.y; return *this; }
-    Point& operator-=(const Point& p) { x -= p.x; y -= p.y; return *this; }
-
-    Point& operator+=(const Size& s) { x += s.GetWidth(); y += s.GetHeight(); return *this; }
-    Point& operator-=(const Size& s) { x -= s.GetWidth(); y -= s.GetHeight(); return *this; }
-
-    Point operator+(const Size& s) const { return Point(x + s.GetWidth(), y + s.GetHeight()); }
-    Point operator-(const Size& s) const { return Point(x - s.GetWidth(), y - s.GetHeight()); }
-
-    Point operator-() const { return Point(-x, -y); }
 };
 
 
@@ -164,8 +153,6 @@ public:
     void Offset(const Point& pt) { Offset(pt.x, pt.y); }
 
     Rect Intersect(const Rect& rect) const;
-
-
     Rect Union(const Rect& rect) const;
     
 
@@ -182,9 +169,9 @@ public:
     // return true if the rectangles have a non empty intersection
     bool Intersects(const Rect& rect) const;
 
-
 public:
     int x, y, width, height;
 };
 
+}
 #endif // __TROLL2D_BASIC_GEO_H__
