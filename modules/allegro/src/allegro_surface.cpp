@@ -12,14 +12,22 @@
 //////////////////////////////////////////////////////////////////////
 using namespace Troll;
 
-AllegroSurface::AllegroSurface()
+AllegroSurface::AllegroSurface():
+m_surface(NULL)
 {
-
 }
 
 AllegroSurface::~AllegroSurface()
 {
+	if(m_surface)
+		destroy_bitmap(m_surface);
+}
 
+bool AllegroSurface::Create(const Size & size)
+{
+	ASSERT(m_surface == NULL);
+	m_surface = create_bitmap(size.x,size.y);
+	return false;
 }
 
 int AllegroSurface::GetHeight() const
@@ -49,9 +57,11 @@ Rect AllegroSurface::GetClip() const
 	return r;
 }
 
-void AllegroSurface::ResetClip() const
+void AllegroSurface::ResetClip()
 {
-	
+	Rect r(0,0,m_surface->w,m_surface->h);
+
+	AllegroSurface::SetClip(r);
 }
 
 void AllegroSurface::Clear(const Color & color /*= Color::BLACK*/)

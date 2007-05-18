@@ -17,13 +17,14 @@ public:
 	virtual ~AllegroSurface();
 
 public:
+	virtual	bool Create(const Size & size);
 
 	virtual int GetHeight() const;
 	virtual int GetWidth() const;
 	
 	virtual void SetClip(const Rect & rect);
 	virtual Rect GetClip() const;
-	virtual void ResetClip() const;
+	virtual void ResetClip();
 
 	virtual void Clear(const Color & color = Color::BLACK);
 	virtual void Blit(const Surface & src);

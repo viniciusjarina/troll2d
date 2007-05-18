@@ -30,7 +30,7 @@ SDLSystem::~SDLSystem()
 
 bool SDLSystem::Init()
 {
-	
+	SDL_Init(SDL_INIT_VIDEO)
 	return false;
 }
 
