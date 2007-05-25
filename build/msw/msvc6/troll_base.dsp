@@ -49,7 +49,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo /out:"../../lib\troll_base.lib"
+# ADD LIB32 /nologo /out:"../../lib\vc_lib\troll_base.lib"
 
 !ELSEIF  "$(CFG)" == "troll_base - Win32 Debug"
 
@@ -72,7 +72,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo /out:"../../lib\troll_based.lib"
+# ADD LIB32 /nologo /out:"../../lib\vc_lib\troll_based.lib"
 
 !ENDIF 
 
@@ -90,6 +90,10 @@ SOURCE=..\..\..\src\basic_geo.cpp
 # Begin Source File
 
 SOURCE=..\..\..\src\color.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\screen.cpp
 # End Source File
 # Begin Source File
 
@@ -114,6 +118,14 @@ SOURCE=..\..\..\include\troll\color.h
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\defs.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\key_input.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\screen.h
 # End Source File
 # Begin Source File
 

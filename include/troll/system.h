@@ -19,6 +19,7 @@ enum ColorDepth
 };
 
 class Surface;
+class Screen;
 
 class System  
 {
@@ -30,7 +31,7 @@ public:
 	virtual bool SetupScreen(int nWidth,int nHeight,bool fFullScreen = false,ColorDepth depth = depthAuto) = 0;
 	virtual void Destroy() = 0;
 
-	virtual Surface * GetScreen() const = 0;
+	virtual Screen * GetScreen() const = 0;
 };
 
 }

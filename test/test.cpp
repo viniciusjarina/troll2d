@@ -1,5 +1,6 @@
 
 #include <troll/system.h>
+#include <troll/screen.h>
 #include <troll/surface.h>
 
 /***************** TODO: Implementar algum jeito de abstrair a funcao WinMain *********/
@@ -23,17 +24,26 @@ using namespace Troll;
 
 int main(int argc,char * argv[])
 {
+	Color c(212,10,0);
 	System * pSystem;
-	Surface * pScreen;
+	Screen * pScreen;
+	Surface * pBuff;
 /*****************/
 	// TODO: Código que deve estar dentro da Factory de Systems
 	pSystem = new AllegroSystem;
 /*****************/
 	pSystem->Init();
 	pSystem->SetupScreen(640,480);
-
+	
 	pScreen = pSystem->GetScreen();
-	pScreen->Clear(Color::BLUE);
+	pBuff	= pScreen->GetSurface();
+
+	pBuff->SetClip(Rect(10,10,100,100));
+	pBuff->ResetClip();
+
+	pBuff->Clear(c);
+
+	pScreen->Flip();
 
 	::Sleep(1000);
 

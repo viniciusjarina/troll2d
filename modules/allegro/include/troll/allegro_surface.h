@@ -12,12 +12,13 @@ namespace Troll
 
 class AllegroSurface  : public Surface
 {
+	friend class AllegroScreen;
 public:
 	AllegroSurface();
 	virtual ~AllegroSurface();
 
 public:
-	virtual	bool Create(const Size & size);
+	virtual	bool Create(int width,int height);
 
 	virtual int GetHeight() const;
 	virtual int GetWidth() const;

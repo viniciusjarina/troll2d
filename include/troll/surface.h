@@ -18,7 +18,7 @@ public:
 	virtual ~Surface();
 
 public:
-	virtual bool Create(const Size& size) = 0;
+	virtual bool Create(int width,int height) = 0;
 
 	virtual int GetHeight() const = 0;
 	virtual int GetWidth() const = 0;

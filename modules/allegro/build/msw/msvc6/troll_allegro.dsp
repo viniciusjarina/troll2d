@@ -85,6 +85,10 @@ LIB32=link.exe -lib
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
+SOURCE=..\..\..\src\allegro_screen.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\allegro_surface.cpp
 
 !IF  "$(CFG)" == "troll_allegro - Win32 Release"
@@ -104,6 +108,10 @@ SOURCE=..\..\..\src\allegro_system.cpp
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\allegro_screen.h
+# End Source File
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\allegro_surface.h

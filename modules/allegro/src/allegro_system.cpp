@@ -12,7 +12,7 @@
 
 #include <allegro.h>
 
-#include "troll/allegro_surface.h"
+#include "troll/allegro_screen.h"
 #include "troll/allegro_system.h"
 
 using namespace Troll;
@@ -60,8 +60,8 @@ bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= fal
 	{
 		return false;
 	}
-	m_pScreenBuffer = new AllegroSurface;
-	m_pScreenBuffer->Create(Size(nWidth,nHeight));
+
+	m_pScreenBuffer = new AllegroScreen(nWidth,nHeight);
 	return true;
 }
 
@@ -73,7 +73,7 @@ void AllegroSystem::Destroy()
 	allegro_exit();
 }
 
-Surface * AllegroSystem::GetScreen() const
+Screen * AllegroSystem::GetScreen() const
 {
 	return m_pScreenBuffer;
 }

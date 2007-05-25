@@ -30,12 +30,13 @@ SDLSystem::~SDLSystem()
 
 bool SDLSystem::Init()
 {
-	SDL_Init(SDL_INIT_VIDEO)
+	SDL_Init(0);
 	return false;
 }
 
 bool SDLSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ )
 {
+	SDL_Init(SDL_INIT_VIDEO);
 
 	return false;
 
@@ -46,7 +47,7 @@ void SDLSystem::Destroy()
 	SDL_Quit();
 }
 
-Suface * SDLSystem::GetScreen() const
+Screen * SDLSystem::GetScreen() const
 {
 	return NULL;
 }

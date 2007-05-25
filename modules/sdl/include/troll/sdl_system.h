@@ -26,7 +26,7 @@ public:
 	virtual bool SetupScreen(int nWidth,int nHeight,bool fScreen = false,ColorDepth depth = depthAuto);
 	virtual void Destroy();
 
-	Suface * GetScreen() const;
+	Screen * GetScreen() const;
 };
 
 }

@@ -9,14 +9,15 @@
 
 namespace Troll
 {
-	
-class AllegroSurface;
+
+class Screen;
+class AllegroScreen;
 
 
 class AllegroSystem  : public System
 {
 private:
-	AllegroSurface * m_pScreenBuffer;
+	AllegroScreen * m_pScreenBuffer;
 
 public:
 	AllegroSystem();
@@ -26,7 +27,7 @@ public:
 	virtual bool SetupScreen(int nWidth,int nHeight,bool fScreen = false,ColorDepth depth = depthAuto);
 	virtual void Destroy();
 
-	Surface * GetScreen() const;
+	Screen * GetScreen() const;
 };
 
 }

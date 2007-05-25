@@ -23,10 +23,10 @@ AllegroSurface::~AllegroSurface()
 		destroy_bitmap(m_surface);
 }
 
-bool AllegroSurface::Create(const Size & size)
+bool AllegroSurface::Create(int width,int height)
 {
 	ASSERT(m_surface == NULL);
-	m_surface = create_bitmap(size.x,size.y);
+	m_surface = create_bitmap(width,height);
 	return false;
 }
 
