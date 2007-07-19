@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	002F39FD09D0883400EBEB88 /* Copy Frameworks into .app bundle */ = {
+		isa = PBXCopyFilesBuildPhase;
+		buildActionMask = 2147483647;
+		dstPath = "";
+		dstSubfolderSpec = 10;
+		files = (
+		);
+		name = "Copy Frameworks into .app bundle";
+		runOnlyForDeploymentPostprocessing = 0;
+	};
+	18371EBD0C25AACA002A364C /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeExecutable = 18EEBC8D0C4A816B009785B4 /* test */;
+		activeTarget = 18EEBC8B0C4A816B009785B4 /* test */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* T2DSDL */,
+			18EEBC8B0C4A816B009785B4 /* test */,
+		);
+		breakpoints = (
+			18371F190C25BCB4002A364C /* basic_geo.cpp:8 */,
+			18DD13ED0C4082EC000F257D /* test.cpp:30 */,
+			18DE144C0C487C4D001FF5D6 /* sdl_system.cpp:61 */,
+		);
+		breakpointsGroup = 18371F070C25B8ED002A364C /* XCBreakpointsBucket */;
+		codeSenseManager = 18371EC20C25AACA002A364C /* Code sense */;
+		executables = (
+			18EEBC8D0C4A816B009785B4 /* test */,
+			18D697C00C4F07D7005309B0 /* T2DSDL */,
+		);
+		ignoreBreakpointsInProjectsDict = {
+		};
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXBookmarksDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBookmarksDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					200,
+					57.5835,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBookmarksDataSource_LocationID,
+					PBXBookmarksDataSource_NameID,
+					PBXBookmarksDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					300,
+					45.2085,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					57.5835,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					407,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXSymbolsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXSymbolsDataSource_SymbolNameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					16,
+					200,
+					50,
+					45.2085,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXSymbolsDataSource_SymbolTypeIconID,
+					PBXSymbolsDataSource_SymbolNameID,
+					PBXSymbolsDataSource_SymbolTypeID,
+					PBXSymbolsDataSource_ReferenceNameID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					200,
+					227,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 206515658;
+			PBXWorkspaceStateSaveDate = 206515658;
+		};
+		perUserProjectItems = {
+			186A8BA30C4F2E3500127CF0 /* PBXTextBookmark */ = 186A8BA30C4F2E3500127CF0 /* PBXTextBookmark */;
+			1875775A0C4F171000750B96 /* PBXTextBookmark */ = 1875775A0C4F171000750B96 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 18371EC10C25AACA002A364C /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	18371EC10C25AACA002A364C /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	18371EC20C25AACA002A364C /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	18371ECF0C25AB27002A364C /* TrollBase */ = {
+		activeExec = 0;
+	};
+	18371ED60C25B350002A364C /* basic_geo.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {946, 2304}}";
+			sepNavSelRange = "{104, 0}";
+			sepNavVisRect = "{{0, 0}, {946, 461}}";
+			sepNavWindowFrame = "{{-1185, 267}, {985, 590}}";
+		};
+	};
+	18371ED70C25B350002A364C /* color.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {961, 5232}}";
+			sepNavSelRange = "{81, 0}";
+			sepNavVisRect = "{{0, 0}, {961, 471}}";
+			sepNavWindowFrame = "{{300, 352}, {1000, 600}}";
+		};
+	};
+	18371ED90C25B350002A364C /* surface.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {914, 562}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {914, 562}}";
+			sepNavWindowFrame = "{{130, 201}, {953, 691}}";
+		};
+	};
+	18371EDA0C25B350002A364C /* system.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {914, 562}}";
+			sepNavSelRange = "{358, 0}";
+			sepNavVisRect = "{{0, 0}, {914, 562}}";
+			sepNavWindowFrame = "{{107, 222}, {953, 691}}";
+		};
+	};
+	18371EE30C25B3C5002A364C /* TrollSDL */ = {
+		activeExec = 0;
+	};
+	18371EE90C25B44A002A364C /* sdl_input.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {876, 752}}";
+			sepNavSelRange = "{926, 0}";
+			sepNavVisRect = "{{0, 427}, {876, 325}}";
+			sepNavWindowFrame = "{{105, 53}, {985, 949}}";
+		};
+	};
+	18371EEB0C25B44A002A364C /* sdl_surface.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {914, 2288}}";
+			sepNavSelRange = "{238, 0}";
+			sepNavVisRect = "{{0, 0}, {914, 562}}";
+			sepNavWindowFrame = "{{55, 234}, {953, 691}}";
+		};
+	};
+	18371EEC0C25B44A002A364C /* sdl_system.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {914, 1232}}";
+			sepNavSelRange = "{1236, 0}";
+			sepNavVisRect = "{{0, 670}, {914, 562}}";
+			sepNavWindowFrame = "{{245, 96}, {953, 691}}";
+		};
+	};
+	18371EF40C25B7FE002A364C /* TrollAllegro */ = {
+		activeExec = 0;
+	};
+	18371EF90C25B830002A364C /* allegro_keyinput.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {914, 704}}";
+			sepNavSelRange = "{815, 36}";
+			sepNavVisRect = "{{0, 142}, {914, 562}}";
+			sepNavWindowFrame = "{{61, 264}, {953, 691}}";
+		};
+	};
+	18371EFA0C25B830002A364C /* allegro_screen.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {914, 576}}";
+			sepNavSelRange = "{510, 0}";
+			sepNavVisRect = "{{0, 0}, {914, 562}}";
+			sepNavWindowFrame = "{{79, 255}, {953, 691}}";
+		};
+	};
+	18371EFB0C25B830002A364C /* allegro_surface.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {914, 1440}}";
+			sepNavSelRange = "{1779, 36}";
+			sepNavVisRect = "{{0, 878}, {914, 562}}";
+			sepNavWindowFrame = "{{153, 180}, {953, 691}}";
+		};
+	};
+	18371EFC0C25B830002A364C /* allegro_system.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {876, 1168}}";
+			sepNavSelRange = "{470, 0}";
+			sepNavVisRect = "{{0, 247}, {876, 325}}";
+			sepNavWindowFrame = "{{84, 243}, {953, 691}}";
+		};
+	};
+	18371F070C25B8ED002A364C /* XCBreakpointsBucket */ = {
+		isa = XCBreakpointsBucket;
+		name = "Project Breakpoints";
+		objects = (
+			18371F190C25BCB4002A364C /* basic_geo.cpp:8 */,
+			18DD13ED0C4082EC000F257D /* test.cpp:30 */,
+			18DE144C0C487C4D001FF5D6 /* sdl_system.cpp:61 */,
+		);
+	};
+	18371F190C25BCB4002A364C /* basic_geo.cpp:8 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		delayBeforeContinue = 0;
+		fileReference = 18371ED60C25B350002A364C /* basic_geo.cpp */;
+		hitCount = 1;
+		lineNumber = 8;
+		modificationTime = 206205081.821123;
+		state = 1;
+	};
+	18371F470C25C226002A364C /* basic_geo.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {946, 2816}}";
+			sepNavSelRange = "{1758, 0}";
+			sepNavVisRect = "{{0, 0}, {946, 461}}";
+			sepNavWindowFrame = "{{258, 133}, {985, 590}}";
+		};
+	};
+	18371F480C25C226002A364C /* color.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1161, 1520}}";
+			sepNavSelRange = "{115, 0}";
+			sepNavVisRect = "{{0, 1059}, {946, 461}}";
+			sepNavWindowFrame = "{{281, 122}, {985, 590}}";
+		};
+	};
+	18371F490C25C226002A364C /* defs.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {946, 461}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {946, 461}}";
+			sepNavWindowFrame = "{{84, 344}, {985, 590}}";
+		};
+	};
+	186A8BA30C4F2E3500127CF0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 18EEBCAE0C4A846D009785B4 /* test.cpp */;
+		name = "test.cpp: 53";
+		rLen = 0;
+		rLoc = 1244;
+		rType = 0;
+		vrLen = 654;
+		vrLoc = 877;
+	};
+	1875775A0C4F171000750B96 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 18EEBCAE0C4A846D009785B4 /* test.cpp */;
+		name = "test.cpp: 55";
+		rLen = 0;
+		rLoc = 1235;
+		rType = 0;
+		vrLen = 591;
+		vrLoc = 947;
+	};
+	18D22CB50C38493700546D40 /* test.cpp */ = {
+		isa = PBXFileReference;
+		fileEncoding = 30;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = test.cpp;
+		path = /Users/viniciusjarina/Documents/Projetos/Troll/test/test.cpp;
+		sourceTree = "<absolute>";
+	};
+	18D697C00C4F07D7005309B0 /* T2DSDL */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = T2DSDL;
+		sourceDirectories = (
+		);
+	};
+	18DD13ED0C4082EC000F257D /* test.cpp:30 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		delayBeforeContinue = 0;
+		fileReference = 18D22CB50C38493700546D40 /* test.cpp */;
+		functionName = "main()";
+		hitCount = 1;
+		lineNumber = 30;
+		location = test;
+		modificationTime = 206205071.360447;
+		state = 1;
+	};
+	18DE144C0C487C4D001FF5D6 /* sdl_system.cpp:61 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		delayBeforeContinue = 0;
+		fileReference = 18371EEC0C25B44A002A364C /* sdl_system.cpp */;
+		functionName = "SDLSystem::SetupScreen()";
+		hitCount = 1;
+		lineNumber = 61;
+		location = test;
+		modificationTime = 206205071.360453;
+		state = 1;
+	};
+	18EEBC8B0C4A816B009785B4 /* test */ = {
+		activeExec = 0;
+		executables = (
+			18EEBC8D0C4A816B009785B4 /* test */,
+		);
+	};
+	18EEBC8D0C4A816B009785B4 /* test */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = test;
+		sourceDirectories = (
+		);
+	};
+	18EEBCAE0C4A846D009785B4 /* test.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {914, 1840}}";
+			sepNavSelRange = "{1244, 0}";
+			sepNavVisRect = "{{0, 559}, {914, 562}}";
+			sepNavWindowFrame = "{{266, 74}, {953, 691}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* T2DSDL */ = {
+		isa = PBXNativeTarget;
+		activeExec = 0;
+		buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "T2DSDL" */;
+		buildPhases = (
+			8D1107290486CEB800E47090 /* Resources */,
+			8D11072C0486CEB800E47090 /* Sources */,
+			8D11072E0486CEB800E47090 /* Frameworks */,
+			002F39FD09D0883400EBEB88 /* Copy Frameworks into .app bundle */,
+		);
+		buildRules = (
+		);
+		dependencies = (
+		);
+		name = T2DSDL;
+		productInstallPath = "$(HOME)/Applications";
+		productName = T2DSDL;
+		productReference = 18D697BF0C4F07D7005309B0 /* T2DSDL.app */;
+		productType = "com.apple.product-type.application";
+	};
+	8D1107290486CEB800E47090 /* Resources */ = {
+		isa = PBXResourcesBuildPhase;
+		buildActionMask = 2147483647;
+		files = (
+		);
+		runOnlyForDeploymentPostprocessing = 0;
+	};
+	8D11072C0486CEB800E47090 /* Sources */ = {
+		isa = PBXSourcesBuildPhase;
+		buildActionMask = 2147483647;
+		files = (
+		);
+		runOnlyForDeploymentPostprocessing = 0;
+	};
+	8D11072E0486CEB800E47090 /* Frameworks */ = {
+		isa = PBXFrameworksBuildPhase;
+		buildActionMask = 2147483647;
+		files = (
+		);
+		runOnlyForDeploymentPostprocessing = 0;
+	};
+	C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "T2DSDL" */ = {
+		isa = XCConfigurationList;
+		buildConfigurations = (
+			C01FCF4B08A954540054247B /* Debug */,
+			C01FCF4C08A954540054247B /* Release */,
+		);
+		defaultConfigurationIsVisible = 0;
+		defaultConfigurationName = Release;
+	};
+	C01FCF4B08A954540054247B /* Debug */ = {
+		isa = XCBuildConfiguration;
+		buildSettings = {
+			COPY_PHASE_STRIP = NO;
+			GCC_DYNAMIC_NO_PIC = NO;
+			GCC_ENABLE_FIX_AND_CONTINUE = YES;
+			GCC_MODEL_TUNING = G5;
+			GCC_OPTIMIZATION_LEVEL = 0;
+			INFOPLIST_FILE = Info.plist;
+			INSTALL_PATH = "$(HOME)/Applications";
+			PRODUCT_NAME = T2DSDL;
+			WRAPPER_EXTENSION = app;
+			ZERO_LINK = YES;
+		};
+		name = Debug;
+	};
+	C01FCF4C08A954540054247B /* Release */ = {
+		isa = XCBuildConfiguration;
+		buildSettings = {
+			ARCHS = (
+				ppc,
+				i386,
+			);
+			GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+			GCC_MODEL_TUNING = G5;
+			INFOPLIST_FILE = Info.plist;
+			INSTALL_PATH = "$(HOME)/Applications";
+			PRODUCT_NAME = T2DSDL;
+			WRAPPER_EXTENSION = app;
+		};
+		name = Release;
+	};
+}

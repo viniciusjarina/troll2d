@@ -1,9 +1,8 @@
-#if !defined(__TROLL2D_BASIC_GEO_H__
+#ifndef __TROLL2D_BASIC_GEO_H__
 #define __TROLL2D_BASIC_GEO_H__
 
 namespace Troll
 {
-
 
 class Size
 {

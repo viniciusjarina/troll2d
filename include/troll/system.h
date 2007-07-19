@@ -27,11 +27,12 @@ public:
 	System();
 	virtual ~System();
 public:
-	virtual bool Init() = 0;
+	
 	virtual bool SetupScreen(int nWidth,int nHeight,bool fFullScreen = false,ColorDepth depth = depthAuto) = 0;
-	virtual void Destroy() = 0;
-
+		
 	virtual Screen * GetScreen() const = 0;
+
+	virtual void Sleep(int mili) = 0;
 };
 
 }

@@ -19,7 +19,7 @@ AllegroScreen::AllegroScreen(int w,int h)
 
 AllegroScreen::~AllegroScreen()
 {
-
+	delete m_surface;
 }
 
 Surface * AllegroScreen::GetSurface() const
@@ -30,5 +30,7 @@ Surface * AllegroScreen::GetSurface() const
 
 void AllegroScreen::Flip()
 {
+	// TODO: page flipping (just see the flip example of allegro)
+
 	blit(m_surface->m_surface,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 }

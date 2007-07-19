@@ -7,6 +7,8 @@
 
 #include "troll/surface.h"
 
+struct BITMAP;
+
 namespace Troll
 {
 
@@ -18,7 +20,7 @@ public:
 	virtual ~AllegroSurface();
 
 public:
-	virtual	bool Create(int width,int height);
+	virtual	bool Create(int width,int height,ColorDepth depth = depthAuto);
 
 	virtual int GetHeight() const;
 	virtual int GetWidth() const;
@@ -28,7 +30,7 @@ public:
 	virtual void ResetClip();
 
 	virtual void Clear(const Color & color = Color::BLACK);
-	virtual void Blit(const Surface & src);
+	virtual void Blit(const Surface & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
 
 protected:
 

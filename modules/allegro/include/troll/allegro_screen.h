@@ -2,8 +2,8 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_ALLEGROSCREEN_H__9D690549_482F_4783_852A_E2EA601EF446__INCLUDED_)
-#define AFX_ALLEGROSCREEN_H__9D690549_482F_4783_852A_E2EA601EF446__INCLUDED_
+#if !defined(__TROLL2D_ALLEGRO_SCREEN_H__)
+#define __TROLL2D_ALLEGRO_SCREEN_H__
 
 #if _MSC_VER > 1000
 #pragma once
@@ -37,4 +37,4 @@ private:
 
 }// Troll
 
-#endif // !defined(AFX_ALLEGROSCREEN_H__9D690549_482F_4783_852A_E2EA601EF446__INCLUDED_)
+#endif // !defined(__TROLL2D_ALLEGRO_SCREEN_H__)

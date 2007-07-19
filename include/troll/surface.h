@@ -7,6 +7,7 @@
 
 #include "troll/basic_geo.h"
 #include "troll/color.h"
+#include "troll/system.h"
 
 namespace Troll
 {
@@ -18,7 +19,7 @@ public:
 	virtual ~Surface();
 
 public:
-	virtual bool Create(int width,int height) = 0;
+	virtual bool Create(int width,int height,ColorDepth depth = depthAuto) = 0;
 
 	virtual int GetHeight() const = 0;
 	virtual int GetWidth() const = 0;
@@ -28,7 +29,7 @@ public:
 	virtual void ResetClip() = 0;
 
 	virtual void Clear(const Color & color = Color::BLACK) = 0;
-	virtual void Blit(const Surface & src) = 0;
+	virtual void Blit(const Surface & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1)) = 0;
 };
 
 }

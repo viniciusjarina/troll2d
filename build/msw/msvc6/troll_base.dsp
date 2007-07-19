@@ -41,7 +41,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /I "../../../include/" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O1 /I "../../../include/" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
 # ADD BASE RSC /l 0x416 /d "NDEBUG"
 # ADD RSC /l 0x416 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -49,7 +49,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo /out:"../../lib\vc_lib\troll_base.lib"
+# ADD LIB32 /nologo /out:"../../../lib\vc_lib\troll_base.lib"
 
 !ELSEIF  "$(CFG)" == "troll_base - Win32 Debug"
 
@@ -72,7 +72,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo /out:"../../lib\vc_lib\troll_based.lib"
+# ADD LIB32 /nologo /out:"../../../lib\vc_lib\troll_based.lib"
 
 !ENDIF 
 
@@ -121,7 +121,7 @@ SOURCE=..\..\..\include\troll\defs.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\include\key_input.h
+SOURCE=..\..\..\include\troll\key_input.h
 # End Source File
 # Begin Source File
 

@@ -1,6 +1,8 @@
 
 #include "troll/defs.h"
+#include "troll/color.h"
 #include "troll/basic_geo.h"
+
 
 using namespace Troll;
 

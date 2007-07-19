@@ -21,18 +21,13 @@ using namespace Troll;
 AllegroSystem::AllegroSystem():
 m_pScreenBuffer(NULL)
 {
-
+	allegro_init();
 }
 
 AllegroSystem::~AllegroSystem()
 {
-
-}
-
-bool AllegroSystem::Init()
-{
-	allegro_init();
-	return false;
+	if(m_pScreenBuffer != NULL)
+		delete m_pScreenBuffer;
 }
 
 bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ )
@@ -65,15 +60,12 @@ bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= fal
 	return true;
 }
 
-void AllegroSystem::Destroy()
-{
-	if(m_pScreenBuffer != NULL)
-		delete m_pScreenBuffer;
-
-	allegro_exit();
-}
-
 Screen * AllegroSystem::GetScreen() const
 {
 	return m_pScreenBuffer;
+}
+
+void AllegroSystem::Sleep( int mili )
+{
+	rest(mili);
 }

@@ -1,0 +1,704 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18371EDB0C25B350002A364C /* basic_geo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371ED60C25B350002A364C /* basic_geo.cpp */; };
+		18371EDC0C25B350002A364C /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371ED70C25B350002A364C /* color.cpp */; };
+		18371EDD0C25B350002A364C /* screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371ED80C25B350002A364C /* screen.cpp */; };
+		18371EDE0C25B350002A364C /* surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371ED90C25B350002A364C /* surface.cpp */; };
+		18371EDF0C25B350002A364C /* system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EDA0C25B350002A364C /* system.cpp */; };
+		18371EED0C25B44A002A364C /* sdl_input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EE90C25B44A002A364C /* sdl_input.cpp */; };
+		18371EEE0C25B44A002A364C /* sdl_screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EEA0C25B44A002A364C /* sdl_screen.cpp */; };
+		18371EEF0C25B44A002A364C /* sdl_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EEB0C25B44A002A364C /* sdl_surface.cpp */; };
+		18371EF00C25B44A002A364C /* sdl_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EEC0C25B44A002A364C /* sdl_system.cpp */; };
+		18371EFD0C25B830002A364C /* allegro_keyinput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EF90C25B830002A364C /* allegro_keyinput.cpp */; };
+		18371EFE0C25B830002A364C /* allegro_screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EFA0C25B830002A364C /* allegro_screen.cpp */; };
+		18371EFF0C25B830002A364C /* allegro_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EFB0C25B830002A364C /* allegro_surface.cpp */; };
+		18371F000C25B830002A364C /* allegro_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EFC0C25B830002A364C /* allegro_system.cpp */; };
+		18371F4E0C25C226002A364C /* basic_geo.h in Headers */ = {isa = PBXBuildFile; fileRef = 18371F470C25C226002A364C /* basic_geo.h */; };
+		18371F4F0C25C226002A364C /* color.h in Headers */ = {isa = PBXBuildFile; fileRef = 18371F480C25C226002A364C /* color.h */; };
+		18371F500C25C226002A364C /* defs.h in Headers */ = {isa = PBXBuildFile; fileRef = 18371F490C25C226002A364C /* defs.h */; };
+		18371F510C25C226002A364C /* key_input.h in Headers */ = {isa = PBXBuildFile; fileRef = 18371F4A0C25C226002A364C /* key_input.h */; };
+		18371F520C25C226002A364C /* screen.h in Headers */ = {isa = PBXBuildFile; fileRef = 18371F4B0C25C226002A364C /* screen.h */; };
+		18371F530C25C226002A364C /* surface.h in Headers */ = {isa = PBXBuildFile; fileRef = 18371F4C0C25C226002A364C /* surface.h */; };
+		18371F540C25C226002A364C /* system.h in Headers */ = {isa = PBXBuildFile; fileRef = 18371F4D0C25C226002A364C /* system.h */; };
+		1875772B0C4F16CB00750B96 /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18EEBC970C4A8214009785B4 /* SDL.framework */; };
+		18D697950C4F00B7005309B0 /* sdl_input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EE90C25B44A002A364C /* sdl_input.cpp */; };
+		18D697960C4F00B9005309B0 /* sdl_screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EEA0C25B44A002A364C /* sdl_screen.cpp */; };
+		18D697970C4F00BA005309B0 /* sdl_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EEB0C25B44A002A364C /* sdl_surface.cpp */; };
+		18D697980C4F00BE005309B0 /* sdl_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18371EEC0C25B44A002A364C /* sdl_system.cpp */; };
+		18D697B20C4F04CE005309B0 /* troll.icns in Resources */ = {isa = PBXBuildFile; fileRef = 18D697B10C4F04CE005309B0 /* troll.icns */; };
+		18EEBC950C4A81A9009785B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EEBC940C4A81A9009785B4 /* Cocoa.framework */; };
+		18EEBC980C4A8214009785B4 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EEBC970C4A8214009785B4 /* SDL.framework */; };
+		18EEBCA20C4A8289009785B4 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EEBCA00C4A8289009785B4 /* SDLMain.m */; };
+		18EEBCAF0C4A846D009785B4 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18EEBCAE0C4A846D009785B4 /* test.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		187576DC0C4F160900750B96 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1875772B0C4F16CB00750B96 /* SDL.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		18371ED00C25AB27002A364C /* libTrollBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTrollBase.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		18371ED60C25B350002A364C /* basic_geo.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = basic_geo.cpp; path = ../../src/basic_geo.cpp; sourceTree = SOURCE_ROOT; };
+		18371ED70C25B350002A364C /* color.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = color.cpp; path = ../../src/color.cpp; sourceTree = SOURCE_ROOT; };
+		18371ED80C25B350002A364C /* screen.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = screen.cpp; path = ../../src/screen.cpp; sourceTree = SOURCE_ROOT; };
+		18371ED90C25B350002A364C /* surface.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = surface.cpp; path = ../../src/surface.cpp; sourceTree = SOURCE_ROOT; };
+		18371EDA0C25B350002A364C /* system.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = system.cpp; path = ../../src/system.cpp; sourceTree = SOURCE_ROOT; };
+		18371EE40C25B3C5002A364C /* libTrollSDL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTrollSDL.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		18371EE90C25B44A002A364C /* sdl_input.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = sdl_input.cpp; path = ../../modules/sdl/src/sdl_input.cpp; sourceTree = SOURCE_ROOT; };
+		18371EEA0C25B44A002A364C /* sdl_screen.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = sdl_screen.cpp; path = ../../modules/sdl/src/sdl_screen.cpp; sourceTree = SOURCE_ROOT; };
+		18371EEB0C25B44A002A364C /* sdl_surface.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = sdl_surface.cpp; path = ../../modules/sdl/src/sdl_surface.cpp; sourceTree = SOURCE_ROOT; };
+		18371EEC0C25B44A002A364C /* sdl_system.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = sdl_system.cpp; path = ../../modules/sdl/src/sdl_system.cpp; sourceTree = SOURCE_ROOT; };
+		18371EF50C25B7FE002A364C /* libTrollAllegro.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTrollAllegro.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		18371EF90C25B830002A364C /* allegro_keyinput.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = allegro_keyinput.cpp; path = ../../modules/allegro/src/allegro_keyinput.cpp; sourceTree = SOURCE_ROOT; };
+		18371EFA0C25B830002A364C /* allegro_screen.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = allegro_screen.cpp; path = ../../modules/allegro/src/allegro_screen.cpp; sourceTree = SOURCE_ROOT; };
+		18371EFB0C25B830002A364C /* allegro_surface.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = allegro_surface.cpp; path = ../../modules/allegro/src/allegro_surface.cpp; sourceTree = SOURCE_ROOT; };
+		18371EFC0C25B830002A364C /* allegro_system.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = allegro_system.cpp; path = ../../modules/allegro/src/allegro_system.cpp; sourceTree = SOURCE_ROOT; };
+		18371F470C25C226002A364C /* basic_geo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = basic_geo.h; sourceTree = "<group>"; };
+		18371F480C25C226002A364C /* color.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = color.h; sourceTree = "<group>"; };
+		18371F490C25C226002A364C /* defs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
+		18371F4A0C25C226002A364C /* key_input.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = key_input.h; sourceTree = "<group>"; };
+		18371F4B0C25C226002A364C /* screen.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = screen.h; sourceTree = "<group>"; };
+		18371F4C0C25C226002A364C /* surface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = surface.h; sourceTree = "<group>"; };
+		18371F4D0C25C226002A364C /* system.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
+		18D22CB10C3848B700546D40 /* test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "test-Info.plist"; sourceTree = "<group>"; };
+		18D697B10C4F04CE005309B0 /* troll.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = troll.icns; path = ../../data/images/troll.icns; sourceTree = SOURCE_ROOT; };
+		18D697BF0C4F07D7005309B0 /* T2DSDL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = T2DSDL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18DD14320C4085BB000F257D /* Test2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Test2-Info.plist"; sourceTree = "<group>"; };
+		18EEBC8C0C4A816B009785B4 /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18EEBC940C4A81A9009785B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		18EEBC970C4A8214009785B4 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
+		18EEBC9F0C4A8289009785B4 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = ../../test/SDLMain.h; sourceTree = SOURCE_ROOT; };
+		18EEBCA00C4A8289009785B4 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = ../../test/SDLMain.m; sourceTree = SOURCE_ROOT; };
+		18EEBCAE0C4A846D009785B4 /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = test.cpp; path = ../../test/test.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		18371ECE0C25AB27002A364C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18371EE20C25B3C5002A364C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18371EF30C25B7FE002A364C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18EEBC8A0C4A816B009785B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18EEBC950C4A81A9009785B4 /* Cocoa.framework in Frameworks */,
+				18EEBC980C4A8214009785B4 /* SDL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18371EBB0C25AACA002A364C = {
+			isa = PBXGroup;
+			children = (
+				18D697B10C4F04CE005309B0 /* troll.icns */,
+				18EEBCAE0C4A846D009785B4 /* test.cpp */,
+				18EEBC9F0C4A8289009785B4 /* SDLMain.h */,
+				18EEBCA00C4A8289009785B4 /* SDLMain.m */,
+				18EEBC970C4A8214009785B4 /* SDL.framework */,
+				18EEBC940C4A81A9009785B4 /* Cocoa.framework */,
+				18371F8E0C25C8AA002A364C /* TrollAllegro */,
+				18371F5B0C25C2A2002A364C /* TrollBase */,
+				18371F8D0C25C898002A364C /* TrollSDL */,
+				18371ED10C25AB27002A364C /* Products */,
+				18D22CB10C3848B700546D40 /* test-Info.plist */,
+				18DD14320C4085BB000F257D /* Test2-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		18371ED10C25AB27002A364C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18371ED00C25AB27002A364C /* libTrollBase.a */,
+				18371EE40C25B3C5002A364C /* libTrollSDL.a */,
+				18371EF50C25B7FE002A364C /* libTrollAllegro.a */,
+				18EEBC8C0C4A816B009785B4 /* test.app */,
+				18D697BF0C4F07D7005309B0 /* T2DSDL.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18371F460C25C226002A364C /* troll */ = {
+			isa = PBXGroup;
+			children = (
+				18371F470C25C226002A364C /* basic_geo.h */,
+				18371F480C25C226002A364C /* color.h */,
+				18371F490C25C226002A364C /* defs.h */,
+				18371F4A0C25C226002A364C /* key_input.h */,
+				18371F4B0C25C226002A364C /* screen.h */,
+				18371F4C0C25C226002A364C /* surface.h */,
+				18371F4D0C25C226002A364C /* system.h */,
+			);
+			name = troll;
+			path = ../../include/troll;
+			sourceTree = SOURCE_ROOT;
+		};
+		18371F5B0C25C2A2002A364C /* TrollBase */ = {
+			isa = PBXGroup;
+			children = (
+				18371F900C25C8C6002A364C /* include */,
+				18371F8F0C25C8BC002A364C /* src */,
+			);
+			name = TrollBase;
+			sourceTree = "<group>";
+		};
+		18371F8D0C25C898002A364C /* TrollSDL */ = {
+			isa = PBXGroup;
+			children = (
+				18371EE90C25B44A002A364C /* sdl_input.cpp */,
+				18371EEA0C25B44A002A364C /* sdl_screen.cpp */,
+				18371EEB0C25B44A002A364C /* sdl_surface.cpp */,
+				18371EEC0C25B44A002A364C /* sdl_system.cpp */,
+			);
+			name = TrollSDL;
+			sourceTree = "<group>";
+		};
+		18371F8E0C25C8AA002A364C /* TrollAllegro */ = {
+			isa = PBXGroup;
+			children = (
+				18371EF90C25B830002A364C /* allegro_keyinput.cpp */,
+				18371EFA0C25B830002A364C /* allegro_screen.cpp */,
+				18371EFB0C25B830002A364C /* allegro_surface.cpp */,
+				18371EFC0C25B830002A364C /* allegro_system.cpp */,
+			);
+			name = TrollAllegro;
+			sourceTree = "<group>";
+		};
+		18371F8F0C25C8BC002A364C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				18371ED60C25B350002A364C /* basic_geo.cpp */,
+				18371ED70C25B350002A364C /* color.cpp */,
+				18371ED80C25B350002A364C /* screen.cpp */,
+				18371ED90C25B350002A364C /* surface.cpp */,
+				18371EDA0C25B350002A364C /* system.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		18371F900C25C8C6002A364C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				18371F460C25C226002A364C /* troll */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		18371ECC0C25AB27002A364C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18371F4E0C25C226002A364C /* basic_geo.h in Headers */,
+				18371F4F0C25C226002A364C /* color.h in Headers */,
+				18371F500C25C226002A364C /* defs.h in Headers */,
+				18371F510C25C226002A364C /* key_input.h in Headers */,
+				18371F520C25C226002A364C /* screen.h in Headers */,
+				18371F530C25C226002A364C /* surface.h in Headers */,
+				18371F540C25C226002A364C /* system.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18371EE00C25B3C5002A364C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18371EF10C25B7FE002A364C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		18371ECF0C25AB27002A364C /* TrollBase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18371ED20C25AB28002A364C /* Build configuration list for PBXNativeTarget "TrollBase" */;
+			buildPhases = (
+				18371ECC0C25AB27002A364C /* Headers */,
+				18371ECD0C25AB27002A364C /* Sources */,
+				18371ECE0C25AB27002A364C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrollBase;
+			productName = TrollBase;
+			productReference = 18371ED00C25AB27002A364C /* libTrollBase.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		18371EE30C25B3C5002A364C /* TrollSDL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18371EE60C25B3D3002A364C /* Build configuration list for PBXNativeTarget "TrollSDL" */;
+			buildPhases = (
+				18371EE00C25B3C5002A364C /* Headers */,
+				18371EE10C25B3C5002A364C /* Sources */,
+				18371EE20C25B3C5002A364C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrollSDL;
+			productName = TrollSDL;
+			productReference = 18371EE40C25B3C5002A364C /* libTrollSDL.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		18371EF40C25B7FE002A364C /* TrollAllegro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18371EF60C25B81D002A364C /* Build configuration list for PBXNativeTarget "TrollAllegro" */;
+			buildPhases = (
+				18371EF10C25B7FE002A364C /* Headers */,
+				18371EF20C25B7FE002A364C /* Sources */,
+				18371EF30C25B7FE002A364C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrollAllegro;
+			productName = TrollAllegro;
+			productReference = 18371EF50C25B7FE002A364C /* libTrollAllegro.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		18EEBC8B0C4A816B009785B4 /* test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18EEBC8E0C4A816D009785B4 /* Build configuration list for PBXNativeTarget "test" */;
+			buildPhases = (
+				18EEBC880C4A816B009785B4 /* Resources */,
+				18EEBC890C4A816B009785B4 /* Sources */,
+				18EEBC8A0C4A816B009785B4 /* Frameworks */,
+				187576DC0C4F160900750B96 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = test;
+			productName = test;
+			productReference = 18EEBC8C0C4A816B009785B4 /* test.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		18371EBD0C25AACA002A364C /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 18371EBE0C25AACA002A364C /* Build configuration list for PBXProject "Troll" */;
+			hasScannedForEncodings = 0;
+			mainGroup = 18371EBB0C25AACA002A364C;
+			productRefGroup = 18371ED10C25AB27002A364C /* Products */;
+			projectDirPath = "";
+			targets = (
+				18371ECF0C25AB27002A364C /* TrollBase */,
+				18371EE30C25B3C5002A364C /* TrollSDL */,
+				18371EF40C25B7FE002A364C /* TrollAllegro */,
+				18EEBC8B0C4A816B009785B4 /* test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		18EEBC880C4A816B009785B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18D697B20C4F04CE005309B0 /* troll.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		18371ECD0C25AB27002A364C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18371EDB0C25B350002A364C /* basic_geo.cpp in Sources */,
+				18371EDC0C25B350002A364C /* color.cpp in Sources */,
+				18371EDD0C25B350002A364C /* screen.cpp in Sources */,
+				18371EDE0C25B350002A364C /* surface.cpp in Sources */,
+				18371EDF0C25B350002A364C /* system.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18371EE10C25B3C5002A364C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18371EED0C25B44A002A364C /* sdl_input.cpp in Sources */,
+				18371EEE0C25B44A002A364C /* sdl_screen.cpp in Sources */,
+				18371EEF0C25B44A002A364C /* sdl_surface.cpp in Sources */,
+				18371EF00C25B44A002A364C /* sdl_system.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18371EF20C25B7FE002A364C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18371EFD0C25B830002A364C /* allegro_keyinput.cpp in Sources */,
+				18371EFE0C25B830002A364C /* allegro_screen.cpp in Sources */,
+				18371EFF0C25B830002A364C /* allegro_surface.cpp in Sources */,
+				18371F000C25B830002A364C /* allegro_system.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18EEBC890C4A816B009785B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18EEBCA20C4A8289009785B4 /* SDLMain.m in Sources */,
+				18EEBCAF0C4A846D009785B4 /* test.cpp in Sources */,
+				18D697950C4F00B7005309B0 /* sdl_input.cpp in Sources */,
+				18D697960C4F00B9005309B0 /* sdl_screen.cpp in Sources */,
+				18D697970C4F00BA005309B0 /* sdl_surface.cpp in Sources */,
+				18D697980C4F00BE005309B0 /* sdl_system.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		18371EBF0C25AACA002A364C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
+				HEADER_SEARCH_PATHS = ../../include/;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		18371EC00C25AACA002A364C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
+				HEADER_SEARCH_PATHS = ../../include/;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Release;
+		};
+		18371ED30C25AB28002A364C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = i386;
+				CONFIGURATION_BUILD_DIR = ../../lib/xcode_lib;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_ENABLE_SSE3_EXTENSIONS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INSTALL_PATH = /usr/local/lib;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = TrollBaseD;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		18371ED40C25AB28002A364C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				CONFIGURATION_BUILD_DIR = ../../lib/xcode_lib;
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INSTALL_PATH = /usr/local/lib;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				PRODUCT_NAME = TrollBase;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		18371EE70C25B3D3002A364C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = ../../lib/xcode_lib;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = (
+					../../include/,
+					/Library/Frameworks/SDL.framework/Headers,
+					../../modules/SDL/include,
+				);
+				INSTALL_PATH = /usr/local/lib;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = TrollSDLD;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		18371EE80C25B3D3002A364C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = ppc;
+				CONFIGURATION_BUILD_DIR = ../../lib/xcode_lib;
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = (
+					../../include/,
+					/Library/Frameworks/SDL.framework/Headers,
+					../../modules/SDL/include,
+				);
+				INSTALL_PATH = /usr/local/lib;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = TrollSDL;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		18371EF70C25B81D002A364C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = (
+					../../include/,
+					/Developer/allegro/include,
+					../../modules/Allegro/include,
+				);
+				INSTALL_PATH = /usr/local/lib;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = TrollAllegro;
+				SHARED_PRECOMPS_DIR = "/Library/Caches/com.apple.Xcode.$(UID)/SharedPrecompiledHeaders";
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		18371EF80C25B81D002A364C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = (
+					../../include/,
+					/Library/Frameworks/Allegro.framework/Headers,
+					../../modules/Allegro/include,
+				);
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TrollAllegro;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		18EEBC8F0C4A816D009785B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(HOME)/Library/Frameworks",
+					/Library/Frameworks,
+					"$(FRAMEWORK_SEARCH_PATHS)",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = (
+					"$(HOME)/Library/Frameworks/SDL.framework/Headers",
+					/Library/Frameworks/SDL.framework/Headers,
+					"$(HEADER_SEARCH_PATHS)",
+					../../modules/SDL/include,
+					../../modules/Allegro/include,
+				);
+				INFOPLIST_FILE = "test-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = ../../lib/xcode_lib;
+				OTHER_LDFLAGS = (
+					"-lTrollBaseD",
+					"-lTrollSDLD",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = test;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		18EEBC900C4A816D009785B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS)";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = (
+					"$(HOME)/Library/Frameworks/SDL.framework/Headers",
+					/Library/Frameworks/SDL.framework/Headers,
+					"$(HEADER_SEARCH_PATHS)",
+					../../modules/SDL/include,
+					../../modules/Allegro/include,
+				);
+				INFOPLIST_FILE = "test-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = ../../lib/xcode_lib;
+				OTHER_LDFLAGS = "-lTrollBase";
+				PREBINDING = NO;
+				PRODUCT_NAME = test;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		18371EBE0C25AACA002A364C /* Build configuration list for PBXProject "Troll" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18371EBF0C25AACA002A364C /* Debug */,
+				18371EC00C25AACA002A364C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18371ED20C25AB28002A364C /* Build configuration list for PBXNativeTarget "TrollBase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18371ED30C25AB28002A364C /* Debug */,
+				18371ED40C25AB28002A364C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18371EE60C25B3D3002A364C /* Build configuration list for PBXNativeTarget "TrollSDL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18371EE70C25B3D3002A364C /* Debug */,
+				18371EE80C25B3D3002A364C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18371EF60C25B81D002A364C /* Build configuration list for PBXNativeTarget "TrollAllegro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18371EF70C25B81D002A364C /* Debug */,
+				18371EF80C25B81D002A364C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18EEBC8E0C4A816D009785B4 /* Build configuration list for PBXNativeTarget "test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18EEBC8F0C4A816D009785B4 /* Debug */,
+				18EEBC900C4A816D009785B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 18371EBD0C25AACA002A364C /* Project object */;
+}

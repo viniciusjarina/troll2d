@@ -23,11 +23,16 @@ AllegroSurface::~AllegroSurface()
 		destroy_bitmap(m_surface);
 }
 
-bool AllegroSurface::Create(int width,int height)
+bool AllegroSurface::Create(int width,int height,ColorDepth depth /*= depthAuto*/)
 {
 	ASSERT(m_surface == NULL);
-	m_surface = create_bitmap(width,height);
-	return false;
+	if(depth == depthAuto)
+		m_surface = create_bitmap(width,height);
+	else
+		m_surface = create_bitmap_ex(width,height,depth*8);
+
+	
+	return true;
 }
 
 int AllegroSurface::GetHeight() const
@@ -69,7 +74,17 @@ void AllegroSurface::Clear(const Color & color /*= Color::BLACK*/)
 	clear_to_color(m_surface,makecol(color.GetRed(),color.GetGreen(),color.GetBlue()));
 }
 
-void AllegroSurface::Blit(const Surface & src)
+void AllegroSurface::Blit(const Surface & src,const Point& ptDest /*Point(0,0)*/,const Rect& rSource /*Rect(0,0,-1,-1)*/)
 {
-	// TODO : blit or masked_blit
+	BITMAP * source = ((AllegroSurface *)&src)->m_surface;
+	BITMAP * dest = m_surface;
+	int width;
+	int height;
+
+	if(rSource.width < 0)
+		width  = source->w;
+	if(rSource.height < 0)
+		height = source->h;
+
+	blit(source,dest,rSource.x,rSource.y,ptDest.x,ptDest.y,width,height);
 }

@@ -323,4 +323,4 @@ Color const Color::DARKPINK	= Color(128,0,128,255);
 Color const Color::PINK		= Color(255,0,255,255);
 Color const Color::DARKORANGE = Color(192,88,0,255);
 Color const Color::ORANGE	= Color(255,128,0,255);
-Color const Color::INVISIBLE = Color(0,0,0,0);
+Color const Color::INVISIBLE = Color(255,0,255,0);

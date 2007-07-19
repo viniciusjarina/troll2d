@@ -7,16 +7,24 @@
 
 #include "troll/surface.h"
 
+struct SDL_Surface;
+
 namespace Troll
 {
 
+
 class SDLSurface  : public Surface
 {
+	friend class SDLScreen;
+private:
+	SDLSurface(::SDL_Surface * screen); //Used only by Screen class
+
 public:
 	SDLSurface();
 	virtual ~SDLSurface();
 
 public:
+	virtual bool Create(int width,int height,ColorDepth depth = depthAuto);
 
 	virtual int GetHeight() const;
 	virtual int GetWidth() const;
@@ -25,8 +33,8 @@ public:
 	virtual Rect GetClip() const;
 	virtual void ResetClip();
 
-	virtual void Clear(const Color & color = Color::BLACK);
-	virtual void Blit(const Surface & src);
+	virtual void Clear(const Color & color = Color::INVISIBLE);
+	virtual void Blit(const Surface & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
 
 protected:
 

@@ -2,7 +2,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(__ALLEGRO_TROLL2D_SYSTEM_H__
+#if !defined __ALLEGRO_TROLL2D_SYSTEM_H__
 #define __ALLEGRO_TROLL2D_SYSTEM_H__
 
 #include "troll/system.h"
@@ -23,9 +23,10 @@ public:
 	AllegroSystem();
 	virtual ~AllegroSystem();
 public:
-	virtual bool Init();
+	
 	virtual bool SetupScreen(int nWidth,int nHeight,bool fScreen = false,ColorDepth depth = depthAuto);
-	virtual void Destroy();
+	virtual void Sleep(int mili);
+	
 
 	Screen * GetScreen() const;
 };

@@ -6,6 +6,7 @@ namespace Troll
 
 typedef unsigned char ColorComponent;
 
+
 class Color
 {
 public:
@@ -86,7 +87,6 @@ public:
 	static const Color PINK;
 	static const Color DARKORANGE;
 	static const Color ORANGE;
-	static const Color NOCOLOR;
 	static const Color INVISIBLE;
 };
 
