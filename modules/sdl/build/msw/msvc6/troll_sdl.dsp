@@ -89,6 +89,10 @@ SOURCE=..\..\..\src\sdl_input.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\src\sdl_interface.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\sdl_screen.cpp
 # End Source File
 # Begin Source File

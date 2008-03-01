@@ -9,7 +9,8 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "troll/screen.h"
+#include "troll/screen_impl.h"
+#include "troll/surface.h"
 
 namespace Troll
 {
@@ -17,22 +18,40 @@ namespace Troll
 
 class AllegroSurface;
 
-class AllegroScreen : public Screen  
+class AllegroScreenHelper
 {
-	friend class AllegroSystem;
+	BITMAP * m_nativeSurface;
+	Surface * m_screenSurface;
 
-private:
+public:
+	
+	Surface & GetSurface() const
+	{
+		return *m_screenSurface;
+	}
+
+	void FlipScreen();
+	void CreateScreenSurface(int w, int h);
+
+	AllegroScreenHelper();
+	virtual ~AllegroScreenHelper();
+
+};
+
+class AllegroScreen : public ScreenImpl
+{
+public:
 	AllegroScreen(int w,int h);
 	virtual ~AllegroScreen();
 
 public:
 
-	virtual Surface * GetSurface() const;
+	virtual Surface & GetSurface() const;
 	virtual void Flip();
 
 private:
 
-	AllegroSurface  * m_surface;
+	AllegroScreenHelper m_screenHelper;
 };
 
 }// Troll

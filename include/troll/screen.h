@@ -1,29 +1,38 @@
-// Screen.h: interface for the Screen class.
-//
-//////////////////////////////////////////////////////////////////////
-
-#if !defined(AFX_SCREEN_H__692E113B_B4A5_46A1_9BA9_DE8C97546727__INCLUDED_)
-#define AFX_SCREEN_H__692E113B_B4A5_46A1_9BA9_DE8C97546727__INCLUDED_
-
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
+#ifndef __TROLL_SCREEN_H__
+#define __TROLL_SCREEN_H__
 
 namespace Troll
 {
 
+class ScreenImpl;
 class Surface;
 
-class Screen  
+class Screen
 {
-public:
+private:
 	Screen();
-	virtual ~Screen();
 
-	virtual Surface * GetSurface() const = 0;
-	virtual void Flip() = 0;
+	static ScreenImpl * m_singleton;
+
+public:
+	static void SetSingleton(ScreenImpl * impl)
+	{// TODO: Remove this method
+		m_singleton = impl;
+	}
+	/* REVIEW: What is better, static functions or a GetSingleton() function??
+	 Personally I prefer static
+	e.g
+
+    Surface & s = Screen::GetSurface(); // very clean
+
+	Surface & s = Screen::getSingleton().GetSurface(); // to much dots :P 	
+
+    */
+	static Surface & GetSurface();
+
+	static void Flip();
 };
 
-}// Troll
+}
 
-#endif // !defined(AFX_SCREEN_H__692E113B_B4A5_46A1_9BA9_DE8C97546727__INCLUDED_)
+#endif

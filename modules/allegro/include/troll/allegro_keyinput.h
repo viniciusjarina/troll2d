@@ -1,13 +1,13 @@
 #ifndef __ALLEGRO_TROLL2D_KEYINPUT__
 #define __ALLEGRO_TROLL2D_KEYINPUT__
 
-#include "troll/key_input.h"
+#include "troll/key_input_impl.h"
 
 namespace Troll
 {
 
 
-class AllegroKeyInput : public KeyInput
+class AllegroKeyInput : public KeyInputImpl
 {
 public:
 	AllegroKeyInput();

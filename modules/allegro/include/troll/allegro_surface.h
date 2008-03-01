@@ -5,16 +5,17 @@
 #if !defined(__ALLEGRO_TROLL2D_SURFACE_H__)
 #define __ALLEGRO_TROLL2D_SURFACE_H__
 
-#include "troll/surface.h"
+#include "troll/surface_impl.h"
 
 struct BITMAP;
 
 namespace Troll
 {
 
-class AllegroSurface  : public Surface
+class AllegroSurface  : public SurfaceImpl
 {
-	friend class AllegroScreen;
+protected:
+	AllegroSurface(BITMAP * surface);
 public:
 	AllegroSurface();
 	virtual ~AllegroSurface();
@@ -30,9 +31,9 @@ public:
 	virtual void ResetClip();
 
 	virtual void Clear(const Color & color = Color::BLACK);
-	virtual void Blit(const Surface & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
+	virtual void Blit(const SurfaceImpl & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
 
-protected:
+private:
 
 	BITMAP	* m_surface;
 

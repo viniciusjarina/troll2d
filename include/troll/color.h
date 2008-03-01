@@ -1,11 +1,19 @@
-#ifndef __TROLL2D_COLOR_H__
-#define __TROLL2D_COLOR_H__
+#ifndef __TROLL_COLOR_H__
+#define __TROLL_COLOR_H__
 
 namespace Troll
 {
 
 typedef unsigned char ColorComponent;
 
+enum ColorDepth
+{
+	depth1bpp = 1,
+	depth2bpp = 2,	
+	depth3bpp = 3,
+	depth4bpp = 4,
+	depthAuto = -1
+};
 
 class Color
 {

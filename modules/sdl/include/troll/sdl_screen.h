@@ -9,28 +9,52 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "troll/screen.h"
+#include "troll/screen_impl.h"
+#include "troll/surface.h"
 
 namespace Troll
 {
 
 class SDLSurface;
-class SDLScreen : public Screen  
+class SDLScreen;
+
+class SDLScreenHelper
 {
-	friend class SDLSystem;
+	SDL_Surface * m_nativeSurface;
+	Surface * m_screenSurface;
+	static int m_screen_bpp;
+
+public:
+	static SDLScreen * SetupScreen(int w, int h, int bpp, bool fullscreen);
+
+	Surface & GetSurface() const
+	{
+		return *m_screenSurface;
+	}
 	
-	private:
-		SDLScreen(SDL_Surface * screen);
+	void FlipScreen();
+	bool CreateScreenSurface(int w, int h,int bpp,bool fullscreen);
+
+	inline static int GetScreenBPP() { return m_screen_bpp; }
+	
+	SDLScreenHelper();
+	virtual ~SDLScreenHelper();
+};
+
+class SDLScreen : public ScreenImpl
+{
+	public:
+		SDLScreen(int w, int h,int bpp,bool fullscreen);
 		virtual ~SDLScreen();
 		
 	public:
 		
-		virtual Surface * GetSurface() const;
+		virtual Surface & GetSurface() const;
 		virtual void Flip();
 		
 	private:
 		
-		SDLSurface  * m_surface;
+		SDLScreenHelper  m_screenHelper;
 };
 	
 }// Troll

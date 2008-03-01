@@ -37,7 +37,6 @@ bool SDLKeyInput::IsKeyDown(int k)
 
 bool SDLKeyInput::IsKeyUp(int k)
 {
-
 	return true;
 }
 

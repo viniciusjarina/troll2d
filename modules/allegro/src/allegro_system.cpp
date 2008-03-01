@@ -19,15 +19,15 @@ using namespace Troll;
 
 
 AllegroSystem::AllegroSystem():
-m_pScreenBuffer(NULL)
+m_screen(NULL)
 {
 	allegro_init();
 }
 
 AllegroSystem::~AllegroSystem()
 {
-	if(m_pScreenBuffer != NULL)
-		delete m_pScreenBuffer;
+	if(m_screen != NULL)
+		delete m_screen;
 }
 
 bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ )
@@ -46,6 +46,12 @@ bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= fal
 		bpp = depth * 8;
 	}
 
+	if(nHeight == -1 && nWidth == -1)
+	{
+		nWidth  = 640;
+		nHeight = 480;
+	}
+
 	// Set palette
 	set_palette(desktop_palette);
 	set_color_depth(bpp);
@@ -56,14 +62,11 @@ bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= fal
 		return false;
 	}
 
-	m_pScreenBuffer = new AllegroScreen(nWidth,nHeight);
+	m_screen = new AllegroScreen(nWidth,nHeight);
+	
 	return true;
 }
 
-Screen * AllegroSystem::GetScreen() const
-{
-	return m_pScreenBuffer;
-}
 
 void AllegroSystem::Sleep( int mili )
 {

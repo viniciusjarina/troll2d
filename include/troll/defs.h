@@ -1,5 +1,5 @@
-#ifndef __TROLL2D_DEFS_H__
-#define __TROLL2D_DEFS_H__
+#ifndef __TROLL_DEFS_H__
+#define __TROLL_DEFS_H__
 
 #ifndef max
 #define max(a,b)            (((a) > (b)) ? (a) : (b))

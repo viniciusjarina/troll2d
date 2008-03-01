@@ -5,7 +5,7 @@
 #if !defined(__SDL_TROLL2D_SURFACE_H__)
 #define __SDL_TROLL2D_SURFACE_H__
 
-#include "troll/surface.h"
+#include "troll/surface_impl.h"
 
 struct SDL_Surface;
 
@@ -13,10 +13,9 @@ namespace Troll
 {
 
 
-class SDLSurface  : public Surface
+class SDLSurface  : public SurfaceImpl
 {
-	friend class SDLScreen;
-private:
+protected:
 	SDLSurface(::SDL_Surface * screen); //Used only by Screen class
 
 public:
@@ -34,9 +33,9 @@ public:
 	virtual void ResetClip();
 
 	virtual void Clear(const Color & color = Color::INVISIBLE);
-	virtual void Blit(const Surface & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
+	virtual void Blit(const SurfaceImpl & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
 
-protected:
+private:
 
 	SDL_Surface	* m_surface;
 

@@ -43,7 +43,7 @@ bool SDLSurface::Create( int width,int height,ColorDepth depth /*= depthAuto*/)
     amask = 0xff000000;
 #endif
 	if(depth == depthAuto)
-		bpp = SDLSystem::GetSystemDepth();
+		bpp = SDLSystem::GetScreenBPP();
 	else
 		bpp = depth*8;
 		
@@ -106,7 +106,7 @@ void SDLSurface::Clear(const Color & color /*= Color::INVISIBLE*/)
 	SDL_FillRect(m_surface,&rect,sdl_color);
 }
 
-void SDLSurface::Blit(const Surface & src,const Point& ptDest /*Point(0,0)*/,const Rect& rSource /*Rect(0,0,-1,-1)*/)
+void SDLSurface::Blit(const SurfaceImpl & src,const Point& ptDest /*Point(0,0)*/,const Rect& rSource /*Rect(0,0,-1,-1)*/)
 {
 	SDL_Rect rect1;
 	SDL_Rect rect2;

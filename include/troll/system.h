@@ -1,40 +1,31 @@
-// System.h: interface for the System class.
-//
-//////////////////////////////////////////////////////////////////////
-
-#if !defined(__TROLL2D_SYSTEM_H__)
-#define __TROLL2D_SYSTEM_H__
+#if !defined(__TROLL_SYSTEM_H__)
+#define __TROLL_SYSTEM_H__
 
 namespace Troll
 {
 
+class SystemImpl;
 
-enum ColorDepth
+
+class System
 {
-	depth1bpp = 1,
-	depth2bpp = 2,	
-	depth3bpp = 3,
-	depth4bpp = 4,
-	depthAuto = -1
-};
-
-class Surface;
-class Screen;
-
-class System  
-{
-public:
+private:
 	System();
-	virtual ~System();
-public:
-	
-	virtual bool SetupScreen(int nWidth,int nHeight,bool fFullScreen = false,ColorDepth depth = depthAuto) = 0;
-		
-	virtual Screen * GetScreen() const = 0;
 
-	virtual void Sleep(int mili) = 0;
+	static SystemImpl * m_singleton;
+public:
+	static bool Init();
+	static void Cleanup();
+
+	static bool SetupScreen(int nWidth = -1,int nHeight = -1,bool fFullScreen = false,ColorDepth depth = depthAuto);
+	static void Sleep(int mili);
 };
+
+
+
 
 }
 
-#endif // !defined(__TROLL2D_SYSTEM_H__)
+
+
+#endif // __TROLL_SYSTEM_H__

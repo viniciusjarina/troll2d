@@ -17,61 +17,41 @@
 
 using namespace Troll;
 
-SDLSystem * SDLSystem::m_system = NULL;
-
 SDLSystem::SDLSystem()
 {
-	m_system   = this;
-	screen_bpp = 0;
 	SDL_Init(0);
 }
 
 SDLSystem::~SDLSystem()
 {
+	if(m_screen != NULL)
+		delete m_screen;
+
 	SDL_Quit();
 }
 
 
 bool SDLSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ )
 {
-	const SDL_VideoInfo *info;
-	SDL_Surface *screen;
-	Uint8  video_bpp;
-	Uint32 flags = SDL_HWSURFACE|SDL_DOUBLEBUF;
-
-	SDL_Init(SDL_INIT_VIDEO);
-
-	if(depth == depthAuto)
+	if(nHeight == -1 && nWidth == -1)
 	{
-		info = SDL_GetVideoInfo();
-		if(info && info->vfmt)
-			video_bpp = info->vfmt->BitsPerPixel;
-		else
-			video_bpp = 16;
-	}
-	else
-	{
-		video_bpp =	depth * 8;
+		nWidth  = 640;
+		nHeight = 480;
 	}
 
-	if(fFullScreen)
-		flags |= SDL_FULLSCREEN;
-
-	screen = SDL_SetVideoMode(nWidth,nHeight,video_bpp,flags);
-	if(screen == NULL)
+	m_screen = SDLScreenHelper::SetupScreen(nWidth,nHeight,depth,fFullScreen);
+	if(!m_screen)
 		return false;
-	screen_bpp = video_bpp;
-	m_screen = new SDLScreen(screen);
-	return false;
-
-}
-
-Screen * SDLSystem::GetScreen() const
-{
-	return m_screen;
+	
+	return true;
 }
 
 void SDLSystem::Sleep( int mili )
 {
 	SDL_Delay(mili);
+}
+
+int SDLSystem::GetScreenBPP()
+{
+	return SDLScreenHelper::GetScreenBPP();
 }

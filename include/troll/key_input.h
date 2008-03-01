@@ -51,13 +51,22 @@ namespace Troll
 		};
 	};
 
+	class KeyInputImpl;
+
 	class KeyInput
 	{
+	private:
+		KeyInput();
+
+		static KeyInputImpl * m_singleton;
+
 	public:
-		 virtual bool IsKeyUp(int key) = 0;
-		 virtual bool IsKeyDown(int key) = 0;
+		static void Init();
+		static void Cleanup();
+
+		static bool IsKeyUp(int key);
+		static bool IsKeyDown(int key);
 	};
-	
 }
 
 #endif //__TROLL_KEY_INPUT__

@@ -5,6 +5,7 @@
 
 #include "troll/allegro_screen.h"
 #include "troll/allegro_surface.h"
+#include "troll/screen.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -13,24 +14,75 @@ using namespace Troll;
 
 AllegroScreen::AllegroScreen(int w,int h)
 {
-	m_surface = new AllegroSurface;
-	m_surface->Create(w,h);
+	m_screenHelper.CreateScreenSurface(w,h);
+
+	Screen::SetSingleton(this);
 }
 
 AllegroScreen::~AllegroScreen()
 {
-	delete m_surface;
+	
 }
 
-Surface * AllegroScreen::GetSurface() const
+Surface & AllegroScreen::GetSurface() const
 {
-	return m_surface;
+	return m_screenHelper.GetSurface();
 }
 
 
 void AllegroScreen::Flip()
 {
-	// TODO: page flipping (just see the flip example of allegro)
+	m_screenHelper.FlipScreen();
+}
 
-	blit(m_surface->m_surface,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+/********************************/
+
+class AllegroScreenSurfaceImpl: public AllegroSurface
+{
+public:
+	AllegroScreenSurfaceImpl(BITMAP * surface):
+	AllegroSurface(surface)
+	{
+	}
+};
+
+class AllegroScreenSurface: public Surface
+{
+public:
+	AllegroScreenSurface(AllegroScreenSurfaceImpl * impl):
+	Surface(impl)
+	{
+	}
+};
+
+
+
+AllegroScreenHelper::AllegroScreenHelper()
+{
+
+}
+
+AllegroScreenHelper::~AllegroScreenHelper()
+{
+	if(m_screenSurface)
+		delete m_screenSurface;
+}
+
+void AllegroScreenHelper::FlipScreen()
+{
+	// TODO: page flipping (just see the flip example of allegro)
+	
+	blit(m_nativeSurface,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+}
+
+void AllegroScreenHelper::CreateScreenSurface( int w, int h )
+{
+	// TODO: create_video_bitmap?  is really necessary?
+	BITMAP * buffer = create_bitmap(w ,h);
+
+	AllegroScreenSurfaceImpl * pAllegroSurfaceImpl = new AllegroScreenSurfaceImpl(buffer);
+	Surface * pSurface = new AllegroScreenSurface(pAllegroSurfaceImpl);
+	
+	m_nativeSurface = buffer;
+	m_screenSurface = pSurface;
 }

@@ -64,7 +64,7 @@ LIB32=link.exe -lib
 # PROP Intermediate_Dir "Debug"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../include/" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../include/" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /FR /YX /FD /GZ /c
 # ADD BASE RSC /l 0x416 /d "_DEBUG"
 # ADD RSC /l 0x416 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -93,7 +93,15 @@ SOURCE=..\..\..\src\color.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\src\key_input.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\screen.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\screen_impl.cpp
 # End Source File
 # Begin Source File
 
@@ -101,7 +109,19 @@ SOURCE=..\..\..\src\surface.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\src\surface_factory.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\surface_impl.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\system.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\system_impl.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -121,7 +141,15 @@ SOURCE=..\..\..\include\troll\defs.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\include\troll\interface.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\include\troll\key_input.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\key_input_impl.h
 # End Source File
 # Begin Source File
 
@@ -129,11 +157,35 @@ SOURCE=..\..\..\include\troll\screen.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\include\troll\screen_factory.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\screen_impl.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\include\troll\surface.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\include\troll\surface_factory.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\surface_impl.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\include\troll\system.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\system_impl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll.h
 # End Source File
 # End Group
 # End Target

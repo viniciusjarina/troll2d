@@ -5,21 +5,20 @@
 #ifndef __SDL_TROLL2D_SYSTEM_H__
 #define __SDL_TROLL2D_SYSTEM_H__
 
-#include "troll/system.h"
+#include "troll/color.h"
+#include "troll/system_impl.h"
 
 namespace Troll
 {
-	
+
+class Screen;
 class SDLScreen;
 
 
-class SDLSystem  : public System
+class SDLSystem  : public SystemImpl
 {
 private:
 	SDLScreen * m_screen;
-	int	screen_bpp;
-
-	static SDLSystem * m_system;
 
 public:
 	SDLSystem();
@@ -28,11 +27,9 @@ public:
 // Overrides to back-end	
 	virtual bool SetupScreen(int nWidth,int nHeight,bool fScreen = false,ColorDepth depth = depthAuto);
 	virtual void Sleep(int mili);
-	
-	Screen * GetScreen() const;
 
-//internal use
-	inline static int GetSystemDepth() { return m_system->screen_bpp; }
+	static int GetScreenBPP();
+	
 };
 
 }

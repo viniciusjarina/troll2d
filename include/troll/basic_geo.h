@@ -1,5 +1,5 @@
-#ifndef __TROLL2D_BASIC_GEO_H__
-#define __TROLL2D_BASIC_GEO_H__
+#ifndef __TROLL_BASIC_GEO_H__
+#define __TROLL_BASIC_GEO_H__
 
 namespace Troll
 {

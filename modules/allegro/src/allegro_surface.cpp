@@ -7,6 +7,8 @@
 #include "troll/surface.h"
 #include "troll/allegro_surface.h"
 
+#include "troll/surface_factory.h"
+
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -17,6 +19,12 @@ m_surface(NULL)
 {
 }
 
+AllegroSurface::AllegroSurface( BITMAP * surface ):
+m_surface(surface)
+{
+	
+}
+
 AllegroSurface::~AllegroSurface()
 {
 	if(m_surface)
@@ -25,12 +33,13 @@ AllegroSurface::~AllegroSurface()
 
 bool AllegroSurface::Create(int width,int height,ColorDepth depth /*= depthAuto*/)
 {
-	ASSERT(m_surface == NULL);
+	if(m_surface != NULL)
+		return false;
+	
 	if(depth == depthAuto)
 		m_surface = create_bitmap(width,height);
 	else
 		m_surface = create_bitmap_ex(width,height,depth*8);
-
 	
 	return true;
 }
@@ -74,7 +83,7 @@ void AllegroSurface::Clear(const Color & color /*= Color::BLACK*/)
 	clear_to_color(m_surface,makecol(color.GetRed(),color.GetGreen(),color.GetBlue()));
 }
 
-void AllegroSurface::Blit(const Surface & src,const Point& ptDest /*Point(0,0)*/,const Rect& rSource /*Rect(0,0,-1,-1)*/)
+void AllegroSurface::Blit(const SurfaceImpl & src,const Point& ptDest /*Point(0,0)*/,const Rect& rSource /*Rect(0,0,-1,-1)*/)
 {
 	BITMAP * source = ((AllegroSurface *)&src)->m_surface;
 	BITMAP * dest = m_surface;
@@ -88,3 +97,6 @@ void AllegroSurface::Blit(const Surface & src,const Point& ptDest /*Point(0,0)*/
 
 	blit(source,dest,rSource.x,rSource.y,ptDest.x,ptDest.y,width,height);
 }
+
+
+
