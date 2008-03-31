@@ -1,0 +1,238 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18C80A5D0DA0227E0005F448 /* sdl_input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1883B4BA0D8C020100785918 /* sdl_input.cpp */; };
+		18C80A5E0DA0227E0005F448 /* sdl_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1883B4BB0D8C020100785918 /* sdl_interface.cpp */; };
+		18C80A5F0DA0227E0005F448 /* sdl_screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1883B4BC0D8C020100785918 /* sdl_screen.cpp */; };
+		18C80A600DA0227E0005F448 /* sdl_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1883B4BD0D8C020100785918 /* sdl_surface.cpp */; };
+		18C80A610DA0227E0005F448 /* sdl_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1883B4BE0D8C020100785918 /* sdl_system.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1883B4BA0D8C020100785918 /* sdl_input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sdl_input.cpp; path = ../../src/sdl_input.cpp; sourceTree = SOURCE_ROOT; };
+		1883B4BB0D8C020100785918 /* sdl_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sdl_interface.cpp; path = ../../src/sdl_interface.cpp; sourceTree = SOURCE_ROOT; };
+		1883B4BC0D8C020100785918 /* sdl_screen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sdl_screen.cpp; path = ../../src/sdl_screen.cpp; sourceTree = SOURCE_ROOT; };
+		1883B4BD0D8C020100785918 /* sdl_surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sdl_surface.cpp; path = ../../src/sdl_surface.cpp; sourceTree = SOURCE_ROOT; };
+		1883B4BE0D8C020100785918 /* sdl_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sdl_system.cpp; path = ../../src/sdl_system.cpp; sourceTree = SOURCE_ROOT; };
+		18C80A570DA021E50005F448 /* libtroll_sdl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtroll_sdl.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		18C80A550DA021E50005F448 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* troll_sdl */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6A0FF2B0290797F04C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = troll_sdl;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				1883B4BA0D8C020100785918 /* sdl_input.cpp */,
+				1883B4BB0D8C020100785918 /* sdl_interface.cpp */,
+				1883B4BC0D8C020100785918 /* sdl_screen.cpp */,
+				1883B4BD0D8C020100785918 /* sdl_surface.cpp */,
+				1883B4BE0D8C020100785918 /* sdl_system.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18C80A570DA021E50005F448 /* libtroll_sdl.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6A0FF2B0290797F04C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		18C80A530DA021E50005F448 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		18C80A560DA021E50005F448 /* troll_sdl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18C80A5C0DA022030005F448 /* Build configuration list for PBXNativeTarget "troll_sdl" */;
+			buildPhases = (
+				18C80A530DA021E50005F448 /* Headers */,
+				18C80A540DA021E50005F448 /* Sources */,
+				18C80A550DA021E50005F448 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = troll_sdl;
+			productName = troll_sdl;
+			productReference = 18C80A570DA021E50005F448 /* libtroll_sdl.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "troll_sdl" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* troll_sdl */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				18C80A560DA021E50005F448 /* troll_sdl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		18C80A540DA021E50005F448 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18C80A5D0DA0227E0005F448 /* sdl_input.cpp in Sources */,
+				18C80A5E0DA0227E0005F448 /* sdl_interface.cpp in Sources */,
+				18C80A5F0DA0227E0005F448 /* sdl_screen.cpp in Sources */,
+				18C80A600DA0227E0005F448 /* sdl_surface.cpp in Sources */,
+				18C80A610DA0227E0005F448 /* sdl_system.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		18C80A580DA021E50005F448 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = "";
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = troll_sdl;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		18C80A590DA021E50005F448 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = "";
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = troll_sdl;
+				SDKROOT = macosx10.5;
+				VALID_ARCHS = "i386 ppc ppc64 ppc7400 ppc970 x86_64";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		1DEB91F008733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/Library/Frameworks/SDL.framework/Headers/,
+					../../include,
+					../../../../include,
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.4;
+			};
+			name = Debug;
+		};
+		1DEB91F108733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/Library/Frameworks/SDL.framework/Headers/,
+					../../include,
+					../../../../include,
+				);
+				PREBINDING = NO;
+				SDKROOT = macosx10.4;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		18C80A5C0DA022030005F448 /* Build configuration list for PBXNativeTarget "troll_sdl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18C80A580DA021E50005F448 /* Debug */,
+				18C80A590DA021E50005F448 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "troll_sdl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91F008733DB70010E9CD /* Debug */,
+				1DEB91F108733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
