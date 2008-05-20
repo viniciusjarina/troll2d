@@ -11,4 +11,6 @@
 #include "troll/surface.h"
 #include "troll/key_input.h"
 
+#include "troll/graphics.h"
+
 #endif // __TROLL_H__

@@ -16,6 +16,7 @@ extern "C" int main(int argc,char * argv[])
 	Surface & buff	= Screen::GetSurface();
 	
 	Surface test(100,100);
+	Graphics g(test);
 	
 	int x = 0;
 	int y = 0;
@@ -29,6 +30,7 @@ extern "C" int main(int argc,char * argv[])
 	{
 		Color c2(255,0,0);
 
+		
 		//buff.Clear(c);
 
 		c2.IncraseLuminance(((255*y)/buff.GetWidth()) - 127);
@@ -48,8 +50,10 @@ extern "C" int main(int argc,char * argv[])
 		y += yInc;
 		
 		test.Clear(c2);
+		g.DrawLine(Point(0,0),Point(100,100),Color::WHITE);
 		buff.Blit(test,Point(x,y));
 		
+
 		Screen::Flip();
 		System::Sleep(20);
 	}

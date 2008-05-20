@@ -1,4 +1,4 @@
-// Screen.cpp: implementation of the Screen class.
+// ScreenImpl.cpp: implementation of the Screen class.
 //
 //////////////////////////////////////////////////////////////////////
 

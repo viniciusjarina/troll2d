@@ -14,6 +14,8 @@ namespace Troll
 
 class AllegroSurface  : public SurfaceImpl
 {
+	friend class AllegroGraphics;
+
 protected:
 	AllegroSurface(BITMAP * surface);
 public:

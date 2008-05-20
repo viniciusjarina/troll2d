@@ -15,6 +15,8 @@ namespace Troll
 
 	class Surface
 	{
+		friend class GraphicsFactory;
+		
 		SurfaceImpl * m_impl;
 	protected:
 

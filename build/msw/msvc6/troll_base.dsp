@@ -93,6 +93,18 @@ SOURCE=..\..\..\src\color.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\src\graphics.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\graphics_factory.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\graphics_impl.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\key_input.cpp
 # End Source File
 # Begin Source File
@@ -138,6 +150,18 @@ SOURCE=..\..\..\include\troll\color.h
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\defs.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\graphics.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\graphics_factory.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\graphics_impl.h
 # End Source File
 # Begin Source File
 

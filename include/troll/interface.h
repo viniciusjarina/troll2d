@@ -6,6 +6,7 @@ namespace Troll
 	class SystemImpl;
 	class KeyInputImpl;
 	class SurfaceImpl;
+	class GraphicsImpl;
 }
 
 #ifdef __cplusplus
@@ -16,6 +17,7 @@ namespace Troll
 	 Troll::SystemImpl*		Troll_AllocSystem();
 	 Troll::KeyInputImpl*	Troll_AllocKeyInput();
 	 Troll::SurfaceImpl*	Troll_AllocSurface();
+	 Troll::GraphicsImpl*	Troll_AllocGraphics(Troll::SurfaceImpl * surface_impl);
 
 
 #ifdef __cplusplus

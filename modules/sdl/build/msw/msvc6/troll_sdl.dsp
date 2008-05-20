@@ -85,6 +85,14 @@ LIB32=link.exe -lib
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
+SOURCE=..\..\..\src\SDL_gfxPrimitives.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sdl_graphics.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\sdl_input.cpp
 # End Source File
 # Begin Source File
@@ -116,6 +124,14 @@ SOURCE=..\..\..\src\sdl_system.cpp
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
+# Begin Source File
+
+SOURCE=..\..\..\include\SDL_gfxPrimitives.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\sdl_graphics.h
+# End Source File
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\sdl_keyinput.h

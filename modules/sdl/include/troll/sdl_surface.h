@@ -15,6 +15,8 @@ namespace Troll
 
 class SDLSurface  : public SurfaceImpl
 {
+	friend class SDLGraphics;
+
 protected:
 	SDLSurface(::SDL_Surface * screen); //Used only by Screen class
 
