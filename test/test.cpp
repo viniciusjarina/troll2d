@@ -7,16 +7,17 @@ using namespace Troll;
 
 extern "C" int main(int argc,char * argv[])
 {
-	Color c(0,0,0);
+	System::Init();			// Inialize (input, sound, files, etc)
+	System::SetupScreen();	// Setup and create screen with defaul size
 	
-	System::Init();
+	Surface & buff	= Screen::GetSurface(); // Get current screen Surface
+	
+	Image image;
 
-	System::SetupScreen();
+	if(!image.LoadImage("troll.bmp")) // Try to load image
+		return 1; // Fail to load image
 	
-	Surface & buff	= Screen::GetSurface();
-	
-	Surface test(100,100);
-	Graphics g(test);
+	const Surface & test = image.GetSurface();
 	
 	int x = 0;
 	int y = 0;
@@ -24,38 +25,49 @@ extern "C" int main(int argc,char * argv[])
 	int xInc = 1;
 	int yInc = 1;
 
+	const int h = test.GetHeight();
+	const int w = test.GetWidth();
+	const int total_w = buff.GetWidth();
+	const int total_h = buff.GetHeight();
+
+	Graphics g(buff);
+
+	Color c(0,0,0);
+
 	buff.Clear(c);
 	
-	while(!KeyInput::IsKeyDown(Key::ESCAPE))
+	while(!KeyInput::IsKeyDown(Key::ESCAPE)) // was ESC key pressed?
 	{
-		Color c2(255,0,0);
-
+		Color c2(190,0,0);
 		
-		//buff.Clear(c);
+		c2.RotateHue( ((255 * x)/total_w) );
 
-		c2.IncraseLuminance(((255*y)/buff.GetWidth()) - 127);
-		c2.RotateHue(((255*x)/buff.GetHeight()));
-
-		if(x > buff.GetWidth() - test.GetWidth() )
-			xInc = -3;
-		else if(x <= 0)
-			xInc =  3;
+		// Bounce logic
+		if( x > ( total_w - w ) )
+			xInc = -5;
+		else if( x <= 0 )
+			xInc =  5;
 		
-		if(y > buff.GetHeight() - test.GetHeight() )
-			yInc = -3;
+		if( y > (total_h - h) )
+			yInc = -5;
 		else if(y <= 0)
-			yInc =  3;
+			yInc =  5;
 
 		x += xInc;
 		y += yInc;
 		
-		test.Clear(c2);
-		g.DrawLine(Point(0,0),Point(100,100),Color::WHITE);
-		buff.Blit(test,Point(x,y));
+		// draw logo with alpha
+		buff.DrawAlpha(test, Point(x,y), (( y * 255)/total_h)); 
 		
-
-		Screen::Flip();
-		System::Sleep(20);
+		// Draw box	
+		g.DrawLine(Point(x    , y + h), Point(x    , y    ),c2);
+		g.DrawLine(Point(x    , y    ), Point(x + w, y    ),c2);
+		g.DrawLine(Point(x    , y + h), Point(x + w, y + h),c2);
+		g.DrawLine(Point(x + w, y + h), Point(x + w, y    ),c2);
+		
+		Screen::Flip();		// Flip screen
+		System::Sleep(30);  // Wait 
+		// TODO: FPS system
 	}
 
 	System::Cleanup();

@@ -16,30 +16,36 @@ namespace Troll
 	class Surface
 	{
 		friend class GraphicsFactory;
-		
-		SurfaceImpl * m_impl;
+
+		SurfaceImpl * m_impl; // Interface of implementation
+
 	protected:
 
-		Surface(SurfaceImpl * impl);
+		Surface(SurfaceImpl * impl); // Protected ctor (user internally)
 
 	public:
-		Surface();
+		Surface(); // Default ctor
 		Surface(int width,int height,ColorDepth depth = depthAuto);
 
 		virtual ~Surface();
 		
 	public:
-		bool Create(int width,int height,ColorDepth depth = depthAuto);
+		// Creates a surface with given width and heigh
+		bool Create(int width,int height,ColorDepth depth = depthAuto); 
 		
-		int GetHeight();
-		int GetWidth();
+		int GetHeight() const; // Get the Height of surface
+		int GetWidth() const;  // Get the Width of surface
 		
-		void SetClip(const Rect & rect);
-		Rect GetClip();
-		void ResetClip();
+		void SetClip(const Rect & rect); // Set clip rect of surface
+		Rect GetClip();					 // Get current clipping rect
+		void ResetClip();				 // Reset the clip rect
 		
-		void Clear(const Color & color = Color::BLACK);
+		void Clear(const Color & color = Color::BLACK); // Clean surface with color
+
+		// Blits from the Surface (src) the rect (rSource) into postion (ptDest) of surface
 		void Blit(const Surface & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
+		// Draw the entire surface (sprite) at position ptDest with alpha-value (alpha)
+		void DrawAlpha(const Surface & sprite,const Point& ptDest = Point(0,0),unsigned char alpha = 128);
 	};
 	
 }

@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test.vcproj", "{2607834D-3868-41F4-BAD4-43AA9D5B6840}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "troll_base", "troll_base.vcproj", "{E9575855-B706-4AFA-97F5-932B8F47CA24}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "troll_allegro", "..\..\..\modules\allegro\build\msw\msvc8\troll_allegro.vcproj", "{3B9F4163-BF77-40CC-9C03-7C282D0D67A1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "troll_sdl", "..\..\..\modules\sdl\build\msw\msvc8\troll_sdl.vcproj", "{92237630-F95F-4749-A90B-B18FA53753C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2607834D-3868-41F4-BAD4-43AA9D5B6840}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2607834D-3868-41F4-BAD4-43AA9D5B6840}.Debug|Win32.Build.0 = Debug|Win32
+		{2607834D-3868-41F4-BAD4-43AA9D5B6840}.Release|Win32.ActiveCfg = Release|Win32
+		{2607834D-3868-41F4-BAD4-43AA9D5B6840}.Release|Win32.Build.0 = Release|Win32
+		{E9575855-B706-4AFA-97F5-932B8F47CA24}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E9575855-B706-4AFA-97F5-932B8F47CA24}.Debug|Win32.Build.0 = Debug|Win32
+		{E9575855-B706-4AFA-97F5-932B8F47CA24}.Release|Win32.ActiveCfg = Release|Win32
+		{E9575855-B706-4AFA-97F5-932B8F47CA24}.Release|Win32.Build.0 = Release|Win32
+		{3B9F4163-BF77-40CC-9C03-7C282D0D67A1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3B9F4163-BF77-40CC-9C03-7C282D0D67A1}.Debug|Win32.Build.0 = Debug|Win32
+		{3B9F4163-BF77-40CC-9C03-7C282D0D67A1}.Release|Win32.ActiveCfg = Release|Win32
+		{3B9F4163-BF77-40CC-9C03-7C282D0D67A1}.Release|Win32.Build.0 = Release|Win32
+		{92237630-F95F-4749-A90B-B18FA53753C2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{92237630-F95F-4749-A90B-B18FA53753C2}.Debug|Win32.Build.0 = Debug|Win32
+		{92237630-F95F-4749-A90B-B18FA53753C2}.Release|Win32.ActiveCfg = Release|Win32
+		{92237630-F95F-4749-A90B-B18FA53753C2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

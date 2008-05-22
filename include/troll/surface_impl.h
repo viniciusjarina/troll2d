@@ -30,6 +30,7 @@ public:
 
 	virtual void Clear(const Color & color = Color::BLACK) = 0;
 	virtual void Blit(const SurfaceImpl & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1)) = 0;
+	virtual void DrawAlpha(const SurfaceImpl & sprite,const Point& ptDest = Point(0,0),unsigned char alpha = 128) = 0;
 };
 
 }

@@ -79,7 +79,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 SDLD.lib SDLmainD.lib alld_s.lib troll_sdld.lib troll_based.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"../../../modules/allegro/lib" /libpath:"..\..\..\lib\vc_lib\\" /libpath:"../../../modules/sdl/lib"
+# ADD LINK32 SDLD.lib SDLmainD.lib alld_s.lib troll_allegrod.lib troll_based.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"..\..\..\lib\vc6_lib\\"
 
 !ENDIF 
 
@@ -109,6 +109,26 @@ SOURCE=..\..\..\test\msw\test.rc
 # Begin Source File
 
 SOURCE=..\..\..\test\msw\icon2.ico
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\data\images\troll.bmp
+
+!IF  "$(CFG)" == "test - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "test - Win32 Debug"
+
+# Begin Custom Build
+WkspDir=.
+InputPath=..\..\..\data\images\troll.bmp
+
+"troll.bmp" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	copy $(InputPath) $(WkspDir)
+
+# End Custom Build
+
+!ENDIF 
+
 # End Source File
 # End Group
 # End Target

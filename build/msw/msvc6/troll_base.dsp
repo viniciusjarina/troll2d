@@ -49,7 +49,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo /out:"../../../lib\vc_lib\troll_base.lib"
+# ADD LIB32 /nologo /out:"../../../lib\vc6_lib\troll_base.lib"
 
 !ELSEIF  "$(CFG)" == "troll_base - Win32 Debug"
 
@@ -72,7 +72,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo /out:"../../../lib\vc_lib\troll_based.lib"
+# ADD LIB32 /nologo /out:"../../../lib\vc6_lib\troll_based.lib"
 
 !ENDIF 
 
@@ -102,6 +102,18 @@ SOURCE=..\..\..\src\graphics_factory.cpp
 # Begin Source File
 
 SOURCE=..\..\..\src\graphics_impl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\image.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\image_factory.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\image_impl.cpp
 # End Source File
 # Begin Source File
 
@@ -162,6 +174,18 @@ SOURCE=..\..\..\include\troll\graphics_factory.h
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\graphics_impl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\image.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\image_factory.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\image_impl.h
 # End Source File
 # Begin Source File
 

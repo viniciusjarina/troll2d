@@ -92,11 +92,26 @@ void AllegroSurface::Blit(const SurfaceImpl & src,const Point& ptDest /*Point(0,
 
 	if(rSource.width < 0)
 		width  = source->w;
+	else
+		width = rSource.width;
+
 	if(rSource.height < 0)
 		height = source->h;
+	else
+		width = rSource.width;
 
-	blit(source,dest,rSource.x,rSource.y,ptDest.x,ptDest.y,width,height);
+	masked_blit(source,dest,rSource.x,rSource.y,ptDest.x,ptDest.y,width,height);
 }
 
 
 
+
+void AllegroSurface::DrawAlpha( const SurfaceImpl & sprite,const Point& ptDest /*= Point(0,0)*/,unsigned char alpha /*= 128*/ )
+{
+	BITMAP * source = ((AllegroSurface *)&sprite)->m_surface;
+	BITMAP * dest = m_surface;
+
+	set_trans_blender(0,0,0,alpha);
+
+	draw_trans_sprite(dest,source,ptDest.x,ptDest.y);
+}

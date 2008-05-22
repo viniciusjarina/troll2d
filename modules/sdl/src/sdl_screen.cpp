@@ -39,18 +39,18 @@ class SDLScreenSurfaceImpl: public SDLSurface
 {
 public:
 	SDLScreenSurfaceImpl(SDL_Surface * surface):
-	  SDLSurface(surface)
-	  {
-	  }
+	SDLSurface(surface)
+	{
+	}
 };
 
 class SDLScreenSurface: public Surface
 {
 public:
 	SDLScreenSurface(SDLScreenSurfaceImpl * impl):
-	  Surface(impl)
-	  {
-	  }
+	Surface(impl)
+	{
+	}
 };
 
 int SDLScreenHelper::m_screen_bpp = 0;
@@ -88,7 +88,6 @@ bool SDLScreenHelper::CreateScreenSurface(int w, int h,int bpp,bool fullscreen)
 	m_nativeSurface = buffer;
 	m_screenSurface = pSurface;
 	m_screen_bpp = bpp;
-
 	return true;
 }
 

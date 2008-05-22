@@ -4,6 +4,7 @@
 #include "troll/allegro_keyinput.h"
 #include "troll/allegro_surface.h"
 #include "troll/allegro_graphics.h"
+#include "troll/allegro_image.h"
 
 using namespace Troll;
 
@@ -35,4 +36,9 @@ extern "C" GraphicsImpl * Troll_AllocGraphics(SurfaceImpl * surface_impl)
 	//
 	
 	return new AllegroGraphics(surface);
+}
+
+extern "C" ImageImpl * Troll_AllocImage()
+{
+	return new AllegroImage;
 }

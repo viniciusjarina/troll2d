@@ -34,12 +34,12 @@ bool Surface::Create(int width,int height,ColorDepth depth/* = depthAuto*/)
 	return m_impl->Create(width,height,depth);
 }
 		
-int Surface::GetHeight()
+int Surface::GetHeight() const
 {
 	return m_impl->GetHeight();
 }
 
-int Surface::GetWidth()
+int Surface::GetWidth() const
 {
 	return m_impl->GetWidth();
 }
@@ -67,4 +67,9 @@ void Surface::Clear(const Color & color /*= Color::BLACK*/)
 void Surface::Blit(const Surface & src,const Point& ptDest/* = Point(0,0)*/,const Rect& rSource /*= Rect(0,0,-1,-1)*/)
 {
 	m_impl->Blit(*src.m_impl,ptDest,rSource);
+}
+
+void Surface::DrawAlpha( const Surface & sprite,const Point& ptDest,unsigned char alpha )
+{
+	m_impl->DrawAlpha(*sprite.m_impl,ptDest,alpha);
 }

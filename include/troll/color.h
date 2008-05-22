@@ -39,7 +39,7 @@ public:
 	ColorComponent GetRed() const	{ return m_red;	  }
 	ColorComponent GetGreen() const { return m_green; }
 	ColorComponent GetBlue() const	{ return m_blue;  }
-	ColorComponent GetAlpha() const { return m_blue;  }
+	ColorComponent GetAlpha() const { return m_alpha;  }
 
 	void SetRed(ColorComponent red)		{ m_red   = red;   }
 	void SetGreen(ColorComponent green) { m_green = green; }

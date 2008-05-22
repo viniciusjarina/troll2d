@@ -35,8 +35,14 @@ bool SDLSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= false*/
 {
 	if(nHeight == -1 && nWidth == -1)
 	{
+#ifdef _WIN32_WCE
+		nWidth  = 240;
+		nHeight = 320;
+		fFullScreen = true;
+#else
 		nWidth  = 640;
 		nHeight = 480;
+#endif
 	}
 
 	m_screen = SDLScreenHelper::SetupScreen(nWidth,nHeight,depth,fFullScreen);

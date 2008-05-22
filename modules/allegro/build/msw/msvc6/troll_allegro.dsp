@@ -49,7 +49,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo /out:"..\..\..\lib\troll_allegro.lib"
+# ADD LIB32 /nologo /out:"..\..\..\..\..\lib\vc6_lib\troll_allegro.lib"
 
 !ELSEIF  "$(CFG)" == "troll_allegro - Win32 Debug"
 
@@ -72,7 +72,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo /out:"..\..\..\lib\troll_allegrod.lib"
+# ADD LIB32 /nologo /out:"..\..\..\..\..\lib\vc6_lib\troll_allegrod.lib"
 
 !ENDIF 
 
@@ -86,6 +86,10 @@ LIB32=link.exe -lib
 # Begin Source File
 
 SOURCE=..\..\..\src\allegro_graphics.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\allegro_image.cpp
 # End Source File
 # Begin Source File
 
@@ -123,6 +127,10 @@ SOURCE=..\..\..\src\allegro_system.cpp
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\allegro_graphics.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\allegro_image.h
 # End Source File
 # Begin Source File
 

@@ -73,6 +73,7 @@ void AllegroScreenHelper::FlipScreen()
 	// TODO: page flipping (just see the flip example of allegro)
 	
 	blit(m_nativeSurface,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+	vsync();// Is this realy needed?
 }
 
 void AllegroScreenHelper::CreateScreenSurface( int w, int h )

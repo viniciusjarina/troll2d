@@ -12,5 +12,6 @@
 #include "troll/key_input.h"
 
 #include "troll/graphics.h"
+#include "troll/image.h"
 
 #endif // __TROLL_H__

@@ -12,8 +12,8 @@ class AllegroGraphics: public GraphicsImpl
 public:
 	AllegroGraphics(AllegroSurface * surface);
 protected:
-	int DrawLine(const Point& ptStart, const Point & ptEnd,Color color);
-	int DrawCircle(const Point& ptCenter, short radius,Color color);
+	virtual int DrawLine(const Point& ptStart, const Point & ptEnd,const Color& color);
+	virtual int DrawCircle(const Point& ptCenter, short radius,const Color& color);
 
 private:
 	BITMAP * m_surface;

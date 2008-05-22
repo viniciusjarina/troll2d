@@ -118,9 +118,14 @@ void SDLSurface::Blit(const SurfaceImpl & src,const Point& ptDest /*Point(0,0)*/
 	SDL_Surface * dest = m_surface;
 
 	if(rSource.width < 0)
-		width  = source->w;
+		width = source->w;
+	else
+		width = rSource.width;
+
 	if(rSource.height < 0)
 		height = source->h;
+	else
+		height = rSource.height;
 
 	rect1.x = rSource.x;
 	rect1.y = rSource.y;
@@ -140,4 +145,27 @@ SDLSurface::SDLSurface( SDL_Surface * screen ):
 m_surface(screen)
 {
 	
+}
+
+void SDLSurface::DrawAlpha( const SurfaceImpl & sprite,const Point& ptDest /*= Point(0,0)*/,unsigned char alpha /*= 128*/ )
+{
+	SDL_Rect rect1;
+	SDL_Rect rect2;
+		
+	SDL_Surface * source = ((SDLSurface *)&sprite)->m_surface;
+	SDL_Surface * dest = m_surface;
+	
+	rect1.x = 0;
+	rect1.y = 0;
+	rect1.h = source->h;
+	rect1.w = source->w;
+	
+	rect2.x = ptDest.x;
+	rect2.y = ptDest.y;
+	rect2.h = source->h;
+	rect2.w = source->w;
+
+	SDL_SetAlpha(source,SDL_SRCALPHA,alpha);
+
+	SDL_BlitSurface(source,&rect1,dest,&rect2);
 }

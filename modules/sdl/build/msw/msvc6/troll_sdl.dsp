@@ -49,7 +49,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo /out:"..\..\..\lib\troll_sdl.lib"
+# ADD LIB32 /nologo /out:"..\..\..\..\..\lib\vc6_lib\troll_sdl.lib"
 
 !ELSEIF  "$(CFG)" == "troll_sdl - Win32 Debug"
 
@@ -72,7 +72,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo /out:"..\..\..\lib\troll_sdld.lib"
+# ADD LIB32 /nologo /out:"..\..\..\..\..\lib\vc6_lib\troll_sdld.lib"
 
 !ENDIF 
 
@@ -90,6 +90,10 @@ SOURCE=..\..\..\src\SDL_gfxPrimitives.c
 # Begin Source File
 
 SOURCE=..\..\..\src\sdl_graphics.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sdl_image.cpp
 # End Source File
 # Begin Source File
 
@@ -131,6 +135,10 @@ SOURCE=..\..\..\include\SDL_gfxPrimitives.h
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\sdl_graphics.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\sdl_image.h
 # End Source File
 # Begin Source File
 
