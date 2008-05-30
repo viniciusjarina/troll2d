@@ -1,0 +1,37 @@
+Troll "To Do" List
+==================
+
+* Better Graphics (add methods EllipsFill, Arc, RoundRect..etc)
+* Better Image (support more formats, such as: png, jpg)
+* Add support to mouse (MouseInput class)
+* Add support to joypad/joystick (JoystickInput class)
+* Create documentation of Troll
+* Use the Doxygen to automate documentation
+* Add Cardio.c++ project files and compile and run to S60 3rd.
+* Add support to Audio (Audio class), and implement on each module (SDLAudio, AllegroAudio)
+* Add class to draw gradients (Linear, Radial)
+* Better the system of Screen::Flip() adding settable FPS support (with some default value)
+* Create makefiles to build Troll on Linux,*nix
+* Add more examples and some demo game
+* Add support to Draw text (using bitmap fonts or TTF fonts)
+* Create a new module for iPhone using native Quartz2D API
+* Add method to rotate blitting (like rotate_sprite of allegro, but found some implementation for SDL)
+* Create a system to abstract the entry point of application (instead use SDLmain)
+* Write HLS functions using only integer (for best performance)
+* Review Xcode project files and add build to Allegro under Mac OS X
+
+TrollAllegro "To Do" list
+=========================
+
+* Consider Color::m_alpha component when drawing primitiver (AllegroGraphics)
+* use page flip instead double buffer (or not)???
+* AllegroKeyInput should consider more keys 
+* use extensions of allegro to load png and jpg files
+
+TrollSDL "To Do" list
+=====================
+
+* SDLKeyInput should consider more keys
+* Use SDL_image to load more format of images
+
+

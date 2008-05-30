@@ -1,0 +1,36 @@
+Version 0.0.1  05/2008
+=============
+* Add configuration to Visual C++ 2005 Solution to compile for Windows Mobile
+* Better "auto choice" of resolution under CE and Symbian
+* Added BSD license text in all files
+
+Version 0.0.0 (b5) 05/2008
+=============
+* Added class Image (SDLGraphics / AllegroGraphics)
+* BUG fix in Color class
+* Added Visual C++ 2005 Solution files
+
+Version 0.0.0 (b5) 05/2008
+=============
+* Added class Graphics (SDLGraphics / AllegroGraphics)
+
+Version 0.0.0 (b4) 03/2008
+=============
+* Added Xcode 3.0 project files 
+* Migration to Google Code 
+
+Version 0.0.0 (b3) 07/2008
+=============
+ * Added Xcode project files 
+
+Version 0.0.0 (b2) 05/2007
+=============
+ * Added class Screen
+ * Added class KeyInput
+ * Added test application (test.cpp)
+ 
+Version 0.0.0 (b1) 05/2007
+=============
+ * Added class Color
+ * Added class Rect
+ * Added SDL module
