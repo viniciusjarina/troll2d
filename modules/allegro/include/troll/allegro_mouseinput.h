@@ -60,11 +60,13 @@ public:
 	virtual bool IsButtonDown(int button) const;
 	virtual bool IsButtonUp(int button) const;
 	virtual bool IsButtonReleased(int button) const;
+	virtual bool IsButtonPressed(int button) const;
 
 private:
 
 	int m_releaseds;
 	int m_presseds;
+	int m_down;
 };
 
 }

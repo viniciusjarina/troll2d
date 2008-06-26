@@ -261,6 +261,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\..\src\allegro_mouseinput.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\allegro_screen.cpp"
 				>
 				<FileConfiguration
@@ -341,6 +345,10 @@
 			</File>
 			<File
 				RelativePath="..\..\..\include\troll\allegro_keyinput.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\allegro_mouseinput.h"
 				>
 			</File>
 			<File

@@ -1,3 +1,26 @@
+SVN HEAD 06/2008
+-Frame skip/FPS lock improved
+  Add new functions to control frame skip andn FPS lock system
+-KeyInput improved (add detection of release key, and mapped  many keys)
+
+-Improved class Graphics
+-Added DrawPixel
+-Added DrawVLine
+-Added DrawHLine
+-Added DrawEllipse
+-Added DrawEllipseFill
+-Added DrawArc
+-Added DrawArcFill
+-Added DrawTriangle
+-Added DrawTriangleFill
+-Added DrawPolygon
+-Added DrawPolygonFill
+-Added DrawText
+
+-Add support to mouse (MouseInput)
+-Add function Screen::ShowCursor
+
+
 Version 0.0.1  05/2008
 =============
 * Add configuration to Visual C++ 2005 Solution to compile for Windows Mobile

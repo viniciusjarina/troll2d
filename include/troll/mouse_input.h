@@ -66,6 +66,7 @@ namespace Troll
 		static bool IsButtonDown(int button);
 		static bool IsButtonUp(int button);
 		static bool IsButtonReleased(int button);
+		static bool IsButtonPressed(int button);
 
 	};
 }

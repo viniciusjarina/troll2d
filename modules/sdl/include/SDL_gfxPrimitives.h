@@ -25,11 +25,23 @@ extern "C" {
 
 #define SDL_GFXPRIMITIVES_MAJOR	2
 #define SDL_GFXPRIMITIVES_MINOR	0
-#define SDL_GFXPRIMITIVES_MICRO	16
+#define SDL_GFXPRIMITIVES_MICRO	17
 
 /* ----- W32 DLL interface */
 
-#define DLLINTERFACE
+#ifdef WIN32
+	#ifdef USE_DLL
+		#ifdef BUILD_DLL
+			#define DLLINTERFACE __declspec(dllexport)
+		#else
+			#define DLLINTERFACE __declspec(dllimport)
+		#endif
+	#else
+		#define DLLINTERFACE
+	#endif
+#else
+	#define DLLINTERFACE
+#endif
 
 /* ----- Prototypes */
 
@@ -77,6 +89,11 @@ extern "C" {
 
     DLLINTERFACE int circleColor(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 r, Uint32 color);
     DLLINTERFACE int circleRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+
+/* Circle */
+
+    DLLINTERFACE int arcColor(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 r, Sint16 start, Sint16 end, Uint32 color);
+    DLLINTERFACE int arcRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Sint16 start, Sint16 end, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
 /* AA Circle */
 
@@ -160,8 +177,17 @@ extern "C" {
     DLLINTERFACE int filledPolygonRGBA(SDL_Surface * dst, const Sint16 * vx,
 				       const Sint16 * vy, int n, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
     DLLINTERFACE int texturedPolygon(SDL_Surface * dst, const Sint16 * vx, const Sint16 * vy, int n, SDL_Surface * texture,int texture_dx,int texture_dy);
+
+/* (Note: These MT versions are required for multi-threaded operation.) */
+
+    DLLINTERFACE int filledPolygonColorMT(SDL_Surface * dst, const Sint16 * vx, const Sint16 * vy, int n, Uint32 color, int **polyInts, int *polyAllocated);
+    DLLINTERFACE int filledPolygonRGBAMT(SDL_Surface * dst, const Sint16 * vx,
+				       const Sint16 * vy, int n, Uint8 r, Uint8 g, Uint8 b, Uint8 a,
+				       int **polyInts, int *polyAllocated);
+    DLLINTERFACE int texturedPolygonMT(SDL_Surface * dst, const Sint16 * vx, const Sint16 * vy, int n, SDL_Surface * texture,int texture_dx,int texture_dy, int **polyInts, int *polyAllocated);
+
 /* Bezier */
-/* s = number of steps */
+/* (s = number of steps) */
 
     DLLINTERFACE int bezierColor(SDL_Surface * dst, const Sint16 * vx, const Sint16 * vy, int n, int s, Uint32 color);
     DLLINTERFACE int bezierRGBA(SDL_Surface * dst, const Sint16 * vx, const Sint16 * vy,

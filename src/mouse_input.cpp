@@ -99,3 +99,8 @@ bool MouseInput::IsButtonReleased( int button )
 {
 	return m_singleton->IsButtonReleased(button);
 }
+
+bool MouseInput::IsButtonPressed( int button )
+{
+	return m_singleton->IsButtonPressed(button);
+}

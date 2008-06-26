@@ -94,12 +94,16 @@
 		KeyInput::Update();
 
 		quit = KeyInput::IsKeyDown(Key::ESCAPE);
+		quit = quit || KeyInput::IsKeyDown(Key::RIGHT);
+		quit = quit || KeyInput::IsKeyDown(Key::RETURN);
 		
 		if(KeyInput::IsKeyReleased(Key::SPACE))
 		{
 			bShowCursor = !bShowCursor;
 			Screen::ShowCursor(bShowCursor);
 		}
+
+		
 			
 
 		MouseInput::GetRelativePosition(pt);
@@ -114,12 +118,18 @@
 			y /= 30;
 		}
 
+		button_pressed  = MouseInput::IsButtonPressed(0);
 		button_released = MouseInput::IsButtonReleased(0);
 
-		if(button_released && x < 10 && y < 10)
+		if(button_pressed && x < 10 && y < 10)
 		{
-
+			Screen::ShowCursor(false);
 			grid[y][x] = !grid[y][x];
+		}
+
+		if(button_released)
+		{
+			Screen::ShowCursor(true);
 		}
 		
 		if(!Screen::SkipFrame())
@@ -147,7 +157,7 @@
 			}
 			
 			g.DrawTriangleFill(Point(0,0),Point(100,100),Point(10,100),Color(255,0,0,128));
-			g.DrawArcFill(Point(100,100),50,0,x*18,Color(192,192,0,128));
+			g.DrawEllipse(Point(100,100),50,80,Color(0,0,0,255));
 			Screen::Flip();		// Flip screen
 		}
 	}

@@ -49,8 +49,9 @@ using namespace Troll;
 
 
 SDLMouseInput::SDLMouseInput():
-m_presseds(0),
-m_releaseds(0)
+m_down(0),
+m_releaseds(0),
+m_presseds(0)
 {
 }
 
@@ -59,8 +60,9 @@ void SDLMouseInput::Update()
 	SDL_PumpEvents();
 
 	Uint8 state = SDL_GetMouseState(NULL,NULL);
-	m_releaseds = ((~state) & m_presseds);
-	m_presseds = state;
+	m_releaseds = ((~state  ) &   m_down);
+	m_presseds  = (( state  ) & (~m_down));
+	m_down = state;
 }
 
 void SDLMouseInput::GetPosition( Point & pt ) const
@@ -106,4 +108,9 @@ bool SDLMouseInput::IsButtonUp( int button ) const
 bool SDLMouseInput::IsButtonReleased( int button ) const
 {
 	return ((m_releaseds)&SDL_BUTTON(button + 1)) != 0;
+}
+
+bool SDLMouseInput::IsButtonPressed( int button ) const
+{
+	return ((m_presseds)&SDL_BUTTON(button + 1)) != 0;
 }

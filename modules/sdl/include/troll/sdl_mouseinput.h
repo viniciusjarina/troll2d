@@ -49,8 +49,9 @@ namespace Troll
 
 class SDLMouseInput : public MouseInputImpl
 {
-	unsigned char m_presseds;
+	unsigned char m_down;
 	unsigned char m_releaseds;
+	unsigned char m_presseds;
 
 public:
 	SDLMouseInput();
@@ -63,6 +64,7 @@ public:
 	virtual bool IsButtonDown(int button) const;
 	virtual bool IsButtonUp(int button) const;
 	virtual bool IsButtonReleased(int button) const;
+	virtual bool IsButtonPressed(int button) const;
 };
 
 }

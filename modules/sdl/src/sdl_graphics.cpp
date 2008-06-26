@@ -108,7 +108,7 @@ void SDLGraphics::DrawEllipseFill(const Point& pt,short radx,short rady,const Co
 
 void SDLGraphics::DrawArc(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
 {
-	pieRGBA(m_surface, pt.x, pt.y, rad, start_angle, end_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	arcRGBA(m_surface, pt.x, pt.y, rad, start_angle, end_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawArcFill(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)

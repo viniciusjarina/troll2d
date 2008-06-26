@@ -51,6 +51,7 @@ using namespace Troll;
 
 AllegroMouseInput::AllegroMouseInput():
 m_releaseds(0),
+m_down(0),
 m_presseds(0)
 {
 	install_mouse();
@@ -61,8 +62,9 @@ void AllegroMouseInput::Update()
 	if(mouse_needs_poll())
 		poll_mouse();
 
-	m_releaseds = ((~mouse_b) & m_presseds);
-	m_presseds = mouse_b;
+	m_releaseds = ((~mouse_b) &   m_down);
+	m_presseds  = (( mouse_b) & (~m_down));
+	m_down = mouse_b;
 }
 
 void AllegroMouseInput::GetPosition( Point & pt ) const
@@ -100,4 +102,9 @@ bool AllegroMouseInput::IsButtonUp( int button ) const
 bool AllegroMouseInput::IsButtonReleased( int button ) const
 {
 	return (m_releaseds & ALLEGRO_BUTTON(button)) != 0;
+}
+
+bool AllegroMouseInput::IsButtonPressed( int button ) const
+{
+	return (m_presseds & ALLEGRO_BUTTON(button)) != 0;
 }

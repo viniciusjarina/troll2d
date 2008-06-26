@@ -706,6 +706,18 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\..\src\key_input_factory.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\mouse_input.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\mouse_input_factory.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\screen.cpp"
 				>
 				<FileConfiguration

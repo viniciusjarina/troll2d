@@ -544,6 +544,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\..\src\sdl_mouseinput.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\sdl_screen.cpp"
 				>
 				<FileConfiguration
@@ -682,6 +686,10 @@
 			</File>
 			<File
 				RelativePath="..\..\..\include\troll\sdl_keyinput.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\sdl_mouseinput.h"
 				>
 			</File>
 			<File

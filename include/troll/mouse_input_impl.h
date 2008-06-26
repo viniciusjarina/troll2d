@@ -55,6 +55,7 @@ namespace Troll
 		virtual bool IsButtonDown(int button) const = 0;
 		virtual bool IsButtonUp(int button) const = 0;
 		virtual bool IsButtonReleased(int button) const = 0;
+		virtual bool IsButtonPressed(int button) const = 0;
 	};
 }
 
