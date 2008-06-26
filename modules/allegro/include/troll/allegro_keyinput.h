@@ -51,9 +51,12 @@ class AllegroKeyInput : public KeyInputImpl
 {
 public:
 	AllegroKeyInput();
-	
-	bool IsKeyDown(int k);
-	bool IsKeyUp(int k);
+
+	virtual void Update();
+		
+	virtual bool IsKeyDown(int k) const;
+	virtual bool IsKeyUp(int k) const;
+	virtual bool IsKeyReleased(int key) const;
 };
 
 }

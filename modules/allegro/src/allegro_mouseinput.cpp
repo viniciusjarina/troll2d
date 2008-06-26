@@ -38,54 +38,66 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <allegro.h>
 
-#include "troll/interface.h"
+#include "troll/basic_geo.h"
 
-#include "troll/allegro_system.h"
-#include "troll/allegro_keyinput.h"
-#include "troll/allegro_surface.h"
-#include "troll/allegro_graphics.h"
-#include "troll/allegro_image.h"
 #include "troll/allegro_mouseinput.h"
 
 using namespace Troll;
 
-extern "C" SystemImpl * Troll_AllocSystem()
+
+#define ALLEGRO_BUTTON(b) (1<<(b))
+
+AllegroMouseInput::AllegroMouseInput():
+m_releaseds(0),
+m_presseds(0)
 {
-	return new AllegroSystem;
+	install_mouse();
 }
 
-extern "C" KeyInputImpl * Troll_AllocKeyInput()
+void AllegroMouseInput::Update()
 {
-	return new AllegroKeyInput;
+	if(mouse_needs_poll())
+		poll_mouse();
+
+	m_releaseds = ((~mouse_b) & m_presseds);
+	m_presseds = mouse_b;
 }
 
-extern "C" SurfaceImpl * Troll_AllocSurface()
+void AllegroMouseInput::GetPosition( Point & pt ) const
 {
-	return new AllegroSurface;
+	pt.x = mouse_x;
+	pt.y = mouse_y;
 }
 
-
-extern "C" GraphicsImpl * Troll_AllocGraphics(SurfaceImpl * surface_impl)
+void AllegroMouseInput::SetPosition(const Point & pt)
 {
-	AllegroSurface * surface = (AllegroSurface *)surface_impl;
-	// TODO: use dynamic_cast<> ??
-	// or create some method to get BITMAP from Surface object
-	//		like:
-	//			Surface s(100,100);
-	//			NativeSurfaceAccessor access(s);
-	//			BITMAP * buff = access.GetNativeSurface(); // return NULL in case of Surface is not a AllegroSurface
-	//
-	
-	return new AllegroGraphics(surface);
+	position_mouse(pt.x, pt.y);
 }
 
-extern "C" ImageImpl * Troll_AllocImage()
+void AllegroMouseInput::GetRelativePosition( Point & ptDelta ) const
 {
-	return new AllegroImage;
+	int delta_x;
+	int delta_y;
+
+	get_mouse_mickeys(&delta_x,&delta_y);
+
+	ptDelta.x = delta_x;
+	ptDelta.y = delta_y;
 }
 
-extern "C" MouseInputImpl* Troll_AllocMouseInput()
+bool AllegroMouseInput::IsButtonDown( int button ) const
 {
-	return new AllegroMouseInput;
+	return (mouse_b & ALLEGRO_BUTTON(button)) != 0;
+}
+
+bool AllegroMouseInput::IsButtonUp( int button ) const
+{
+	return !(mouse_b & ALLEGRO_BUTTON(button)) != 0;
+}
+
+bool AllegroMouseInput::IsButtonReleased( int button ) const
+{
+	return (m_releaseds & ALLEGRO_BUTTON(button)) != 0;
 }

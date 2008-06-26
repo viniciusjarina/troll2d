@@ -56,8 +56,9 @@ public:
 
 public:
 	
-	virtual bool SetupScreen(int nWidth,int nHeight,bool fFullScreen = false,ColorDepth depth = depthAuto) = 0;
+	virtual bool SetupScreen(int nWidth,int nHeight,bool fFullScreen = false,ColorDepth depth = depthAuto, int nFPS = 30) = 0;
 	virtual void Sleep(int mili) = 0;
+	virtual void SetScreenTitle( const char * szCaption ) = 0;
 };
 
 }

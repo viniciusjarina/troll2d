@@ -56,32 +56,117 @@ SDLGraphics::SDLGraphics( SDLSurface * surface )
 	m_surface =  surface->m_surface;
 }
 
-int SDLGraphics::DrawPixel(const Point& pt,const Color & color)
+void SDLGraphics::DrawPixel(const Point& pt,const Color & color)
 {
-	return pixelRGBA(m_surface, pt.x, pt.y, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	pixelRGBA(m_surface, pt.x, pt.y, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
-int SDLGraphics::DrawLine( const Point& ptStart, const Point & ptEnd,const Color & color )
+void SDLGraphics::DrawLine( const Point& ptStart, const Point & ptEnd,const Color & color )
 {
-	return lineRGBA(m_surface,ptStart.x,ptStart.y,ptEnd.x,ptEnd.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	lineRGBA(m_surface,ptStart.x,ptStart.y,ptEnd.x,ptEnd.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
-int SDLGraphics::DrawCircle( const Point& ptCenter, short radius, const Color & color )
+void SDLGraphics::DrawVLine(const Point& ptStart,int size,const Color & color)
 {
-	return circleRGBA(m_surface, ptCenter.x, ptCenter.y, radius, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	vlineRGBA(m_surface,ptStart.x,ptStart.y, ptStart.y + size,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
-int SDLGraphics::DrawCircleFill(const Point& ptCenter,short radius,const Color& color)
+void SDLGraphics::DrawHLine(const Point& ptStart,int size,const Color & color)
 {
-	return filledCircleRGBA(m_surface, ptCenter.x, ptCenter.y, radius, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	hlineRGBA(m_surface, ptStart.x, ptStart.x + size, ptStart.y, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
-int SDLGraphics::DrawRect(const Rect& rect,const Color& color)
+void SDLGraphics::DrawCircle( const Point& ptCenter, short radius, const Color & color )
 {
-	return boxRGBA(m_surface, rect.x, rect.y, rect.GetLeft(), rect.GetBottom(), color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	circleRGBA(m_surface, ptCenter.x, ptCenter.y, radius, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
-int SDLGraphics::DrawRectFill(const Rect& rect,const Color& color)
+void SDLGraphics::DrawCircleFill(const Point& ptCenter,short radius,const Color& color)
 {
-	return rectangleRGBA(m_surface, rect.x, rect.y, rect.GetLeft(), rect.GetBottom(), color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	filledCircleRGBA(m_surface, ptCenter.x, ptCenter.y, radius, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+}
+
+void SDLGraphics::DrawRect(const Rect& rect,const Color& color)
+{
+	rectangleRGBA(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(), color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+}
+
+void SDLGraphics::DrawRectFill(const Rect& rect,const Color& color)
+{
+	boxRGBA(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(), color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+}
+
+void SDLGraphics::DrawEllipse(const Point& pt,short radx,short rady,const Color& color)
+{
+	ellipseRGBA(m_surface, pt.x, pt.y, radx, rady, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+}
+
+void SDLGraphics::DrawEllipseFill(const Point& pt,short radx,short rady,const Color& color)
+{
+	filledEllipseRGBA(m_surface, pt.x, pt.y, radx, rady, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+}
+
+void SDLGraphics::DrawArc(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
+{
+	pieRGBA(m_surface, pt.x, pt.y, rad, start_angle, end_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+}
+
+void SDLGraphics::DrawArcFill(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
+{
+	filledPieRGBA(m_surface, pt.x, pt.y, rad, start_angle, end_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+}
+
+void SDLGraphics::DrawText(const Point& pt,const char * text,const Color& color)
+{
+	stringRGBA(m_surface, pt.x, pt.y, text, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+}
+
+void SDLGraphics::DrawTriangle( const Point& pt1,const Point& pt2,const Point& pt3,const Color& color )
+{
+	trigonRGBA(m_surface, pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+}
+
+void SDLGraphics::DrawTriangleFill( const Point& pt1,const Point& pt2,const Point& pt3,const Color& color )
+{
+	filledTrigonRGBA(m_surface, pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+}
+
+void SDLGraphics::DrawPolygon( const Point * pts,int n,const Color& color )
+{
+	if(n < 3)
+		return;
+
+	Sint16 * arr_x = new Sint16[n];
+	Sint16 * arr_y = new Sint16[n];
+
+	for(int i = 0; i < n; i++)
+	{
+		arr_x[i] = (Sint16)pts[n].x;
+		arr_y[i] = (Sint16)pts[n].y;
+	}
+
+	polygonRGBA(m_surface, arr_x, arr_y, n, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
+
+	delete [] arr_x;
+	delete [] arr_y;
+}
+
+void SDLGraphics::DrawPolygonFill( const Point * pts,int n,const Color& color )
+{
+	if(n < 3)
+		return;
+	
+	Sint16 * arr_x = new Sint16[n];
+	Sint16 * arr_y = new Sint16[n];
+	
+	for(int i = 0; i < n; i++)
+	{
+		arr_x[i] = (Sint16)pts[n].x;
+		arr_y[i] = (Sint16)pts[n].y;
+	}
+	
+	filledPolygonRGBA(m_surface, arr_x, arr_y, n, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
+		
+	delete [] arr_x;
+	delete [] arr_y;
 }

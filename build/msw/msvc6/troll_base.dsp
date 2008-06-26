@@ -121,6 +121,18 @@ SOURCE=..\..\..\src\key_input.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\src\key_input_factory.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\mouse_input.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\mouse_input_factory.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\screen.cpp
 # End Source File
 # Begin Source File
@@ -197,7 +209,23 @@ SOURCE=..\..\..\include\troll\key_input.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\include\troll\key_input_factory.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\include\troll\key_input_impl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\mouse_input.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\mouse_input_factory.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\mouse_input_impl.h
 # End Source File
 # Begin Source File
 

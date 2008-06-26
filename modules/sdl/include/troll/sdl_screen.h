@@ -63,9 +63,14 @@ class SDLScreenHelper
 	SDL_Surface * m_nativeSurface;
 	Surface * m_screenSurface;
 	static int m_screen_bpp;
+	Uint32 m_nFrameTicks; // Total of time to frame (to keep FPS fixed)
+	
+	Uint32 start_frame_tick;
+	Uint32 end_frame_tick;
+	int m_nFPS;
 
 public:
-	static SDLScreen * SetupScreen(int w, int h, int bpp, bool fullscreen);
+	static SDLScreen * SetupScreen(int w, int h, int bpp, bool fullscreen,int nFPS);
 
 	Surface & GetSurface() const
 	{
@@ -73,9 +78,14 @@ public:
 	}
 	
 	void FlipScreen();
-	bool CreateScreenSurface(int w, int h,int bpp,bool fullscreen);
+	bool SkipFrame();
+	void StartFrame();
 
+	bool CreateScreenSurface(int w, int h,int bpp,bool fullscreen,int nFPS);
+
+	inline int GetFPS() const { return m_nFPS; }
 	inline static int GetScreenBPP() { return m_screen_bpp; }
+	
 	
 	SDLScreenHelper();
 	virtual ~SDLScreenHelper();
@@ -84,13 +94,17 @@ public:
 class SDLScreen : public ScreenImpl
 {
 	public:
-		SDLScreen(int w, int h,int bpp,bool fullscreen);
+		SDLScreen(int w, int h,int bpp,bool fullscreen,int nFPS);
 		virtual ~SDLScreen();
 		
 	public:
 		
 		virtual Surface & GetSurface() const;
 		virtual void Flip();
+		virtual void StartFrame();
+		virtual bool SkipFrame();
+		virtual int	 GetFPS() const;
+		virtual void ShowCursor(bool show);
 		
 	private:
 		

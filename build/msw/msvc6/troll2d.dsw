@@ -11,15 +11,6 @@ Package=<5>
 
 Package=<4>
 {{{
-    Begin Project Dependency
-    Project_Dep_Name troll_allegro
-    End Project Dependency
-    Begin Project Dependency
-    Project_Dep_Name troll_base
-    End Project Dependency
-    Begin Project Dependency
-    Project_Dep_Name troll_sdl
-    End Project Dependency
 }}}
 
 ###############################################################################

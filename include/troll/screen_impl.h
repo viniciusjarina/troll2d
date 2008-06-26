@@ -59,6 +59,10 @@ public:
 
 	virtual Surface & GetSurface() const = 0;
 	virtual void Flip() = 0;
+	virtual void StartFrame() = 0;
+	virtual bool SkipFrame() = 0;
+	virtual int GetFPS() const = 0;
+	virtual void ShowCursor(bool fShow) = 0;
 };
 
 }// Troll

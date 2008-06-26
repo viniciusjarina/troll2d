@@ -57,14 +57,31 @@ public:
 
 public:
 	
-	int DrawPixel(const Point& pt,const Color & color);
-	int DrawLine(const Point& ptStart,const Point& ptEnd,const Color & color);
+	void DrawPixel(const Point& pt,const Color & color);
+	void DrawLine(const Point& ptStart,const Point& ptEnd,const Color & color);
 
-	int DrawCircle(const Point& pt,short rad,const Color& color);
-	int DrawCircleFill(const Point& pt,short rad,const Color& color);
+	void DrawVLine(const Point& ptStart,int size,const Color & color);
+	void DrawHLine(const Point& ptStart,int size,const Color & color);
+	
+	void DrawCircle(const Point& pt,short rad,const Color& color);
+	void DrawCircleFill(const Point& pt,short rad,const Color& color);
+	
+	void DrawRect(const Rect& rect,const Color& color);
+	void DrawRectFill(const Rect& rect,const Color& color);
+	
+	void DrawEllipse(const Point& pt,short radx,short rady,const Color& color);
+	void DrawEllipseFill(const Point& pt,short radx,short rady,const Color& color);
+	
+	void DrawArc(const Point& pt,short rad,short start_angle,short end_angle,const Color& color);
+	void DrawArcFill(const Point& pt,short rad,short start_angle,short end_angle,const Color& color);
 
-	int DrawRect(const Rect& rect,const Color& color);
-	int DrawRectFill(const Rect& rect,const Color& color);
+	void DrawTriangle(const Point& pt1,const Point& pt2,const Point& pt3,const Color& color);
+	void DrawTriangleFill(const Point& pt1,const Point& pt2,const Point& pt3,const Color& color);
+	
+	void DrawPolygon(const Point * pts,int n,const Color& color);
+	void DrawPolygonFill(const Point * pts,int n,const Color& color);
+	
+	void DrawText(const Point& pt,const char * text,const Color& color);
 };
 
 

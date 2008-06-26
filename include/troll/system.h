@@ -57,8 +57,10 @@ public:
 	static bool Init();    // initialize the system
 	static void Cleanup(); // Cleanup
 
-	static bool SetupScreen(int nWidth = -1,int nHeight = -1,bool fFullScreen = false,ColorDepth depth = depthAuto); // create and setup new screen
+	static bool SetupScreen(int nWidth = -1,int nHeight = -1,bool fFullScreen = false,ColorDepth depth = depthAuto,int fps = 60); // create and setup new screen
 	static void Sleep(int mili); // Sleep (in miliseconds)
+
+	static void SetScreenTitle(const char * szCaption); // Set caption (in windowed mode)
 };
 
 

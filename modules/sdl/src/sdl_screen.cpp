@@ -46,9 +46,9 @@
 
 using namespace Troll;
 
-SDLScreen::SDLScreen(int w, int h,int bpp,bool fullscreen)
+SDLScreen::SDLScreen(int w, int h,int bpp,bool fullscreen,int nFPS)
 {
-	m_screenHelper.CreateScreenSurface(w, h, bpp, fullscreen);
+	m_screenHelper.CreateScreenSurface(w, h, bpp, fullscreen, nFPS);
 	Screen::SetSingleton(this);
 }
 
@@ -100,12 +100,41 @@ SDLScreenHelper::~SDLScreenHelper()
 		delete m_screenSurface;
 }
 
+
+void SDLScreenHelper::StartFrame()
+{
+	start_frame_tick = SDL_GetTicks();
+
+	if ( (start_frame_tick - end_frame_tick) < m_nFrameTicks )
+	{
+		SDL_Delay(m_nFrameTicks -(start_frame_tick - end_frame_tick));
+	}
+}
+
 void SDLScreenHelper::FlipScreen()
 {
+	end_frame_tick = SDL_GetTicks();;
+
 	SDL_Flip(m_nativeSurface);
 }
 
-bool SDLScreenHelper::CreateScreenSurface(int w, int h,int bpp,bool fullscreen)
+bool SDLScreenHelper::SkipFrame()
+{
+	Uint32 current_tick = SDL_GetTicks();
+	Uint32 last_frame_tick;
+
+	last_frame_tick = (start_frame_tick - end_frame_tick);
+	if(last_frame_tick > m_nFrameTicks)
+	{
+		end_frame_tick = current_tick;
+		return true;
+	}
+	return false;
+}
+
+
+
+bool SDLScreenHelper::CreateScreenSurface(int w, int h,int bpp,bool fullscreen,int nFPS)
 {
 #if	defined(__SYMBIAN32__)
 	Uint32 flags = SDL_SWSURFACE | SDL_ANYFORMAT ; // Symbian does not support SDL_HWSURFACE
@@ -123,13 +152,19 @@ bool SDLScreenHelper::CreateScreenSurface(int w, int h,int bpp,bool fullscreen)
 	SDLScreenSurfaceImpl * pSDLSurfaceImpl = new SDLScreenSurfaceImpl(buffer);
 	Surface * pSurface = new SDLScreenSurface(pSDLSurfaceImpl);
 	
+	if(nFPS == 0)
+		nFPS = 1;
+
+	m_nFPS = nFPS;
+	m_nFrameTicks = 1000/nFPS;
+	
 	m_nativeSurface = buffer;
 	m_screenSurface = pSurface;
 	m_screen_bpp = bpp;
 	return true;
 }
 
-SDLScreen * SDLScreenHelper::SetupScreen( int w, int h, int bpp, bool fullscreen )
+SDLScreen * SDLScreenHelper::SetupScreen( int w, int h, int bpp, bool fullscreen, int nFPS)
 {
 	const SDL_VideoInfo *info;
 	Uint8  video_bpp;
@@ -181,7 +216,28 @@ SDLScreen * SDLScreenHelper::SetupScreen( int w, int h, int bpp, bool fullscreen
 		video_bpp =	bpp * 8;
 	}
 
-	SDLScreen * screen = new SDLScreen(w, h, video_bpp, fullscreen);
+	SDLScreen * screen = new SDLScreen(w, h, video_bpp, fullscreen, nFPS);
 	
 	return screen;
+}
+
+void SDLScreen::StartFrame()
+{
+	m_screenHelper.StartFrame();	
+}
+
+bool SDLScreen::SkipFrame()
+{
+	return m_screenHelper.SkipFrame();
+}
+
+int SDLScreen::GetFPS() const
+{
+	return m_screenHelper.GetFPS();
+}
+
+
+void SDLScreen::ShowCursor( bool show )
+{
+	SDL_ShowCursor( show ? SDL_ENABLE : SDL_DISABLE);
 }

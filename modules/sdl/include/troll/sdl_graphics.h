@@ -53,14 +53,31 @@ public:
 
 protected:
 
-	virtual int DrawPixel(const Point& pt,const Color & color);
-	virtual int DrawLine(const Point& ptStart,const Point& ptEnd,const Color & color);
+	virtual void DrawPixel(const Point& pt,const Color & color);
+	virtual void DrawLine(const Point& ptStart,const Point& ptEnd,const Color & color);
+
+	virtual void DrawVLine(const Point& ptStart,int size,const Color & color);
+	virtual void DrawHLine(const Point& ptStart,int size,const Color & color);
+	
+	virtual void DrawCircle(const Point& pt,short rad,const Color& color);
+	virtual void DrawCircleFill(const Point& pt,short rad,const Color& color);
+	
+	virtual void DrawRect(const Rect& rect,const Color& color);
+	virtual void DrawRectFill(const Rect& rect,const Color& color);
+	
+	virtual void DrawEllipse(const Point& pt,short radx,short rady,const Color& color);
+	virtual void DrawEllipseFill(const Point& pt,short radx,short rady,const Color& color);
 		
-	virtual int DrawCircle(const Point& pt,short rad,const Color& color);
-	virtual int DrawCircleFill(const Point& pt,short rad,const Color& color);
-		
-	virtual int DrawRect(const Rect& rect,const Color& color);
-	virtual int DrawRectFill(const Rect& rect,const Color& color);
+	virtual void DrawArc(const Point& pt,short rad,short start_angle,short end_angle,const Color& color);
+	virtual void DrawArcFill(const Point& pt,short rad,short start_angle,short end_angle,const Color& color);
+	
+	virtual void DrawTriangle(const Point& pt1,const Point& pt2,const Point& pt3,const Color& color);
+	virtual void DrawTriangleFill(const Point& pt1,const Point& pt2,const Point& pt3,const Color& color);
+	
+	virtual void DrawPolygon(const Point * pts,int n,const Color& color);
+	virtual void DrawPolygonFill(const Point * pts,int n,const Color& color);
+	
+	virtual void DrawText(const Point& pt,const char * text,const Color& color);
 
 private:
 	SDL_Surface * m_surface;

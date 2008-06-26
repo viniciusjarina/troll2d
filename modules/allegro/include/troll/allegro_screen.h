@@ -62,32 +62,51 @@ class AllegroScreenHelper
 {
 	BITMAP * m_nativeSurface;
 	Surface * m_screenSurface;
+	int		  m_nFPS;
+	int old_ticks;
 
-public:
+	bool m_fShowCursor;
 	
-	Surface & GetSurface() const
+public:
+
+	AllegroScreenHelper();
+	virtual ~AllegroScreenHelper();
+	
+	inline Surface & GetSurface() const
 	{
 		return *m_screenSurface;
 	}
 
+	inline int GetFPS() const
+	{
+		return m_nFPS;
+	}
+
+	inline void ShowCursor(bool show)
+	{
+		m_fShowCursor = show;
+	}
+
 	void FlipScreen();
-	void CreateScreenSurface(int w, int h);
-
-	AllegroScreenHelper();
-	virtual ~AllegroScreenHelper();
-
+	void StartFrame();
+	bool SkipFrame();
+	void CreateScreenSurface(int w, int h, int nFPS);
 };
 
 class AllegroScreen : public ScreenImpl
 {
 public:
-	AllegroScreen(int w,int h);
+	AllegroScreen(int w, int h, int nFPS);
 	virtual ~AllegroScreen();
 
 public:
 
 	virtual Surface & GetSurface() const;
 	virtual void Flip();
+	virtual void StartFrame();
+	virtual bool SkipFrame();
+	virtual int	 GetFPS() const;
+	virtual void ShowCursor(bool show);
 
 private:
 

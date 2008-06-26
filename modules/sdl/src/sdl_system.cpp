@@ -58,9 +58,9 @@ SDLSystem::~SDLSystem()
 	SDL_Quit();
 }
 
-bool SDLSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ )
+bool SDLSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ , int nFPS)
 {
-	m_screen = SDLScreenHelper::SetupScreen(nWidth, nHeight, depth, fFullScreen);
+	m_screen = SDLScreenHelper::SetupScreen(nWidth, nHeight, depth, fFullScreen, nFPS);
 	if(!m_screen)
 		return false;
 	
@@ -75,4 +75,9 @@ void SDLSystem::Sleep( int mili )
 int SDLSystem::GetScreenBPP()
 {
 	return SDLScreenHelper::GetScreenBPP();
+}
+
+void SDLSystem::SetScreenTitle( const char * szCaption )
+{
+	SDL_WM_SetCaption(szCaption, NULL);
 }

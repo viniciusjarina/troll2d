@@ -55,14 +55,34 @@ namespace Troll
 		virtual ~GraphicsImpl();
 
 	public:
-		virtual int DrawPixel(const Point& pt,const Color & color) = 0;
-		virtual int DrawLine(const Point& ptStart,const Point& ptEnd,const Color & color) = 0;
 		
-		virtual int DrawCircle(const Point& pt,short rad,const Color& color) = 0;
-		virtual int DrawCircleFill(const Point& pt,short rad,const Color& color) = 0;
+		virtual void DrawPixel(const Point& pt,const Color & color) = 0;
+
+		virtual void DrawLine(const Point& ptStart,const Point& ptEnd,const Color & color) = 0;
+
+		virtual void DrawVLine(const Point& ptStart,int size,const Color & color) = 0;
+		virtual void DrawHLine(const Point& ptStart,int size,const Color & color) = 0;
 		
-		virtual int DrawRect(const Rect& rect,const Color& color) = 0;
-	    virtual int DrawRectFill(const Rect& rect,const Color& color) = 0;
+		virtual void DrawCircle(const Point& pt,short rad,const Color& color) = 0;
+		virtual void DrawCircleFill(const Point& pt,short rad,const Color& color) = 0;
+		
+		virtual void DrawRect(const Rect& rect,const Color& color) = 0;
+	    virtual void DrawRectFill(const Rect& rect,const Color& color) = 0;
+		
+		virtual void DrawEllipse(const Point& pt,short radx,short rady,const Color& color) = 0;
+		virtual void DrawEllipseFill(const Point& pt,short radx,short rady,const Color& color) = 0;
+
+		virtual void DrawArc(const Point& pt,short rad,short start_angle,short end_angle,const Color& color) = 0;
+		virtual void DrawArcFill(const Point& pt,short rad,short start_angle,short end_angle,const Color& color) = 0;	
+
+		virtual void DrawTriangle(const Point& pt1,const Point& pt2,const Point& pt3,const Color& color) = 0;
+		virtual void DrawTriangleFill(const Point& pt1,const Point& pt2,const Point& pt3,const Color& color) = 0;
+
+		virtual void DrawPolygon(const Point * pts,int n,const Color& color) = 0;
+		virtual void DrawPolygonFill(const Point * pts,int n,const Color& color) = 0;
+
+		virtual void DrawText(const Point& pt,const char * text,const Color& color) = 0;
+
 	};
 }
 

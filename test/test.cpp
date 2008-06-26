@@ -38,82 +38,120 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "troll.h" // include troll header
+#include <troll.h> // include troll header
 
-#include <SDL.h>   // **provisorie** : This is hear because I´m current using the "entry point" method of SDL
-                   // TODO: Write Troll method of entry point like Application class or just using defines like SDL and allegro
-
-
-extern "C" int main(int argc,char * argv[])
+#ifdef _WIN32
+	extern "C" int __stdcall WinMain(void *hInst, void *hPrev, char *Cmd, int nShow)
+#else
+	int main(int argc, char *argv[])
+#endif
 {
 	using namespace Troll;
 	
-	System::Init();			// Inialize (input, sound, files, etc)
+	if(!System::Init())			// Inialize (input, sound, files, etc)
+		return 0;
 
-	System::SetupScreen();	// Setup and create screen with defaul size
+	if(!System::SetupScreen())	// Setup and create screen with defaul size
+		return 0;
+
+	System::SetScreenTitle("Test Mouse");
 	
 	Surface & buff	= Screen::GetSurface(); // Get current screen Surface
 	
-	Image image;	
 
-	if(!image.LoadImage("troll.bmp")) // Try to load image
-	{
-		return 1; // Fail to load image
-	}
-	
-	const Surface & test = image.GetSurface();
-	
 	int x = 0;
 	int y = 0;
 
-	int xInc = 1;
-	int yInc = 1;
-
-	const int h = test.GetHeight();
-	const int w = test.GetWidth();
 	const int total_w = buff.GetWidth();
 	const int total_h = buff.GetHeight();
 
+	bool quit = false;
+	bool button_pressed  = false;
+	bool button_released = false;
+
 	Graphics g(buff);
 
-	Color c(0,0,0);
+	Point pt;
+	Rect rc(0,0,30,30);
 
-	buff.Clear(c);
-	
-	while(!KeyInput::IsKeyDown(Key::RIGHT)) // was ESC key pressed?
+	Color c1(167,193,254);
+	Color c2(236,149,70);
+
+	Color cSel1(192,211,252);
+	Color cSel2(243,193,148);
+
+	Color cBorder(11,67,159);
+
+	static int grid[10][10];
+
+	bool bShowCursor = true;
+
+	while(!quit) // was ESC key pressed?
 	{
-		Color c2(190,0,0);
-		
-		c2.RotateHue( ((255 * x)/total_w) );
+		Screen::StartFrame();
 
-		// Bounce logic
-		if( x > ( total_w - w ) )
-			xInc = -5;
-		else if( x <= 0 )
-			xInc =  5;
-		
-		if( y > (total_h - h) )
-			yInc = -5;
-		else if(y <= 0)
-			yInc =  5;
+		MouseInput::Update();
+		KeyInput::Update();
 
-		x += xInc;
-		y += yInc;
+		quit = KeyInput::IsKeyDown(Key::ESCAPE);
 		
-		// draw logo with alpha
-		buff.DrawAlpha(test, Point(x,y), (( y * 255)/total_h)); 
+		if(KeyInput::IsKeyReleased(Key::SPACE))
+		{
+			bShowCursor = !bShowCursor;
+			Screen::ShowCursor(bShowCursor);
+		}
+			
+
+		MouseInput::GetRelativePosition(pt);
+
+		if(pt.x != 0 || pt.y != 0)
+		{
+			MouseInput::GetPosition(pt);
+			x = pt.x;
+			y = pt.y;
+
+			x /= 30;
+			y /= 30;
+		}
+
+		button_released = MouseInput::IsButtonReleased(0);
+
+		if(button_released && x < 10 && y < 10)
+		{
+
+			grid[y][x] = !grid[y][x];
+		}
 		
-		// Draw box	
-		g.DrawLine(Point(x    , y + h), Point(x    , y    ),c2);
-		g.DrawLine(Point(x    , y    ), Point(x + w, y    ),c2);
-		g.DrawLine(Point(x    , y + h), Point(x + w, y + h),c2);
-		g.DrawLine(Point(x + w, y + h), Point(x + w, y    ),c2);
-		
-		Screen::Flip();		// Flip screen
-		System::Sleep(30);  // Wait 
-		// TODO: FPS system (sleep should be inside Flip() )
+		if(!Screen::SkipFrame())
+		{
+			buff.Clear(Color::WHITE);
+			g.DrawLine(Point(0,0),Point(100,100),Color::RED);
+
+			rc.x = 0;
+			rc.y = 0;
+
+			for(int i = 0; i < 10; i ++)
+			{
+				for(int j = 0; j < 10; j ++)
+				{
+					const Color & c	   = grid[i][j] ? c2 : c1;
+					const Color & cSel = grid[i][j] ? cSel2 : cSel1;
+					const Color & color = (i == y && j == x) ? cSel : c;
+					g.DrawRectFill(rc,color);
+					g.DrawRect(rc,cBorder);
+					rc.x += 30;
+				}
+
+				rc.x = 0;
+                rc.y += 30;
+			}
+			
+			g.DrawTriangleFill(Point(0,0),Point(100,100),Point(10,100),Color(255,0,0,128));
+			g.DrawArcFill(Point(100,100),50,0,x*18,Color(192,192,0,128));
+			Screen::Flip();		// Flip screen
+		}
 	}
-
+	
 	System::Cleanup();
 	return 0;
 }

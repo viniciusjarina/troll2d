@@ -59,28 +59,83 @@ Graphics::~Graphics()
 		delete m_impl;
 }
 
-int Graphics::DrawLine( const Point& ptStart, const Point & ptEnd,const Color& color )
+void Graphics::DrawLine( const Point& ptStart, const Point & ptEnd,const Color& color )
 {
-	return m_impl->DrawLine(ptStart,ptEnd,color);
+	m_impl->DrawLine(ptStart,ptEnd,color);
 }
 
-int Graphics::DrawCircle( const Point& pt,short rad, const Color& color )
+void Graphics::DrawVLine( const Point& ptStart, int size,const Color& color )
 {
-	return m_impl->DrawCircle(pt, rad, color);
+	m_impl->DrawVLine(ptStart, size,color);
+}
+
+void Graphics::DrawHLine( const Point& ptStart, int size,const Color& color )
+{
+	m_impl->DrawHLine(ptStart, size,color);
+}
+
+void Graphics::DrawCircle( const Point& pt,short rad, const Color& color )
+{
+	m_impl->DrawCircle(pt, rad, color);
 }
 
 
-int Graphics::DrawCircleFill( const Point& pt,short rad,const Color& color )
+void Graphics::DrawCircleFill( const Point& pt,short rad,const Color& color )
 {
-	return m_impl->DrawCircleFill(pt,rad,color);
+	m_impl->DrawCircleFill(pt,rad,color);
 }
 
-int Graphics::DrawRect( const Rect& rect,const Color& color )
+void Graphics::DrawRect( const Rect& rect,const Color& color )
 {
-	return m_impl->DrawRect(rect,color);
+	m_impl->DrawRect(rect,color);
 }
 
-int Graphics::DrawRectFill( const Rect& rect,const Color& color )
+void Graphics::DrawRectFill( const Rect& rect,const Color& color )
 {
-	return m_impl->DrawRectFill(rect,color);
+	m_impl->DrawRectFill(rect,color);
+}
+
+void Graphics::DrawEllipse(const Point& pt,short radx,short rady,const Color& color)
+{
+	m_impl->DrawEllipse(pt, radx, rady, color);
+}
+
+void Graphics::DrawEllipseFill(const Point& pt,short radx,short rady,const Color& color)
+{
+	m_impl->DrawEllipseFill(pt, radx, rady, color);
+}
+
+void Graphics::DrawArc(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
+{
+	m_impl->DrawArc(pt, rad, start_angle, end_angle, color);
+}
+
+void Graphics::DrawArcFill(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
+{
+	m_impl->DrawArcFill(pt, rad, start_angle, end_angle, color);
+}
+
+void Graphics::DrawText(const Point& pt,const char * text,const Color& color)
+{
+	m_impl->DrawText(pt, text, color);
+}
+
+void Graphics::DrawTriangle( const Point& pt1,const Point& pt2,const Point& pt3,const Color& color )
+{
+	m_impl->DrawTriangle(pt1,pt2,pt3,color);
+}
+
+void Graphics::DrawTriangleFill( const Point& pt1,const Point& pt2,const Point& pt3,const Color& color )
+{
+	m_impl->DrawTriangleFill(pt1,pt2,pt3,color);
+}
+
+void Graphics::DrawPolygon( const Point * pts,int n,const Color& color )
+{
+	m_impl->DrawPolygon(pts,n,color);
+}
+
+void Graphics::DrawPolygonFill( const Point * pts,int n,const Color& color )
+{
+	m_impl->DrawPolygonFill(pts,n,color);
 }

@@ -38,54 +38,72 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <SDL.h>
 
-#include "troll/interface.h"
+#include "troll/basic_geo.h"
 
-#include "troll/allegro_system.h"
-#include "troll/allegro_keyinput.h"
-#include "troll/allegro_surface.h"
-#include "troll/allegro_graphics.h"
-#include "troll/allegro_image.h"
-#include "troll/allegro_mouseinput.h"
+#include "troll/sdl_mouseinput.h"
 
 using namespace Troll;
 
-extern "C" SystemImpl * Troll_AllocSystem()
+
+
+SDLMouseInput::SDLMouseInput():
+m_presseds(0),
+m_releaseds(0)
 {
-	return new AllegroSystem;
 }
 
-extern "C" KeyInputImpl * Troll_AllocKeyInput()
+void SDLMouseInput::Update()
 {
-	return new AllegroKeyInput;
+	SDL_PumpEvents();
+
+	Uint8 state = SDL_GetMouseState(NULL,NULL);
+	m_releaseds = ((~state) & m_presseds);
+	m_presseds = state;
 }
 
-extern "C" SurfaceImpl * Troll_AllocSurface()
+void SDLMouseInput::GetPosition( Point & pt ) const
 {
-	return new AllegroSurface;
+	int x,y;
+
+	SDL_GetMouseState(&x,&y);
+
+	pt.x = x;
+	pt.y = y;
+}
+
+void SDLMouseInput::SetPosition(const Point & pt)
+{
+	SDL_WarpMouse(pt.x, pt.y);
+}
+
+void SDLMouseInput::GetRelativePosition( Point & ptDelta ) const
+{
+	int xDelta,yDelta;
+
+	SDL_GetRelativeMouseState(&xDelta,&yDelta);
+
+	ptDelta.x = xDelta;
+	ptDelta.y = yDelta;
 }
 
 
-extern "C" GraphicsImpl * Troll_AllocGraphics(SurfaceImpl * surface_impl)
+bool SDLMouseInput::IsButtonDown( int button ) const
 {
-	AllegroSurface * surface = (AllegroSurface *)surface_impl;
-	// TODO: use dynamic_cast<> ??
-	// or create some method to get BITMAP from Surface object
-	//		like:
-	//			Surface s(100,100);
-	//			NativeSurfaceAccessor access(s);
-	//			BITMAP * buff = access.GetNativeSurface(); // return NULL in case of Surface is not a AllegroSurface
-	//
-	
-	return new AllegroGraphics(surface);
+	Uint8 state;
+	state = SDL_GetMouseState(NULL,NULL);
+	return ((state)&SDL_BUTTON(button + 1)) != 0;
 }
 
-extern "C" ImageImpl * Troll_AllocImage()
+bool SDLMouseInput::IsButtonUp( int button ) const
 {
-	return new AllegroImage;
+	Uint8 state;
+	state = SDL_GetMouseState(NULL,NULL);
+	return ((state)&SDL_BUTTON(button + 1)) == 0;
 }
 
-extern "C" MouseInputImpl* Troll_AllocMouseInput()
+bool SDLMouseInput::IsButtonReleased( int button ) const
 {
-	return new AllegroMouseInput;
+	return ((m_releaseds)&SDL_BUTTON(button + 1)) != 0;
 }

@@ -42,6 +42,7 @@
 
 #include "troll/sdl_system.h"
 #include "troll/sdl_keyinput.h"
+#include "troll/sdl_mouseinput.h"
 #include "troll/sdl_surface.h"
 #include "troll/sdl_graphics.h"
 #include "troll/sdl_image.h"
@@ -56,6 +57,11 @@ extern "C" SystemImpl * Troll_AllocSystem()
 extern "C" KeyInputImpl * Troll_AllocKeyInput()
 {
 	return new SDLKeyInput;
+}
+
+extern "C" MouseInputImpl * Troll_AllocMouseInput()
+{
+	return new SDLMouseInput;
 }
 
 extern "C" SurfaceImpl * Troll_AllocSurface()

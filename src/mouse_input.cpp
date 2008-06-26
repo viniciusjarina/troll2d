@@ -38,54 +38,64 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "troll/basic_geo.h"
 
-#include "troll/interface.h"
+#include "troll/mouse_input.h"
+#include "troll/mouse_input_impl.h"
 
-#include "troll/allegro_system.h"
-#include "troll/allegro_keyinput.h"
-#include "troll/allegro_surface.h"
-#include "troll/allegro_graphics.h"
-#include "troll/allegro_image.h"
-#include "troll/allegro_mouseinput.h"
+
+#include "troll/mouse_input_factory.h"
 
 using namespace Troll;
 
-extern "C" SystemImpl * Troll_AllocSystem()
+MouseInputImpl * MouseInput::m_singleton = 0; // static member initialization
+
+MouseInput::MouseInput()
 {
-	return new AllegroSystem;
 }
 
-extern "C" KeyInputImpl * Troll_AllocKeyInput()
+void MouseInput::Init()
 {
-	return new AllegroKeyInput;
+	m_singleton = MouseInputFactory::CreateMouseInput();
 }
 
-extern "C" SurfaceImpl * Troll_AllocSurface()
+void MouseInput::Cleanup()
 {
-	return new AllegroSurface;
+	delete m_singleton;
 }
 
 
-extern "C" GraphicsImpl * Troll_AllocGraphics(SurfaceImpl * surface_impl)
+void MouseInput::Update()
 {
-	AllegroSurface * surface = (AllegroSurface *)surface_impl;
-	// TODO: use dynamic_cast<> ??
-	// or create some method to get BITMAP from Surface object
-	//		like:
-	//			Surface s(100,100);
-	//			NativeSurfaceAccessor access(s);
-	//			BITMAP * buff = access.GetNativeSurface(); // return NULL in case of Surface is not a AllegroSurface
-	//
-	
-	return new AllegroGraphics(surface);
+	m_singleton->Update();
 }
 
-extern "C" ImageImpl * Troll_AllocImage()
+void MouseInput::GetPosition( Point & pt )
 {
-	return new AllegroImage;
+	m_singleton->GetPosition(pt);
 }
 
-extern "C" MouseInputImpl* Troll_AllocMouseInput()
+void MouseInput::SetPosition(const Point & pt )
 {
-	return new AllegroMouseInput;
+	m_singleton->SetPosition(pt);
+}
+
+void MouseInput::GetRelativePosition( Point & ptDelta )
+{
+	m_singleton->GetRelativePosition(ptDelta);
+}
+
+bool MouseInput::IsButtonDown( int button )
+{
+	return m_singleton->IsButtonDown(button);
+}
+
+bool MouseInput::IsButtonUp( int button )
+{
+	return m_singleton->IsButtonUp(button);
+}
+
+bool MouseInput::IsButtonReleased( int button )
+{
+	return m_singleton->IsButtonReleased(button);
 }

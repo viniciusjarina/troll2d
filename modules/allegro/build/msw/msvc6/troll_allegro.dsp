@@ -101,6 +101,10 @@ SOURCE=..\..\..\src\allegro_keyinput.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\src\allegro_mouseinput.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\allegro_screen.cpp
 # End Source File
 # Begin Source File
@@ -135,6 +139,10 @@ SOURCE=..\..\..\include\troll\allegro_image.h
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\allegro_keyinput.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\allegro_mouseinput.h
 # End Source File
 # Begin Source File
 

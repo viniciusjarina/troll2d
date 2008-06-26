@@ -45,6 +45,9 @@
 
 using namespace Troll;
 
+extern volatile int ticks;
+extern volatile int game_time;
+
 
 AllegroSystem::AllegroSystem():
 m_screen(NULL)
@@ -58,7 +61,7 @@ AllegroSystem::~AllegroSystem()
 		delete m_screen;
 }
 
-bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ )
+bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ , int nFPS /* = 30*/)
 {
 	int bpp;
 	if(depth == depthAuto)
@@ -90,7 +93,7 @@ bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= fal
 		return false;
 	}
 
-	m_screen = new AllegroScreen(nWidth,nHeight);
+	m_screen = new AllegroScreen(nWidth, nHeight, nFPS);
 	
 	return true;
 }
@@ -98,5 +101,14 @@ bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= fal
 
 void AllegroSystem::Sleep( int mili )
 {
+	int current_ticks = ticks;
+	int current_time  = game_time;
 	rest(mili);
+	ticks	  = current_ticks;
+	game_time = current_time;
+}
+
+void AllegroSystem::SetScreenTitle( const char * szCaption )
+{
+	set_window_title(szCaption);
 }

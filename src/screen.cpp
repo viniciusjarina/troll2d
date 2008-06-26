@@ -62,3 +62,23 @@ void Screen::Flip()
 {
 	m_singleton->Flip();
 }
+
+bool Screen::SkipFrame()
+{
+	return m_singleton->SkipFrame();
+}
+
+int Screen::GetFPS()
+{
+	return m_singleton->GetFPS();
+}
+
+void Screen::StartFrame()
+{
+	m_singleton->StartFrame();
+}
+
+void Screen::ShowCursor(bool show)
+{
+	m_singleton->ShowCursor(show);
+}

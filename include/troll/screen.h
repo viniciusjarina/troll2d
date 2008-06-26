@@ -71,6 +71,14 @@ public:
 	static Surface & GetSurface();
 
 	static void Flip();
+
+	static void StartFrame();
+
+	static bool SkipFrame();
+
+	static int	GetFPS();
+
+	static void ShowCursor(bool show);
 };
 
 }

@@ -66,8 +66,9 @@ public:
 	virtual ~SDLSystem();
 public:
 // Overrides to back-end	
-	virtual bool SetupScreen(int nWidth,int nHeight,bool fScreen = false,ColorDepth depth = depthAuto);
+	virtual bool SetupScreen(int nWidth,int nHeight,bool fScreen = false,ColorDepth depth = depthAuto,int nFSP = 30);
 	virtual void Sleep(int mili);
+	virtual void SetScreenTitle( const char * szCaption );
 
 	static int GetScreenBPP();
 	

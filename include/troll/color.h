@@ -67,8 +67,8 @@ public:
 
 	Color& operator = (const Color & color);
 
-	bool operator == (const Color & color) const { return m_red == color.m_red && m_green == color.m_green && m_blue == color.m_blue && m_alpha == color.m_alpha; }
-	bool operator != (const Color & color) const { return m_red != color.m_red || m_green != color.m_green || m_blue != color.m_blue || m_alpha != color.m_alpha; }
+	inline bool operator == (const Color & color) const { return m_red == color.m_red && m_green == color.m_green && m_blue == color.m_blue && m_alpha == color.m_alpha; }
+	inline bool operator != (const Color & color) const { return m_red != color.m_red || m_green != color.m_green || m_blue != color.m_blue || m_alpha != color.m_alpha; }
 
 	Color operator - (const Color & color) const;
 	Color operator + (const Color & color) const;
@@ -76,18 +76,18 @@ public:
 	Color operator * (int i) const;
 	Color operator / (int i) const;
 
-	ColorComponent GetRed() const	{ return m_red;	  }
-	ColorComponent GetGreen() const { return m_green; }
-	ColorComponent GetBlue() const	{ return m_blue;  }
-	ColorComponent GetAlpha() const { return m_alpha;  }
+	inline ColorComponent GetRed() const	{ return m_red;	  }
+	inline ColorComponent GetGreen() const { return m_green; }
+	inline ColorComponent GetBlue() const	{ return m_blue;  }
+	inline ColorComponent GetAlpha() const { return m_alpha;  }
 
-	void SetRed(ColorComponent red)		{ m_red   = red;   }
-	void SetGreen(ColorComponent green) { m_green = green; }
-	void SetBlue(ColorComponent blue)	{ m_blue  = blue;  }
-	void SetAlpha(ColorComponent alpha)	{ m_alpha = alpha; }
+	inline void SetRed(ColorComponent red)		{ m_red   = red;   }
+	inline void SetGreen(ColorComponent green) { m_green = green; }
+	inline void SetBlue(ColorComponent blue)	{ m_blue  = blue;  }
+	inline void SetAlpha(ColorComponent alpha)	{ m_alpha = alpha; }
 
-	void IncraseAlpha(char cIncrase = 32) { m_alpha += cIncrase; }
-	void DecraseAlpha(char cIncrase = 32) { m_alpha -= cIncrase; }
+	inline void IncraseAlpha(char cIncrase = 32) { m_alpha += cIncrase; }
+	inline void DecraseAlpha(char cIncrase = 32) { m_alpha -= cIncrase; }
 
 	void SetColor(ColorComponent r,ColorComponent g,ColorComponent b,ColorComponent a = alphaOpaque);
 	

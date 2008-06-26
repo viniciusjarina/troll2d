@@ -45,6 +45,7 @@ namespace Troll
 {
 	class SystemImpl;
 	class KeyInputImpl;
+	class MouseInputImpl;
 	class SurfaceImpl;
 	class GraphicsImpl;
 	class ImageImpl;
@@ -57,6 +58,7 @@ namespace Troll
 
 	 Troll::SystemImpl*		Troll_AllocSystem();
 	 Troll::KeyInputImpl*	Troll_AllocKeyInput();
+	 Troll::MouseInputImpl*	Troll_AllocMouseInput();
 	 Troll::SurfaceImpl*	Troll_AllocSurface();
 	 Troll::GraphicsImpl*	Troll_AllocGraphics(Troll::SurfaceImpl * surface_impl);
 	 Troll::ImageImpl*		Troll_AllocImage();

@@ -42,6 +42,7 @@
 #include "troll/system.h"
 #include "troll/system_impl.h"
 #include "troll/key_input.h"
+#include "troll/mouse_input.h"
 
 #include "troll/interface.h"
 
@@ -58,7 +59,9 @@ bool System::Init()
 {
 
 	m_singleton = Troll_AllocSystem();
+
 	KeyInput::Init();
+	MouseInput::Init();
 
 	return true;
 }
@@ -66,16 +69,23 @@ bool System::Init()
 void System::Cleanup()
 {
 	KeyInput::Cleanup();
+	MouseInput::Cleanup();
+
 	delete m_singleton;
 }
 
 
-bool System::SetupScreen( int nWidth /*= -1*/,int nHeight /*= -1*/,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ )
+bool System::SetupScreen( int nWidth /*= -1*/,int nHeight /*= -1*/,bool fFullScreen /*= false*/,ColorDepth depth /*= depthAuto*/ ,int fps /* = 30*/)
 {
-	return m_singleton->SetupScreen(nWidth,nHeight,fFullScreen,depth);
+	return m_singleton->SetupScreen(nWidth,nHeight,fFullScreen,depth,fps);
 }
 
 void System::Sleep( int mili )
 {
 	m_singleton->Sleep(mili);
+}
+
+void System::SetScreenTitle( const char * szCaption )
+{
+	m_singleton->SetScreenTitle(szCaption);
 }

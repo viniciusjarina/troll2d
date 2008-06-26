@@ -46,8 +46,11 @@ namespace Troll
 	class KeyInputImpl
 	{
 	public:
-		virtual bool IsKeyUp(int key) = 0;
-		virtual bool IsKeyDown(int key) = 0;
+		virtual void Update() = 0;
+
+		virtual bool IsKeyUp(int key) const = 0;
+		virtual bool IsKeyDown(int key) const = 0;
+		virtual bool IsKeyReleased(int key) const = 0;
 	};
 }
 

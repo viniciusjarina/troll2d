@@ -42,15 +42,29 @@
 #include "troll/key_input.h"
 #include "troll/key_input_impl.h"
 
-#include "troll/interface.h"
+#include "troll/key_input_factory.h"
 
 using namespace Troll;
-
 
 KeyInputImpl * KeyInput::m_singleton = 0; // static member initialization
 
 KeyInput::KeyInput()
 {
+}
+
+void KeyInput::Init()
+{
+	m_singleton = KeyInputFactory::CreateKeyInput();
+}
+
+void KeyInput::Cleanup()
+{
+	delete m_singleton;
+}
+
+void KeyInput::Update()
+{
+	m_singleton->Update();
 }
 
 bool KeyInput::IsKeyDown(int key)
@@ -63,12 +77,8 @@ bool KeyInput::IsKeyUp(int key)
 	return m_singleton->IsKeyUp(key);
 }
 
-void KeyInput::Init()
+bool KeyInput::IsKeyReleased(int key)
 {
-	m_singleton = Troll_AllocKeyInput();
+	return m_singleton->IsKeyReleased(key);
 }
 
-void KeyInput::Cleanup()
-{
-	delete m_singleton;
-}

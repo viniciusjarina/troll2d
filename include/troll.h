@@ -54,6 +54,7 @@
 #include "troll/screen.h"
 #include "troll/surface.h"
 #include "troll/key_input.h"
+#include "troll/mouse_input.h"
 
 #include "troll/graphics.h"
 #include "troll/image.h"
