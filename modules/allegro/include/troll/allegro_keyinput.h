@@ -46,7 +46,6 @@
 namespace Troll
 {
 
-
 class AllegroKeyInput : public KeyInputImpl
 {
 public:
@@ -54,9 +53,10 @@ public:
 
 	virtual void Update();
 		
-	virtual bool IsKeyDown(int k) const;
-	virtual bool IsKeyUp(int k) const;
-	virtual bool IsKeyReleased(int key) const;
+	virtual bool IsKeyDown(Key k) const;
+	virtual bool IsKeyUp(Key k) const;
+	virtual bool IsKeyReleased(Key key) const;
+	virtual bool IsKeyPressed(Key key) const;
 };
 
 }

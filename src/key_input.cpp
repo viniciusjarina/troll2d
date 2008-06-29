@@ -67,18 +67,23 @@ void KeyInput::Update()
 	m_singleton->Update();
 }
 
-bool KeyInput::IsKeyDown(int key)
+bool KeyInput::IsKeyDown(Key key)
 {
 	return m_singleton->IsKeyDown(key);
 }
 
-bool KeyInput::IsKeyUp(int key)
+bool KeyInput::IsKeyUp(Key key)
 {
 	return m_singleton->IsKeyUp(key);
 }
 
-bool KeyInput::IsKeyReleased(int key)
+bool KeyInput::IsKeyReleased(Key key)
 {
 	return m_singleton->IsKeyReleased(key);
 }
 
+
+bool KeyInput::IsKeyPressed(Key key)
+{
+	return m_singleton->IsKeyPressed(key);
+}

@@ -205,6 +205,10 @@ SOURCE=..\..\..\include\troll\interface.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\include\troll\key.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\include\troll\key_input.h
 # End Source File
 # Begin Source File

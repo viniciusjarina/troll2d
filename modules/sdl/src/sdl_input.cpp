@@ -45,25 +45,25 @@
 #include "troll/sdl_keyinput.h"
 
 using namespace Troll;
-// Map correct keys for each plattform
-
+// Map correct keys for each platform
 #if defined(_WIN32_WCE) // In Windows CE misteriosly the Key Up is mapped to SDLK_KP7
 	#define TROLL_SDL_UP_KEY    SDLK_KP7 
 #else
 	#define TROLL_SDL_UP_KEY    SDLK_UP
 #endif
 
+static Uint8 keys_down[SDLK_LAST];
+static Uint8 keys_released[SDLK_LAST];
 static Uint8 keys_pressed[SDLK_LAST];
-static Uint8 keys_relesed[SDLK_LAST];
 
-static int MapTroll2SDL(int k)
+static SDLKey MapTroll2SDL(Key k)
 {
-	if(k >= Key::TOTAL_KEYS)
-		return 0;
+	if(k >= TOTAL_KEYS)
+		return SDLK_UNKNOWN;
 
-	static const unsigned char keys [Key::TOTAL_KEYS] =
+	static const SDLKey keys [TOTAL_KEYS] =
 	{
-		0,      // 
+		SDLK_UNKNOWN,      // 
 		SDLK_BACKSPACE,// 	BACKSPACE	
 		SDLK_TAB,      // 	TAB			
 		SDLK_RETURN,   // 	RETURN		
@@ -195,24 +195,28 @@ void SDLKeyInput::Update()
 {
 	SDL_PumpEvents();
 
-	Uint8 * p_pressed  = keys_pressed;
-	Uint8 * p_released = keys_relesed;
+	Uint8 * p_down  = keys_down;
+	Uint8 * p_released = keys_released;
+	Uint8 * p_pressed = keys_pressed;
+
 	const Uint8 * p_keys = SDL_GetKeyState(NULL);
 	
 	int i = SDLK_LAST;
 	
-	while(--i)
+	while(--i) // iterate each SDLK_xyz
 	{
-		*p_released = (!*p_keys) && (*p_pressed);
-		*p_pressed = *p_keys;
+		*p_released = (!(*p_keys)) && ( (*p_down)); // key is not down and was down previous
+		*p_pressed  = ( (*p_keys)) && (!(*p_down));  // key is down and wasn't down previous
+		*p_down     = *p_keys; // save current state of key
 		
-		p_pressed++;
+		p_down++;
 		p_released++;
+		p_pressed++;
 		p_keys++;
 	}
 }
 
-bool SDLKeyInput::IsKeyDown(int k) const
+bool SDLKeyInput::IsKeyDown(Key k) const
 {
 	int sdl_key;
 	sdl_key = MapTroll2SDL(k);
@@ -225,9 +229,9 @@ bool SDLKeyInput::IsKeyDown(int k) const
 }
 
 
-bool SDLKeyInput::IsKeyUp(int k) const
+bool SDLKeyInput::IsKeyUp(Key k) const
 {
-	int sdl_key;
+	SDLKey sdl_key;
 	sdl_key = MapTroll2SDL(k);
 	if(!sdl_key)
 		return false;
@@ -237,13 +241,24 @@ bool SDLKeyInput::IsKeyUp(int k) const
 	return keystate[sdl_key] == 0;
 }
 
-bool SDLKeyInput::IsKeyReleased(int key) const
+bool SDLKeyInput::IsKeyReleased(Key key) const
 {
-	int sdl_key;
+	SDLKey sdl_key;
 	sdl_key = MapTroll2SDL(key);
 	if(!sdl_key)
 		return false;
 	
-	return keys_relesed[sdl_key] != 0;
+	return keys_released[sdl_key] != 0;
 }
+
+bool SDLKeyInput::IsKeyPressed(Key key) const
+{
+	SDLKey sdl_key;
+	sdl_key = MapTroll2SDL(key);
+	if(!sdl_key)
+		return false;
+	
+	return keys_pressed[sdl_key] != 0;
+}
+
 

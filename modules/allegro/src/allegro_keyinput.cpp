@@ -45,15 +45,16 @@
 
 using namespace Troll;
 
+static char keys_down[KEY_MAX];
+static char keys_released[KEY_MAX];
 static char keys_pressed[KEY_MAX];
-static char keys_relesed[KEY_MAX];
 
-static int MapTroll2Allegro(int k)
+static int MapTroll2Allegro(Key k)
 {
-	if(k >= Key::TOTAL_KEYS)
+	if(k >= TOTAL_KEYS)
 		return 0;
 
-	static const unsigned char keys [Key::TOTAL_KEYS] =
+	static const unsigned char keys [TOTAL_KEYS] =
 	{
 		0,      // 
 		KEY_BACKSPACE,// 	BACKSPACE	
@@ -188,24 +189,27 @@ void AllegroKeyInput::Update()
 	if(keyboard_needs_poll())
 		poll_keyboard();
 
+	char * p_down  = keys_down;
+	char * p_released = keys_released;
 	char * p_pressed  = keys_pressed;
-	char * p_released = keys_relesed;
 	const volatile char * p_keys = key;
 
 	int i = KEY_MAX;
 
 	while(--i)
 	{
-		*p_released = (!*p_keys) && (*p_pressed);
-		*p_pressed = *p_keys;
+		*p_released = (!(*p_keys)) && ( (*p_down)); // key is not down and was down previous
+		*p_pressed  = ( (*p_keys)) && (!(*p_down)); // key is down and wasn't down previous
+		*p_down     = *p_keys; // save current state of key
 		
-		p_pressed++;
+		p_down++;
 		p_released++;
+		p_pressed++;
 		p_keys++;
 	}
 }
 
-bool AllegroKeyInput::IsKeyDown(int k) const
+bool AllegroKeyInput::IsKeyDown(Key k) const
 {
 	int allegro_key;
 	allegro_key = MapTroll2Allegro(k);
@@ -216,7 +220,7 @@ bool AllegroKeyInput::IsKeyDown(int k) const
 }
 
 
-bool AllegroKeyInput::IsKeyUp(int k) const
+bool AllegroKeyInput::IsKeyUp(Key k) const
 {
 	int allegro_key;
 	allegro_key = MapTroll2Allegro(k);
@@ -226,12 +230,23 @@ bool AllegroKeyInput::IsKeyUp(int k) const
 	return key[allegro_key] == 0;
 }
 
-bool AllegroKeyInput::IsKeyReleased(int key) const
+bool AllegroKeyInput::IsKeyReleased(Key key) const
 {
 	int allegro_key;
 	allegro_key = MapTroll2Allegro(key);
 	if(!allegro_key)
 		return false;
 
-	return keys_relesed[allegro_key] != 0;
+	return keys_released[allegro_key] != 0;
 }
+
+bool AllegroKeyInput::IsKeyPressed(Key key) const
+{
+	int allegro_key;
+	allegro_key = MapTroll2Allegro(key);
+	if(!allegro_key)
+		return false;
+	
+	return keys_pressed[allegro_key] != 0;
+}
+

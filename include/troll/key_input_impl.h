@@ -41,6 +41,8 @@
 #ifndef __TROLL_KEY_INPUT_IMPL__
 #define __TROLL_KEY_INPUT_IMPL__
 
+#include "troll/key.h"
+
 namespace Troll
 {
 	class KeyInputImpl
@@ -48,9 +50,10 @@ namespace Troll
 	public:
 		virtual void Update() = 0;
 
-		virtual bool IsKeyUp(int key) const = 0;
-		virtual bool IsKeyDown(int key) const = 0;
-		virtual bool IsKeyReleased(int key) const = 0;
+		virtual bool IsKeyUp(Key key) const = 0;
+		virtual bool IsKeyDown(Key key) const = 0;
+		virtual bool IsKeyReleased(Key key) const = 0;
+		virtual bool IsKeyPressed(Key key) const = 0;
 	};
 }
 

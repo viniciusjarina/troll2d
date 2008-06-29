@@ -54,38 +54,14 @@
 	if(!System::SetupScreen())	// Setup and create screen with defaul size
 		return 0;
 
-	System::SetScreenTitle("Test Mouse");
+	System::SetScreenTitle("Minimal Test");
 	
 	Surface & buff	= Screen::GetSurface(); // Get current screen Surface
-	
-
-	int x = 0;
-	int y = 0;
-
-	const int total_w = buff.GetWidth();
-	const int total_h = buff.GetHeight();
+	Graphics g(buff); // Create Graphics object to draw primitives on the screen
 
 	bool quit = false;
-	bool button_pressed  = false;
-	bool button_released = false;
-
-	Graphics g(buff);
-
-	Point pt;
-	Rect rc(0,0,30,30);
-
-	Color c1(167,193,254);
-	Color c2(236,149,70);
-
-	Color cSel1(192,211,252);
-	Color cSel2(243,193,148);
-
-	Color cBorder(11,67,159);
-
-	static int grid[10][10];
-
-	bool bShowCursor = true;
-
+	
+	
 	while(!quit) // was ESC key pressed?
 	{
 		Screen::StartFrame();
@@ -93,71 +69,19 @@
 		MouseInput::Update();
 		KeyInput::Update();
 
-		quit = KeyInput::IsKeyDown(Key::ESCAPE);
-		quit = quit || KeyInput::IsKeyDown(Key::RIGHT);
-		quit = quit || KeyInput::IsKeyDown(Key::RETURN);
-		
-		if(KeyInput::IsKeyReleased(Key::SPACE))
-		{
-			bShowCursor = !bShowCursor;
-			Screen::ShowCursor(bShowCursor);
-		}
+		quit = KeyInput::IsKeyDown(ESCAPE);
 
-		
-			
+		// UpdateLogic(); // Add the logic o current frame
 
-		MouseInput::GetRelativePosition(pt);
-
-		if(pt.x != 0 || pt.y != 0)
-		{
-			MouseInput::GetPosition(pt);
-			x = pt.x;
-			y = pt.y;
-
-			x /= 30;
-			y /= 30;
-		}
-
-		button_pressed  = MouseInput::IsButtonPressed(0);
-		button_released = MouseInput::IsButtonReleased(0);
-
-		if(button_pressed && x < 10 && y < 10)
-		{
-			Screen::ShowCursor(false);
-			grid[y][x] = !grid[y][x];
-		}
-
-		if(button_released)
-		{
-			Screen::ShowCursor(true);
-		}
-		
-		if(!Screen::SkipFrame())
+		if(!Screen::SkipFrame()) // Frame can be rendered
 		{
 			buff.Clear(Color::WHITE);
-			g.DrawLine(Point(0,0),Point(100,100),Color::RED);
 
-			rc.x = 0;
-			rc.y = 0;
+			// RenderFrame(); Add draw code, to render current frame
+			g.DrawText(Point(10,10),"(Press esc to exit)",Color::RED);
+			g.DrawText(Point(10,30),"Hellow World!",Color::BLUE);
+			g.DrawLine(Point(10,40),Point(110,40),Color::BLACK);
 
-			for(int i = 0; i < 10; i ++)
-			{
-				for(int j = 0; j < 10; j ++)
-				{
-					const Color & c	   = grid[i][j] ? c2 : c1;
-					const Color & cSel = grid[i][j] ? cSel2 : cSel1;
-					const Color & color = (i == y && j == x) ? cSel : c;
-					g.DrawRectFill(rc,color);
-					g.DrawRect(rc,cBorder);
-					rc.x += 30;
-				}
-
-				rc.x = 0;
-                rc.y += 30;
-			}
-			
-			g.DrawTriangleFill(Point(0,0),Point(100,100),Point(10,100),Color(255,0,0,128));
-			g.DrawEllipse(Point(100,100),50,80,Color(0,0,0,255));
 			Screen::Flip();		// Flip screen
 		}
 	}
