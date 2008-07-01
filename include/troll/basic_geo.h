@@ -167,6 +167,8 @@ public:
     void SetBottomLeft(const Point &p) { SetLeft(p.x); SetBottom(p.y); }
     void SetLeftBottom(const Point &p) { SetBottomLeft(p); }
 
+	Point GetMiddlePoint() const { return Point(x + width/2,y + height/2); }
+
     // operations with rect
     Rect& Inflate(long dx, long dy);
     Rect& Inflate(const Size& d) { return Inflate(d.x, d.y); }

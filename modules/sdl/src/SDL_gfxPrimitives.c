@@ -3034,7 +3034,11 @@ int ellipseRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rx, Sint16 ry, Uin
 /* ----- AA Ellipse */
 
 /* Win32 does not have lrint, so provide a local inline version */
-#ifdef WIN32
+#if defined(_WIN32_WCE) || defined(__SYMBIAN32__)
+
+long lrint (double flt) { return (long)flt; }
+
+#elif defined(WIN32)
 
 __inline long int
 lrint (double flt)
