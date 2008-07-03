@@ -51,6 +51,35 @@
 
 using namespace Troll;
 
+struct GRAPHICS_VTABLE // table of functions ptr to switch Anti-alias on/off
+{
+	int (*do_lineRGBA)(SDL_Surface * dst, Sint16 x1, Sint16 y1,Sint16 x2, Sint16 y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+	int (*do_circleRGBA)(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+	int (*do_ellipseRGBA)(SDL_Surface * dst, Sint16 x, Sint16 y,Sint16 rx, Sint16 ry, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+	int (*do_trigonRGBA)(SDL_Surface * dst,  Sint16 x1, Sint16 y1, Sint16 x2, Sint16 y2, Sint16 x3, Sint16 y3,Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+	int (*do_polygonRGBA)(SDL_Surface * dst, const Sint16 * vx, const Sint16 * vy,int n, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+};
+
+static GRAPHICS_VTABLE fast_gfx = 
+{	
+	lineRGBA,
+	circleRGBA,
+	ellipseRGBA,
+	trigonRGBA,
+	polygonRGBA
+};
+
+static GRAPHICS_VTABLE aa_gfx = 
+{	
+	aalineRGBA,
+	aacircleRGBA,
+	aaellipseRGBA,
+	aatrigonRGBA,
+	aapolygonRGBA
+};
+
+static GRAPHICS_VTABLE * p_gfx = &fast_gfx;
+
 SDLGraphics::SDLGraphics( SDLSurface * surface )
 {
 	m_surface =  surface->m_surface;
@@ -63,7 +92,7 @@ void SDLGraphics::DrawPixel(const Point& pt,const Color & color)
 
 void SDLGraphics::DrawLine( const Point& ptStart, const Point & ptEnd,const Color & color )
 {
-	lineRGBA(m_surface,ptStart.x,ptStart.y,ptEnd.x,ptEnd.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	p_gfx->do_lineRGBA(m_surface,ptStart.x,ptStart.y,ptEnd.x,ptEnd.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawVLine(const Point& ptStart,int size,const Color & color)
@@ -78,7 +107,7 @@ void SDLGraphics::DrawHLine(const Point& ptStart,int size,const Color & color)
 
 void SDLGraphics::DrawCircle( const Point& ptCenter, short radius, const Color & color )
 {
-	circleRGBA(m_surface, ptCenter.x, ptCenter.y, radius, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	p_gfx->do_circleRGBA(m_surface, ptCenter.x, ptCenter.y, radius, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawCircleFill(const Point& ptCenter,short radius,const Color& color)
@@ -98,7 +127,7 @@ void SDLGraphics::DrawRectFill(const Rect& rect,const Color& color)
 
 void SDLGraphics::DrawEllipse(const Point& pt,short radx,short rady,const Color& color)
 {
-	ellipseRGBA(m_surface, pt.x, pt.y, radx, rady, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	p_gfx->do_ellipseRGBA(m_surface, pt.x, pt.y, radx, rady, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawEllipseFill(const Point& pt,short radx,short rady,const Color& color)
@@ -123,7 +152,7 @@ void SDLGraphics::DrawText(const Point& pt,const char * text,const Color& color)
 
 void SDLGraphics::DrawTriangle( const Point& pt1,const Point& pt2,const Point& pt3,const Color& color )
 {
-	trigonRGBA(m_surface, pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	p_gfx->do_trigonRGBA(m_surface, pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawTriangleFill( const Point& pt1,const Point& pt2,const Point& pt3,const Color& color )
@@ -145,7 +174,7 @@ void SDLGraphics::DrawPolygon( const Point * pts,int n,const Color& color )
 		arr_y[i] = (Sint16)pts[n].y;
 	}
 
-	polygonRGBA(m_surface, arr_x, arr_y, n, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
+	p_gfx->do_polygonRGBA(m_surface, arr_x, arr_y, n, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
 
 	delete [] arr_x;
 	delete [] arr_y;

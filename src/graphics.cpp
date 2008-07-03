@@ -59,6 +59,11 @@ Graphics::~Graphics()
 		delete m_impl;
 }
 
+void Graphics::DrawPixel( const Point& pt,const Color & color )
+{
+	m_impl->DrawPixel(pt,color);
+}
+
 void Graphics::DrawLine( const Point& ptStart, const Point & ptEnd,const Color& color )
 {
 	m_impl->DrawLine(ptStart,ptEnd,color);

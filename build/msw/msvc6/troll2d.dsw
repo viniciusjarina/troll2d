@@ -3,7 +3,7 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
-Project: "test"=".\test.dsp" - Package Owner=<4>
+Project: "test_blit"=".\test_blit.dsp" - Package Owner=<4>
 
 Package=<5>
 {{{
@@ -27,7 +27,31 @@ Package=<4>
 
 ###############################################################################
 
+Project: "test_minimal"=".\test_minimal.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
 Project: "test_mouse"=".\test_mouse.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "teste_graphics"=".\teste_graphics.dsp" - Package Owner=<4>
 
 Package=<5>
 {{{

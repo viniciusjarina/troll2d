@@ -1,24 +1,24 @@
-# Microsoft Developer Studio Project File - Name="test" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="test_minimal" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
-CFG=test - Win32 Debug
+CFG=test_minimal - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
-!MESSAGE NMAKE /f "test.mak".
+!MESSAGE NMAKE /f "test_minimal.mak".
 !MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "test.mak" CFG="test - Win32 Debug"
+!MESSAGE NMAKE /f "test_minimal.mak" CFG="test_minimal - Win32 Debug"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "test - Win32 Release" (based on "Win32 (x86) Application")
-!MESSAGE "test - Win32 Debug" (based on "Win32 (x86) Application")
+!MESSAGE "test_minimal - Win32 Release" (based on "Win32 (x86) Application")
+!MESSAGE "test_minimal - Win32 Debug" (based on "Win32 (x86) Application")
 !MESSAGE 
 
 # Begin Project
@@ -29,7 +29,7 @@ CPP=cl.exe
 MTL=midl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "test - Win32 Release"
+!IF  "$(CFG)" == "test_minimal - Win32 Release"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -55,7 +55,7 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
 # ADD LINK32 alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /libpath:"..\..\..\lib\vc6_lib\\"
 
-!ELSEIF  "$(CFG)" == "test - Win32 Debug"
+!ELSEIF  "$(CFG)" == "test_minimal - Win32 Debug"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
@@ -85,14 +85,14 @@ LINK32=link.exe
 
 # Begin Target
 
-# Name "test - Win32 Release"
-# Name "test - Win32 Debug"
+# Name "test_minimal - Win32 Release"
+# Name "test_minimal - Win32 Debug"
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\..\..\test\test.cpp
+SOURCE=..\..\..\test\test_minimal.cpp
 # End Source File
 # Begin Source File
 
@@ -106,30 +106,6 @@ SOURCE=..\..\..\test\msw\test.rc
 # Begin Group "Resource Files"
 
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
-# Begin Source File
-
-SOURCE=..\..\..\test\msw\icon2.ico
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\..\data\images\troll.bmp
-
-!IF  "$(CFG)" == "test - Win32 Release"
-
-!ELSEIF  "$(CFG)" == "test - Win32 Debug"
-
-# Begin Custom Build
-WkspDir=.
-InputPath=..\..\..\data\images\troll.bmp
-
-"troll.bmp" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	copy $(InputPath) $(WkspDir)
-
-# End Custom Build
-
-!ENDIF 
-
-# End Source File
 # End Group
 # End Target
 # End Project
