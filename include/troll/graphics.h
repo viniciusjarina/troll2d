@@ -56,6 +56,8 @@ public:
 	virtual ~Graphics();
 
 public:
+
+	void EnableAntiAlias(bool enable);
 	
 	void DrawPixel(const Point& pt,const Color & color);
 	void DrawLine(const Point& ptStart,const Point& ptEnd,const Color & color);

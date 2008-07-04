@@ -40,6 +40,7 @@
 
 #include <troll.h> // include troll header
 #include <stdlib.h>
+#include <stdio.h>
 
 enum 
 {
@@ -100,8 +101,17 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 	short size_h = rand_ex(30,rect.GetWidth()/3);
 	short size_w = rand_ex(30,rect.GetHeight()/3);
 
-	short ang = 0;
-	short ang2 = -90;
+	static const int arr[] = { 0,90, 180, 270};
+
+	int i  = rand()%4;
+	int i2 = rand()%4;
+	while(i == i2)
+	{
+		i2 = rand()%4;
+	}
+	
+	short ang = arr[i];
+	short ang2 = arr[i2];
 
 	switch(state)
 	{
@@ -148,6 +158,9 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 			g.DrawArc(pt,size_h,ang,ang2,c);
 			break;
 		case TEST_ARC_FILL: 
+			char s[10];
+			sprintf(s,"%d,%d",ang,ang2);
+			g.DrawText(pt,s,Color::BLACK);
 			g.DrawArcFill(pt,size_h,ang,ang2,c);
 			break;
 
@@ -185,7 +198,7 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 	Graphics g(buff); // Create Graphics object to draw primitives on the screen
 
 	bool quit = false;
-	int state = TEST_PIXEL;
+	int state = TEST_ARC_FILL;
 	int i;
 	
 	Rect rect;
@@ -196,6 +209,8 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 
 	rectClip.width  = rect.width/2;
 	rectClip.height = rect.height/2;
+
+	bool antialias = false;
 
 	while(!quit) // was ESC key pressed?
 	{
@@ -212,7 +227,16 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 		if(KeyInput::IsKeyReleased(LEFT) && state > TEST_PIXEL)
 			state--;
 
-		srand(5122);
+		if(KeyInput::IsKeyReleased(SPACE))
+		{
+			antialias = !antialias;
+
+			g.EnableAntiAlias(antialias);
+		}
+
+		Point pt;
+		MouseInput::GetPosition(pt);
+		srand(pt.x%10);
 
 		
 		// UpdateLogic(); // Add the logic o current frame
@@ -224,12 +248,15 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 			rect.x = 0;
 			rect.y = 0;
 	
+			g.DrawRect(rect,Color::DARKGRAY);
 
 			for(i = 0; i < 10; i ++ )
 				DrawPrimitive(g,state,rect);
 
 			rect.y += rect.height;
 
+
+			g.DrawRect(rect,Color::DARKGRAY);
 			for(i = 0; i < 10; i ++ )
 				DrawPrimitiveWithAlpha(g,state,rect);
 
@@ -239,8 +266,9 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 			rectClip.x = rect.x;
 			rectClip.y = rect.y;		
 
+			g.DrawRect(rect,Color::DARKGRAY);
 			buff.SetClip(rectClip);
-
+			
 			for(i = 0; i < 10; i ++ )
 				DrawPrimitive(g,state,rect);
 			
@@ -248,15 +276,16 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 
 			rectClip.x = rect.x;
 			rectClip.y = rect.y;
-					
-			buff.SetClip(rectClip);
 			
+			g.DrawRect(rect,Color::DARKGRAY);
+			buff.SetClip(rectClip);
+
 			for(i = 0; i < 10; i ++ )
 				DrawPrimitiveWithAlpha(g,state,rect);
 		
 			buff.ResetClip();
 			// RenderFrame(); Add draw code, to render current frame
-			g.DrawText(Point(10,10),"(Press esc to exit)",Color::RED);
+			g.DrawText(Point(10,10),"(Press ESC to exit, LEFT/RIGHT to change primitive, SPACE to toggle anti-alias)",Color::DARKRED);
 			
 
 			Screen::Flip();		// Flip screen

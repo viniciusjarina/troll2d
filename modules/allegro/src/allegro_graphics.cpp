@@ -216,8 +216,8 @@ void AllegroGraphics::DrawArc( const Point& pt,short rad,short start_angle,short
 	fixed ang1;
 	fixed ang2;
 
-	ang2 = itofix((start_angle * 256)/360);
-	ang1 = itofix((end_angle   * 256)/360);
+	ang1 = itofix((start_angle * 256)/360);
+	ang2 = itofix((end_angle   * 256)/360);
 	
 	if(color.GetAlpha() != Color::alphaOpaque)
 	{
@@ -232,8 +232,8 @@ void AllegroGraphics::DrawArcFill( const Point& pt,short rad,short start_angle,s
 	fixed ang1;
 	fixed ang2;
 	
-	ang2 = itofix((start_angle * 256)/360);
-	ang1 = itofix((end_angle   * 256)/360);
+	ang1 = itofix((start_angle * 256)/360);
+	ang2 = itofix((end_angle   * 256)/360);
 	
 	if(color.GetAlpha() != Color::alphaOpaque)
 	{
@@ -350,4 +350,9 @@ void AllegroGraphics::DrawPolygonFill( const Point * pts,int n,const Color& colo
 	}
 	polygon(m_surface,n,arr_pts,col);
 	delete [] arr_pts;
+}
+
+void AllegroGraphics::EnableAntiAlias( bool enable )
+{
+	/*Does nothing. allegro does´t support anti-alias*/
 }

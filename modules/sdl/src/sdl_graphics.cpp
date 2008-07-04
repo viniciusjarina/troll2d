@@ -60,7 +60,7 @@ struct GRAPHICS_VTABLE // table of functions ptr to switch Anti-alias on/off
 	int (*do_polygonRGBA)(SDL_Surface * dst, const Sint16 * vx, const Sint16 * vy,int n, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 };
 
-static GRAPHICS_VTABLE fast_gfx = 
+static GRAPHICS_VTABLE default_gfx = 
 {	
 	lineRGBA,
 	circleRGBA,
@@ -78,7 +78,7 @@ static GRAPHICS_VTABLE aa_gfx =
 	aapolygonRGBA
 };
 
-static GRAPHICS_VTABLE * p_gfx = &fast_gfx;
+static GRAPHICS_VTABLE * p_gfx = &default_gfx;
 
 SDLGraphics::SDLGraphics( SDLSurface * surface )
 {
@@ -137,12 +137,12 @@ void SDLGraphics::DrawEllipseFill(const Point& pt,short radx,short rady,const Co
 
 void SDLGraphics::DrawArc(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
 {
-	arcRGBA(m_surface, pt.x, pt.y, rad, start_angle, end_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	arcRGBA(m_surface, pt.x, pt.y, rad,360 - end_angle,start_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawArcFill(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
 {
-	filledPieRGBA(m_surface, pt.x, pt.y, rad, start_angle, end_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	filledPieRGBA(m_surface, pt.x, pt.y, rad,360 - end_angle, start_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawText(const Point& pt,const char * text,const Color& color)
@@ -198,4 +198,12 @@ void SDLGraphics::DrawPolygonFill( const Point * pts,int n,const Color& color )
 		
 	delete [] arr_x;
 	delete [] arr_y;
+}
+
+void SDLGraphics::EnableAntiAlias( bool enable )
+{
+	if(enable)
+		p_gfx = &aa_gfx;
+	else
+		p_gfx = &default_gfx;
 }

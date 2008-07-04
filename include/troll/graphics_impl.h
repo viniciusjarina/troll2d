@@ -55,6 +55,8 @@ namespace Troll
 		virtual ~GraphicsImpl();
 
 	public:
+
+		virtual void EnableAntiAlias(bool enable) = 0;
 		
 		virtual void DrawPixel(const Point& pt,const Color & color) = 0;
 

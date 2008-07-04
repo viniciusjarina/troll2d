@@ -144,3 +144,8 @@ void Graphics::DrawPolygonFill( const Point * pts,int n,const Color& color )
 {
 	m_impl->DrawPolygonFill(pts,n,color);
 }
+
+void Graphics::EnableAntiAlias( bool enable )
+{
+	m_impl->EnableAntiAlias(enable);
+}

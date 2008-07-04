@@ -53,6 +53,8 @@ public:
 
 protected:
 
+	virtual void EnableAntiAlias(bool enable);
+
 	virtual void DrawPixel(const Point& pt,const Color & color);
 	virtual void DrawLine(const Point& ptStart,const Point& ptEnd,const Color & color);
 
