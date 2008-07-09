@@ -137,12 +137,12 @@ void SDLGraphics::DrawEllipseFill(const Point& pt,short radx,short rady,const Co
 
 void SDLGraphics::DrawArc(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
 {
-	arcRGBA(m_surface, pt.x, pt.y, rad,360 - end_angle,start_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	arcRGBA(m_surface, pt.x, pt.y, rad,start_angle,end_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawArcFill(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
 {
-	filledPieRGBA(m_surface, pt.x, pt.y, rad,360 - end_angle, start_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	filledArcRGBA(m_surface, pt.x, pt.y, rad,start_angle,end_angle,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawText(const Point& pt,const char * text,const Color& color)
@@ -206,4 +206,12 @@ void SDLGraphics::EnableAntiAlias( bool enable )
 		p_gfx = &aa_gfx;
 	else
 		p_gfx = &default_gfx;
+}
+
+void SDLGraphics::DrawRoundRect(const Rect& rect,const Color& color)
+{
+}
+
+void SDLGraphics::DrawRoundRectFill(const Rect& rect,const Color& color)
+{
 }

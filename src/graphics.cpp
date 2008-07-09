@@ -100,6 +100,16 @@ void Graphics::DrawRectFill( const Rect& rect,const Color& color )
 	m_impl->DrawRectFill(rect,color);
 }
 
+void Graphics::DrawRoundRect(const Rect& rect,const Color& color)
+{
+	m_impl->DrawRoundRect(rect,color);
+}
+
+void Graphics::DrawRoundRectFill(const Rect& rect,const Color& color)
+{
+	m_impl->DrawRoundRectFill(rect,color);
+}
+
 void Graphics::DrawEllipse(const Point& pt,short radx,short rady,const Color& color)
 {
 	m_impl->DrawEllipse(pt, radx, rady, color);

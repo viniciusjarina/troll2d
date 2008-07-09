@@ -2201,6 +2201,18 @@ int circleRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Uint8 r, Uint8
 
 /* Note: Based on above circle algorithm by A. Schiffler below.  Written by D. Raber */
 /* Calculates which octants arc goes through and renders accordingly */
+static int arc_custom(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 r, Sint16 start, Sint16 end, Uint32 color);
+
+int arcColor(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 r, Sint16 start, Sint16 end, Uint32 color)
+{
+	short ang1 = (start * 256)/360;
+	short ang2 = (end   * 256)/360;
+
+	arc_custom(dst,x,y,r,ang1,ang2,color);
+	return 0;
+}
+
+#if 0 // this arc draw with wrong angles :(
 
 int arcColor(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 r, Sint16 start, Sint16 end, Uint32 color)
 {
@@ -2563,6 +2575,8 @@ int arcColor(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 r, Sint16 start, Sint
 
     return (result);
 }
+
+#endif
 
 int arcRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Sint16 start, Sint16 end, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
@@ -4626,3 +4640,197 @@ int bezierRGBA(SDL_Surface * dst, const Sint16 * vx, const Sint16 * vy, int n, i
      */
     return (bezierColor(dst, vx, vy, n, s, ((Uint32) r << 24) | ((Uint32) g << 16) | ((Uint32) b << 8) | (Uint32) a));
 }
+
+/******************************** Missing Graphics Routines ****************/
+
+
+#include "do_arc.h"
+
+typedef struct _gfx_point
+{
+	Sint16 * m_arr_x;
+	Sint16 * m_arr_y;
+} gfx_point;
+
+static void arc_fill(SDL_Surface *bmp, int x,int y, short ang1,short ang2, int r, int color);
+
+
+int filledArcColor(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Sint16 start, Sint16 end, Uint32 color)
+{
+	short ang1 = (start * 256)/360;
+	short ang2 = (end   * 256)/360;
+
+	arc_fill(dst,x,y,ang1,ang2,rad,color);
+	return 0;
+}
+
+int filledArcRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Sint16 start, Sint16 end, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+{
+	return filledArcColor(dst, x, y, rad, start, end, ((Uint32) r << 24) | ((Uint32) g << 16) | ((Uint32) b << 8) | (Uint32) a);
+}
+
+static void draw_point(void *bmp,int x, int y, void * d)
+{
+	fastPixelColorNolock(bmp ,(Sint16)x, (Sint16)y,(Uint32)d);
+}
+
+static void draw_point_with_alpha(void *bmp,int x, int y, void * d)
+{
+	pixelColorNolock(bmp ,(Sint16)x, (Sint16)y,(Uint32)d);
+}
+
+static void compute_arc_total_points(void *bmp,int x, int y, void * d)
+{
+	int * p_total_points = (int*)d;
+	(*p_total_points)++;
+
+}
+// Store each point of arc
+static int compute_arc_points(void *bmp,int x, int y, void * d)
+{
+	gfx_point * p_points = (gfx_point *)d;
+	
+	*(p_points->m_arr_x) = x;
+	(p_points->m_arr_x)++;
+
+	*(p_points->m_arr_y) = y;
+	(p_points->m_arr_y)++;
+	return 0;
+}
+	
+// draw a filled arc (missing in allegro, I do the mine)
+static void arc_fill(SDL_Surface *bmp, int x,int y, short ang1,short ang2, int r, int color)
+{
+	gfx_point points;
+	Sint16 * buffer;
+
+	int total_points = 1;
+		
+	do_arc(NULL, x, y, ang1, ang2, r, &total_points, compute_arc_total_points);
+		
+	if(total_points < 2)
+		return;
+		
+	buffer = calloc(2*total_points,sizeof(Sint16)); 
+
+	points.m_arr_x = buffer;
+	points.m_arr_y = buffer + total_points;
+
+	*(points.m_arr_x) = x;
+	*(points.m_arr_y) = y;
+
+	points.m_arr_x++;
+	points.m_arr_y++;
+
+	do_arc(NULL, x, y, ang1, ang2, r, &points, compute_arc_points);
+
+	points.m_arr_x = buffer;
+	points.m_arr_y = buffer + total_points;
+		
+	filledPolygonColor(bmp,points.m_arr_x,points.m_arr_y,total_points,color);
+		
+	free(buffer);		
+}
+
+static int arc_custom(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 r, Sint16 start, Sint16 end, Uint32 color)
+{
+    Sint16 left, right, top, bottom;
+    int result;
+    Sint16 x1, y1, x2, y2;
+    Uint8 *colorptr;
+
+    /* Check visibility of clipping rectangle */
+    if ((dst->clip_rect.w == 0) || (dst->clip_rect.h == 0))
+	{
+		return(0);
+    }
+
+    /* Sanity check radius  */
+    if (r < 0)
+	{
+		return -1;
+    }
+
+    /* Special case for r=0 - draw a point   */
+    if (r == 0) 
+	{
+		return pixelColor(dst, x, y, color);
+    }
+ 
+    /*
+     * Get arc's circle and clipping boundary and 
+     * test if bounding box of circle is visible 
+     */
+    x2 = x + r;
+    left = dst->clip_rect.x;
+    if (x2 < left)
+	{
+		return 0;
+    }
+
+    x1 = x - r;
+    right = dst->clip_rect.x + dst->clip_rect.w - 1;
+    if (x1 > right)
+	{
+		return 0;
+    }
+
+    y2 = y + r;
+    top = dst->clip_rect.y;
+    if (y2 < top)
+	{
+		return 0;
+    }
+
+    y1 = y - r;
+    bottom = dst->clip_rect.y + dst->clip_rect.h - 1;
+    if (y1 > bottom)
+	{
+		return 0;
+    }  
+
+    /* Draw arc  */
+    result = 0;
+
+    /* Lock surface */
+    if (SDL_MUSTLOCK(dst))
+	{
+		if (SDL_LockSurface(dst) < 0) 
+			return -1;
+	}
+
+    /* Alpha Check  */
+    if ((color & 255) == 255) 
+	{
+		/* No Alpha - direct memory writes  */
+
+		/* Setup color  */
+		colorptr = (Uint8 *) & color;
+		if (SDL_BYTEORDER == SDL_BIG_ENDIAN) 
+		{
+			color = SDL_MapRGBA(dst->format, colorptr[0], colorptr[1], colorptr[2], colorptr[3]);
+		}
+		else
+		{
+			color = SDL_MapRGBA(dst->format, colorptr[3], colorptr[2], colorptr[1], colorptr[0]);
+		}
+		do_arc(dst, x, y, start, end, r, (void*)color,draw_point);
+		
+	} 
+	else
+	{
+	/* Using Alpha - blended pixel blits */
+		do_arc(dst, x, y, start, end, r, (void*)color,draw_point_with_alpha);
+
+    }/* Alpha check */
+
+    /* Unlock surface */
+    if (SDL_MUSTLOCK(dst))
+	{
+		SDL_UnlockSurface(dst);
+    }
+
+    return result;
+}
+
+

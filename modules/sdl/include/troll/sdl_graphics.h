@@ -66,6 +66,9 @@ protected:
 	
 	virtual void DrawRect(const Rect& rect,const Color& color);
 	virtual void DrawRectFill(const Rect& rect,const Color& color);
+
+	virtual void DrawRoundRect(const Rect& rect,const Color& color);
+	virtual void DrawRoundRectFill(const Rect& rect,const Color& color);
 	
 	virtual void DrawEllipse(const Point& pt,short radx,short rady,const Color& color);
 	virtual void DrawEllipseFill(const Point& pt,short radx,short rady,const Color& color);

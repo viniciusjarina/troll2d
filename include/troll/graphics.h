@@ -70,6 +70,9 @@ public:
 	
 	void DrawRect(const Rect& rect,const Color& color);
 	void DrawRectFill(const Rect& rect,const Color& color);
+
+	void DrawRoundRect(const Rect& rect,const Color& color);
+	void DrawRoundRectFill(const Rect& rect,const Color& color);
 	
 	void DrawEllipse(const Point& pt,short radx,short rady,const Color& color);
 	void DrawEllipseFill(const Point& pt,short radx,short rady,const Color& color);

@@ -63,7 +63,7 @@ static void compute_arc_total_points(BITMAP *bmp, int x, int y, int d)
 }
 
 // Store each point of arc
-static void compute_arc_points(BITMAP *bmp, int x, int y, int d)
+static void compute_arc_points(BITMAP *bmp, int x, int y, int  d)
 {
 	int * *p_arr_points = (int * *)d;
 	
@@ -73,7 +73,7 @@ static void compute_arc_points(BITMAP *bmp, int x, int y, int d)
 	(*p_arr_points)++;
 }
 
-// draw a filled arc (missing in allegro, I do the mine)
+// draw a filled arc (missing in allegro, I did the mine)
 
 static void arc_fill(BITMAP *bmp, int x,int y, fixed ang1,fixed ang2, int r, int color)
 {
@@ -97,6 +97,33 @@ static void arc_fill(BITMAP *bmp, int x,int y, fixed ang1,fixed ang2, int r, int
 	polygon(bmp,total_points,points,color);
 	
 	delete [] points;		
+}
+
+static void round_rect(BITMAP * bmp, int x, int y, int w, int h,int r,int color)
+{
+	int total_points = 0;
+	int diameter;
+
+	diameter = 2 * r;
+	
+	do_arc(NULL,0,0,itofix(0),itofix(64),r,(int)&total_points,compute_arc_total_points);
+	do_arc(NULL,0,0,itofix(64),itofix(128),r,(int)&total_points,compute_arc_total_points);
+	do_arc(NULL,0,0,itofix(128),itofix(192),r,(int)&total_points,compute_arc_total_points);
+	do_arc(NULL,0,0,itofix(192),itofix(255),r,(int)&total_points,compute_arc_total_points);
+	
+	if(total_points < 2)
+		return;
+	
+	int * points = new int[2 * total_points];
+	int * point2 = points;
+	
+	
+	do_arc(NULL,x + w - r,y + r,itofix(0),itofix(64),r,(int)&point2,compute_arc_points);
+	do_arc(NULL,x + r,y + r,itofix(64),itofix(128),r,(int)&point2,compute_arc_points);
+	do_arc(NULL,x + r,y + h - r,itofix(128),itofix(192),r,(int)&point2,compute_arc_points);
+	do_arc(NULL,x + w - r,y + h - r,itofix(192),itofix(255),r,(int)&point2,compute_arc_points);
+	
+	polygon(bmp,total_points,points,color);
 }
 
 /***************************************************************************/
@@ -355,4 +382,20 @@ void AllegroGraphics::DrawPolygonFill( const Point * pts,int n,const Color& colo
 void AllegroGraphics::EnableAntiAlias( bool enable )
 {
 	/*Does nothing. allegro does´t support anti-alias*/
+}
+
+void AllegroGraphics::DrawRoundRect(const Rect& rect,const Color& color)
+{
+	if(color.GetAlpha() != Color::alphaOpaque)
+	{
+		DRAW_WITH_ALPHA(round_rect(m_surface, rect.x, rect.y, rect.width, rect.height,10,makecol(color.GetRed(),color.GetGreen(),color.GetBlue())),color.GetAlpha());
+		return;
+	}
+	
+	round_rect(m_surface, rect.x, rect.y, rect.width, rect.height,10,makecol(color.GetRed(),color.GetGreen(),color.GetBlue()));
+}
+
+void AllegroGraphics::DrawRoundRectFill(const Rect& rect,const Color& color)
+{
+
 }

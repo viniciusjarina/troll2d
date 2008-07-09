@@ -52,6 +52,8 @@ enum
 	TEST_CIRCLE_FILL,
 	TEST_RECT,
 	TEST_RECT_FILL,
+	TEST_ROUND_RECT,
+	TEST_ROUND_RECT_FILL,
 	TEST_ELLIPSE,
 	TEST_ELLIPSE_FILL,
 	TEST_ARC,
@@ -147,6 +149,14 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 			g.DrawRectFill(Rect(pt.x , pt.y,size_w,size_h),c);
 			break;
 
+		case TEST_ROUND_RECT:
+			g.DrawRoundRect(Rect(pt.x , pt.y,size_w,size_h),c);
+			break;
+
+		case TEST_ROUND_RECT_FILL:
+			g.DrawRoundRectFill(Rect(pt.x , pt.y,size_w,size_h),c);			
+			break;
+
 		case TEST_ELLIPSE: 
 			g.DrawEllipse(pt,size_w,size_h,c);
 			break;
@@ -198,7 +208,7 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 	Graphics g(buff); // Create Graphics object to draw primitives on the screen
 
 	bool quit = false;
-	int state = TEST_ARC_FILL;
+	int state = TEST_ROUND_RECT;
 	int i;
 	
 	Rect rect;
