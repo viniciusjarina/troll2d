@@ -103,17 +103,17 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 	short size_h = rand_ex(30,rect.GetWidth()/3);
 	short size_w = rand_ex(30,rect.GetHeight()/3);
 
-	static const int arr[] = { 0,90, 180, 270};
+	short ang = rand_ex(0,360);
+	short ang2 = rand_ex(0,360);
 
-	int i  = rand()%4;
-	int i2 = rand()%4;
-	while(i == i2)
+	Point arrPts[] =
 	{
-		i2 = rand()%4;
-	}
-	
-	short ang = arr[i];
-	short ang2 = arr[i2];
+		pt,
+		pt3,
+		pt2,
+		Point(pt.x + size_w,pt2.y - size_h),
+		Point(pt3.x - size_w,pt.y + size_h)
+	};
 
 	switch(state)
 	{
@@ -150,11 +150,11 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 			break;
 
 		case TEST_ROUND_RECT:
-			g.DrawRoundRect(Rect(pt.x , pt.y,size_w,size_h),c);
+			g.DrawRoundRect(Rect(pt.x , pt.y,size_w,size_h),size_h/5,c);
 			break;
 
 		case TEST_ROUND_RECT_FILL:
-			g.DrawRoundRectFill(Rect(pt.x , pt.y,size_w,size_h),c);			
+			g.DrawRoundRectFill(Rect(pt.x , pt.y,size_w,size_h),size_h/5,c);			
 			break;
 
 		case TEST_ELLIPSE: 
@@ -168,9 +168,6 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 			g.DrawArc(pt,size_h,ang,ang2,c);
 			break;
 		case TEST_ARC_FILL: 
-			char s[10];
-			sprintf(s,"%d,%d",ang,ang2);
-			g.DrawText(pt,s,Color::BLACK);
 			g.DrawArcFill(pt,size_h,ang,ang2,c);
 			break;
 
@@ -182,8 +179,13 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 			g.DrawTriangleFill(pt,pt2,pt3,c);
 			break;
 			
-		case TEST_POLYGON: break;
-		case TEST_POLYGON_FILL: break;
+		case TEST_POLYGON:
+			g.DrawPolygon(arrPts,5,c);
+			break;
+
+		case TEST_POLYGON_FILL: 
+			g.DrawPolygonFill(arrPts,5,c);
+			break;
 		case TEST_TEXT: break;
 	}
 
@@ -246,7 +248,7 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 
 		Point pt;
 		MouseInput::GetPosition(pt);
-		srand(pt.x%10);
+		srand(pt.x);
 
 		
 		// UpdateLogic(); // Add the logic o current frame

@@ -71,8 +71,8 @@ namespace Troll
 		virtual void DrawRect(const Rect& rect,const Color& color) = 0;
 	    virtual void DrawRectFill(const Rect& rect,const Color& color) = 0;
 
-		virtual void DrawRoundRect(const Rect& rect,const Color& color) = 0;
-		virtual void DrawRoundRectFill(const Rect& rect,const Color& color) = 0;
+		virtual void DrawRoundRect(const Rect& rect,int rad,const Color& color) = 0;
+		virtual void DrawRoundRectFill(const Rect& rect,int rad,const Color& color) = 0;
 		
 		virtual void DrawEllipse(const Point& pt,short radx,short rady,const Color& color) = 0;
 		virtual void DrawEllipseFill(const Point& pt,short radx,short rady,const Color& color) = 0;

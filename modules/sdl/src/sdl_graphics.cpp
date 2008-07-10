@@ -170,8 +170,8 @@ void SDLGraphics::DrawPolygon( const Point * pts,int n,const Color& color )
 
 	for(int i = 0; i < n; i++)
 	{
-		arr_x[i] = (Sint16)pts[n].x;
-		arr_y[i] = (Sint16)pts[n].y;
+		arr_x[i] = (Sint16)pts[i].x;
+		arr_y[i] = (Sint16)pts[i].y;
 	}
 
 	p_gfx->do_polygonRGBA(m_surface, arr_x, arr_y, n, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
@@ -190,8 +190,8 @@ void SDLGraphics::DrawPolygonFill( const Point * pts,int n,const Color& color )
 	
 	for(int i = 0; i < n; i++)
 	{
-		arr_x[i] = (Sint16)pts[n].x;
-		arr_y[i] = (Sint16)pts[n].y;
+		arr_x[i] = (Sint16)pts[i].x;
+		arr_y[i] = (Sint16)pts[i].y;
 	}
 	
 	filledPolygonRGBA(m_surface, arr_x, arr_y, n, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
@@ -208,10 +208,12 @@ void SDLGraphics::EnableAntiAlias( bool enable )
 		p_gfx = &default_gfx;
 }
 
-void SDLGraphics::DrawRoundRect(const Rect& rect,const Color& color)
+void SDLGraphics::DrawRoundRect(const Rect& rect,int rad,const Color& color)
 {
+	roundRectRGBA(m_surface, rect.x, rect.y, rect.width, rect.height, rad, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
 }
 
-void SDLGraphics::DrawRoundRectFill(const Rect& rect,const Color& color)
+void SDLGraphics::DrawRoundRectFill(const Rect& rect,int rad,const Color& color)
 {
+	filledRoundRectRGBA(m_surface, rect.x, rect.y, rect.width, rect.height, rad, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
 }

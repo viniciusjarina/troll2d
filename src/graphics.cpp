@@ -100,14 +100,14 @@ void Graphics::DrawRectFill( const Rect& rect,const Color& color )
 	m_impl->DrawRectFill(rect,color);
 }
 
-void Graphics::DrawRoundRect(const Rect& rect,const Color& color)
+void Graphics::DrawRoundRect(const Rect& rect,int rad,const Color& color)
 {
-	m_impl->DrawRoundRect(rect,color);
+	m_impl->DrawRoundRect(rect, rad, color);
 }
 
-void Graphics::DrawRoundRectFill(const Rect& rect,const Color& color)
+void Graphics::DrawRoundRectFill(const Rect& rect,int rad,const Color& color)
 {
-	m_impl->DrawRoundRectFill(rect,color);
+	m_impl->DrawRoundRectFill(rect, rad, color);
 }
 
 void Graphics::DrawEllipse(const Point& pt,short radx,short rady,const Color& color)

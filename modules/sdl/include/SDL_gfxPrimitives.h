@@ -68,6 +68,9 @@ extern "C" {
     DLLINTERFACE int rectangleRGBA(SDL_Surface * dst, Sint16 x1, Sint16 y1,
 				   Sint16 x2, Sint16 y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
+	DLLINTERFACE int filledRoundRectRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 w, Sint16 h, Sint16 end, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+	DLLINTERFACE int roundRectRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 w, Sint16 h, Sint16 rad, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+
 /* Filled rectangle (Box) */
 
     DLLINTERFACE int boxColor(SDL_Surface * dst, Sint16 x1, Sint16 y1, Sint16 x2, Sint16 y2, Uint32 color);
