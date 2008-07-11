@@ -37,17 +37,40 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#include "troll.h"
+#include "troll/surface.h"
 
 #include "troll/graphics_factory.h"
 #include "troll/graphics_impl.h"
 
 #include "troll/interface.h"
 
+using Troll::Surface;
 
-using namespace Troll;
+using Troll::GraphicsImpl;
+using Troll::GraphicsFactory;
 
 GraphicsImpl * GraphicsFactory::CreateGraphics(Surface & surface)
 {
 	return Troll_AllocGraphics(surface.m_impl);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

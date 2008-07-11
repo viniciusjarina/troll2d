@@ -44,6 +44,11 @@
 namespace Troll
 {
 
+class Color;
+
+class Point;
+class Rect;
+
 class GraphicsImpl;
 class Surface;
 

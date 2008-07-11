@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O1 /I "../../../include" /I "../../../modules/allegro/include/" /I "../../../modules/sdl/include/" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "ALLEGRO_STATICLINK" /FR /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O1 /I "../../../include" /I "../../../modules/allegro/include/" /I "../../../modules/sdl/include/" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x416 /d "NDEBUG"
@@ -92,11 +92,11 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\..\..\test\test_minimal.cpp
+SOURCE=..\..\..\test\msw\test.rc
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\test\msw\test.rc
+SOURCE=..\..\..\test\test_minimal.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"

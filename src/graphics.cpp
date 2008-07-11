@@ -38,7 +38,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "troll.h"
 
 #include "troll/graphics.h"
 #include "troll/graphics_impl.h"
@@ -46,7 +45,13 @@
 #include "troll/graphics_factory.h"
 
 
-using namespace Troll;
+using Troll::Color;
+
+using Troll::Point;
+using Troll::Rect;
+
+using Troll::Surface;
+using Troll::Graphics;
 
 Graphics::Graphics( Surface & surface )
 {

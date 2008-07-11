@@ -43,12 +43,15 @@
 
 #define TROLL_VERSION_MAJOR	0
 #define TROLL_VERSION_MINOR	0
-#define TROLL_VERSION_MICRO	1
+#define TROLL_VERSION_MICRO	2
 
 #include "troll/defs.h"
 
+#include "troll/size.h"
+#include "troll/point.h"
+#include "troll/rect.h"
+
 #include "troll/color.h"
-#include "troll/basic_geo.h"
 
 #include "troll/system.h"
 #include "troll/screen.h"

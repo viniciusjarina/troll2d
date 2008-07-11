@@ -48,7 +48,20 @@
 #include "troll/allegro_image.h"
 #include "troll/allegro_mouseinput.h"
 
-using namespace Troll;
+using Troll::SystemImpl;
+using Troll::KeyInputImpl;
+using Troll::SurfaceImpl;
+using Troll::GraphicsImpl;
+using Troll::ImageImpl;
+using Troll::MouseInputImpl;
+
+using Troll::AllegroSystem;
+using Troll::AllegroKeyInput;
+using Troll::AllegroSurface;
+using Troll::AllegroGraphics;
+using Troll::AllegroImage;
+using Troll::AllegroMouseInput;
+
 
 extern "C" SystemImpl * Troll_AllocSystem()
 {

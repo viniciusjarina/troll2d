@@ -38,58 +38,20 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// SDLScreen.h: interface for the SDLScreen class.
-//
-//////////////////////////////////////////////////////////////////////
 
-#if !defined(__TROLL2D_SDL_SCREEN_H__)
-#define __TROLL2D_SDL_SCREEN_H__
+#ifndef __TROLL_SDL_SCREEN_H__
+#define __TROLL_SDL_SCREEN_H__
 
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
 
 #include "troll/screen_impl.h"
 #include "troll/surface.h"
 
+#include "troll/sdl_screen_helper.h"
+
 namespace Troll
 {
 
-class SDLSurface;
 class SDLScreen;
-
-class SDLScreenHelper
-{
-	SDL_Surface * m_nativeSurface;
-	Surface * m_screenSurface;
-	static int m_screen_bpp;
-	Uint32 m_nFrameTicks; // Total of time to frame (to keep FPS fixed)
-	
-	Uint32 start_frame_tick;
-	Uint32 end_frame_tick;
-	int m_nFPS;
-
-public:
-	static SDLScreen * SetupScreen(int w, int h, int bpp, bool fullscreen,int nFPS);
-
-	Surface & GetSurface() const
-	{
-		return *m_screenSurface;
-	}
-	
-	void FlipScreen();
-	bool SkipFrame();
-	void StartFrame();
-
-	bool CreateScreenSurface(int w, int h,int bpp,bool fullscreen,int nFPS);
-
-	inline int GetFPS() const { return m_nFPS; }
-	inline static int GetScreenBPP() { return m_screen_bpp; }
-	
-	
-	SDLScreenHelper();
-	virtual ~SDLScreenHelper();
-};
 
 class SDLScreen : public ScreenImpl
 {
@@ -113,4 +75,4 @@ class SDLScreen : public ScreenImpl
 	
 }// Troll
 
-#endif // !defined(__TROLL2D_SDL_SCREEN_H__AFX_SDLSCREEN_H__9D690549_482F_4783_852A_E2EA601EF446__INCLUDED_)
+#endif // __TROLL_SDL_SCREEN_H__

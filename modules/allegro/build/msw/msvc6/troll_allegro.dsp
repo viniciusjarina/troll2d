@@ -93,6 +93,10 @@ SOURCE=..\..\..\src\allegro_image.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\src\allegro_image_surface_helper.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\allegro_interface.cpp
 # End Source File
 # Begin Source File
@@ -106,6 +110,10 @@ SOURCE=..\..\..\src\allegro_mouseinput.cpp
 # Begin Source File
 
 SOURCE=..\..\..\src\allegro_screen.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\allegro_screen_helper.cpp
 # End Source File
 # Begin Source File
 
@@ -124,6 +132,10 @@ SOURCE=..\..\..\src\allegro_surface.cpp
 
 SOURCE=..\..\..\src\allegro_system.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\gfx_ex.cpp
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
@@ -135,6 +147,10 @@ SOURCE=..\..\..\include\troll\allegro_graphics.h
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\allegro_image.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\allegro_image_surface_helper.h
 # End Source File
 # Begin Source File
 
@@ -150,11 +166,19 @@ SOURCE=..\..\..\include\troll\allegro_screen.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\include\troll\allegro_screen_helper.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\include\troll\allegro_surface.h
 # End Source File
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\allegro_system.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\gfx_ex.h
 # End Source File
 # End Group
 # End Target

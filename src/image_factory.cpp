@@ -43,7 +43,8 @@
 
 #include "troll/interface.h"
 
-using namespace Troll;
+using Troll::ImageImpl;
+using Troll::ImageFactory;
 
 ImageImpl * ImageFactory::CreateImage()
 {

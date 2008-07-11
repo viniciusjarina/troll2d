@@ -40,12 +40,12 @@
 
 #include <SDL.h>
 
-#include "troll/basic_geo.h"
+#include "troll/point.h"
 
 #include "troll/sdl_mouseinput.h"
 
-using namespace Troll;
-
+using Troll::Point;
+using Troll::SDLMouseInput;
 
 
 SDLMouseInput::SDLMouseInput():

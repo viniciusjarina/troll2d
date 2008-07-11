@@ -38,8 +38,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __INTERFACE_H__
-#define __INTERFACE_H__
+#ifndef __TROLL_INTERFACE_H__
+#define __TROLL_INTERFACE_H__
 
 namespace Troll
 {

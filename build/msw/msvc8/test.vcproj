@@ -462,7 +462,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\..\test\test_mouse.cpp"
+				RelativePath="..\..\..\test\test_alpha.cpp"
 				>
 			</File>
 		</Filter>

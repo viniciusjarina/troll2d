@@ -38,14 +38,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// Surface.h: interface for the Surface class.
-//
-//////////////////////////////////////////////////////////////////////
 
-#if !defined(__TROLL_SURFACE_H__)
+#ifndef __TROLL_SURFACE_H__
 #define __TROLL_SURFACE_H__
 
-#include "troll/basic_geo.h"
+#include "troll/size.h"
+#include "troll/point.h"
+#include "troll/rect.h"
 #include "troll/color.h"
 
 
@@ -91,4 +90,4 @@ namespace Troll
 	};
 	
 }
-#endif // !defined(__TROLL_SURFACE_IMPL_H__)
+#endif // __TROLL_SURFACE_H__

@@ -40,7 +40,7 @@
 
 #include "troll/graphics_impl.h"
 
-using namespace Troll;
+using Troll::GraphicsImpl;
 
 GraphicsImpl::GraphicsImpl()
 {
@@ -49,5 +49,6 @@ GraphicsImpl::GraphicsImpl()
 GraphicsImpl::~GraphicsImpl()
 {
 }
+
 
 

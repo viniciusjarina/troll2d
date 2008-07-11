@@ -344,6 +344,10 @@
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 			>
 			<File
+				RelativePath="..\..\..\src\do_arc.c"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\SDL_gfxPrimitives.c"
 				>
 				<FileConfiguration
@@ -382,6 +386,10 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\src\SDL_gfxPrimitives_ex.c"
+				>
 			</File>
 			<File
 				RelativePath="..\..\..\src\sdl_graphics.cpp"
@@ -462,6 +470,10 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\src\sdl_image_surface_helper.cpp"
+				>
 			</File>
 			<File
 				RelativePath="..\..\..\src\sdl_input.cpp"
@@ -588,6 +600,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\..\src\sdl_screen_helper.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\sdl_surface.cpp"
 				>
 				<FileConfiguration
@@ -673,7 +689,19 @@
 			Filter="h;hpp;hxx;hm;inl"
 			>
 			<File
+				RelativePath="..\..\..\include\do_arc.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\SDL_gfxPrimitives.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\SDL_gfxPrimitives_ex.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\SDL_gfxPrimitives_font.h"
 				>
 			</File>
 			<File
@@ -682,6 +710,10 @@
 			</File>
 			<File
 				RelativePath="..\..\..\include\troll\sdl_image.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\sdl_image_surface_helper.h"
 				>
 			</File>
 			<File
@@ -694,6 +726,10 @@
 			</File>
 			<File
 				RelativePath="..\..\..\include\troll\sdl_screen.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\sdl_screen_helper.h"
 				>
 			</File>
 			<File

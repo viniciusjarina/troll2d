@@ -38,8 +38,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __SDL_TROLL2D_MOUSE_INPUT__
-#define __SDL_TROLL2D_MOUSE_INPUT__
+#ifndef __SDL_TROLL_MOUSE_INPUT_H__
+#define __SDL_TROLL_MOUSE_INPUT_H__
 
 #include "troll/mouse_input_impl.h"
 
@@ -69,4 +69,4 @@ public:
 
 }
 
-#endif//__SDL_TROLL2D_MOUSE_INPUT__
+#endif//__SDL_TROLL_MOUSE_INPUT_H__

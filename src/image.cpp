@@ -44,7 +44,10 @@
 
 #include "troll/image_factory.h"
 
-using namespace Troll;
+using Troll::Image;
+using Troll::ImageFactory;
+
+using Troll::Surface;
 
 Image::Image()
 {
@@ -72,4 +75,5 @@ bool Image::LoadImage( const char * sImageFile )
 {
 	return m_impl->LoadImage(sImageFile);
 }
+
 

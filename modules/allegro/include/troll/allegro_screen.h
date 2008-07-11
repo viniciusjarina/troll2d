@@ -38,60 +38,19 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// AllegroScreen.h: interface for the AllegroScreen class.
-//
-//////////////////////////////////////////////////////////////////////
 
-#if !defined(__TROLL2D_ALLEGRO_SCREEN_H__)
-#define __TROLL2D_ALLEGRO_SCREEN_H__
-
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
+#ifndef __TROLL_ALLEGRO_SCREEN_H__
+#define __TROLL_ALLEGRO_SCREEN_H__
 
 #include "troll/screen_impl.h"
-#include "troll/surface.h"
+
+#include "troll/allegro_screen_helper.h"
+
 
 namespace Troll
 {
 
-
-class AllegroSurface;
-
-class AllegroScreenHelper
-{
-	BITMAP * m_nativeSurface;
-	Surface * m_screenSurface;
-	int		  m_nFPS;
-	int old_ticks;
-
-	bool m_fShowCursor;
-	
-public:
-
-	AllegroScreenHelper();
-	virtual ~AllegroScreenHelper();
-	
-	inline Surface & GetSurface() const
-	{
-		return *m_screenSurface;
-	}
-
-	inline int GetFPS() const
-	{
-		return m_nFPS;
-	}
-
-	inline void ShowCursor(bool show)
-	{
-		m_fShowCursor = show;
-	}
-
-	void FlipScreen();
-	void StartFrame();
-	bool SkipFrame();
-	void CreateScreenSurface(int w, int h, int nFPS);
-};
+class Surface;
 
 class AllegroScreen : public ScreenImpl
 {

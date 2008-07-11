@@ -40,11 +40,13 @@
 
 #include <allegro.h>
 
-#include "troll/basic_geo.h"
+#include "troll/point.h"
 
 #include "troll/allegro_mouseinput.h"
 
-using namespace Troll;
+using Troll::Point;
+
+using Troll::AllegroMouseInput;
 
 
 #define ALLEGRO_BUTTON(b) (1<<(b))

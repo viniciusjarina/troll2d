@@ -43,6 +43,8 @@
 
 #include "troll/graphics_impl.h"
 
+struct BITMAP;
+
 namespace Troll
 {
 
@@ -53,7 +55,7 @@ public:
 	
 protected:
 
-	void EnableAntiAlias(bool enable);
+	virtual void EnableAntiAlias(bool enable);
 
 	virtual void DrawPixel(const Point& pt,const Color & color);
 	virtual void DrawLine(const Point& ptStart,const Point& ptEnd,const Color & color);

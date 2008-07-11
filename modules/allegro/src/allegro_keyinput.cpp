@@ -43,7 +43,9 @@
 #include "troll/key_input.h"
 #include "troll/allegro_keyinput.h"
 
-using namespace Troll;
+using Troll::Key;
+using Troll::AllegroKeyInput;
+
 
 static char keys_down[KEY_MAX];
 static char keys_released[KEY_MAX];
@@ -51,10 +53,10 @@ static char keys_pressed[KEY_MAX];
 
 static int MapTroll2Allegro(Key k)
 {
-	if(k >= TOTAL_KEYS)
+	if(k >= Troll::TOTAL_KEYS)
 		return 0;
 
-	static const unsigned char keys [TOTAL_KEYS] =
+	static const unsigned char keys [Troll::TOTAL_KEYS] =
 	{
 		0,      // 
 		KEY_BACKSPACE,// 	BACKSPACE	

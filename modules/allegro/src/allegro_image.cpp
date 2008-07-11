@@ -45,38 +45,18 @@
 #include "troll/allegro_surface.h"
 #include "troll/allegro_image.h"
 
+using Troll::Surface;
 
-using namespace Troll;
-// internal class to create a Surface object passing BITMAP * as parameter
-class AllegroImageSurfaceImpl : public AllegroSurface
-{
-public:
-	AllegroImageSurfaceImpl(BITMAP * bmp):
-	AllegroSurface(bmp)
-	{
-	}
-};
-
-class AllegroImageSurface : public Surface
-{
-public:
-	AllegroImageSurface(AllegroImageSurfaceImpl * impl):
-	Surface(impl)  
-	{
-	}
-};
+using Troll::AllegroImage;
 
 
-/********** AllegroImage class **************/
-
+// AllegroImage class
 AllegroImage::AllegroImage()
 {
-	
 }
 
 AllegroImage::~AllegroImage()
 {
-	
 }
 
 bool AllegroImage::LoadImage( const char * sImageFile )
@@ -88,29 +68,3 @@ const Surface & AllegroImage::GetSurface() const
 {
 	return m_imageHelper.GetSurface();	
 }
-
-/*******************************************************************************/
-AllegroImageSurfaceHelper::AllegroImageSurfaceHelper():
-m_imageSurface(NULL)
-{
-}
-
-AllegroImageSurfaceHelper::~AllegroImageSurfaceHelper()
-{
-	if(m_imageSurface)
-		delete m_imageSurface;
-}
-
-bool AllegroImageSurfaceHelper::LoadImage( const char * sImageFile )
-{
-	PALETTE palette;
-	BITMAP * bmp_image = load_bitmap(sImageFile, palette);
-	
-	if (!bmp_image)
-		return false;
-	
-	AllegroImageSurfaceImpl * surfaceImpl = new AllegroImageSurfaceImpl(bmp_image);
-	m_imageSurface = new AllegroImageSurface(surfaceImpl);
-	return true;
-}	
-

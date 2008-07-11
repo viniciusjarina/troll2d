@@ -43,8 +43,8 @@
 
 namespace Troll
 {
-	
 	class GraphicsImpl;
+	class Surface;
 	
 	class GraphicsFactory
 	{
@@ -53,7 +53,6 @@ namespace Troll
 		static GraphicsImpl * CreateGraphics(Surface & surface);
 		
 	};
-	
 }
 
 #endif // __TROLL_SURFACE_FACTORY_H__

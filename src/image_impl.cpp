@@ -40,7 +40,7 @@
 
 #include "troll/image_impl.h"
 
-using namespace Troll;
+using Troll::ImageImpl;
 
 ImageImpl::ImageImpl()
 {

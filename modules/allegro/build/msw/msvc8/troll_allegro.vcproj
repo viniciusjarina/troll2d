@@ -217,6 +217,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\..\src\allegro_image_surface_helper.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\allegro_interface.cpp"
 				>
 				<FileConfiguration
@@ -287,6 +291,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\..\src\allegro_screen_helper.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\allegro_surface.cpp"
 				>
 				<FileConfiguration
@@ -330,6 +338,10 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath="..\..\..\src\gfx_ex.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -341,6 +353,10 @@
 			</File>
 			<File
 				RelativePath="..\..\..\include\troll\allegro_image.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\allegro_image_surface_helper.h"
 				>
 			</File>
 			<File
@@ -356,11 +372,19 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\include\troll\allegro_screen_helper.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\troll\allegro_surface.h"
 				>
 			</File>
 			<File
 				RelativePath="..\..\..\include\troll\allegro_system.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\gfx_ex.h"
 				>
 			</File>
 		</Filter>

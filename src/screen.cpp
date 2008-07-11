@@ -43,7 +43,10 @@
 #include "troll/screen.h"
 #include "troll/screen_impl.h"
 
-using namespace Troll;
+using Troll::Surface;
+
+using Troll::ScreenImpl;
+using Troll::Screen;
 
 
 ScreenImpl * Screen::m_singleton = 0; // static member initialization

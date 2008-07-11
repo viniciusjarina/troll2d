@@ -38,20 +38,25 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __GRAPHICS_IMPL_H__
-#define __GRAPHICS_IMPL_H__
+#ifndef __TROLL_GRAPHICS_IMPL_H__
+#define __TROLL_GRAPHICS_IMPL_H__
 
-#include "troll/basic_geo.h"
+
 #include "troll/color.h"
 
 namespace Troll
 {
-	class SurfaceImpl;
+	class Point;
+	class Rect;
+
+	class Color;
 
 	class GraphicsImpl
 	{
-	public:
+	protected:
 		GraphicsImpl();
+
+	public:
 		virtual ~GraphicsImpl();
 
 	public:
@@ -91,4 +96,4 @@ namespace Troll
 	};
 }
 
-#endif // __GRAPHICS_IMPL_H__
+#endif // __TROLL_GRAPHICS_IMPL_H__

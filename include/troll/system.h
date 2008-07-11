@@ -54,9 +54,10 @@ private:
 
 	static SystemImpl * m_singleton;
 public:
-	static bool Init();    // initialize the system
+	static bool Init();    // Initialize the system
 	static void Cleanup(); // Cleanup
 
+	// Create the screen with width and height
 	static bool SetupScreen(int nWidth = -1,int nHeight = -1,bool fFullScreen = false,ColorDepth depth = depthAuto,int fps = 60); // create and setup new screen
 	static void Sleep(int mili); // Sleep (in miliseconds)
 

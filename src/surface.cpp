@@ -43,7 +43,15 @@
 #include "troll/surface_factory.h"
 #include "troll/surface_impl.h"
 
-using namespace Troll;
+using Troll::Color;
+using Troll::ColorDepth;
+
+using Troll::Point;
+using Troll::Rect;
+
+using Troll::SurfaceImpl;
+using Troll::SurfaceFactory;
+using Troll::Surface;
 
 Surface::Surface()
 {

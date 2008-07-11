@@ -85,10 +85,6 @@ LIB32=link.exe -lib
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\..\..\src\basic_geo.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\..\src\color.cpp
 # End Source File
 # Begin Source File
@@ -133,6 +129,10 @@ SOURCE=..\..\..\src\mouse_input_factory.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\src\rect.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\screen.cpp
 # End Source File
 # Begin Source File
@@ -163,10 +163,6 @@ SOURCE=..\..\..\src\system_impl.cpp
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
-# Begin Source File
-
-SOURCE=..\..\..\include\troll\basic_geo.h
-# End Source File
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\color.h
@@ -233,6 +229,14 @@ SOURCE=..\..\..\include\troll\mouse_input_impl.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\include\troll\point.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\rect.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\include\troll\screen.h
 # End Source File
 # Begin Source File
@@ -242,6 +246,10 @@ SOURCE=..\..\..\include\troll\screen_factory.h
 # Begin Source File
 
 SOURCE=..\..\..\include\troll\screen_impl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\size.h
 # End Source File
 # Begin Source File
 

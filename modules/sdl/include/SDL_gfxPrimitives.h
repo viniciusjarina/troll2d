@@ -68,8 +68,6 @@ extern "C" {
     DLLINTERFACE int rectangleRGBA(SDL_Surface * dst, Sint16 x1, Sint16 y1,
 				   Sint16 x2, Sint16 y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
-	DLLINTERFACE int filledRoundRectRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 w, Sint16 h, Sint16 end, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-	DLLINTERFACE int roundRectRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 w, Sint16 h, Sint16 rad, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
 /* Filled rectangle (Box) */
 
@@ -97,9 +95,6 @@ extern "C" {
 
     DLLINTERFACE int arcColor(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 r, Sint16 start, Sint16 end, Uint32 color);
     DLLINTERFACE int arcRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Sint16 start, Sint16 end, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-
-	DLLINTERFACE int filledArcColor(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Sint16 start, Sint16 end, Uint32 color);
-	DLLINTERFACE int filledArcRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Sint16 start, Sint16 end, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
 /* AA Circle */
 

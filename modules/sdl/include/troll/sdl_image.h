@@ -79,4 +79,4 @@ public:
 
 }
 
-#endif // __TROLL_ALLEGRO_IMAGE_H__
+#endif // __TROLL_SDL_IMAGE_H__

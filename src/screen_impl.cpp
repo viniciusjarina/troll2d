@@ -38,16 +38,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// ScreenImpl.cpp: implementation of the Screen class.
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "troll/screen_impl.h"
 
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-using namespace Troll;
+using Troll::ScreenImpl;
 
 ScreenImpl::ScreenImpl()
 {
@@ -58,3 +52,4 @@ ScreenImpl::~ScreenImpl()
 {
 
 }
+

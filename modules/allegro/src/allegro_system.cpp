@@ -43,7 +43,10 @@
 #include "troll/allegro_screen.h"
 #include "troll/allegro_system.h"
 
-using namespace Troll;
+using Troll::ColorDepth;
+
+using Troll::AllegroSystem;
+
 
 extern volatile int ticks;
 extern volatile int game_time;

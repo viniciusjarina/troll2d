@@ -46,7 +46,10 @@
 
 #include "troll/interface.h"
 
-using namespace Troll;
+using Troll::ColorDepth;
+
+using Troll::SystemImpl;
+using Troll::System;
 
 SystemImpl* System::m_singleton = 0;
 
@@ -57,10 +60,9 @@ System::System()
 
 bool System::Init()
 {
-
 	m_singleton = Troll_AllocSystem();
 
-	KeyInput::Init();
+	KeyInput::Init(); // Initialize KeyInput
 	MouseInput::Init();
 
 	return true;

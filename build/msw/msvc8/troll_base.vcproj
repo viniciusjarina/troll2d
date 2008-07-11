@@ -346,46 +346,6 @@
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 			>
 			<File
-				RelativePath="..\..\..\src\basic_geo.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Pocket PC 2003 (ARMV4)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Pocket PC 2003 (ARMV4)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="..\..\..\src\color.cpp"
 				>
 				<FileConfiguration
@@ -718,6 +678,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\rect.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\screen.cpp"
 				>
 				<FileConfiguration
@@ -1003,10 +967,6 @@
 			Filter="h;hpp;hxx;hm;inl"
 			>
 			<File
-				RelativePath="..\..\..\include\troll\basic_geo.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\include\troll\color.h"
 				>
 			</File>
@@ -1043,11 +1003,39 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\include\troll\key.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\troll\key_input.h"
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\include\troll\key_input_factory.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\troll\key_input_impl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\mouse_input.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\mouse_input_factory.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\mouse_input_impl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\point.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\rect.h"
 				>
 			</File>
 			<File
@@ -1060,6 +1048,10 @@
 			</File>
 			<File
 				RelativePath="..\..\..\include\troll\screen_impl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\troll\size.h"
 				>
 			</File>
 			<File

@@ -210,7 +210,7 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 	Graphics g(buff); // Create Graphics object to draw primitives on the screen
 
 	bool quit = false;
-	int state = TEST_ROUND_RECT;
+	int state = TEST_PIXEL;
 	int i;
 	
 	Rect rect;
@@ -262,14 +262,14 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 	
 			g.DrawRect(rect,Color::DARKGRAY);
 
-			for(i = 0; i < 10; i ++ )
+			for(i = 0; i < 40; i ++ )
 				DrawPrimitive(g,state,rect);
 
 			rect.y += rect.height;
 
 
 			g.DrawRect(rect,Color::DARKGRAY);
-			for(i = 0; i < 10; i ++ )
+			for(i = 0; i < 40; i ++ )
 				DrawPrimitiveWithAlpha(g,state,rect);
 
 			rect.y = 0;
@@ -281,7 +281,7 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 			g.DrawRect(rect,Color::DARKGRAY);
 			buff.SetClip(rectClip);
 			
-			for(i = 0; i < 10; i ++ )
+			for(i = 0; i < 40; i ++ )
 				DrawPrimitive(g,state,rect);
 			
 			rect.y += rect.height;
@@ -292,7 +292,7 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 			g.DrawRect(rect,Color::DARKGRAY);
 			buff.SetClip(rectClip);
 
-			for(i = 0; i < 10; i ++ )
+			for(i = 0; i < 40; i ++ )
 				DrawPrimitiveWithAlpha(g,state,rect);
 		
 			buff.ResetClip();

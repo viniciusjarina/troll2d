@@ -44,7 +44,9 @@
 #include "troll/interface.h"
 
 
-using namespace Troll;
+using Troll::KeyInputImpl;
+using Troll::KeyInputFactory;
+
 
 KeyInputImpl * KeyInputFactory::CreateKeyInput()
 {

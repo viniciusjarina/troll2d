@@ -42,30 +42,13 @@
 #define __TROLL_ALLEGRO_IMAGE_H__
 
 #include "troll/image_impl.h"
+#include "troll/allegro_image_surface_helper.h"
 
 namespace Troll
 {
 
 class Surface;
 
-// Helper class to provite Surface& object from a image
-class AllegroImageSurfaceHelper
-{
-	Surface * m_imageSurface;
-
-public:
-	AllegroImageSurfaceHelper();
-	~AllegroImageSurfaceHelper();
-
-
-	bool LoadImage(const char * sImageFile);
-
-	const Surface & GetSurface() const
-	{
-		return *m_imageSurface;
-	}
-
-};
 
 class AllegroImage : public ImageImpl
 {

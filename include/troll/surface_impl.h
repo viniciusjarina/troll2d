@@ -45,8 +45,11 @@
 #if !defined(__TROLL_SURFACE_IMPL_H__)
 #define __TROLL_SURFACE_IMPL_H__
 
-#include "troll/basic_geo.h"
 #include "troll/color.h"
+
+#include "troll/size.h"
+#include "troll/point.h"
+#include "troll/rect.h"
 
 
 namespace Troll

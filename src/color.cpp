@@ -41,7 +41,8 @@
 #include "troll/defs.h"
 #include "troll/color.h"
 
-using namespace Troll;
+using Troll::Color;
+using Troll::ColorComponent;
 
 Color::Color():
 m_red(0),
@@ -152,7 +153,8 @@ void Color::SetColor(ColorComponent red,ColorComponent green,ColorComponent blue
 }
 	
 void Color::GetHLS(ColorComponent & hue,ColorComponent & luminance,ColorComponent & saturation) const
-{	// TODO : Implement GetHLS using only integers
+{	
+	// TODO : Implement GetHLS using only integers
     ColorComponent minval = min(m_red, min(m_green, m_blue));
     ColorComponent maxval = max(m_red, max(m_green, m_blue));
 	
@@ -211,7 +213,8 @@ ColorComponent Color::HueToRGB(float rm1, float rm2, float rh)
 }
 
 void Color::SetHLS(ColorComponent hue,ColorComponent luminance,ColorComponent saturation)
-{	// TODO: Implement using only integer...
+{	
+	// TODO: Implement using only integer...
 	if (saturation == 0)
 	{
 		m_red = m_green = m_blue = luminance;
@@ -362,3 +365,4 @@ Color const Color::PINK		= Color(255,0,255,255);
 Color const Color::DARKORANGE = Color(192,88,0,255);
 Color const Color::ORANGE	= Color(255,128,0,255);
 Color const Color::INVISIBLE = Color(255,0,255,0);
+

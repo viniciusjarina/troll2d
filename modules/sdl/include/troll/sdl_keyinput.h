@@ -38,8 +38,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __SDL_TROLL2D_KEYINPUT__
-#define __SDL_TROLL2D_KEYINPUT__
+#ifndef __SDL_TROLL_KEYINPUT_H__
+#define __SDL_TROLL_KEYINPUT_H__
 
 #include "troll/key_input_impl.h"
 
@@ -61,4 +61,4 @@ public:
 	
 }
 
-#endif//__SDL_TROLL2D_KEYINPUT__
+#endif//__SDL_TROLL_KEYINPUT_H__

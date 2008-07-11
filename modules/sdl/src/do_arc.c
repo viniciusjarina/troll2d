@@ -215,3 +215,5 @@ void do_arc(void * bmp, short x, short y,short start,short end, int r, void * d,
 	if ((px != sx) || (py != sy) || (sq == qe))
 		proc(bmp, x+px, y+py, d);
 }
+
+

@@ -49,8 +49,9 @@ class Surface;
 
 class ImageImpl
 {
-public:
+protected:
 	ImageImpl();
+public:
 	virtual ~ImageImpl();
 
 public:

@@ -44,7 +44,8 @@
 #include "troll/interface.h"
 
 
-using namespace Troll;
+using Troll::MouseInputImpl;
+using Troll::MouseInputFactory;
 
 MouseInputImpl * MouseInputFactory::CreateMouseInput()
 {

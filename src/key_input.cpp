@@ -44,7 +44,10 @@
 
 #include "troll/key_input_factory.h"
 
-using namespace Troll;
+using Troll::KeyInput;
+using Troll::KeyInputImpl;
+
+using Troll::Key;
 
 KeyInputImpl * KeyInput::m_singleton = 0; // static member initialization
 

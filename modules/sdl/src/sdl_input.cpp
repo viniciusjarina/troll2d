@@ -44,7 +44,9 @@
 #include "troll/key_input.h"
 #include "troll/sdl_keyinput.h"
 
-using namespace Troll;
+using Troll::Key;
+using Troll::SDLKeyInput;
+
 // Map correct keys for each platform
 #if defined(_WIN32_WCE) // In Windows CE misteriosly the Key Up is mapped to SDLK_KP7
 	#define TROLL_SDL_UP_KEY    SDLK_KP7 
@@ -58,10 +60,10 @@ static Uint8 keys_pressed[SDLK_LAST];
 
 static SDLKey MapTroll2SDL(Key k)
 {
-	if(k >= TOTAL_KEYS)
+	if(k >= Troll::TOTAL_KEYS)
 		return SDLK_UNKNOWN;
 
-	static const SDLKey keys [TOTAL_KEYS] =
+	static const SDLKey keys [Troll::TOTAL_KEYS] =
 	{
 		SDLK_UNKNOWN,      // 
 		SDLK_BACKSPACE,// 	BACKSPACE	
@@ -260,5 +262,3 @@ bool SDLKeyInput::IsKeyPressed(Key key) const
 	
 	return keys_pressed[sdl_key] != 0;
 }
-
-

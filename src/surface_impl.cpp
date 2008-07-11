@@ -38,16 +38,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// SurfaceImpl.cpp: implementation of the Surface class.
-//
-//////////////////////////////////////////////////////////////////////
-#include "troll/color.h"
+
 #include "troll/surface_impl.h"
 
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-using namespace Troll;
+using Troll::SurfaceImpl;
 
 SurfaceImpl::SurfaceImpl()
 {
@@ -58,3 +52,4 @@ SurfaceImpl::~SurfaceImpl()
 {
 
 }
+

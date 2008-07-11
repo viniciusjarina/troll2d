@@ -42,7 +42,7 @@
 
 #include "troll/surface.h"
 #include "troll/sdl_surface.h"
-#include "troll/basic_geo.h"
+
 #include "troll/sdl_system.h"
 
 using namespace Troll;
@@ -203,3 +203,4 @@ void SDLSurface::DrawAlpha( const SurfaceImpl & sprite,const Point& ptDest /*= P
 
 	SDL_BlitSurface(source,&rect1,dest,&rect2);
 }
+

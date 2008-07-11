@@ -41,15 +41,19 @@
 #include <SDL.h>
 
 #include "SDL_gfxPrimitives.h"
+#include "SDL_gfxPrimitives_ex.h"
 
-#include "troll.h"
-
-#include "troll/graphics.h"
 
 #include "troll/sdl_surface.h"
 #include "troll/sdl_graphics.h"
 
-using namespace Troll;
+using Troll::Color;
+
+using Troll::Point;
+using Troll::Rect;
+
+using Troll::SDLSurface;
+using Troll::SDLGraphics;
 
 struct GRAPHICS_VTABLE // table of functions ptr to switch Anti-alias on/off
 {
@@ -137,12 +141,12 @@ void SDLGraphics::DrawEllipseFill(const Point& pt,short radx,short rady,const Co
 
 void SDLGraphics::DrawArc(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
 {
-	arcRGBA(m_surface, pt.x, pt.y, rad,start_angle,end_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	arcRGBAEx(m_surface, pt.x, pt.y, rad,start_angle,end_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawArcFill(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
 {
-	filledArcRGBA(m_surface, pt.x, pt.y, rad,start_angle,end_angle,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	filledArcRGBAEx(m_surface, pt.x, pt.y, rad,start_angle,end_angle,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawText(const Point& pt,const char * text,const Color& color)
@@ -217,3 +221,4 @@ void SDLGraphics::DrawRoundRectFill(const Rect& rect,int rad,const Color& color)
 {
 	filledRoundRectRGBA(m_surface, rect.x, rect.y, rect.width, rect.height, rad, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
 }
+

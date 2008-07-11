@@ -47,7 +47,20 @@
 #include "troll/sdl_graphics.h"
 #include "troll/sdl_image.h"
 
-using namespace Troll;
+using Troll::SystemImpl;
+using Troll::KeyInputImpl;
+using Troll::MouseInputImpl;
+using Troll::SurfaceImpl;
+using Troll::GraphicsImpl;
+using Troll::ImageImpl;
+
+using Troll::SDLSystem;
+using Troll::SDLSurface;
+using Troll::SDLKeyInput;
+using Troll::SDLMouseInput;
+using Troll::SDLGraphics;
+using Troll::GraphicsImpl;
+using Troll::SDLImage;
 
 extern "C" SystemImpl * Troll_AllocSystem()
 {

@@ -38,7 +38,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "troll/basic_geo.h"
 
 #include "troll/mouse_input.h"
 #include "troll/mouse_input_impl.h"
@@ -46,7 +45,10 @@
 
 #include "troll/mouse_input_factory.h"
 
-using namespace Troll;
+using Troll::Point;
+
+using Troll::MouseInputImpl;
+using Troll::MouseInput;
 
 MouseInputImpl * MouseInput::m_singleton = 0; // static member initialization
 
@@ -104,3 +106,4 @@ bool MouseInput::IsButtonPressed( int button )
 {
 	return m_singleton->IsButtonPressed(button);
 }
+
