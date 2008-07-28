@@ -4,7 +4,7 @@
 
 # TARGTYPE "Win32 (x86) Static Library" 0x0104
 
-CFG=troll_allegro - Win32 Debug
+CFG=troll_allegro - Win32 Debug Allegro
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
@@ -13,12 +13,12 @@ CFG=troll_allegro - Win32 Debug
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "troll_allegro.mak" CFG="troll_allegro - Win32 Debug"
+!MESSAGE NMAKE /f "troll_allegro.mak" CFG="troll_allegro - Win32 Debug Allegro"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "troll_allegro - Win32 Release" (based on "Win32 (x86) Static Library")
-!MESSAGE "troll_allegro - Win32 Debug" (based on "Win32 (x86) Static Library")
+!MESSAGE "troll_allegro - Win32 Release Allegro" (based on "Win32 (x86) Static Library")
+!MESSAGE "troll_allegro - Win32 Debug Allegro" (based on "Win32 (x86) Static Library")
 !MESSAGE 
 
 # Begin Project
@@ -28,58 +28,58 @@ CFG=troll_allegro - Win32 Debug
 CPP=cl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "troll_allegro - Win32 Release"
+!IF  "$(CFG)" == "troll_allegro - Win32 Release Allegro"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "Release"
-# PROP BASE Intermediate_Dir "Release"
+# PROP BASE Output_Dir "troll_allegro___Win32_Release_Allegro"
+# PROP BASE Intermediate_Dir "troll_allegro___Win32_Release_Allegro"
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 0
-# PROP Output_Dir "Release"
-# PROP Intermediate_Dir "Release"
+# PROP Output_Dir "troll_allegro___Win32_Release_Allegro"
+# PROP Intermediate_Dir "troll_allegro___Win32_Release_Allegro"
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O1 /I "../../../../../include/" /I "../../../include/" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /YX /FD /c
+# ADD BASE CPP /nologo /MD /W3 /GX /O1 /I "../../../../../include/" /I "../../../include/" /I "../../../../../dependencies/allegro/include/" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O1 /I "../../../../../include/" /I "../../../include/" /I "../../../../../dependencies/allegro/include/" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /YX /FD /c
 # ADD BASE RSC /l 0x416 /d "NDEBUG"
 # ADD RSC /l 0x416 /d "NDEBUG"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
-# ADD BASE LIB32 /nologo
+# ADD BASE LIB32 /nologo /out:"..\..\..\..\..\lib\vc6_lib\troll_allegro.lib"
 # ADD LIB32 /nologo /out:"..\..\..\..\..\lib\vc6_lib\troll_allegro.lib"
 
-!ELSEIF  "$(CFG)" == "troll_allegro - Win32 Debug"
+!ELSEIF  "$(CFG)" == "troll_allegro - Win32 Debug Allegro"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
-# PROP BASE Output_Dir "Debug"
-# PROP BASE Intermediate_Dir "Debug"
+# PROP BASE Output_Dir "troll_allegro___Win32_Debug_Allegro"
+# PROP BASE Intermediate_Dir "troll_allegro___Win32_Debug_Allegro"
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 1
-# PROP Output_Dir "Debug"
-# PROP Intermediate_Dir "Debug"
+# PROP Output_Dir "troll_allegro___Win32_Debug_Allegro"
+# PROP Intermediate_Dir "troll_allegro___Win32_Debug_Allegro"
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../../../include/" /I "../../../include/" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /FR /YX /FD /GZ /c
+# ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../../../include/" /I "../../../include/" /I "../../../../../dependencies/allegro/include/" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../../../include/" /I "../../../include/" /I "../../../../../dependencies/allegro/include/" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /FR /YX /FD /GZ /c
 # ADD BASE RSC /l 0x416 /d "_DEBUG"
 # ADD RSC /l 0x416 /d "_DEBUG"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LIB32=link.exe -lib
-# ADD BASE LIB32 /nologo
+# ADD BASE LIB32 /nologo /out:"..\..\..\..\..\lib\vc6_lib\troll_allegrod.lib"
 # ADD LIB32 /nologo /out:"..\..\..\..\..\lib\vc6_lib\troll_allegrod.lib"
 
 !ENDIF 
 
 # Begin Target
 
-# Name "troll_allegro - Win32 Release"
-# Name "troll_allegro - Win32 Debug"
+# Name "troll_allegro - Win32 Release Allegro"
+# Name "troll_allegro - Win32 Debug Allegro"
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
@@ -119,10 +119,11 @@ SOURCE=..\..\..\src\allegro_screen_helper.cpp
 
 SOURCE=..\..\..\src\allegro_surface.cpp
 
-!IF  "$(CFG)" == "troll_allegro - Win32 Release"
+!IF  "$(CFG)" == "troll_allegro - Win32 Release Allegro"
 
-!ELSEIF  "$(CFG)" == "troll_allegro - Win32 Debug"
+!ELSEIF  "$(CFG)" == "troll_allegro - Win32 Debug Allegro"
 
+# ADD BASE CPP /I "../../../../../../../../../../include/"
 # ADD CPP /I "../../../../../../../../../../include/"
 
 !ENDIF 

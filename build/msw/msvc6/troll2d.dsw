@@ -11,6 +11,12 @@ Package=<5>
 
 Package=<4>
 {{{
+    Begin Project Dependency
+    Project_Dep_Name troll_sdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name troll_allegro
+    End Project Dependency
 }}}
 
 ###############################################################################
@@ -23,6 +29,30 @@ Package=<5>
 
 Package=<4>
 {{{
+    Begin Project Dependency
+    Project_Dep_Name troll_sdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name troll_allegro
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "test_graphics"=".\test_graphics.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name troll_allegro
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name troll_sdl
+    End Project Dependency
 }}}
 
 ###############################################################################
@@ -35,6 +65,12 @@ Package=<5>
 
 Package=<4>
 {{{
+    Begin Project Dependency
+    Project_Dep_Name troll_sdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name troll_allegro
+    End Project Dependency
 }}}
 
 ###############################################################################
@@ -47,6 +83,12 @@ Package=<5>
 
 Package=<4>
 {{{
+    Begin Project Dependency
+    Project_Dep_Name troll_sdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name troll_allegro
+    End Project Dependency
 }}}
 
 ###############################################################################
@@ -59,18 +101,12 @@ Package=<5>
 
 Package=<4>
 {{{
-}}}
-
-###############################################################################
-
-Project: "teste_graphics"=".\teste_graphics.dsp" - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
+    Begin Project Dependency
+    Project_Dep_Name troll_sdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name troll_allegro
+    End Project Dependency
 }}}
 
 ###############################################################################
@@ -83,6 +119,9 @@ Package=<5>
 
 Package=<4>
 {{{
+    Begin Project Dependency
+    Project_Dep_Name troll_base
+    End Project Dependency
 }}}
 
 ###############################################################################
@@ -107,6 +146,9 @@ Package=<5>
 
 Package=<4>
 {{{
+    Begin Project Dependency
+    Project_Dep_Name troll_base
+    End Project Dependency
 }}}
 
 ###############################################################################

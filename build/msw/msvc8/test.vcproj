@@ -274,7 +274,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDLD.lib SDLmainD.lib alld_s.lib troll_allegrod.lib troll_based.lib odbc32.lib odbccp32.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib"
+				AdditionalDependencies="SDLD.lib SDLmainD.lib alld_s.lib troll_sdld.lib troll_based.lib odbc32.lib odbccp32.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib"
 				OutputFile=".\Debug/test.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
@@ -462,7 +462,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\..\test\test_alpha.cpp"
+				RelativePath="..\..\..\test\test_keyboard.cpp"
 				>
 			</File>
 		</Filter>

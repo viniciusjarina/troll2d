@@ -1,26 +1,26 @@
-# Microsoft Developer Studio Project File - Name="test_mouse" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="test_graphics" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
-CFG=test_mouse - Win32 Debug Allegro
+CFG=test_graphics - Win32 Debug Allegro
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
-!MESSAGE NMAKE /f "test_mouse.mak".
+!MESSAGE NMAKE /f "test_graphics.mak".
 !MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "test_mouse.mak" CFG="test_mouse - Win32 Debug Allegro"
+!MESSAGE NMAKE /f "test_graphics.mak" CFG="test_graphics - Win32 Debug Allegro"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "test_mouse - Win32 Release" (based on "Win32 (x86) Application")
-!MESSAGE "test_mouse - Win32 Debug" (based on "Win32 (x86) Application")
-!MESSAGE "test_mouse - Win32 Release Allegro" (based on "Win32 (x86) Application")
-!MESSAGE "test_mouse - Win32 Debug Allegro" (based on "Win32 (x86) Application")
+!MESSAGE "test_graphics - Win32 Release" (based on "Win32 (x86) Application")
+!MESSAGE "test_graphics - Win32 Debug" (based on "Win32 (x86) Application")
+!MESSAGE "test_graphics - Win32 Release Allegro" (based on "Win32 (x86) Application")
+!MESSAGE "test_graphics - Win32 Debug Allegro" (based on "Win32 (x86) Application")
 !MESSAGE 
 
 # Begin Project
@@ -31,7 +31,7 @@ CPP=cl.exe
 MTL=midl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "test_mouse - Win32 Release"
+!IF  "$(CFG)" == "test_graphics - Win32 Release"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -48,22 +48,22 @@ RSC=rc.exe
 # ADD CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
-# ADD BASE RSC /l 0x409 /d "NDEBUG"
-# ADD RSC /l 0x409 /d "NDEBUG"
+# ADD BASE RSC /l 0x416 /d "NDEBUG"
+# ADD RSC /l 0x416 /d "NDEBUG"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 SDL.lib troll_base.lib troll_sdl.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_mouse_sdl.exe" /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
+# ADD LINK32 SDL.lib troll_base.lib troll_sdl.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_graphics_sdl.exe" /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
 # SUBTRACT LINK32 /incremental:yes
 
-!ELSEIF  "$(CFG)" == "test_mouse - Win32 Debug"
+!ELSEIF  "$(CFG)" == "test_graphics - Win32 Debug"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
-# PROP BASE Output_Dir "test_mouse___Win32_Debug"
-# PROP BASE Intermediate_Dir "test_mouse___Win32_Debug"
+# PROP BASE Output_Dir "test_graphics___Win32_Debug"
+# PROP BASE Intermediate_Dir "test_graphics___Win32_Debug"
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 1
@@ -76,79 +76,80 @@ LINK32=link.exe
 # SUBTRACT CPP /Fr
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
-# ADD BASE RSC /l 0x409 /d "_DEBUG"
-# ADD RSC /l 0x409 /d "_DEBUG"
+# ADD BASE RSC /l 0x416 /d "_DEBUG"
+# ADD RSC /l 0x416 /d "_DEBUG"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 SDL.lib troll_based.lib troll_sdld.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../../../bin/test_moused_sdl.exe" /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
+# ADD LINK32 SDL.lib troll_based.lib troll_sdld.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../../../bin/test_graphicsd_sdl.exe" /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
 # SUBTRACT LINK32 /incremental:no
 
-!ELSEIF  "$(CFG)" == "test_mouse - Win32 Release Allegro"
+!ELSEIF  "$(CFG)" == "test_graphics - Win32 Release Allegro"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "test_mouse___Win32_Release_Allegro"
-# PROP BASE Intermediate_Dir "test_mouse___Win32_Release_Allegro"
+# PROP BASE Output_Dir "test_graphics___Win32_Release_Allegro"
+# PROP BASE Intermediate_Dir "test_graphics___Win32_Release_Allegro"
 # PROP BASE Ignore_Export_Lib 0
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 0
-# PROP Output_Dir "test_mouse___Win32_Release_Allegro"
-# PROP Intermediate_Dir "test_mouse___Win32_Release_Allegro"
+# PROP Output_Dir "test_graphics___Win32_Release_Allegro"
+# PROP Intermediate_Dir "test_graphics___Win32_Release_Allegro"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
 # ADD CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
-# ADD BASE RSC /l 0x409 /d "NDEBUG"
-# ADD RSC /l 0x409 /d "NDEBUG"
+# ADD BASE RSC /l 0x416 /d "NDEBUG"
+# ADD RSC /l 0x416 /d "NDEBUG"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LINK32=link.exe
-# ADD BASE LINK32 alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_mouse.exe" /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
-# ADD LINK32 alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_mouse_allegro.exe" /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
+# ADD BASE LINK32 SDL.lib alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_sdl.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_graphics.exe" /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
+# ADD LINK32 alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_graphics_allegro.exe" /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
 # SUBTRACT LINK32 /incremental:yes
 
-!ELSEIF  "$(CFG)" == "test_mouse - Win32 Debug Allegro"
+!ELSEIF  "$(CFG)" == "test_graphics - Win32 Debug Allegro"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
-# PROP BASE Output_Dir "test_mouse___Win32_Debug_Allegro"
-# PROP BASE Intermediate_Dir "test_mouse___Win32_Debug_Allegro"
+# PROP BASE Output_Dir "test_graphics___Win32_Debug_Allegro"
+# PROP BASE Intermediate_Dir "test_graphics___Win32_Debug_Allegro"
 # PROP BASE Ignore_Export_Lib 0
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 1
-# PROP Output_Dir "test_mouse___Win32_Debug_Allegro"
-# PROP Intermediate_Dir "test_mouse___Win32_Debug_Allegro"
+# PROP Output_Dir "test_graphics___Win32_Debug_Allegro"
+# PROP Intermediate_Dir "test_graphics___Win32_Debug_Allegro"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
 # ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
-# ADD BASE RSC /l 0x409 /d "_DEBUG"
-# ADD RSC /l 0x409 /d "_DEBUG"
+# ADD BASE RSC /l 0x416 /d "_DEBUG"
+# ADD RSC /l 0x416 /d "_DEBUG"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LINK32=link.exe
-# ADD BASE LINK32 SDLD.lib SDLmainD.lib alld_s.lib troll_sdld.lib troll_based.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
-# ADD LINK32 alld_s.lib troll_allegrod.lib troll_based.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib /nologo /subsystem:windows /incremental:no /debug /machine:I386 /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
+# ADD BASE LINK32 SDL.lib alld_s.lib troll_allegrod.lib troll_based.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
+# ADD LINK32 alld_s.lib troll_allegrod.lib troll_based.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
+# SUBTRACT LINK32 /incremental:no
 
 !ENDIF 
 
 # Begin Target
 
-# Name "test_mouse - Win32 Release"
-# Name "test_mouse - Win32 Debug"
-# Name "test_mouse - Win32 Release Allegro"
-# Name "test_mouse - Win32 Debug Allegro"
+# Name "test_graphics - Win32 Release"
+# Name "test_graphics - Win32 Debug"
+# Name "test_graphics - Win32 Release Allegro"
+# Name "test_graphics - Win32 Debug Allegro"
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
@@ -158,7 +159,7 @@ SOURCE=..\..\..\test\msw\test.rc
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\test\test_mouse.cpp
+SOURCE=..\..\..\test\test_graphics.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -173,7 +174,7 @@ SOURCE=..\..\..\test\test_mouse.cpp
 
 SOURCE="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 
-!IF  "$(CFG)" == "test_mouse - Win32 Release"
+!IF  "$(CFG)" == "test_graphics - Win32 Release"
 
 # Begin Custom Build
 InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
@@ -183,7 +184,7 @@ InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 
 # End Custom Build
 
-!ELSEIF  "$(CFG)" == "test_mouse - Win32 Debug"
+!ELSEIF  "$(CFG)" == "test_graphics - Win32 Debug"
 
 # Begin Custom Build
 InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
@@ -193,9 +194,9 @@ InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 
 # End Custom Build
 
-!ELSEIF  "$(CFG)" == "test_mouse - Win32 Release Allegro"
+!ELSEIF  "$(CFG)" == "test_graphics - Win32 Release Allegro"
 
-!ELSEIF  "$(CFG)" == "test_mouse - Win32 Debug Allegro"
+!ELSEIF  "$(CFG)" == "test_graphics - Win32 Debug Allegro"
 
 !ENDIF 
 

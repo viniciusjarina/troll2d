@@ -267,7 +267,7 @@ static const char * key_names[Troll::TOTAL_KEYS] =
 				if(ptOut.y + 10 > max_y)
 				{
 					ptOut.y = 0;
-					ptOut.x += 210;
+					ptOut.x += 200;
 				}
 
 				sprintf(str,"%s:p:%d r:%d u:%s d:%s",
