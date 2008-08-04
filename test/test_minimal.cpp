@@ -40,10 +40,14 @@
 
 #include <troll.h> // include troll header
 
+#ifdef __APPLE__
+ #include <SDL.h>
+#endif
+
 #ifdef _WIN32
 	extern "C" int __stdcall WinMain(void *hInst, void *hPrev, char *Cmd, int nShow)
 #else
-	int main(int argc, char *argv[])
+	extern "C" int main(int argc, char *argv[])
 #endif
 {
 	using namespace Troll;

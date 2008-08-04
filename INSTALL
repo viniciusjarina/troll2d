@@ -1,3 +1,5 @@
+WARNING: If you checkout Troll from SVN you can download pre-compiled dependencies from troll homepage. Or compile your own (www.libsdl.org / www.allegro.cc)
+
 Microsoft Windows:
 ------------------
 * Microft Visual C++ 6.0
@@ -17,10 +19,8 @@ Microsoft Windows Mobile/Windows CE
 Mac OS X
 -----------------
 * Xcode
- - Open project at /troll/build/mac/troll.xcodeproj and compile it.
- - Open project at /troll/modules/sdl/build/mac/troll_sdl.xcodeproj and compile it (to use SDL module)
- - Open project at /troll/modules/allegro/build/mac/troll_allegro.xcodeproj and compile it (to use Allegro module)   
-
+ - Open project at /troll/build/mac/troll/troll.xcodeproj and compile it.
+ 
 For Allegro support you need the following libraries installed:
 * Allegro	http://alleg.sourceforge.net/
 

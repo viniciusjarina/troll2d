@@ -41,6 +41,10 @@
 #include <troll.h> // include troll header
 #include <stdio.h> // for sprintf
 
+#ifdef __APPLE__ // Under Mac OS X we will use SDLMain.m to wrap NSApplication and 
+#include <SDL.h> // the entry point of a Cocoa application (this needed to be fixed)
+#endif
+
 static const char * key_names[Troll::TOTAL_KEYS] =
 {
 	0,
@@ -166,7 +170,7 @@ static const char * key_names[Troll::TOTAL_KEYS] =
 #ifdef _WIN32
 	extern "C" int __stdcall WinMain(void *hInst, void *hPrev, char *Cmd, int nShow)
 #else
-	int main(int argc, char *argv[])
+	extern "C" int main(int argc, char *argv[])
 #endif
 {
 	using namespace Troll;
@@ -267,7 +271,7 @@ static const char * key_names[Troll::TOTAL_KEYS] =
 				if(ptOut.y + 10 > max_y)
 				{
 					ptOut.y = 0;
-					ptOut.x += 200;
+					ptOut.x += 210;
 				}
 
 				sprintf(str,"%s:p:%d r:%d u:%s d:%s",

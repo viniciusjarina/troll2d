@@ -42,6 +42,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#ifdef __APPLE__ // Under Mac OS X we will use SDLMain.m to wrap NSApplication and 
+#include <SDL.h> // the entry point of a Cocoa application (this needed to be fixed)
+#endif
+
 enum 
 {
 	TEST_PIXEL,

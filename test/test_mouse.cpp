@@ -41,10 +41,14 @@
 #include <troll.h> // include troll header
 #include <stdio.h> // for sprintf
 
+#ifdef __APPLE__ // Under Mac OS X we will use SDLMain.m to wrap NSApplication and 
+#include <SDL.h> // the entry point of a Cocoa application (this needed to be fixed)
+#endif
+
 #ifdef _WIN32
 	extern "C" int __stdcall WinMain(void *hInst, void *hPrev, char *Cmd, int nShow)
 #else
-	int main(int argc, char *argv[])
+	extern "C" int main(int argc, char *argv[])
 #endif
 {
 	using namespace Troll;      // set the namespace to Troll
