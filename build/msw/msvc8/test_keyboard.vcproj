@@ -211,6 +211,8 @@
 				AdditionalFiles="troll.bmp|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
 			/>
 			<DebuggerTool
+				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
+				Arguments=""
 			/>
 		</Configuration>
 		<Configuration
@@ -411,6 +413,8 @@
 				AdditionalFiles="troll.bmp|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
 			/>
 			<DebuggerTool
+				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
+				Arguments=""
 			/>
 		</Configuration>
 		<Configuration
@@ -612,6 +616,8 @@
 				AdditionalFiles=""
 			/>
 			<DebuggerTool
+				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
+				Arguments=""
 			/>
 		</Configuration>
 		<Configuration
@@ -809,6 +815,8 @@
 				AdditionalFiles=""
 			/>
 			<DebuggerTool
+				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
+				Arguments=""
 			/>
 		</Configuration>
 	</Configurations>

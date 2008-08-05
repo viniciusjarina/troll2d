@@ -7,6 +7,34 @@ older versions of Troll.
 INTRODUCTON TO TROLL
 ======================
 
+Troll is a 2D game/app framework. It provide to you some interting features that will help you write your game.
+
+- Frame timing auto control (fixed FPS and low CPU usage)
+- Primitives (circles, ellipse, rects, lines)
+- Blit operations
+- Blit with Alpha
+- Input control (Keyboard, Mouse, etc)
+
+COMPILING
+=========
+
+See the Install documentation
+
+HELP
+====
+
+I'm only one. If you think troll is a good idea and want to help, here are some sugestions
+(Notify)
+- Any trouble compiling or running demos
+- Any wrong text (bad english) in redmes,todos,changelog
+- Bug founded
+- Idea of new features
+
+(Work)
+- I keeping Mac(Xcode) and Windows(MSVC) versions of troll, if you use linux, eclipse, codewarrior,djgpp, dev-cpp and want to incorporate your project files
+(makefile, etc), and want contribute, please do. I will add your project files in troll SVN trunk
+- If you wrote a backend (using Cocoa,GDI,Qt,OpenGL, HGE, IndieLib) and want to contribute, please DO.
+
 FOR MORE INFORMATION AND DOWNLOADS
 ==================================
 For more general information about Troll and/or downloads related to Troll
