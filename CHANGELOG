@@ -1,4 +1,5 @@
-SVN HEAD 06/2008
+Version 0.0.2  08/2008
+
 -Frame skip/FPS lock improved
   Add new functions to control frame skip andn FPS lock system
 -KeyInput improved (add detection of release key, and mapped  many keys)
