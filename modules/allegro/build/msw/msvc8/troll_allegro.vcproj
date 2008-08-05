@@ -14,9 +14,9 @@
 	</ToolFiles>
 	<Configurations>
 		<Configuration
-			Name="Debug|Win32"
-			OutputDirectory=".\Debug"
-			IntermediateDirectory=".\Debug"
+			Name="Debug Allegro|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../../../../include/,../../../include/"
+				AdditionalIncludeDirectories="../../../../../include/,../../../include/,&quot;../../../../../dependencies/allegro/include/&quot;;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;ALLEGRO_STATICLINK"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -90,9 +90,9 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Release|Win32"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			Name="Release Allegro|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -118,7 +118,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="1"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="../../../../../include/,../../../include/"
+				AdditionalIncludeDirectories="../../../../../include/,../../../include/,&quot;../../../../../dependencies/allegro/include/&quot;;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;ALLEGRO_STATICLINK"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -176,7 +176,7 @@
 				RelativePath="..\..\..\src\allegro_graphics.cpp"
 				>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -185,7 +185,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -198,7 +198,7 @@
 				RelativePath="..\..\..\src\allegro_image.cpp"
 				>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -207,7 +207,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -224,7 +224,7 @@
 				RelativePath="..\..\..\src\allegro_interface.cpp"
 				>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -233,7 +233,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -246,7 +246,7 @@
 				RelativePath="..\..\..\src\allegro_keyinput.cpp"
 				>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -255,7 +255,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -272,7 +272,7 @@
 				RelativePath="..\..\..\src\allegro_screen.cpp"
 				>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -281,7 +281,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -298,7 +298,7 @@
 				RelativePath="..\..\..\src\allegro_surface.cpp"
 				>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -307,7 +307,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -320,7 +320,7 @@
 				RelativePath="..\..\..\src\allegro_system.cpp"
 				>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Debug Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -329,7 +329,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Release Allegro|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
