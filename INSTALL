@@ -1,7 +1,13 @@
-WARNING: If you checkout Troll from SVN you can download pre-compiled dependencies from troll homepage. Or compile your own (www.libsdl.org / www.allegro.cc)
+WARNING: 
+	If you checkout Troll from SVN you can download pre-compiled dependencies from troll homepage.
+	Or compile your own (www.libsdl.org / www.allegro.cc)
+		
 
 Microsoft Windows:
 ------------------
+
+Before begin Unzip the file dependencies_msw.zip into the directory that contains this file (INSTALL)
+
 * Microft Visual C++ 6.0
  - Open workspace file in /troll/build/msw/msvc6 and compile 
    it will generate some libs under /troll/lib/vc6_lib (troll_base(d).lib , troll_allegro(d).lib, troll_sdl(d).lib)
@@ -17,7 +23,10 @@ Microsoft Windows Mobile/Windows CE
    it will generate some libs under /troll/lib/vc8_lib_arm4 (troll_base(d).lib , troll_allegro(d).lib, troll_sdl(d).lib)
    
 Mac OS X
------------------
+---------
+
+Before begin Unzip the file dependencies_osx.zip into the directory that contains this file (INSTALL)
+
 * Xcode
  - Open project at /troll/build/mac/troll/troll.xcodeproj and compile it.
  
