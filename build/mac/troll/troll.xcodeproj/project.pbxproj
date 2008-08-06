@@ -30,9 +30,6 @@
 		185E5CEF0E3BC618005AA40D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF970E399F3F0032E514 /* Foundation.framework */; };
 		185E5CF00E3BC618005AA40D /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185E5C950E3BC2EF005AA40D /* SDL.framework */; };
 		185E5CF90E3BC657005AA40D /* test_keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185E5CF70E3BC64C005AA40D /* test_keyboard.cpp */; };
-		185E5D0B0E3BCB68005AA40D /* SDL.framework in Resources */ = {isa = PBXBuildFile; fileRef = 18A980850E29493300866801 /* SDL.framework */; };
-		185E5D330E3BCB75005AA40D /* SDL.framework in Resources */ = {isa = PBXBuildFile; fileRef = 18A980850E29493300866801 /* SDL.framework */; };
-		185E5D340E3BCB7B005AA40D /* SDL.framework in Resources */ = {isa = PBXBuildFile; fileRef = 18A980850E29493300866801 /* SDL.framework */; };
 		18A980140E29423C00866801 /* gfx_ex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A980130E29423C00866801 /* gfx_ex.cpp */; };
 		18A980450E2945DD00866801 /* test_minimal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A980440E2945DD00866801 /* test_minimal.cpp */; };
 		18A980D50E294B1700866801 /* libtroll_base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B2C4190E2926F4007A3E51 /* libtroll_base.a */; };
@@ -79,7 +76,6 @@
 		18B2C4820E292B5F007A3E51 /* sdl_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B2C4760E292B5F007A3E51 /* sdl_surface.cpp */; };
 		18B2C4830E292B5F007A3E51 /* sdl_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B2C4770E292B5F007A3E51 /* sdl_system.cpp */; };
 		18BC9F990E2B0BC9005E42ED /* libtroll_sdl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B2C45D0E292A0E007A3E51 /* libtroll_sdl.a */; };
-		18C9AD760E3D986E00B099A6 /* SDL.framework in Resources */ = {isa = PBXBuildFile; fileRef = 18A980850E29493300866801 /* SDL.framework */; };
 		18C9AD770E3D986E00B099A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAF870E399E310032E514 /* InfoPlist.strings */; };
 		18C9AD780E3D986E00B099A6 /* troll.icns in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAFD90E39A1CE0032E514 /* troll.icns */; };
 		18C9AD7B0E3D986E00B099A6 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FAAF8A0E399E310032E514 /* SDLMain.m */; };
@@ -91,7 +87,6 @@
 		18C9AD820E3D986E00B099A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF970E399F3F0032E514 /* Foundation.framework */; };
 		18C9AD830E3D986E00B099A6 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185E5C950E3BC2EF005AA40D /* SDL.framework */; };
 		18C9AD8B0E3D994200B099A6 /* test_graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C9AD8A0E3D994200B099A6 /* test_graphics.cpp */; };
-		18C9ADA70E3D9C8200B099A6 /* SDL.framework in Resources */ = {isa = PBXBuildFile; fileRef = 18A980850E29493300866801 /* SDL.framework */; };
 		18C9ADA80E3D9C8200B099A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAF870E399E310032E514 /* InfoPlist.strings */; };
 		18C9ADA90E3D9C8200B099A6 /* troll.icns in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAFD90E39A1CE0032E514 /* troll.icns */; };
 		18C9ADAB0E3D9C8200B099A6 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FAAF8A0E399E310032E514 /* SDLMain.m */; };
@@ -104,7 +99,6 @@
 		18C9ADB40E3D9C8200B099A6 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185E5C950E3BC2EF005AA40D /* SDL.framework */; };
 		18C9ADC10E3D9CC900B099A6 /* test_blit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C9ADC00E3D9CC900B099A6 /* test_blit.cpp */; };
 		18C9ADCB0E3D9D6100B099A6 /* troll.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18C9ADCA0E3D9D6100B099A6 /* troll.bmp */; };
-		18C9ADDF0E3D9DF300B099A6 /* SDL.framework in Resources */ = {isa = PBXBuildFile; fileRef = 18A980850E29493300866801 /* SDL.framework */; };
 		18C9ADE00E3D9DF300B099A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAF870E399E310032E514 /* InfoPlist.strings */; };
 		18C9ADE10E3D9DF300B099A6 /* troll.icns in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAFD90E39A1CE0032E514 /* troll.icns */; };
 		18C9ADE30E3D9DF300B099A6 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FAAF8A0E399E310032E514 /* SDLMain.m */; };
@@ -158,7 +152,6 @@
 		18A980130E29423C00866801 /* gfx_ex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gfx_ex.cpp; path = ../../../modules/allegro/src/gfx_ex.cpp; sourceTree = SOURCE_ROOT; };
 		18A9803E0E29453D00866801 /* test minimal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test minimal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A980440E2945DD00866801 /* test_minimal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test_minimal.cpp; path = ../../../test/test_minimal.cpp; sourceTree = SOURCE_ROOT; };
-		18A980850E29493300866801 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
 		18A980D80E294B4000866801 /* allegro_graphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = allegro_graphics.cpp; path = ../../../modules/allegro/src/allegro_graphics.cpp; sourceTree = SOURCE_ROOT; };
 		18A980D90E294B4000866801 /* allegro_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = allegro_image.cpp; path = ../../../modules/allegro/src/allegro_image.cpp; sourceTree = SOURCE_ROOT; };
 		18A980DA0E294B4000866801 /* allegro_image_surface_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = allegro_image_surface_helper.cpp; path = ../../../modules/allegro/src/allegro_image_surface_helper.cpp; sourceTree = SOURCE_ROOT; };
@@ -389,7 +382,6 @@
 				18B2C42F0E292772007A3E51 /* system.cpp */,
 				18B2C4300E292772007A3E51 /* system_impl.cpp */,
 				18B2C41A0E2926F4007A3E51 /* Products */,
-				18A980850E29493300866801 /* SDL.framework */,
 				18FAAF910E399F3F0032E514 /* AppKit.framework */,
 				18FAAF930E399F3F0032E514 /* Cocoa.framework */,
 				18FAAF950E399F3F0032E514 /* CoreData.framework */,
@@ -635,7 +627,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				185E5D330E3BCB75005AA40D /* SDL.framework in Resources */,
 				185E5CAA0E3BC4CC005AA40D /* InfoPlist.strings in Resources */,
 				185E5CAB0E3BC4CC005AA40D /* troll.icns in Resources */,
 			);
@@ -645,7 +636,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				185E5D340E3BCB7B005AA40D /* SDL.framework in Resources */,
 				185E5CE40E3BC618005AA40D /* InfoPlist.strings in Resources */,
 				185E5CE50E3BC618005AA40D /* troll.icns in Resources */,
 			);
@@ -655,7 +645,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				185E5D0B0E3BCB68005AA40D /* SDL.framework in Resources */,
 				18FAAF8B0E399E310032E514 /* InfoPlist.strings in Resources */,
 				18FAAFDA0E39A1CE0032E514 /* troll.icns in Resources */,
 			);
@@ -665,7 +654,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18C9AD760E3D986E00B099A6 /* SDL.framework in Resources */,
 				18C9AD770E3D986E00B099A6 /* InfoPlist.strings in Resources */,
 				18C9AD780E3D986E00B099A6 /* troll.icns in Resources */,
 			);
@@ -675,7 +663,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18C9ADA70E3D9C8200B099A6 /* SDL.framework in Resources */,
 				18C9ADA80E3D9C8200B099A6 /* InfoPlist.strings in Resources */,
 				18C9ADA90E3D9C8200B099A6 /* troll.icns in Resources */,
 			);
@@ -685,7 +672,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18C9ADDF0E3D9DF300B099A6 /* SDL.framework in Resources */,
 				18C9ADE00E3D9DF300B099A6 /* InfoPlist.strings in Resources */,
 				18C9ADE10E3D9DF300B099A6 /* troll.icns in Resources */,
 			);
