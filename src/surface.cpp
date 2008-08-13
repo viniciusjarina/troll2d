@@ -112,12 +112,18 @@ void Surface::Clear(const Color & color /*= Color::BLACK*/)
 	m_impl->Clear(color);
 }
 
-void Surface::Blit(const Surface & src,const Point& ptDest/* = Point(0,0)*/,const Rect& rSource /*= Rect(0,0,-1,-1)*/)
+void Surface::Draw(const Surface & src,const Point& ptDest/* = Point(0,0)*/,const Rect& rSource /*= Rect(0,0,-1,-1)*/)
 {
-	m_impl->Blit(*src.m_impl,ptDest,rSource);
+	src.m_impl->Draw(*m_impl,ptDest,rSource);
+}
+
+void Surface::DrawStretch( const Surface & src,const Rect& rcDest /*= Point(0,0)*/,const Rect& rSource /*= Rect(0,0,-1,-1)*/ )
+{
+	src.m_impl->DrawStretch(*m_impl,rcDest,rSource);
 }
 
 void Surface::DrawAlpha( const Surface & sprite,const Point& ptDest,unsigned char alpha )
 {
-	m_impl->DrawAlpha(*sprite.m_impl,ptDest,alpha);
+	sprite.m_impl->DrawAlpha(*m_impl,ptDest,alpha);
 }
+

@@ -123,10 +123,10 @@ void AllegroSurface::Clear(const Color & color /*= Color::BLACK*/)
 	clear_to_color(m_surface,makecol(color.GetRed(),color.GetGreen(),color.GetBlue()));
 }
 
-void AllegroSurface::Blit(const SurfaceImpl & src,const Point& ptDest /*Point(0,0)*/,const Rect& rSource /*Rect(0,0,-1,-1)*/)
+void AllegroSurface::Draw(SurfaceImpl & destination,const Point& ptDest /*Point(0,0)*/,const Rect& rSource /*Rect(0,0,-1,-1)*/) const
 {
-	BITMAP * source = ((AllegroSurface *)&src)->m_surface;
-	BITMAP * dest = m_surface;
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
 	int width;
 	int height;
 
@@ -138,19 +138,39 @@ void AllegroSurface::Blit(const SurfaceImpl & src,const Point& ptDest /*Point(0,
 	if(rSource.height < 0)
 		height = source->h;
 	else
-		width = rSource.width;
+		width = rSource.height;
 
 	masked_blit(source,dest,rSource.x,rSource.y,ptDest.x,ptDest.y,width,height);
 }
 
-void AllegroSurface::DrawAlpha( const SurfaceImpl & sprite,const Point& ptDest /*= Point(0,0)*/,unsigned char alpha /*= 128*/ )
+void AllegroSurface::DrawAlpha( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/,unsigned char alpha /*= 128*/ ) const
 {
-	BITMAP * source = ((AllegroSurface *)&sprite)->m_surface;
-	BITMAP * dest = m_surface;
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
 
 	set_trans_blender(0,0,0,alpha);
 
 	draw_trans_sprite(dest,source,ptDest.x,ptDest.y);
 
 	set_trans_blender(0,0,0,255);
+}
+
+void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource /*= Rect(0,0,-1,-1)*/ ) const
+{
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+	int width;
+	int height;
+	
+	if(rSource.width < 0)
+		width  = source->w;
+	else
+		width = rSource.width;
+	
+	if(rSource.height < 0)
+		height = source->h;
+	else
+		width = rSource.height;
+	
+	masked_stretch_blit(source, dest, rSource.x, rSource.y, width, height, rcDest.x, rcDest.y,rcDest.width, rcDest.height);
 }

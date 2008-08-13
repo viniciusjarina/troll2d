@@ -120,8 +120,8 @@
 					cliping = false;
 				}
 			}
-
-			screen.Blit(logo,logoPos);
+			Rect rc(logoPos,Size(200,200));
+			screen.DrawStretch(logo,rc);
 			
 
 			Screen::Flip();		// Flip screen

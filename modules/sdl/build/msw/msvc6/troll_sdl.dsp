@@ -144,6 +144,14 @@ SOURCE=..\..\..\src\sdl_surface.cpp
 
 SOURCE=..\..\..\src\sdl_system.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=..\..\..\sdlstretch.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\sdlstretchcode.c
+# End Source File
 # End Group
 # Begin Group "Header Files"
 

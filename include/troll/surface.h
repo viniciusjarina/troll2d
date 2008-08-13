@@ -83,8 +83,10 @@ namespace Troll
 		
 		void Clear(const Color & color = Color::BLACK); // Clean surface with color
 
-		// Blits from the Surface (src) the rect (rSource) into postion (ptDest) of surface
-		void Blit(const Surface & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
+		// Draw the surface (src) the rect (rSource) into postion (ptDest) of current surface (this)
+		void Draw(const Surface & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
+		// Draw stretching/shinking source into destination
+		void DrawStretch(const Surface & src,const Rect& rcDest,const Rect& rSource = Rect(0,0,-1,-1));
 		// Draw the entire surface (sprite) at position ptDest with alpha-value (alpha)
 		void DrawAlpha(const Surface & sprite,const Point& ptDest = Point(0,0),unsigned char alpha = 128);
 	};

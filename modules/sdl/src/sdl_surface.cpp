@@ -39,6 +39,7 @@
  */
 
 #include <SDL.h>
+#include "SDL_stretch.h"
 
 #include "troll/surface.h"
 #include "troll/sdl_surface.h"
@@ -140,7 +141,7 @@ void SDLSurface::Clear(const Color & color /*= Color::INVISIBLE*/)
 	SDL_FillRect(m_surface,&rect,sdl_color);
 }
 
-void SDLSurface::Blit(const SurfaceImpl & src,const Point& ptDest /*Point(0,0)*/,const Rect& rSource /*Rect(0,0,-1,-1)*/)
+void SDLSurface::Draw(SurfaceImpl & destination,const Point& ptDest /*Point(0,0)*/,const Rect& rSource /*Rect(0,0,-1,-1)*/) const
 {
 	SDL_Rect rect1;
 	SDL_Rect rect2;
@@ -148,8 +149,8 @@ void SDLSurface::Blit(const SurfaceImpl & src,const Point& ptDest /*Point(0,0)*/
 	int width;
 	int height;
 
-	SDL_Surface * source = ((SDLSurface *)&src)->m_surface;
-	SDL_Surface * dest = m_surface;
+	SDL_Surface * source = m_surface;
+	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
 
 	if(rSource.width < 0)
 		width = source->w;
@@ -181,13 +182,13 @@ m_surface(screen)
 	
 }
 
-void SDLSurface::DrawAlpha( const SurfaceImpl & sprite,const Point& ptDest /*= Point(0,0)*/,unsigned char alpha /*= 128*/ )
+void SDLSurface::DrawAlpha( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/,unsigned char alpha /*= 128*/ ) const
 {
 	SDL_Rect rect1;
 	SDL_Rect rect2;
 		
-	SDL_Surface * source = ((SDLSurface *)&sprite)->m_surface;
-	SDL_Surface * dest = m_surface;
+	SDL_Surface * source = m_surface;
+	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
 	
 	rect1.x = 0;
 	rect1.y = 0;
@@ -204,3 +205,37 @@ void SDLSurface::DrawAlpha( const SurfaceImpl & sprite,const Point& ptDest /*= P
 	SDL_BlitSurface(source,&rect1,dest,&rect2);
 }
 
+
+void SDLSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource /*= Rect(0,0,-1,-1)*/ ) const
+{
+	SDL_Rect rect1;
+	SDL_Rect rect2;
+	
+	int width;
+	int height;
+	
+	SDL_Surface * source = m_surface;
+	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
+	
+	if(rSource.width < 0)
+		width = source->w;
+	else
+		width = rSource.width;
+	
+	if(rSource.height < 0)
+		height = source->h;
+	else
+		height = rSource.height;
+	
+	rect1.x = rSource.x;
+	rect1.y = rSource.y;
+	rect1.h = height;
+	rect1.w = width;
+	
+	rect2.x = rcDest.x;
+	rect2.y = rcDest.y;
+	rect2.h = rcDest.height;
+	rect2.w = rcDest.width;
+	
+	SDL_StretchSurfaceRect(source,&rect1,dest,&rect2);
+}
