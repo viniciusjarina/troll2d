@@ -7,7 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		185E5C970E3BC2EF005AA40D /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185E5C950E3BC2EF005AA40D /* SDL.framework */; };
+		1858C6CE0E550B9E00597406 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C6DF0E5515E800597406 /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C6EA0E551E6300597406 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C6ED0E551EF900597406 /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C70A0E55213D00597406 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C70C0E55215600597406 /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C7140E55234900597406 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C7160E55236200597406 /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C7220E55250600597406 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C7230E55250B00597406 /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C7270E5531F200597406 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
+		1858C72D0E55371300597406 /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858C6CD0E550B9E00597406 /* SDL.framework */; };
 		185E5CAA0E3BC4CC005AA40D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAF870E399E310032E514 /* InfoPlist.strings */; };
 		185E5CAB0E3BC4CC005AA40D /* troll.icns in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAFD90E39A1CE0032E514 /* troll.icns */; };
 		185E5CAE0E3BC4CC005AA40D /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FAAF8A0E399E310032E514 /* SDLMain.m */; };
@@ -17,7 +28,6 @@
 		185E5CB30E3BC4CC005AA40D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF930E399F3F0032E514 /* Cocoa.framework */; };
 		185E5CB40E3BC4CC005AA40D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF950E399F3F0032E514 /* CoreData.framework */; };
 		185E5CB50E3BC4CC005AA40D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF970E399F3F0032E514 /* Foundation.framework */; };
-		185E5CB60E3BC4CC005AA40D /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185E5C950E3BC2EF005AA40D /* SDL.framework */; };
 		185E5CC00E3BC511005AA40D /* test_mouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FAAFF70E39A3C10032E514 /* test_mouse.cpp */; };
 		185E5CE40E3BC618005AA40D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAF870E399E310032E514 /* InfoPlist.strings */; };
 		185E5CE50E3BC618005AA40D /* troll.icns in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAFD90E39A1CE0032E514 /* troll.icns */; };
@@ -28,7 +38,6 @@
 		185E5CED0E3BC618005AA40D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF930E399F3F0032E514 /* Cocoa.framework */; };
 		185E5CEE0E3BC618005AA40D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF950E399F3F0032E514 /* CoreData.framework */; };
 		185E5CEF0E3BC618005AA40D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF970E399F3F0032E514 /* Foundation.framework */; };
-		185E5CF00E3BC618005AA40D /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185E5C950E3BC2EF005AA40D /* SDL.framework */; };
 		185E5CF90E3BC657005AA40D /* test_keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185E5CF70E3BC64C005AA40D /* test_keyboard.cpp */; };
 		18A980140E29423C00866801 /* gfx_ex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A980130E29423C00866801 /* gfx_ex.cpp */; };
 		18A980450E2945DD00866801 /* test_minimal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A980440E2945DD00866801 /* test_minimal.cpp */; };
@@ -85,7 +94,6 @@
 		18C9AD800E3D986E00B099A6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF930E399F3F0032E514 /* Cocoa.framework */; };
 		18C9AD810E3D986E00B099A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF950E399F3F0032E514 /* CoreData.framework */; };
 		18C9AD820E3D986E00B099A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF970E399F3F0032E514 /* Foundation.framework */; };
-		18C9AD830E3D986E00B099A6 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185E5C950E3BC2EF005AA40D /* SDL.framework */; };
 		18C9AD8B0E3D994200B099A6 /* test_graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C9AD8A0E3D994200B099A6 /* test_graphics.cpp */; };
 		18C9ADA80E3D9C8200B099A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAF870E399E310032E514 /* InfoPlist.strings */; };
 		18C9ADA90E3D9C8200B099A6 /* troll.icns in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAFD90E39A1CE0032E514 /* troll.icns */; };
@@ -96,7 +104,6 @@
 		18C9ADB10E3D9C8200B099A6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF930E399F3F0032E514 /* Cocoa.framework */; };
 		18C9ADB20E3D9C8200B099A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF950E399F3F0032E514 /* CoreData.framework */; };
 		18C9ADB30E3D9C8200B099A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF970E399F3F0032E514 /* Foundation.framework */; };
-		18C9ADB40E3D9C8200B099A6 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185E5C950E3BC2EF005AA40D /* SDL.framework */; };
 		18C9ADC10E3D9CC900B099A6 /* test_blit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C9ADC00E3D9CC900B099A6 /* test_blit.cpp */; };
 		18C9ADCB0E3D9D6100B099A6 /* troll.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18C9ADCA0E3D9D6100B099A6 /* troll.bmp */; };
 		18C9ADE00E3D9DF300B099A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAF870E399E310032E514 /* InfoPlist.strings */; };
@@ -108,7 +115,6 @@
 		18C9ADE90E3D9DF300B099A6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF930E399F3F0032E514 /* Cocoa.framework */; };
 		18C9ADEA0E3D9DF300B099A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF950E399F3F0032E514 /* CoreData.framework */; };
 		18C9ADEB0E3D9DF300B099A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FAAF970E399F3F0032E514 /* Foundation.framework */; };
-		18C9ADEC0E3D9DF300B099A6 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185E5C950E3BC2EF005AA40D /* SDL.framework */; };
 		18C9ADEE0E3D9DF300B099A6 /* troll.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18C9ADCA0E3D9D6100B099A6 /* troll.bmp */; };
 		18C9ADF60E3D9E2A00B099A6 /* test_alpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C9ADF50E3D9E2A00B099A6 /* test_alpha.cpp */; };
 		18FAAF8B0E399E310032E514 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18FAAF870E399E310032E514 /* InfoPlist.strings */; };
@@ -121,6 +127,66 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		1858C6DE0E5515CC00597406 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1858C6DF0E5515E800597406 /* SDL.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1858C6EC0E551EAD00597406 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1858C6ED0E551EF900597406 /* SDL.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1858C7120E55215F00597406 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1858C70C0E55215600597406 /* SDL.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1858C71C0E55236A00597406 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1858C7160E55236200597406 /* SDL.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1858C7210E5524E700597406 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1858C7230E55250B00597406 /* SDL.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1858C7300E55371400597406 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1858C72D0E55371300597406 /* SDL.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18C9ADC80E3D9CF100B099A6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,7 +210,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		185E5C950E3BC2EF005AA40D /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../dependencies/SDL/SDL.framework; sourceTree = SOURCE_ROOT; };
+		1858C6CD0E550B9E00597406 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../dependencies/SDL/SDL.framework; sourceTree = SOURCE_ROOT; };
 		185E5CBA0E3BC4CC005AA40D /* test mouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test mouse.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		185E5CF40E3BC618005AA40D /* test keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		185E5CF70E3BC64C005AA40D /* test_keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test_keyboard.cpp; path = ../../../test/test_keyboard.cpp; sourceTree = SOURCE_ROOT; };
@@ -219,13 +285,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				185E5CB00E3BC4CC005AA40D /* libtroll_base.a in Frameworks */,
-				185E5CB10E3BC4CC005AA40D /* libtroll_sdl.a in Frameworks */,
+				1858C6EA0E551E6300597406 /* SDL.framework in Frameworks */,
 				185E5CB20E3BC4CC005AA40D /* AppKit.framework in Frameworks */,
 				185E5CB30E3BC4CC005AA40D /* Cocoa.framework in Frameworks */,
 				185E5CB40E3BC4CC005AA40D /* CoreData.framework in Frameworks */,
 				185E5CB50E3BC4CC005AA40D /* Foundation.framework in Frameworks */,
-				185E5CB60E3BC4CC005AA40D /* SDL.framework in Frameworks */,
+				185E5CB00E3BC4CC005AA40D /* libtroll_base.a in Frameworks */,
+				185E5CB10E3BC4CC005AA40D /* libtroll_sdl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,13 +299,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1858C70A0E55213D00597406 /* SDL.framework in Frameworks */,
 				185E5CEA0E3BC618005AA40D /* libtroll_base.a in Frameworks */,
 				185E5CEB0E3BC618005AA40D /* libtroll_sdl.a in Frameworks */,
 				185E5CEC0E3BC618005AA40D /* AppKit.framework in Frameworks */,
 				185E5CED0E3BC618005AA40D /* Cocoa.framework in Frameworks */,
 				185E5CEE0E3BC618005AA40D /* CoreData.framework in Frameworks */,
 				185E5CEF0E3BC618005AA40D /* Foundation.framework in Frameworks */,
-				185E5CF00E3BC618005AA40D /* SDL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,13 +320,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18A980D50E294B1700866801 /* libtroll_base.a in Frameworks */,
-				18BC9F990E2B0BC9005E42ED /* libtroll_sdl.a in Frameworks */,
+				1858C6CE0E550B9E00597406 /* SDL.framework in Frameworks */,
 				18FAAF920E399F3F0032E514 /* AppKit.framework in Frameworks */,
 				18FAAF940E399F3F0032E514 /* Cocoa.framework in Frameworks */,
 				18FAAF960E399F3F0032E514 /* CoreData.framework in Frameworks */,
 				18FAAF980E399F3F0032E514 /* Foundation.framework in Frameworks */,
-				185E5C970E3BC2EF005AA40D /* SDL.framework in Frameworks */,
+				18A980D50E294B1700866801 /* libtroll_base.a in Frameworks */,
+				18BC9F990E2B0BC9005E42ED /* libtroll_sdl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,13 +348,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1858C7140E55234900597406 /* SDL.framework in Frameworks */,
 				18C9AD7D0E3D986E00B099A6 /* libtroll_base.a in Frameworks */,
 				18C9AD7E0E3D986E00B099A6 /* libtroll_sdl.a in Frameworks */,
 				18C9AD7F0E3D986E00B099A6 /* AppKit.framework in Frameworks */,
 				18C9AD800E3D986E00B099A6 /* Cocoa.framework in Frameworks */,
 				18C9AD810E3D986E00B099A6 /* CoreData.framework in Frameworks */,
 				18C9AD820E3D986E00B099A6 /* Foundation.framework in Frameworks */,
-				18C9AD830E3D986E00B099A6 /* SDL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,13 +362,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1858C7220E55250600597406 /* SDL.framework in Frameworks */,
 				18C9ADAE0E3D9C8200B099A6 /* libtroll_base.a in Frameworks */,
 				18C9ADAF0E3D9C8200B099A6 /* libtroll_sdl.a in Frameworks */,
 				18C9ADB00E3D9C8200B099A6 /* AppKit.framework in Frameworks */,
 				18C9ADB10E3D9C8200B099A6 /* Cocoa.framework in Frameworks */,
 				18C9ADB20E3D9C8200B099A6 /* CoreData.framework in Frameworks */,
 				18C9ADB30E3D9C8200B099A6 /* Foundation.framework in Frameworks */,
-				18C9ADB40E3D9C8200B099A6 /* SDL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,13 +376,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1858C7270E5531F200597406 /* SDL.framework in Frameworks */,
 				18C9ADE60E3D9DF300B099A6 /* libtroll_base.a in Frameworks */,
 				18C9ADE70E3D9DF300B099A6 /* libtroll_sdl.a in Frameworks */,
 				18C9ADE80E3D9DF300B099A6 /* AppKit.framework in Frameworks */,
 				18C9ADE90E3D9DF300B099A6 /* Cocoa.framework in Frameworks */,
 				18C9ADEA0E3D9DF300B099A6 /* CoreData.framework in Frameworks */,
 				18C9ADEB0E3D9DF300B099A6 /* Foundation.framework in Frameworks */,
-				18C9ADEC0E3D9DF300B099A6 /* SDL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +397,6 @@
 				18C9ADC00E3D9CC900B099A6 /* test_blit.cpp */,
 				18C9AD8A0E3D994200B099A6 /* test_graphics.cpp */,
 				185E5CF70E3BC64C005AA40D /* test_keyboard.cpp */,
-				185E5C950E3BC2EF005AA40D /* SDL.framework */,
 				18FAAFF70E39A3C10032E514 /* test_mouse.cpp */,
 				18FAAFD90E39A1CE0032E514 /* troll.icns */,
 				18FAAF860E399E310032E514 /* English.lproj */,
@@ -395,6 +460,7 @@
 				18B2C4190E2926F4007A3E51 /* libtroll_base.a */,
 				18B2C45D0E292A0E007A3E51 /* libtroll_sdl.a */,
 				18A9800C0E29416A00866801 /* libtroll_allegro.a */,
+				1858C6CD0E550B9E00597406 /* SDL.framework */,
 				18A9803E0E29453D00866801 /* test minimal.app */,
 				185E5CBA0E3BC4CC005AA40D /* test mouse.app */,
 				185E5CF40E3BC618005AA40D /* test keyboard.app */,
@@ -448,6 +514,7 @@
 				185E5CA90E3BC4CC005AA40D /* Resources */,
 				185E5CAC0E3BC4CC005AA40D /* Sources */,
 				185E5CAF0E3BC4CC005AA40D /* Frameworks */,
+				1858C6EC0E551EAD00597406 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -465,6 +532,7 @@
 				185E5CE30E3BC618005AA40D /* Resources */,
 				185E5CE60E3BC618005AA40D /* Sources */,
 				185E5CE90E3BC618005AA40D /* Frameworks */,
+				1858C7120E55215F00597406 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -499,6 +567,7 @@
 				18A9803A0E29453D00866801 /* Resources */,
 				18A9803B0E29453D00866801 /* Sources */,
 				18A9803C0E29453D00866801 /* Frameworks */,
+				1858C6DE0E5515CC00597406 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -550,6 +619,7 @@
 				18C9AD750E3D986E00B099A6 /* Resources */,
 				18C9AD790E3D986E00B099A6 /* Sources */,
 				18C9AD7C0E3D986E00B099A6 /* Frameworks */,
+				1858C71C0E55236A00597406 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -565,6 +635,7 @@
 			buildConfigurationList = 18C9ADB50E3D9C8200B099A6 /* Build configuration list for PBXNativeTarget "test blit" */;
 			buildPhases = (
 				18C9ADC80E3D9CF100B099A6 /* CopyFiles */,
+				1858C7210E5524E700597406 /* CopyFiles */,
 				18C9ADA60E3D9C8200B099A6 /* Resources */,
 				18C9ADAA0E3D9C8200B099A6 /* Sources */,
 				18C9ADAD0E3D9C8200B099A6 /* Frameworks */,
@@ -586,6 +657,7 @@
 				18C9ADE20E3D9DF300B099A6 /* Sources */,
 				18C9ADE50E3D9DF300B099A6 /* Frameworks */,
 				18C9ADED0E3D9DF300B099A6 /* CopyFiles */,
+				1858C7300E55371400597406 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -821,9 +893,13 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../../../../[LIBS]/SDL-1.2.13/Xcode/SDL/build/Development\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -854,10 +930,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				CONFIGURATION_BUILD_DIR = ../../../bin/;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				FRAMEWORK_SEARCH_PATHS = /../../../dependencies/SDL;
+				FRAMEWORK_SEARCH_PATHS = ../../../dependencies/SDL;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -885,9 +961,13 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../../../../[LIBS]/SDL-1.2.13/Xcode/SDL/build/Development\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -918,10 +998,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				CONFIGURATION_BUILD_DIR = ../../../bin/;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				FRAMEWORK_SEARCH_PATHS = /../../../dependencies/SDL;
+				FRAMEWORK_SEARCH_PATHS = ../../../dependencies/SDL;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -995,9 +1075,15 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../../../../[LIBS]/SDL-1.2.13/Xcode/SDL/build/Development\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -1028,10 +1114,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				CONFIGURATION_BUILD_DIR = ../../../bin/;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				FRAMEWORK_SEARCH_PATHS = /../../../dependencies/SDL;
+				FRAMEWORK_SEARCH_PATHS = ../../../dependencies/SDL;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1163,9 +1249,13 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../../../../[LIBS]/SDL-1.2.13/Xcode/SDL/build/Development\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -1196,10 +1286,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				CONFIGURATION_BUILD_DIR = ../../../bin/;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				FRAMEWORK_SEARCH_PATHS = /../../../dependencies/SDL;
+				FRAMEWORK_SEARCH_PATHS = ../../../dependencies/SDL;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1227,9 +1317,13 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../../../../[LIBS]/SDL-1.2.13/Xcode/SDL/build/Development\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -1260,10 +1354,15 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				CONFIGURATION_BUILD_DIR = ../../../bin/;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				FRAMEWORK_SEARCH_PATHS = /../../../dependencies/SDL;
+				FRAMEWORK_SEARCH_PATHS = (
+					/../../../dependencies/SDL,
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1291,9 +1390,13 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../../../../[LIBS]/SDL-1.2.13/Xcode/SDL/build/Development\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../dependencies/SDL\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -1324,10 +1427,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				CONFIGURATION_BUILD_DIR = ../../../bin/;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				FRAMEWORK_SEARCH_PATHS = /../../../dependencies/SDL;
+				FRAMEWORK_SEARCH_PATHS = ../../../dependencies/SDL;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
