@@ -146,11 +146,23 @@ SOURCE=..\..\..\src\sdl_system.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\sdlstretch.c
+SOURCE=..\..\..\src\SPG_blib.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\sdlstretchcode.c
+SOURCE=..\..\..\src\SPG_extended.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SPG_primitives.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SPG_rotation.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SPG_surface.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"

@@ -39,7 +39,8 @@
  */
 
 #include <SDL.h>
-#include "SDL_stretch.h"
+
+#include "sprig.h"
 
 #include "troll/surface.h"
 #include "troll/sdl_surface.h"
@@ -236,6 +237,27 @@ void SDLSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const
 	rect2.y = rcDest.y;
 	rect2.h = rcDest.height;
 	rect2.w = rcDest.width;
+
+	float zoomx = ((float)rect2.w/(float)rect1.w);
+	float zoomy = ((float)rect2.h/(float)rect1.h);
+
+	rect1.h =  rcDest.height;
+	rect1.w =  rcDest.height;
+
+
+
+	SPG_TransformSurface(source,dest,30.0f,zoomx,zoomy,0,0,rect2.x,rect2.y,SPG_TCOLORKEY);
+
+#if 0 // old code using SDL_gfx - zoomSurface
 	
-	SDL_StretchSurfaceRect(source,&rect1,dest,&rect2);
+	SDL_Surface * source2 = zoomSurface(source,zoomx,zoomy,false); old 
+
+	SDL_SetColorKey(source2,SDL_SRCCOLORKEY,source->format->colorkey);
+	
+	SDL_BlitSurface(source2,&rect1,dest,&rect2);
+
+	SDL_FreeSurface(source2);
+#endif
+
+	
 }
