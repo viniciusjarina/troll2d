@@ -41,7 +41,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "troll_allegro___Win32_Release_Allegro"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O1 /I "../../../../../include/" /I "../../../include/" /I "../../../../../dependencies/allegro/include/" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /YX /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O1 /I "../../../../../include/" /I "../../../include/" /I "../../../../../dependencies/allegro/include/" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O1 /I "../../../../../include/" /I "../../../include/" /I "../../../include/aastr2/" /I "../../../../../dependencies/allegro/include/" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /D "ALLEGRO_NO_ASM" /YX /FD /c
 # ADD BASE RSC /l 0x416 /d "NDEBUG"
 # ADD RSC /l 0x416 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -64,7 +64,7 @@ LIB32=link.exe -lib
 # PROP Intermediate_Dir "troll_allegro___Win32_Debug_Allegro"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../../../include/" /I "../../../include/" /I "../../../../../dependencies/allegro/include/" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /FR /YX /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../../../include/" /I "../../../include/" /I "../../../../../dependencies/allegro/include/" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../../../include/" /I "../../../include/" /I "../../../include/aastr2/" /I "../../../../../dependencies/allegro/include/" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "ALLEGRO_STATICLINK" /D "ALLEGRO_NO_ASM" /FR /YX /FD /GZ /c
 # ADD BASE RSC /l 0x416 /d "_DEBUG"
 # ADD RSC /l 0x416 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -83,6 +83,26 @@ LIB32=link.exe -lib
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Group "aastr2"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\..\..\src\aastr2\aarot.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\aastr2\aastr.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\aastr2\aautil.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\aastr2\round.c
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=..\..\..\src\allegro_graphics.cpp

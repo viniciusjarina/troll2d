@@ -41,7 +41,12 @@
 // Surface.cpp: implementation of the Surface class.
 //
 //////////////////////////////////////////////////////////////////////
+#include <math.h>
+
 #include <allegro.h>
+
+#include "aastr2/aastr.h"
+#include "aastr2/round.h"
 
 
 #include "troll/surface.h"
@@ -158,7 +163,7 @@ void AllegroSurface::DrawAlpha( SurfaceImpl & destination,const Point& ptDest /*
 void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource /*= Rect(0,0,-1,-1)*/ ) const
 {
 	BITMAP * source = m_surface;
-	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+	BITMAP *dest = ((AllegroSurface *)&destination)->m_surface;
 	int width;
 	int height;
 	
@@ -171,6 +176,16 @@ void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,c
 		height = source->h;
 	else
 		width = rSource.height;
+
+#if 0 
+	// TODO AA-flag
+	_aa_stretch_blit (source, dest, 
+		iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
+		iround(ldexp(width,aa_BITS)), iround(ldexp(height,aa_BITS)), 
+		iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
+		iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
+		AA_MASKED);
+#endif
 	
 	masked_stretch_blit(source, dest, rSource.x, rSource.y, width, height, rcDest.x, rcDest.y,rcDest.width, rcDest.height);
 }

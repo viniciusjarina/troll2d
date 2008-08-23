@@ -83,6 +83,10 @@ LIB32=link.exe -lib
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Group "SPriG"
+
+# PROP Default_Filter ""
+# End Group
 # Begin Source File
 
 SOURCE=..\..\..\src\do_arc.c
@@ -143,26 +147,6 @@ SOURCE=..\..\..\src\sdl_surface.cpp
 # Begin Source File
 
 SOURCE=..\..\..\src\sdl_system.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\..\src\SPG_blib.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\..\src\SPG_extended.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\..\src\SPG_primitives.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\..\src\SPG_rotation.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\..\src\SPG_surface.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"

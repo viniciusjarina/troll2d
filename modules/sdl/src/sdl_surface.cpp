@@ -246,18 +246,5 @@ void SDLSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const
 
 
 
-	SPG_TransformSurface(source,dest,30.0f,zoomx,zoomy,0,0,rect2.x,rect2.y,SPG_TCOLORKEY);
-
-#if 0 // old code using SDL_gfx - zoomSurface
-	
-	SDL_Surface * source2 = zoomSurface(source,zoomx,zoomy,false); old 
-
-	SDL_SetColorKey(source2,SDL_SRCCOLORKEY,source->format->colorkey);
-	
-	SDL_BlitSurface(source2,&rect1,dest,&rect2);
-
-	SDL_FreeSurface(source2);
-#endif
-
-	
+	SPG_TransformSurface(source,dest,0.0f,zoomx,zoomy,0,0,rect2.x,rect2.y,SPG_TCOLORKEY);
 }
