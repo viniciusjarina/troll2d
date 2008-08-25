@@ -52,6 +52,11 @@
 		18A980E90E294B4000866801 /* allegro_screen_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A980DF0E294B4000866801 /* allegro_screen_helper.cpp */; };
 		18A980EA0E294B4000866801 /* allegro_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A980E00E294B4000866801 /* allegro_surface.cpp */; };
 		18A980EB0E294B4000866801 /* allegro_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A980E10E294B4000866801 /* allegro_system.cpp */; };
+		18AF09480E62848000A691F8 /* SPG_blib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18AF09430E62848000A691F8 /* SPG_blib.cpp */; };
+		18AF09490E62848000A691F8 /* SPG_extended.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18AF09440E62848000A691F8 /* SPG_extended.cpp */; };
+		18AF094A0E62848000A691F8 /* SPG_primitives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18AF09450E62848000A691F8 /* SPG_primitives.cpp */; };
+		18AF094B0E62848000A691F8 /* SPG_rotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18AF09460E62848000A691F8 /* SPG_rotation.cpp */; };
+		18AF094C0E62848000A691F8 /* SPG_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18AF09470E62848000A691F8 /* SPG_surface.cpp */; };
 		18B2C4310E292772007A3E51 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B2C41E0E292772007A3E51 /* color.cpp */; };
 		18B2C4320E292772007A3E51 /* graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B2C41F0E292772007A3E51 /* graphics.cpp */; };
 		18B2C4330E292772007A3E51 /* graphics_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B2C4200E292772007A3E51 /* graphics_factory.cpp */; };
@@ -228,6 +233,11 @@
 		18A980DF0E294B4000866801 /* allegro_screen_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = allegro_screen_helper.cpp; path = ../../../modules/allegro/src/allegro_screen_helper.cpp; sourceTree = SOURCE_ROOT; };
 		18A980E00E294B4000866801 /* allegro_surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = allegro_surface.cpp; path = ../../../modules/allegro/src/allegro_surface.cpp; sourceTree = SOURCE_ROOT; };
 		18A980E10E294B4000866801 /* allegro_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = allegro_system.cpp; path = ../../../modules/allegro/src/allegro_system.cpp; sourceTree = SOURCE_ROOT; };
+		18AF09430E62848000A691F8 /* SPG_blib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SPG_blib.cpp; path = ../../../modules/sdl/src/sprig/SPG_blib.cpp; sourceTree = SOURCE_ROOT; };
+		18AF09440E62848000A691F8 /* SPG_extended.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SPG_extended.cpp; path = ../../../modules/sdl/src/sprig/SPG_extended.cpp; sourceTree = SOURCE_ROOT; };
+		18AF09450E62848000A691F8 /* SPG_primitives.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SPG_primitives.cpp; path = ../../../modules/sdl/src/sprig/SPG_primitives.cpp; sourceTree = SOURCE_ROOT; };
+		18AF09460E62848000A691F8 /* SPG_rotation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SPG_rotation.cpp; path = ../../../modules/sdl/src/sprig/SPG_rotation.cpp; sourceTree = SOURCE_ROOT; };
+		18AF09470E62848000A691F8 /* SPG_surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SPG_surface.cpp; path = ../../../modules/sdl/src/sprig/SPG_surface.cpp; sourceTree = SOURCE_ROOT; };
 		18B2C4190E2926F4007A3E51 /* libtroll_base.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtroll_base.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B2C41E0E292772007A3E51 /* color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = color.cpp; path = ../../../src/color.cpp; sourceTree = SOURCE_ROOT; };
 		18B2C41F0E292772007A3E51 /* graphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphics.cpp; path = ../../../src/graphics.cpp; sourceTree = SOURCE_ROOT; };
@@ -392,6 +402,11 @@
 		18B2C40A0E2926B5007A3E51 = {
 			isa = PBXGroup;
 			children = (
+				18AF09430E62848000A691F8 /* SPG_blib.cpp */,
+				18AF09440E62848000A691F8 /* SPG_extended.cpp */,
+				18AF09450E62848000A691F8 /* SPG_primitives.cpp */,
+				18AF09460E62848000A691F8 /* SPG_rotation.cpp */,
+				18AF09470E62848000A691F8 /* SPG_surface.cpp */,
 				18C9ADF50E3D9E2A00B099A6 /* test_alpha.cpp */,
 				18C9ADCA0E3D9D6100B099A6 /* troll.bmp */,
 				18C9ADC00E3D9CC900B099A6 /* test_blit.cpp */,
@@ -840,6 +855,11 @@
 				18B2C4810E292B5F007A3E51 /* sdl_screen_helper.cpp in Sources */,
 				18B2C4820E292B5F007A3E51 /* sdl_surface.cpp in Sources */,
 				18B2C4830E292B5F007A3E51 /* sdl_system.cpp in Sources */,
+				18AF09480E62848000A691F8 /* SPG_blib.cpp in Sources */,
+				18AF09490E62848000A691F8 /* SPG_extended.cpp in Sources */,
+				18AF094A0E62848000A691F8 /* SPG_primitives.cpp in Sources */,
+				18AF094B0E62848000A691F8 /* SPG_rotation.cpp in Sources */,
+				18AF094C0E62848000A691F8 /* SPG_surface.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,6 +1226,7 @@
 					/Library/Frameworks/SDL.framework/Headers/,
 					../../../include/,
 					../../../modules/sdl/include,
+					../../../modules/sdl/include/sprig,
 				);
 				INSTALL_PATH = /usr/local/lib;
 				OBJROOT = build;
@@ -1230,6 +1251,7 @@
 					../../../dependencies/SDL/SDL.framework/Headers,
 					../../../include/,
 					../../../modules/sdl/include,
+					../../../modules/sdl/include/sprig,
 				);
 				INSTALL_PATH = /usr/local/lib;
 				OBJROOT = build;

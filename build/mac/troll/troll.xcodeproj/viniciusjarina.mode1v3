@@ -274,7 +274,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
+									<integer>6</integer>
 									<integer>1</integer>
 								</array>
 							</array>
@@ -314,7 +314,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SDL_gfxPrimitives.h</string>
+								<string>SPG_blib.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -322,11 +322,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SDL_gfxPrimitives.h</string>
+										<string>SPG_blib.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1858C7A20E5559D500597406</string>
+										<string>18AF098E0E62853200A691F8</string>
 										<key>history</key>
 										<array>
 											<string>18FAAFBD0E39A0160032E514</string>
@@ -350,7 +350,9 @@
 											<string>1858C7380E553A1600597406</string>
 											<string>1858C7630E55545E00597406</string>
 											<string>1858C77E0E5559B500597406</string>
-											<string>1858C7800E5559B500597406</string>
+											<string>18AF097D0E62851600A691F8</string>
+											<string>18AF097E0E62851600A691F8</string>
+											<string>18AF097F0E62851600A691F8</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -375,6 +377,8 @@
 											<string>1892A6A00E42D19800F5CCA7</string>
 											<string>1858C73A0E553A1600597406</string>
 											<string>1858C77F0E5559B500597406</string>
+											<string>18AF09800E62851600A691F8</string>
+											<string>18AF09810E62851600A691F8</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -432,9 +436,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>1858C7980E5559D200597406</string>
+				<string>18AF09830E62851600A691F8</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>1858C7990E5559D200597406</string>
+				<string>18AF09840E62851600A691F8</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -568,10 +572,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>18AF098C0E62851600A691F8</string>
+		<string>18AF098D0E62851600A691F8</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>18BC9FBF0E2B0D1F005E42ED</string>
-		<string>/Users/viniciusjarina/Downloads/Troll/build/mac/troll/troll.xcodeproj</string>
+		<string>/Users/viniciusjarina/Documents/Projetos/troll/build/mac/troll/troll.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>301 187 1135 754 0 0 1280 1002 </string>
@@ -595,7 +601,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>sdl_surface.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -612,6 +618,8 @@
 							<string>197pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXBuildLogShowsTranscriptDefaultKey</key>
@@ -653,7 +661,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>18BC9FBF0E2B0D1F005E42ED</string>
-				<string>1858C79A0E5559D200597406</string>
+				<string>18AF09370E62838100A691F8</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -773,13 +781,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>1858C79B0E5559D200597406</string>
+				<string>18AF09850E62851600A691F8</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>1858C79C0E5559D200597406</string>
-				<string>1858C79D0E5559D200597406</string>
-				<string>1858C79E0E5559D200597406</string>
-				<string>1858C79F0E5559D200597406</string>
-				<string>1858C7A00E5559D200597406</string>
+				<string>18AF09860E62851600A691F8</string>
+				<string>18AF09870E62851600A691F8</string>
+				<string>18AF09880E62851600A691F8</string>
+				<string>18AF09890E62851600A691F8</string>
+				<string>18AF098A0E62851600A691F8</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -941,7 +949,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>1858C7A10E5559D200597406</string>
+				<string>18AF098B0E62851600A691F8</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
