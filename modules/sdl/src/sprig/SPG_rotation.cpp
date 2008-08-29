@@ -47,7 +47,7 @@ SDL_Rect SPG_transform_tmap(SDL_Surface *src, SDL_Surface *dst, float angle, flo
 // Helper function to SPG_TransformSurface()
 // Returns the bounding box
 //==================================================================================
-void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xscale, float yscale, Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Sint16 *xmin, Sint16 *ymin, Sint16 *xmax, Sint16 *ymax)
+static void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xscale, float yscale, Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Sint16 *xmin, Sint16 *ymin, Sint16 *xmax, Sint16 *ymax)
 {
 	Sint16 x, y, rx, ry;
 

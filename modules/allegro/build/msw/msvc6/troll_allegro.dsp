@@ -103,6 +103,22 @@ SOURCE=..\..\..\src\aastr2\aautil.c
 SOURCE=..\..\..\src\aastr2\round.c
 # End Source File
 # End Group
+# Begin Group "loadpng"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\..\..\src\loadpng.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\regpng.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\savepng.c
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=..\..\..\src\allegro_graphics.cpp
@@ -110,6 +126,10 @@ SOURCE=..\..\..\src\allegro_graphics.cpp
 # Begin Source File
 
 SOURCE=..\..\..\src\allegro_image.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\allegro_image_alpha_surface_impl.cpp
 # End Source File
 # Begin Source File
 
@@ -171,7 +191,15 @@ SOURCE=..\..\..\include\troll\allegro_image.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\include\troll\allegro_image_alpha_surface_impl.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\include\troll\allegro_image_surface_helper.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\allegro_image_surface_impl.h
 # End Source File
 # Begin Source File
 

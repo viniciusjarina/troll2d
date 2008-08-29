@@ -52,7 +52,6 @@
 
 #include "troll/surface.h"
 
-#include "troll/allegro_image_surface_impl.h"
 #include "troll/allegro_image_alpha_surface_impl.h"
 
 using Troll::Point;
@@ -62,68 +61,79 @@ using Troll::Surface;
 using Troll::SurfaceImpl;
 
 using Troll::AllegroSurface;
-using Troll::AllegroImageSurfaceHelper;
-
-using Troll::AllegroImageSurfaceImpl;
 using Troll::AllegroImageAlphaSurfaceImpl;
 
-
-static int allegro_bitmap_has_alpha(BITMAP *bmp)
+void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/,const Rect& rSource /*= Rect(0,0,-1,-1)*/ ) const
 {
-	int x, y, c;
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+
+	int width;
+	int height;
 	
-	if (bitmap_color_depth(bmp) != 32)
-		return FALSE;
-	
-	for (y = 0; y < bmp->h; y++) {
-		for (x = 0; x < bmp->w; x++) {
-			c = getpixel(bmp, x, y);
-			if (geta32(c))
-				return TRUE;
-		}
-	}
-	return FALSE;
-}
-
-class AllegroImageSurface : public Surface
-{
-public:
-	AllegroImageSurface(AllegroImageSurfaceImpl * impl):
-	Surface(impl)  
-	{
-	}
-};
-
-// AllegroImageSurfaceHelper:
-// This class provide help to associate Image object with Surface object
-
-AllegroImageSurfaceHelper::AllegroImageSurfaceHelper():
-m_imageSurface(NULL)
-{
-}
-
-AllegroImageSurfaceHelper::~AllegroImageSurfaceHelper()
-{
-	if(m_imageSurface)
-		delete m_imageSurface;
-}
-
-bool AllegroImageSurfaceHelper::LoadImage( const char * sImageFile )
-{
-	PALETTE palette;
-	BITMAP * bmp_image = load_bitmap(sImageFile, palette);
-	
-	if (!bmp_image)
-		return false;
-
-	AllegroImageSurfaceImpl * surfaceImpl;
-
-	if(allegro_bitmap_has_alpha(bmp_image))
-		surfaceImpl = new AllegroImageAlphaSurfaceImpl(bmp_image);
+	if(rSource.width < 0)
+		width  = source->w;
 	else
-		surfaceImpl = new AllegroImageSurfaceImpl(bmp_image);
+		width = rSource.width;
+	
+	if(rSource.height < 0)
+		height = source->h;
+	else
+		width = rSource.height;
 
-	m_imageSurface = new AllegroImageSurface(surfaceImpl);
-	return true;
-}	
+	_aa_stretch_blit (source, dest, 
+		iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
+		iround(ldexp(width,aa_BITS)), iround(ldexp(height,aa_BITS)), 
+		iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
+		iround(ldexp(width,aa_BITS)), iround(ldexp(height,aa_BITS)), 
+		AA_MASKED|AA_NO_AA|AA_ALPHA|AA_BLEND);
+}
 
+void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource /*= Rect(0,0,-1,-1)*/ ) const
+{
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+	
+	int width;
+	int height;
+	
+	if(rSource.width < 0)
+		width  = source->w;
+	else
+		width = rSource.width;
+	
+	if(rSource.height < 0)
+		height = source->h;
+	else
+		width = rSource.height;
+	
+	_aa_stretch_blit (source, dest, 
+		iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
+		iround(ldexp(width,aa_BITS)), iround(ldexp(height,aa_BITS)), 
+		iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
+		iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
+		AA_MASKED|AA_ALPHA|AA_BLEND);
+}
+
+void AllegroImageAlphaSurfaceImpl::DrawAlpha( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/,unsigned char alpha /*= 128*/ ) const
+{
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+	
+	int width;
+	int height;
+	
+	width  = source->w;
+	height = source->h;
+	
+	aa_set_trans(255 - alpha);
+	
+	_aa_stretch_blit (source, dest, 
+		iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
+		iround(ldexp(width,aa_BITS)), iround(ldexp(height,aa_BITS)), 
+		iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
+		iround(ldexp(width,aa_BITS)), iround(ldexp(height,aa_BITS)), 
+		AA_MASKED|AA_ALPHA|AA_BLEND);
+
+	aa_set_trans(0);
+}

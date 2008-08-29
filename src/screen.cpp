@@ -76,6 +76,11 @@ int Screen::GetFPS()
 	return m_singleton->GetFPS();
 }
 
+int Screen::GetRealFPS()
+{
+	return m_singleton->GetRealFPS();
+}
+
 void Screen::StartFrame()
 {
 	m_singleton->StartFrame();

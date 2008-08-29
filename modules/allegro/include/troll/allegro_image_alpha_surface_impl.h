@@ -38,42 +38,36 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef __TROLL_ALLEGRO_IMAGE_ALPHA_SURFACE_IMPL_H__
+#define __TROLL_ALLEGRO_IMAGE_ALPHA_SURFACE_IMPL_H__
 
-#ifndef __TROLL_SDL_SCREEN_H__
-#define __TROLL_SDL_SCREEN_H__
+#include "troll/image_impl.h"
 
-
-#include "troll/screen_impl.h"
-#include "troll/surface.h"
-
-#include "troll/sdl_screen_helper.h"
+#include "troll/allegro_image_surface_impl.h"
 
 namespace Troll
 {
 
-class SDLScreen;
-
-class SDLScreen : public ScreenImpl
+class AllegroImageAlphaSurfaceImpl : public AllegroImageSurfaceImpl
 {
-	public:
-		SDLScreen(int w, int h,int bpp,bool fullscreen,int nFPS);
-		virtual ~SDLScreen();
-		
-	public:
-		
-		virtual Surface & GetSurface() const;
-		virtual void Flip();
-		virtual void StartFrame();
-		virtual bool SkipFrame();
-		virtual int	 GetFPS() const;
-		virtual int GetRealFPS() const;
-		virtual void ShowCursor(bool show);
-		
-	private:
-		
-		SDLScreenHelper  m_screenHelper;
-};
-	
-}// Troll
+public:
+	AllegroImageAlphaSurfaceImpl(BITMAP * bmp):
+	AllegroImageSurfaceImpl(bmp)
+	{
+		convert_alpha(bmp);
+	}
+	  
+public:
 
-#endif // __TROLL_SDL_SCREEN_H__
+
+	virtual void DrawStretch(SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource = Rect(0,0,-1,-1)) const;
+	virtual void Draw(SurfaceImpl & destination,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1)) const;
+	virtual void DrawAlpha(SurfaceImpl & destination,const Point& ptDest = Point(0,0),unsigned char alpha = 128) const;
+
+};
+
+
+
+}
+
+#endif // __TROLL_ALLEGRO_IMAGE_ALPHA_SURFACE_IMPL_H__

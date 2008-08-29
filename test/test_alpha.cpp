@@ -40,6 +40,8 @@
 
 #include <troll.h> // include troll header
 
+#include <stdio.h>
+
 #ifdef __APPLE__ // Under Mac OS X we will use SDLMain.m to wrap NSApplication and 
 #include <SDL.h> // the entry point of a Cocoa application (this needed to be fixed)
 #endif
@@ -50,6 +52,9 @@
 	int main(int argc, char *argv[])
 #endif
 {
+	char sRealFPS[10];
+	int nRealFPS = 0;
+
 	using namespace Troll;
 	
 	if(!System::Init())			// Inialize (input, sound, files, etc)
@@ -62,7 +67,7 @@
 
 	Image image;
 	
-	if(!image.LoadImage("images/troll.bmp"))
+	if(!image.LoadImage("images/troll.png"))
 		return 0;
 		
 	const Surface & logo = image.GetSurface();
@@ -114,7 +119,10 @@
 			screen.Clear(Color::WHITE);
 
 			// RenderFrame(); Add draw code, to render current frame
-			g.DrawText(Point(10,10),"(Press esc to exit, space bar to toggle clipping)",Color::RED);
+			sprintf(sRealFPS,"FPS %d ",nRealFPS);
+			// RenderFrame(); Add draw code, to render current frame
+			g.DrawText(Point(10,10),sRealFPS,Color::BLACK);
+			g.DrawText(Point(60,10),"(Press esc to exit, space bar to toggle clipping)",Color::RED);
 			g.DrawText(Point(10,30),"Simple Blit with Alpha",Color::BLUE);
 
 
@@ -147,6 +155,7 @@
 			
 
 			Screen::Flip();		// Flip screen
+			nRealFPS = Screen::GetRealFPS();
 		}
 	}
 	

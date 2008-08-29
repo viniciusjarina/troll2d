@@ -38,42 +38,28 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef __TROLL_ALLEGRO_IMAGE_SURFACE_IMPL_H__
+#define __TROLL_ALLEGRO_IMAGE_SURFACE_IMPL_H__
 
-#ifndef __TROLL_SDL_SCREEN_H__
-#define __TROLL_SDL_SCREEN_H__
-
-
-#include "troll/screen_impl.h"
-#include "troll/surface.h"
-
-#include "troll/sdl_screen_helper.h"
+#include "troll/image_impl.h"
 
 namespace Troll
 {
 
-class SDLScreen;
+class Surface;
 
-class SDLScreen : public ScreenImpl
+// class to create a Surface object passing BITMAP * as parameter
+class AllegroImageSurfaceImpl : public AllegroSurface
 {
-	public:
-		SDLScreen(int w, int h,int bpp,bool fullscreen,int nFPS);
-		virtual ~SDLScreen();
-		
-	public:
-		
-		virtual Surface & GetSurface() const;
-		virtual void Flip();
-		virtual void StartFrame();
-		virtual bool SkipFrame();
-		virtual int	 GetFPS() const;
-		virtual int GetRealFPS() const;
-		virtual void ShowCursor(bool show);
-		
-	private:
-		
-		SDLScreenHelper  m_screenHelper;
-};
+public:
 	
-}// Troll
+	AllegroImageSurfaceImpl(BITMAP * bmp):
+	AllegroSurface(bmp)
+	{
+	}
+};
 
-#endif // __TROLL_SDL_SCREEN_H__
+
+}
+
+#endif // __TROLL_ALLEGRO_IMAGE_SURFACE_IMPL_H__

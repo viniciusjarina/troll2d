@@ -40,6 +40,8 @@
 
 #include <SDL.h>
 
+#include "SDL_image.h"
+
 #include "troll/surface.h"
 
 #include "troll/sdl_surface.h"
@@ -84,15 +86,37 @@ bool SDLImageSurfaceHelper::LoadImage( const char * sImageFile )
 {
 		/* Load a BMP image into a surface */
 	SDL_Surface *imagebmp;
-	SDL_Surface *image;
+	SDL_Surface *image = NULL;
+
+	bool hasAlpha = false;
 	
-	// TODO: Use SDL_image to load more formats of image (png, jpeg..etc)
-	imagebmp = SDL_LoadBMP(sImageFile);
+	imagebmp = IMG_Load(sImageFile);
+
 	if(imagebmp == NULL)
 		return false;
-	
+
+	if (imagebmp->format->BitsPerPixel == 32)
+	{
+		for (int i = 0; i < imagebmp->w * imagebmp->h; ++i)
+		{
+			Uint8 r, g, b, a;
+			SDL_GetRGBA(((Uint32*) imagebmp->pixels)[i],
+				imagebmp->format,
+				&r, &g, &b, &a);
+			
+			if (a != 255)
+			{
+				hasAlpha = true;
+				break;
+			}
+		}
+	}
+
 	/* Convert the image to the video format (maps colors) */
-	image = SDL_DisplayFormat(imagebmp);
+	if (hasAlpha)
+		image = SDL_DisplayFormatAlpha(imagebmp);
+	else
+		image = SDL_DisplayFormat(imagebmp);	
 	
 	if(image != NULL)
 	{
@@ -101,7 +125,7 @@ bool SDLImageSurfaceHelper::LoadImage( const char * sImageFile )
 	else
 		image = imagebmp;
 	
-	SDL_SetColorKey(image,SDL_SRCCOLORKEY,SDL_MapRGB(image->format,255,0,255));
+	SDL_SetColorKey(image,SDL_SRCCOLORKEY | SDL_RLEACCEL | SDL_HWACCEL,SDL_MapRGB(image->format,255,0,255));
 	
 	SDLImageSurfaceImpl * surfaceImpl = new SDLImageSurfaceImpl(image);
 	m_imageSurface = new SDLImageSurface(surfaceImpl);

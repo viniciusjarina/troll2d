@@ -203,6 +203,9 @@ extern SPG_bool _SPG_lock;
 #define SPG_TTMAP SPG_FLAG3
 #define SPG_TCOLORKEY SPG_FLAG4
 
+#define SPG_TALPHABLEND SPG_FLAG4
+
+
 
 #ifdef _SPG_CPP // BOTH C and C++
 extern "C" {

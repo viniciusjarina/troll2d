@@ -62,7 +62,7 @@
 
 	Image image;
 	
-	if(!image.LoadImage("images/troll.bmp"))
+	if(!image.LoadImage("images/troll.png"))
 		return 0;
 		
 	const Surface & logo = image.GetSurface();

@@ -201,6 +201,8 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 	int main(int argc, char *argv[])
 #endif
 {
+	char sRealFPS[10];
+	int nRealFPS = 0;
 	
 	if(!System::Init())			// Inialize (input, sound, files, etc)
 		return 0;
@@ -301,10 +303,14 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 		
 			buff.ResetClip();
 			// RenderFrame(); Add draw code, to render current frame
-			g.DrawText(Point(10,10),"(Press ESC to exit, LEFT/RIGHT to change primitive, SPACE to toggle anti-alias)",Color::DARKRED);
+			sprintf(sRealFPS,"FPS %d ",nRealFPS);
+			// RenderFrame(); Add draw code, to render current frame
+			g.DrawText(Point(10,10),sRealFPS,Color::BLACK);
+			g.DrawText(Point(60,10),"(Press ESC to exit, LEFT/RIGHT to change primitive, SPACE to toggle anti-alias)",Color::DARKRED);
 			
 
 			Screen::Flip();		// Flip screen
+			nRealFPS = Screen::GetRealFPS();
 		}
 	}
 	

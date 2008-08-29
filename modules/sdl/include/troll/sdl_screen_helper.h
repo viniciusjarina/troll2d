@@ -62,6 +62,9 @@ class SDLScreenHelper
 	
 	Uint32 start_frame_tick;
 	Uint32 end_frame_tick;
+
+	Uint32 real_start_frame_tick;
+	Uint32 total_frame_time;
 	int m_nFPS;
 
 public:
@@ -82,6 +85,10 @@ public:
 	bool CreateScreenSurface(int w, int h,int bpp,bool fullscreen,int nFPS);
 
 	inline int GetFPS() const { return m_nFPS; }
+	inline int GetRealFPS() const 
+	{
+		return 1000/total_frame_time;
+	}
 	inline static int GetScreenBPP() { return m_screen_bpp; }	
 };
 

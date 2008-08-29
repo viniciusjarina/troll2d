@@ -56,8 +56,13 @@ class AllegroSurface  : public SurfaceImpl
 {
 	friend class AllegroGraphics;
 
+	friend class AllegroImageSurfaceImpl;
+	friend class AllegroImageAlphaSurfaceImpl;
+	
+
 protected:
 	AllegroSurface(BITMAP * surface);
+
 public:
 	AllegroSurface();
 	virtual ~AllegroSurface();

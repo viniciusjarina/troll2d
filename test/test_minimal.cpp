@@ -44,6 +44,8 @@
  #include <SDL.h>
 #endif
 
+#include <stdio.h>
+
 #ifdef _WIN32
 	extern "C" int __stdcall WinMain(void *hInst, void *hPrev, char *Cmd, int nShow)
 #else
@@ -51,6 +53,9 @@
 #endif
 {
 	using namespace Troll;
+
+	char sRealFPS[10];
+	int nRealFPS = 0;
 	
 	if(!System::Init())			// Inialize (input, sound, files, etc)
 		return 0;
@@ -64,6 +69,8 @@
 	Graphics g(buff); // Create Graphics object to draw primitives on the screen
 
 	bool quit = false;
+
+	
 	
 	
 	while(!quit) // was ESC key pressed?
@@ -80,14 +87,18 @@
 		if(!Screen::SkipFrame()) // Frame can be rendered
 		{
 			buff.Clear(Color::WHITE);
-
+		
+			sprintf(sRealFPS,"FPS %d ",nRealFPS);
 			// RenderFrame(); Add draw code, to render current frame
-			g.DrawText(Point(10,10),"(Press esc to exit)",Color::RED);
+			g.DrawText(Point(10,10),sRealFPS,Color::BLACK);
+			g.DrawText(Point(60,10),"(Press esc to exit)",Color::RED);
 			g.DrawText(Point(10,30),"Hellow World!",Color::BLUE);
 			g.DrawLine(Point(10,40),Point(110,40),Color::BLACK);
 
 			Screen::Flip();		// Flip screen
+			nRealFPS = Screen::GetRealFPS();
 		}
+		
 	}
 	
 	System::Cleanup();

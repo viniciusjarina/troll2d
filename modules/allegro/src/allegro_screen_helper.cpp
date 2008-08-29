@@ -67,6 +67,8 @@ static int fps         = 0; // How many total frames we have done last second
 static int frames_done = 0; // How many frames we have done so far this second
 static int old_time    = 0; // The last time we updated our fps variable
 
+static int start_frame_time = 0; // The last time we updated our fps variable
+
 using Troll::Surface;
 
 using Troll::AllegroSurface;
@@ -96,6 +98,7 @@ m_nativeSurface(NULL),
 m_screenSurface(NULL),
 m_nFPS(60),
 old_ticks(0),
+m_nLastFrameTotalTime(0),
 m_showCursor(true)
 {
 }
@@ -127,15 +130,17 @@ void AllegroScreenHelper::FlipScreen()
 	{
 		blit(m_nativeSurface,screen,0,0,0,0,SCREEN_W,SCREEN_H); // Blit to screen
 	}
+
+	m_nLastFrameTotalTime = game_time - start_frame_time + 1;
 	
 	frames_done++;//we drew a frame!
 }
 
-void AllegroScreenHelper::CreateScreenSurface( int w, int h , int fps)
+void AllegroScreenHelper::CreateScreenSurface( int w, int h , int _fps)
 {
 	LOCK_VARIABLE(ticks);
 	LOCK_FUNCTION(ticker);
-	install_int_ex(ticker, BPS_TO_TIMER(fps));
+	install_int_ex(ticker, BPS_TO_TIMER(_fps));
 	
 	LOCK_VARIABLE(game_time);
 	LOCK_FUNCTION(game_time_ticker);
@@ -149,7 +154,7 @@ void AllegroScreenHelper::CreateScreenSurface( int w, int h , int fps)
 	
 	m_nativeSurface = buffer;
 	m_screenSurface = pSurface;
-	m_nFPS = fps;
+	m_nFPS = _fps;
 }
 
 void AllegroScreenHelper::StartFrame()
@@ -163,6 +168,8 @@ void AllegroScreenHelper::StartFrame()
 	{
 		old_ticks = ticks;
 	}
+
+	start_frame_time = game_time;
 }
 
 bool AllegroScreenHelper::SkipFrame()

@@ -40,6 +40,8 @@
 
 #include <allegro.h>
 
+#include "loadpng.h"
+
 #include "troll/allegro_screen.h"
 #include "troll/allegro_system.h"
 
@@ -89,6 +91,9 @@ bool AllegroSystem::SetupScreen( int nWidth,int nHeight,bool fFullScreen /*= fal
 	// Set palette
 	set_palette(desktop_palette);
 	set_color_depth(bpp);
+
+	loadpng_init();
+	set_color_conversion(COLORCONV_KEEP_ALPHA);
 
 	int nMode = fFullScreen ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED;
 	if (set_gfx_mode(nMode, nWidth, nHeight, 0, 0))

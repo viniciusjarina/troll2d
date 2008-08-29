@@ -81,6 +81,11 @@ int AllegroScreen::GetFPS() const
 	return m_screenHelper.GetFPS();
 }
 
+int AllegroScreen::GetRealFPS() const
+{
+	return m_screenHelper.GetRealFPS();
+}
+
 void AllegroScreen::StartFrame()
 {
 	m_screenHelper.StartFrame();

@@ -184,7 +184,7 @@ SPG_bool SPG_GetSurfaceAlpha()
         // Without initialization, this overfills the stack.
         //if(_spg_useerrors)
         //SPG_Error("SPG_GetSurfaceAlpha checked an empty stack!");
-        return 0;
+        return 1;
     }
     return _SPG_blit_surface_alpha_state->datum;
 }
@@ -296,7 +296,6 @@ SPG_bool SPG_RectAND(const SDL_Rect A, const SDL_Rect B, SDL_Rect* intersection)
 // Adapted from SDL_SetClipRect
 void SPG_SetClip(SDL_Surface *surface, const SDL_Rect rect)
 {
-	SDL_Rect full_rect;
 	int Amin, Amax, Bmax;
 	
 	if (!surface)
@@ -1142,7 +1141,7 @@ typedef struct seg{
  * A 4-connected neighbor is a pixel above, below, left, or right of a pixel.
  */
 // First a generic (slow) version and then 8/16/32 bpp versions
-void _FloodFillX(SDL_Surface *dst, Sint16 x, Sint16 y, Uint32 color)
+static void _FloodFillX(SDL_Surface *dst, Sint16 x, Sint16 y, Uint32 color)
 {
 	Sint16 l, x1, x2, dy;
 	Uint32 oc;						/* old pixel color */

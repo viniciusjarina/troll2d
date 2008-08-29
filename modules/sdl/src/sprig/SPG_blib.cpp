@@ -28,12 +28,25 @@
 
 #include "sprig.h"
 
+#ifdef _MSC_VER
+#pragma warning(disable:4244)
+#endif
+
 #define SWAP(x,y,temp) temp=x;x=y;y=temp
 
 /* Global used for SPG_Lock (defined in SPG_surface) */
 extern SPG_bool _SPG_lock;
 extern Uint8 _SPG_alpha_hack;
 extern SPG_bool _spg_useerrors;
+
+#define _HLine		_SPG_HLine
+#define _HLineAlpha _SPG_HLineAlpha
+#define _VLine		_SPG_VLine
+#define _VLineAlpha	_SPG_VLineAlpha
+#define _Line		_SPG_Line
+#define _LineAlpha	_SPG_LineAlpha
+#define _AALineAlpha _SPG_AALineAlpha
+
 
 void _SetPixel(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color);
 /* We need some internal functions */
@@ -58,7 +71,7 @@ extern void _AAmcLineAlpha(SDL_Surface *dst, Sint16 x1, Sint16 y1, Sint16 x2, Si
 //==================================================================================
 // Draws a horisontal line, fading the colors
 //==================================================================================
-void _FadedLine(SDL_Surface *dest,Sint16 x1,Sint16 x2,Sint16 y,Uint8 r1,Uint8 g1,Uint8 b1,Uint8 r2,Uint8 g2,Uint8 b2)
+static void _FadedLine(SDL_Surface *dest,Sint16 x1,Sint16 x2,Sint16 y,Uint8 r1,Uint8 g1,Uint8 b1,Uint8 r2,Uint8 g2,Uint8 b2)
 {
 	Sint16 x;
 	Uint8 t;

@@ -65,6 +65,7 @@ public:
 	virtual void StartFrame();
 	virtual bool SkipFrame();
 	virtual int	 GetFPS() const;
+	virtual int	 GetRealFPS() const;
 	virtual void ShowCursor(bool show);
 
 private:

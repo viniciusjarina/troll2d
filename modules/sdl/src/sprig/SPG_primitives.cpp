@@ -39,6 +39,13 @@
     #include <cstdlib>
 #endif
 
+#define _HLine		_SPG_HLine
+#define _HLineAlpha _SPG_HLineAlpha
+#define _VLine		_SPG_VLine
+#define _VLineAlpha	_SPG_VLineAlpha
+#define _Line		_SPG_Line
+#define _LineAlpha	_SPG_LineAlpha
+#define _AALineAlpha _SPG_AALineAlpha
 
 void _SetPixel(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color);
 void _PutPixelAlpha(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color, Uint8 alpha);
@@ -405,7 +412,7 @@ void SPG_PixelPatternBlend(SDL_Surface *surface, SDL_Rect target, SPG_bool* patt
 //==================================================================================
 // Internal draw horizontal line
 //==================================================================================
-void _HLine(SDL_Surface *Surface, Sint16 x1, Sint16 y, Sint16 x2, Uint32 Color)
+void _SPG_HLine(SDL_Surface *Surface, Sint16 x1, Sint16 y, Sint16 x2, Uint32 Color)
 {
     if (x1>x2)
     {
@@ -433,6 +440,8 @@ void _HLine(SDL_Surface *Surface, Sint16 x1, Sint16 y, Sint16 x2, Uint32 Color)
 
     SDL_FillRect(Surface, &l, Color);
 }
+
+
 
 //==================================================================================
 // Draw horizontal line
@@ -647,7 +656,7 @@ void SPG_LineFn(SDL_Surface *Surface, Sint16 x1, Sint16 y1, Sint16 x2, Sint16 y2
 #define CLIP_REJECT(a,b) (a&b)
 #define CLIP_ACCEPT(a,b) (!(a|b))
 
-int clipEncode(Sint16 x, Sint16 y, Sint16 left, Sint16 top, Sint16 right, Sint16 bottom)
+static int clipEncode(Sint16 x, Sint16 y, Sint16 left, Sint16 top, Sint16 right, Sint16 bottom)
 {
     int code = 0;
 
@@ -664,7 +673,7 @@ int clipEncode(Sint16 x, Sint16 y, Sint16 left, Sint16 top, Sint16 right, Sint16
     return code;
 }
 
-int clipLine(SDL_Surface *dst, Sint16 *x1, Sint16 *y1, Sint16 *x2, Sint16 *y2)
+static int clipLine(SDL_Surface *dst, Sint16 *x1, Sint16 *y1, Sint16 *x2, Sint16 *y2)
 {
     int code1, code2;
     SPG_bool draw = 0;

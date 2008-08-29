@@ -41,7 +41,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O1 /I "../../../../../include/" /I "../../../include/" /I "../../../../../dependencies/SDL-1.2.13/include/" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O1 /I "../../../../../include/" /I "../../../include/" /I "../../../include/sprig/" /I "../../../include/SDL_image/" /I "../../../../../dependencies/SDL-1.2.13/include/" /D "NDEBUG" /D "WIN32" /D "_MBCS" /D "_LIB" /D "LOAD_PNG" /D "LOAD_BMP" /D "_SGE_NOTTF" /YX /FD /c
 # ADD BASE RSC /l 0x416 /d "NDEBUG"
 # ADD RSC /l 0x416 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -64,7 +64,7 @@ LIB32=link.exe -lib
 # PROP Intermediate_Dir "Debug"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../../../include/" /I "../../../include/" /I "../../../../../dependencies/SDL-1.2.13/include/" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../../../include/" /I "../../../include/" /I "../../../include/sprig/" /I "../../../include/sge/" /I "../../../include/SDL_image/" /I "../../../../../dependencies/SDL-1.2.13/include/" /D "_DEBUG" /D "WIN32" /D "_MBCS" /D "_LIB" /D "LOAD_PNG" /D "LOAD_BMP" /D "_SGE_NOTTF" /YX /FD /GZ /c
 # ADD BASE RSC /l 0x416 /d "_DEBUG"
 # ADD RSC /l 0x416 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -86,6 +86,130 @@ LIB32=link.exe -lib
 # Begin Group "SPriG"
 
 # PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\..\..\src\sprig\SPG_blib.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sprig\SPG_extended.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sprig\SPG_primitives.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sprig\SPG_rotation.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sprig\SPG_surface.cpp
+# End Source File
+# End Group
+# Begin Group "SDL_image"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_bmp.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_gif.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_jpg.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_lbm.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_pcx.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_png.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_pnm.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_tga.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_tif.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_xcf.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_xpm.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_xv.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\SDL_image\IMG_xxx.c
+# End Source File
+# End Group
+# Begin Group "SGE"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\..\..\src\sge\sge_blib.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sge\sge_bm_text.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sge\sge_collision.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sge\sge_misc.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sge\sge_primitives.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sge\sge_rotation.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sge\sge_shape.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sge\sge_surface.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sge\sge_textpp.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\src\sge\sge_tt_text.cpp
+# End Source File
 # End Group
 # Begin Source File
 

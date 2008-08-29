@@ -55,7 +55,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 SDL.lib troll_base.lib troll_sdl.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_blit_sdl.exe" /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../lib/vc6_lib"
+# ADD LINK32 SDL.lib troll_base.lib troll_sdl.lib zlib.lib libpng.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_blit_sdl.exe" /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../lib/vc6_lib" /libpath:"../../../dependencies/libpng/lib/msvc"
 # SUBTRACT LINK32 /incremental:yes
 
 !ELSEIF  "$(CFG)" == "test_blit - Win32 Debug"
@@ -72,8 +72,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /Zi /Od /I "../../../include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# SUBTRACT CPP /Fr
+# ADD CPP /nologo /MDd /W3 /Gm /GX /Zi /Od /I "../../../include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fr /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x416 /d "_DEBUG"
@@ -83,7 +82,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 SDL.lib troll_sdld.lib troll_based.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../../../bin/test_blitd_sdl.exe" /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../lib/vc6_lib"
+# ADD LINK32 SDL.lib troll_sdld.lib troll_based.lib zlib.lib libpng.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../../../bin/test_blitd_sdl.exe" /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../lib/vc6_lib" /libpath:"../../../dependencies/libpng/lib/msvc"
 # SUBTRACT LINK32 /incremental:no
 
 !ELSEIF  "$(CFG)" == "test_blit - Win32 Release Allegro"
@@ -111,7 +110,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_blit.exe" /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
-# ADD LINK32 alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_blit_allegro.exe" /libpath:"../../../lib/vc6_lib" /libpath:"../../../dependencies/allegro/lib/msvc/"
+# ADD LINK32 alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib zlib.lib libpng.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /out:"../../../bin/test_blit_allegro.exe" /libpath:"../../../dependencies/allegro/lib/msvc/" /libpath:"../../../lib/vc6_lib" /libpath:"../../../dependencies/libpng/lib/msvc"
 # SUBTRACT LINK32 /incremental:yes
 
 !ELSEIF  "$(CFG)" == "test_blit - Win32 Debug Allegro"
@@ -129,7 +128,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../../include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x416 /d "_DEBUG"
@@ -139,7 +138,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 SDL.lib troll_based.lib troll_sdld.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../dependencies/allegro/lib/msvc/"
-# ADD LINK32 alld_s.lib troll_allegrod.lib troll_based.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../../../bin/test_blitd_allegro.exe" /pdbtype:sept /libpath:"../../../lib/vc6_lib" /libpath:"../../../dependencies/allegro/lib/msvc/"
+# ADD LINK32 alld_s.lib troll_allegrod.lib troll_based.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib zlibd.lib libpngd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../../../bin/test_blitd_allegro.exe" /pdbtype:sept /libpath:"../../../dependencies/allegro/lib/msvc/" /libpath:"../../../lib/vc6_lib" /libpath:"../../../dependencies/libpng/lib/msvc"
 # SUBTRACT LINK32 /incremental:no
 
 !ENDIF 
@@ -180,7 +179,7 @@ SOURCE="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 
 "..\..\..\bin\SDL.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	IF     EXIST     $(InputPath)     xcopy     /Y     /Q     /D    $(InputPath)    ..\..\..\bin\ 
+	IF          EXIST          $(InputPath)          xcopy          /Y          /Q          /D         $(InputPath)         ..\..\..\bin\ 
 
 # End Custom Build
 
@@ -190,7 +189,7 @@ InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 
 "..\..\..\bin\SDL.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	IF     EXIST     $(InputPath)     xcopy     /Y     /Q     /D    $(InputPath)    ..\..\..\bin\ 
+	IF          EXIST          $(InputPath)          xcopy          /Y          /Q          /D         $(InputPath)         ..\..\..\bin\ 
 
 # End Custom Build
 
@@ -211,7 +210,7 @@ SOURCE=..\..\..\data\images\troll.bmp
 InputPath=..\..\..\data\images\troll.bmp
 
 "..\..\..\bin\images\troll.bmp" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	xcopy     /Y     /Q     /D    $(InputPath)    ..\..\..\bin\images\ 
+	xcopy          /Y          /Q          /D         $(InputPath)         ..\..\..\bin\images\ 
 
 # End Custom Build
 
@@ -221,7 +220,7 @@ InputPath=..\..\..\data\images\troll.bmp
 InputPath=..\..\..\data\images\troll.bmp
 
 "..\..\..\bin\images\troll.bmp" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	xcopy     /Y     /Q     /D    $(InputPath)    ..\..\..\bin\images\ 
+	xcopy          /Y          /Q          /D         $(InputPath)         ..\..\..\bin\images\ 
 
 # End Custom Build
 
@@ -231,7 +230,7 @@ InputPath=..\..\..\data\images\troll.bmp
 InputPath=..\..\..\data\images\troll.bmp
 
 "..\..\..\bin\images\troll.bmp" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	xcopy     /Y     /Q     /D    $(InputPath)    ..\..\..\bin\images\ 
+	xcopy          /Y          /Q          /D         $(InputPath)         ..\..\..\bin\images\ 
 
 # End Custom Build
 
@@ -241,7 +240,7 @@ InputPath=..\..\..\data\images\troll.bmp
 InputPath=..\..\..\data\images\troll.bmp
 
 "..\..\..\bin\images\troll.bmp" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	xcopy     /Y     /Q     /D    $(InputPath)    ..\..\..\bin\images\ 
+	xcopy          /Y          /Q          /D         $(InputPath)         ..\..\..\bin\images\ 
 
 # End Custom Build
 

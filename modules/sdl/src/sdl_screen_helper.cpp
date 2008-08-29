@@ -54,13 +54,17 @@ void SDLScreenHelper::StartFrame()
 	{
 		SDL_Delay(m_nFrameTicks -(start_frame_tick - end_frame_tick));
 	}
+
+	real_start_frame_tick = SDL_GetTicks();
 }
 
 void SDLScreenHelper::FlipScreen()
 {
+	SDL_Flip(m_nativeSurface);
+
 	end_frame_tick = SDL_GetTicks();;
 
-	SDL_Flip(m_nativeSurface);
+	total_frame_time = end_frame_tick - real_start_frame_tick + 1;
 }
 
 bool SDLScreenHelper::SkipFrame()

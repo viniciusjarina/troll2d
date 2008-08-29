@@ -58,6 +58,8 @@ class AllegroScreenHelper
 	int       old_ticks;
 
 	bool      m_showCursor;    // flag to control show/hide cursor
+
+	int		  m_nLastFrameTotalTime; // total time (in ms) to draw last frame
 	
 public:
 
@@ -72,6 +74,11 @@ public:
 	inline int GetFPS() const
 	{
 		return m_nFPS;
+	}
+
+	inline int GetRealFPS() const
+	{
+		return 100/m_nLastFrameTotalTime;
 	}
 
 	inline void ShowCursor(bool show)

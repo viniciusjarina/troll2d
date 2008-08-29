@@ -87,9 +87,15 @@ int SDLScreen::GetFPS() const
 	return m_screenHelper.GetFPS();
 }
 
+int SDLScreen::GetRealFPS() const
+{
+	return m_screenHelper.GetRealFPS();
+}
+
 
 void SDLScreen::ShowCursor( bool show )
 {
 	SDL_ShowCursor( show ? SDL_ENABLE : SDL_DISABLE);
 }
+
 

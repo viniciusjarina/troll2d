@@ -6,6 +6,10 @@
 
 #include "math.h"
 
+#ifdef _MSC_VER
+#pragma warning(disable:4244)
+#endif
+
 static inline float SPG_sqrt(float x)
 {
     /*float xhalf = 0.5f*x;  // From Wikipedia

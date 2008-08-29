@@ -71,6 +71,8 @@ public:
 
 	static int	GetFPS();
 
+	static int	GetRealFPS();
+
 	static void ShowCursor(bool show);
 };
 
