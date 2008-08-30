@@ -41,8 +41,6 @@
 #include <SDL.h>
 
 #include "sprig.h"
-#include "sge.h"
-#include "SDL_rotozoom.h"
 
 #include "troll/surface.h"
 #include "troll/sdl_surface.h"

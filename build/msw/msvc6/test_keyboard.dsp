@@ -83,7 +83,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 SDL.lib troll_sdld.lib troll_based.lib zlib.lib libpng.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../../../bin/test_keyboardd_sdl.exe" /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../lib/vc6_lib" /libpath:"../../../dependencies/libpng/lib/msvc"
+# ADD LINK32 SDL.lib troll_sdld.lib troll_based.lib zlibd.lib libpngd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"../../../bin/test_keyboardd_sdl.exe" /pdbtype:sept /libpath:"../../../dependencies/SDL-1.2.13/lib/VisualC/" /libpath:"../../../lib/vc6_lib" /libpath:"../../../dependencies/libpng/lib/msvc"
 # SUBTRACT LINK32 /incremental:no
 
 !ELSEIF  "$(CFG)" == "test_keyboard - Win32 Release Allegro"
@@ -180,7 +180,7 @@ SOURCE="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 
 "..\..\..\bin\SDL.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	IF      EXIST      $(InputPath)      xcopy      /Y      /Q      /D     $(InputPath)     ..\..\..\bin\ 
+	IF       EXIST       $(InputPath)       xcopy       /Y       /Q       /D      $(InputPath)      ..\..\..\bin\ 
 
 # End Custom Build
 
@@ -190,7 +190,7 @@ InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 
 "..\..\..\bin\SDL.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	IF      EXIST      $(InputPath)      xcopy      /Y      /Q      /D     $(InputPath)     ..\..\..\bin\ 
+	IF       EXIST       $(InputPath)       xcopy       /Y       /Q       /D      $(InputPath)      ..\..\..\bin\ 
 
 # End Custom Build
 
