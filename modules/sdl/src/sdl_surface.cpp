@@ -200,15 +200,10 @@ void SDLSurface::DrawAlpha( SurfaceImpl & destination,const Point& ptDest /*= Po
 	rect2.y = ptDest.y;
 	rect2.h = source->h;
 	rect2.w = source->w;
-#if  0
+
 	SDL_SetAlpha(source,SDL_SRCALPHA,alpha);
 
 	SDL_BlitSurface(source,&rect1,dest,&rect2);
-#else
-	
-	SDL_SetAlpha(source,SDL_SRCALPHA,alpha);
-	SPG_Blit(source,&rect1,dest,&rect2);
-#endif
 }
 
 
@@ -245,11 +240,7 @@ void SDLSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const
 
 	float zoomx = ((float)rect2.w/(float)rect1.w);
 	float zoomy = ((float)rect2.h/(float)rect1.h);
-	
-#if 1
-	// TODO: Found a better way to transform surfaces, considering colokey+alpha 
-	SPG_TransformSurface(source,dest,0.0f,zoomx,zoomy,0,0,rect2.x,rect2.y,SPG_TCOLORKEY|SPG_TAA|SPG_TSAFE);
-#else
-	sge_transform(source,dest,0.0f,zoomx,zoomy,0,0,rect2.x,rect2.y,0);
-#endif
+		
+	// TODO: Found a better (faster) way to transform surfaces, considering colokey+alpha 
+	SPG_TransformSurface(source,dest,0.0f,zoomx,zoomy,0,0,rect2.x,rect2.y,SPG_TSAFE|SPG_TCOLORKEY|SPG_TAA);
 }

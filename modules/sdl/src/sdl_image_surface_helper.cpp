@@ -47,24 +47,24 @@
 #include "troll/sdl_surface.h"
 #include "troll/sdl_image.h"
 
+#include "troll/sdl_image_surface_impl.h"
+#include "troll/sdl_image_alpha_surface_impl.h"
+
+
 using Troll::Surface;
 
 using Troll::SDLSurface;
 using Troll::SDLImageSurfaceHelper;
 
+using Troll::SDLImageSurfaceImpl;
+using Troll::SDLImageAlphaSurfaceImpl;
 
-class SDLImageSurfaceImpl : public SDLSurface
-{
-public:
-	SDLImageSurfaceImpl(SDL_Surface * bmp):SDLSurface(bmp)
-	{
-	}
-};
 
 class SDLImageSurface : public Surface
 {
 public:
-	SDLImageSurface(SDLImageSurfaceImpl * impl):Surface(impl)  
+	SDLImageSurface(SDLImageSurfaceImpl * impl):
+	Surface(impl)  
 	{
 	}
 };
@@ -84,7 +84,7 @@ SDLImageSurfaceHelper::~SDLImageSurfaceHelper()
 
 bool SDLImageSurfaceHelper::LoadImage( const char * sImageFile )
 {
-		/* Load a BMP image into a surface */
+	/* Load a BMP image into a surface */
 	SDL_Surface *imagebmp;
 	SDL_Surface *image = NULL;
 
@@ -127,7 +127,13 @@ bool SDLImageSurfaceHelper::LoadImage( const char * sImageFile )
 	
 	SDL_SetColorKey(image,SDL_SRCCOLORKEY | SDL_RLEACCEL | SDL_HWACCEL,SDL_MapRGB(image->format,255,0,255));
 	
-	SDLImageSurfaceImpl * surfaceImpl = new SDLImageSurfaceImpl(image);
+	SDLImageSurfaceImpl * surfaceImpl;
+
+	if(hasAlpha)
+		surfaceImpl = new SDLImageAlphaSurfaceImpl(image);
+	else
+		surfaceImpl = new SDLImageSurfaceImpl(image);
+
 	m_imageSurface = new SDLImageSurface(surfaceImpl);
 	return true;
 }

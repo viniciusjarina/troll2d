@@ -189,6 +189,10 @@ SOURCE=..\..\..\src\sdl_image.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\src\sdl_image_alpha_surface_impl.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\src\sdl_image_surface_helper.cpp
 # End Source File
 # Begin Source File
@@ -254,7 +258,15 @@ SOURCE=..\..\..\include\troll\sdl_image.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\include\troll\sdl_image_alpha_surface_impl.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\include\troll\sdl_image_surface_helper.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\include\troll\sdl_image_surface_impl.h
 # End Source File
 # Begin Source File
 

@@ -44,6 +44,8 @@
 #include <SDL.h> // the entry point of a Cocoa application (this needed to be fixed)
 #endif
 
+#include <stdlib.h>
+
 #ifdef _WIN32
 	extern "C" int __stdcall WinMain(void *hInst, void *hPrev, char *Cmd, int nShow)
 #else
@@ -77,8 +79,7 @@
 	bool cliping = false;
 
 	Rect rcClip(screen.GetWidth() / 2, 0 ,screen.GetWidth()/2,screen.GetHeight()/2);// clip a quarter of screen
-	
-	
+		
 	while(!quit) // was ESC key pressed?
 	{
 		Screen::StartFrame();
@@ -98,7 +99,7 @@
 
 		if(!Screen::SkipFrame()) // Frame can be rendered
 		{
-			screen.Clear(Color::WHITE);
+			//screen.Clear(Color::WHITE);
 
 			// RenderFrame(); Add draw code, to render current frame
 			g.DrawText(Point(10,10),"(Press esc to exit, space bar to toggle clipping)",Color::RED);
@@ -120,7 +121,10 @@
 					cliping = false;
 				}
 			}
+			logoPos.x = rand()%320;
+			logoPos.y = rand()%240;
 			Rect rc(logoPos,Size(200,200));
+
 			screen.DrawStretch(logo,rc);
 			
 

@@ -38,56 +38,20 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// Surface.h: interface for the Surface class.
-//
-//////////////////////////////////////////////////////////////////////
+#ifndef __TROLL_SDL_IMAGE_SURFACE_IMPL_H__
+#define __TROLL_SDL_IMAGE_SURFACE_IMPL_H__
 
-#if !defined(__SDL_TROLL2D_SURFACE_H__)
-#define __SDL_TROLL2D_SURFACE_H__
-
-#include "troll/surface_impl.h"
-
-struct SDL_Surface;
 
 namespace Troll
 {
 
-
-class SDLSurface  : public SurfaceImpl
+class SDLImageSurfaceImpl : public SDLSurface
 {
-	friend class SDLGraphics;
-
-	friend class SDLImageSurfaceImpl;
-	friend class SDLImageAlphaSurfaceImpl;
-
-protected:
-	SDLSurface(::SDL_Surface * screen); //Used only by Screen class
-
 public:
-	SDLSurface();
-	virtual ~SDLSurface();
-
-public:
-	virtual bool Create(int width,int height,ColorDepth depth = depthAuto);
-
-	virtual int GetHeight() const;
-	virtual int GetWidth() const;
-
-	virtual void SetClip(const Rect & rect);
-	virtual Rect GetClip() const;
-	virtual void ResetClip();
-
-	virtual void Clear(const Color & color = Color::INVISIBLE);
-
-	virtual void DrawStretch(SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource = Rect(0,0,-1,-1)) const;
-	virtual void Draw(SurfaceImpl & destination,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1)) const;
-	virtual void DrawAlpha(SurfaceImpl & destination,const Point& ptDest = Point(0,0),unsigned char alpha = 128) const;
-
-private:
-
-	SDL_Surface	* m_surface;
-
+	SDLImageSurfaceImpl(SDL_Surface * bmp):SDLSurface(bmp)
+	{
+	}
 };
-
 }
-#endif // !defined(__ALLEGRO_TROLL2D_SURFACE_H__)
+
+#endif // __TROLL_SDL_IMAGE_ALPHA_SURFACE_IMPL_H__

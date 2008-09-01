@@ -23,6 +23,9 @@
  *********************************************************************/
 
 #include "sprig.h"
+
+void _PutPixelAlpha(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color, Uint8 alpha);
+
 #ifdef _SPG_C_ONLY
     #include <math.h>
     #include <stdio.h>
@@ -187,6 +190,57 @@ static void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xsc
 		} \
 	}
 
+#define TRANSFORM_GENERIC_BLEND \
+	Uint8 R, G, B, A; \
+	\
+	for (y=ymin; y<ymax; y++){ \
+	dy = y - qy; \
+	\
+	sx = (Sint32)(ctdx  + stx*dy + mx);  /* Compute source anchor points */ \
+	sy = (Sint32)(cty*dy - stdx  + my); \
+	\
+	for (x=xmin; x<xmax; x++){ \
+	rx=(Sint16)(sx >> 13);  /* Convert from fixed-point */ \
+	ry=(Sint16)(sy >> 13); \
+	\
+	/* Make sure the source pixel is actually in the source image. */ \
+	if( (rx>=sxmin) && (rx<=sxmax) && (ry>=symin) && (ry<=symax) ){ \
+				SPG_GetRGBA(SPG_GetPixel(src,rx,ry), src->format, &R, &G, &B, &A);\
+				if(!(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R, G, B) == src->format->colorkey))\
+	            _PutPixelAlpha(dst,x,y,SPG_MapRGBA(dst->format, R, G, B, A),A); \
+				\
+	} \
+	sx += ctx;  /* Incremental transformations */ \
+	sy -= sty; \
+	} \
+	}
+
+#define TRANSFORM_GENERIC_BLEND_SURFACE_ALPHA \
+	Uint8 R, G, B, A; \
+	\
+	for (y=ymin; y<ymax; y++){ \
+	dy = y - qy; \
+	\
+	sx = (Sint32)(ctdx  + stx*dy + mx);  /* Compute source anchor points */ \
+	sy = (Sint32)(cty*dy - stdx  + my); \
+	\
+	for (x=xmin; x<xmax; x++){ \
+	rx=(Sint16)(sx >> 13);  /* Convert from fixed-point */ \
+	ry=(Sint16)(sy >> 13); \
+	\
+	/* Make sure the source pixel is actually in the source image. */ \
+	if( (rx>=sxmin) && (rx<=sxmax) && (ry>=symin) && (ry<=symax) ){ \
+				SPG_GetRGBA(SPG_GetPixel(src,rx,ry), src->format, &R, &G, &B, &A);\
+				if(!(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R, G, B) == src->format->colorkey))\
+				A = (Uint8)(A*(src->format->alpha)/255);			\
+				_PutPixelAlpha(dst,x,y,SPG_MapRGBA(dst->format, R, G, B, A),A); \
+				\
+	} \
+	sx += ctx;  /* Incremental transformations */ \
+	sy -= sty; \
+	} \
+	}
+
 
 // Interpolated transform
 #define TRANSFORM_AA(UintXX, DIV) \
@@ -308,17 +362,125 @@ static void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xsc
 				SPG_GetRGBA(SPG_GetPixel(src,rx+1,ry+1), src->format, &R4, &G4, &B4, &A4);\
 \
 				/* Calculate the average */\
-				R = (p1*R1 + p2*R2 + p3*R3 + p4*R4)>>13;\
-				G = (p1*G1 + p2*G2 + p3*G3 + p4*G4)>>13;\
-				B = (p1*B1 + p2*B2 + p3*B3 + p4*B4)>>13;\
-				A = (p1*A1 + p2*A2 + p3*A3 + p4*A4)>>13;\
-                if(!(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R, G, B) == src->format->colorkey))\
-                    _SetPixelX(dst,x,y,SPG_MapRGBA(dst->format, R, G, B, A)); \
+				if(!(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R1, G1, B1) == src->format->colorkey)) \
+				{	\
+					if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R2, G2, B2) == src->format->colorkey)\
+						{R2 = R1; G2 = G1; B2 = B1;}																						 \
+					if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R3, G3, B3) == src->format->colorkey)\
+						{R3 = R1; G3 = G1; B3 = B1;}																						 \
+					if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R4, G4, B4) == src->format->colorkey)\
+						{R4 = R1; G4 = G1; B4 = B1;}																						 \
+					R = (p1*R1 + p2*R2 + p3*R3 + p4*R4)>>13;\
+					G = (p1*G1 + p2*G2 + p3*G3 + p4*G4)>>13;\
+					B = (p1*B1 + p2*B2 + p3*B3 + p4*B4)>>13;\
+					A = (p1*A1 + p2*A2 + p3*A3 + p4*A4)>>13;\
+					_SetPixelX(dst,x,y,SPG_MapRGBA(dst->format, R, G, B, A)); \
+				}\
 				\
 			} \
 			sx += ctx;  /* Incremental transformations */ \
 			sy -= sty; \
 		} \
+	}
+
+#define TRANSFORM_GENERIC_BLEND_AA \
+	Uint8 R, G, B, A, R1, G1, B1, A1=0, R2, G2, B2, A2=0, R3, G3, B3, A3=0, R4, G4, B4, A4=0; \
+	Sint32 wx, wy, p1, p2, p3, p4;\
+	\
+	Sint32 const one = 2048;   /* 1 in Fixed-point */ \
+	Sint32 const two = 2*2048; /* 2 in Fixed-point */ \
+	\
+	for (y=ymin; y<ymax; y++){ \
+	dy = y - qy; \
+	\
+	sx = (Sint32)(ctdx  + stx*dy + mx);  /* Compute source anchor points */ \
+	sy = (Sint32)(cty*dy - stdx  + my); \
+	\
+	for (x=xmin; x<xmax; x++){ \
+	rx=(Sint16)(sx >> 13);  /* Convert from fixed-point */ \
+	ry=(Sint16)(sy >> 13); \
+	\
+	/* Make sure the source pixel is actually in the source image. */ \
+	if( (rx>=sxmin) && (rx+1<=sxmax) && (ry>=symin) && (ry+1<=symax)){ \
+				wx = (sx & 0x00001FFF) >> 2;  /* (float(x) - int(x)) / 4 */ \
+				wy = (sy & 0x00001FFF) >> 2;\
+				\
+				p4 = wx+wy;\
+				p3 = one-wx+wy;\
+				p2 = wx+one-wy;\
+				p1 = two-wx-wy;\
+				\
+				SPG_GetRGBA(SPG_GetPixel(src,rx,  ry), src->format, &R1, &G1, &B1, &A1);\
+				SPG_GetRGBA(SPG_GetPixel(src,rx+1,ry), src->format, &R2, &G2, &B2, &A2);\
+				SPG_GetRGBA(SPG_GetPixel(src,rx,  ry+1), src->format, &R3, &G3, &B3, &A3);\
+				SPG_GetRGBA(SPG_GetPixel(src,rx+1,ry+1), src->format, &R4, &G4, &B4, &A4);\
+					\
+				/* Calculate the average */	\
+				if(!(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R1, G1, B1) == src->format->colorkey)) \
+				{	\
+					if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R2, G2, B2) == src->format->colorkey)\
+						{R2 = R1; G2 = G1; B2 = B1;}																						 \
+					if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R3, G3, B3) == src->format->colorkey)\
+						{R3 = R1; G3 = G1; B3 = B1;}																						 \
+					if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R4, G4, B4) == src->format->colorkey)\
+						{R4 = R1; G4 = G1; B4 = B1;}																						 \
+					R = (p1*R1 + p2*R2 + p3*R3 + p4*R4)>>13;\
+					G = (p1*G1 + p2*G2 + p3*G3 + p4*G4)>>13;\
+					B = (p1*B1 + p2*B2 + p3*B3 + p4*B4)>>13;\
+					A = (p1*A1 + p2*A2 + p3*A3 + p4*A4)>>13;\
+					_PutPixelAlpha(dst,x,y,SPG_MapRGBA(dst->format, R, G, B, A),A); \
+				}\
+	} \
+	sx += ctx;  /* Incremental transformations */ \
+	sy -= sty; \
+	} \
+	}
+
+#define TRANSFORM_GENERIC_BLEND_SURFACE_ALPHA_AA \
+	Uint8 R, G, B, A, R1, G1, B1, A1=0, R2, G2, B2, A2=0, R3, G3, B3, A3=0, R4, G4, B4, A4=0; \
+	Sint32 wx, wy, p1, p2, p3, p4;\
+	\
+	Sint32 const one = 2048;   /* 1 in Fixed-point */ \
+	Sint32 const two = 2*2048; /* 2 in Fixed-point */ \
+	\
+	for (y=ymin; y<ymax; y++){ \
+	dy = y - qy; \
+	\
+	sx = (Sint32)(ctdx  + stx*dy + mx);  /* Compute source anchor points */ \
+	sy = (Sint32)(cty*dy - stdx  + my); \
+	\
+	for (x=xmin; x<xmax; x++){ \
+	rx=(Sint16)(sx >> 13);  /* Convert from fixed-point */ \
+	ry=(Sint16)(sy >> 13); \
+	\
+	/* Make sure the source pixel is actually in the source image. */ \
+	if( (rx>=sxmin) && (rx+1<=sxmax) && (ry>=symin) && (ry+1<=symax)){ \
+				wx = (sx & 0x00001FFF) >> 2;  /* (float(x) - int(x)) / 4 */ \
+				wy = (sy & 0x00001FFF) >> 2;\
+				\
+				p4 = wx+wy;\
+				p3 = one-wx+wy;\
+				p2 = wx+one-wy;\
+				p1 = two-wx-wy;\
+				\
+				SPG_GetRGBA(SPG_GetPixel(src,rx,  ry), src->format, &R1, &G1, &B1, &A1);\
+				SPG_GetRGBA(SPG_GetPixel(src,rx+1,ry), src->format, &R2, &G2, &B2, &A2);\
+				SPG_GetRGBA(SPG_GetPixel(src,rx,  ry+1), src->format, &R3, &G3, &B3, &A3);\
+				SPG_GetRGBA(SPG_GetPixel(src,rx+1,ry+1), src->format, &R4, &G4, &B4, &A4);\
+				\
+				/* Calculate the average */\
+				R = (p1*R1 + p2*R2 + p3*R3 + p4*R4)>>13;\
+				G = (p1*G1 + p2*G2 + p3*G3 + p4*G4)>>13;\
+				B = (p1*B1 + p2*B2 + p3*B3 + p4*B4)>>13;\
+				A = (p1*A1 + p2*A2 + p3*A3 + p4*A4)>>13;\
+				A = (Uint8)(A*(src->format->alpha)/255);\
+                if(!(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R, G, B) == src->format->colorkey))\
+				_PutPixelAlpha(dst,x,y,SPG_MapRGBA(dst->format, R, G, B, A),A); \
+				\
+	} \
+	sx += ctx;  /* Incremental transformations */ \
+	sy -= sty; \
+	} \
 	}
 
 // We get better performance if AA and normal rendering is seperated into two functions (better optimization).
@@ -400,7 +562,7 @@ SDL_Rect SPG_transformNorm(SDL_Surface *src, SDL_Surface *dst, float angle, floa
 
 
 	// Use the correct bpp
-	if( src->format->BytesPerPixel == dst->format->BytesPerPixel  &&  src->format->BytesPerPixel != 3 && !(flags & SPG_TSAFE)){
+	if( src->format->BytesPerPixel == dst->format->BytesPerPixel  &&  src->format->BytesPerPixel != 3 && !(flags & SPG_TSAFE) && !(flags & SPG_TBLEND) ){
 		switch( src->format->BytesPerPixel ){
 			case 1: { /* Assuming 8-bpp */
 				TRANSFORM(Uint8, 1)
@@ -415,8 +577,24 @@ SDL_Rect SPG_transformNorm(SDL_Surface *src, SDL_Surface *dst, float angle, floa
 			}
 			break;
 		}
-	}else{
-		TRANSFORM_GENERIC
+	}
+	else
+	{
+		if(flags&SPG_TBLEND)
+		{
+			if(flags&SPG_TSURFACE_ALPHA)
+			{
+				TRANSFORM_GENERIC_BLEND_SURFACE_ALPHA
+			}
+			else
+			{
+				TRANSFORM_GENERIC_BLEND
+			}
+		}
+		else
+		{
+			TRANSFORM_GENERIC
+		}
 	}
 
 
@@ -509,7 +687,7 @@ SDL_Rect SPG_transformAA(SDL_Surface *src, SDL_Surface *dst, float angle, float 
 
 
 	// Use the correct bpp
-	if( src->format->BytesPerPixel == dst->format->BytesPerPixel  &&  src->format->BytesPerPixel != 3 && !(flags & SPG_TSAFE) ){
+	if( src->format->BytesPerPixel == dst->format->BytesPerPixel  &&  src->format->BytesPerPixel != 3 && !(flags & SPG_TSAFE) && !(flags & SPG_TBLEND)){
 		switch( src->format->BytesPerPixel ){
 			case 1: { /* Assuming 8-bpp */
 				TRANSFORM_AA(Uint8, 1)
@@ -525,8 +703,25 @@ SDL_Rect SPG_transformAA(SDL_Surface *src, SDL_Surface *dst, float angle, float 
 			}
 			break;
 		}
-	}else{
-		TRANSFORM_GENERIC_AA
+	}
+	else
+	{
+		if(flags&SPG_TBLEND)
+		{
+			if(flags&SPG_TSURFACE_ALPHA)
+			{
+				TRANSFORM_GENERIC_BLEND_SURFACE_ALPHA_AA
+			}
+			else
+			{
+				TRANSFORM_GENERIC_BLEND_AA
+			}
+		}
+		else
+		{
+			TRANSFORM_GENERIC_AA
+		}
+		
 	}
 
 

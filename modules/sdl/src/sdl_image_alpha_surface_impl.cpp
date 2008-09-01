@@ -38,56 +38,89 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// Surface.h: interface for the Surface class.
-//
-//////////////////////////////////////////////////////////////////////
+#include <SDL.h>
 
-#if !defined(__SDL_TROLL2D_SURFACE_H__)
-#define __SDL_TROLL2D_SURFACE_H__
+#include "sprig.h"
 
-#include "troll/surface_impl.h"
+#include "troll/surface.h"
 
-struct SDL_Surface;
+#include "troll/sdl_surface.h"
+#include "troll/sdl_image.h"
 
-namespace Troll
+#include "troll/sdl_image_surface_impl.h"
+#include "troll/sdl_image_alpha_surface_impl.h"
+
+using Troll::Point;
+using Troll::Rect;
+
+using Troll::Surface;
+
+using Troll::SurfaceImpl;
+
+using Troll::SDLSurface;
+using Troll::SDLImageSurfaceHelper;
+
+using Troll::SDLImageAlphaSurfaceImpl;
+
+
+
+
+void SDLImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource /*= Rect(0,0,-1,-1)*/ ) const
 {
-
-
-class SDLSurface  : public SurfaceImpl
-{
-	friend class SDLGraphics;
-
-	friend class SDLImageSurfaceImpl;
-	friend class SDLImageAlphaSurfaceImpl;
-
-protected:
-	SDLSurface(::SDL_Surface * screen); //Used only by Screen class
-
-public:
-	SDLSurface();
-	virtual ~SDLSurface();
-
-public:
-	virtual bool Create(int width,int height,ColorDepth depth = depthAuto);
-
-	virtual int GetHeight() const;
-	virtual int GetWidth() const;
-
-	virtual void SetClip(const Rect & rect);
-	virtual Rect GetClip() const;
-	virtual void ResetClip();
-
-	virtual void Clear(const Color & color = Color::INVISIBLE);
-
-	virtual void DrawStretch(SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource = Rect(0,0,-1,-1)) const;
-	virtual void Draw(SurfaceImpl & destination,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1)) const;
-	virtual void DrawAlpha(SurfaceImpl & destination,const Point& ptDest = Point(0,0),unsigned char alpha = 128) const;
-
-private:
-
-	SDL_Surface	* m_surface;
-
-};
-
+	SDL_Rect rect1;
+	SDL_Rect rect2;
+	
+	int width;
+	int height;
+	
+	SDL_Surface * source = m_surface;
+	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
+	
+	if(rSource.width < 0)
+		width = source->w;
+	else
+		width = rSource.width;
+	
+	if(rSource.height < 0)
+		height = source->h;
+	else
+		height = rSource.height;
+	
+	rect1.x = rSource.x;
+	rect1.y = rSource.y;
+	rect1.h = height;
+	rect1.w = width;
+	
+	rect2.x = rcDest.x;
+	rect2.y = rcDest.y;
+	rect2.h = rcDest.height;
+	rect2.w = rcDest.width;
+	
+	float zoomx = ((float)rect2.w/(float)rect1.w);
+	float zoomy = ((float)rect2.h/(float)rect1.h);
+	
+	// TODO: Found a better (faster) way to transform surfaces, considering colokey+alpha 
+	SPG_TransformSurface(source,dest,0.0f,zoomx,zoomy,0,0,rect2.x,rect2.y,SPG_TBLEND|SPG_TAA);
 }
-#endif // !defined(__ALLEGRO_TROLL2D_SURFACE_H__)
+
+void SDLImageAlphaSurfaceImpl::DrawAlpha( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/,unsigned char alpha /*= 128*/ ) const
+{
+	SDL_Rect rect1;
+	SDL_Rect rect2;
+	
+	SDL_Surface * source = m_surface;
+	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
+	
+	rect1.x = 0;
+	rect1.y = 0;
+	rect1.h = source->h;
+	rect1.w = source->w;
+	
+	rect2.x = ptDest.x;
+	rect2.y = ptDest.y;
+	rect2.h = source->h;
+	rect2.w = source->w;
+	
+	SDL_SetAlpha(source,SDL_SRCALPHA,alpha);
+	SPG_Blit(source,&rect1,dest,&rect2);
+}
