@@ -3379,7 +3379,7 @@ void SPG_ArcFn(SDL_Surface* surface, Sint16 cx, Sint16 cy, float radius, float s
     do
     {
         // Calculate the angle the current point makes with the circle center
-        angle = atan2(y, x)*DEGPERRAD;
+        angle = atan2((float)y, (float)x)*DEGPERRAD;
         
         // draw the circle points as long as they lie in the range specified
         

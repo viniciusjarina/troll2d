@@ -501,7 +501,12 @@ SDL_Rect SPG_transformNorm(SDL_Surface *src, SDL_Surface *dst, float angle, floa
 	// 2^13 = 8192
 
 	// Check scales
+#if 0
 	Sint32 maxint = (Sint32)(pow(2, sizeof(Sint32)*8 - 1 - 13));  // 2^(31-13)
+#else
+	Sint32 maxint = (Sint32)(1 << (sizeof(Sint32)*8 - 1 - 13));  // 2^(31-13)
+#endif
+
 
 	if( xscale == 0 || yscale == 0)
 	{
@@ -626,7 +631,11 @@ SDL_Rect SPG_transformAA(SDL_Surface *src, SDL_Surface *dst, float angle, float 
 	// 2^13 = 8192
 
 	// Check scales
+#if 0
 	Sint32 maxint = (Sint32)(pow(2, sizeof(Sint32)*8 - 1 - 13));  // 2^(31-13)
+#else
+	Sint32 maxint = (Sint32)(1 << (sizeof(Sint32)*8 - 1 - 13));  // 2^(31-13)
+#endif
 
 	if( xscale == 0 || yscale == 0)
 	{
