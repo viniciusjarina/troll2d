@@ -38,6 +38,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "troll/point.h"
 
 #include "troll/mouse_input.h"
 #include "troll/mouse_input_impl.h"
@@ -72,9 +73,9 @@ void MouseInput::Update()
 	m_singleton->Update();
 }
 
-void MouseInput::GetPosition( Point & pt )
+Point MouseInput::GetPosition()
 {
-	m_singleton->GetPosition(pt);
+	return m_singleton->GetPosition();
 }
 
 void MouseInput::SetPosition(const Point & pt )
@@ -82,9 +83,9 @@ void MouseInput::SetPosition(const Point & pt )
 	m_singleton->SetPosition(pt);
 }
 
-void MouseInput::GetRelativePosition( Point & ptDelta )
+Point MouseInput::GetRelativePosition()
 {
-	m_singleton->GetRelativePosition(ptDelta);
+	return m_singleton->GetRelativePosition();
 }
 
 bool MouseInput::IsButtonDown( int button )

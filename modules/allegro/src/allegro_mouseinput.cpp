@@ -69,10 +69,12 @@ void AllegroMouseInput::Update()
 	m_down = mouse_b;
 }
 
-void AllegroMouseInput::GetPosition( Point & pt ) const
+Point AllegroMouseInput::GetPosition() const
 {
+	Point pt;
 	pt.x = mouse_x;
 	pt.y = mouse_y;
+	return pt;
 }
 
 void AllegroMouseInput::SetPosition(const Point & pt)
@@ -80,8 +82,10 @@ void AllegroMouseInput::SetPosition(const Point & pt)
 	position_mouse(pt.x, pt.y);
 }
 
-void AllegroMouseInput::GetRelativePosition( Point & ptDelta ) const
+Point AllegroMouseInput::GetRelativePosition() const
 {
+	Point ptDelta;
+
 	int delta_x;
 	int delta_y;
 
@@ -89,6 +93,8 @@ void AllegroMouseInput::GetRelativePosition( Point & ptDelta ) const
 
 	ptDelta.x = delta_x;
 	ptDelta.y = delta_y;
+
+	return ptDelta;
 }
 
 bool AllegroMouseInput::IsButtonDown( int button ) const

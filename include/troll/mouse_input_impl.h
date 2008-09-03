@@ -48,9 +48,9 @@ namespace Troll
 	{
 	public:
 		virtual void Update() = 0;
-		virtual void GetPosition(Point & pt) const = 0;
+		virtual Point GetPosition() const = 0;
 		virtual void SetPosition(const Point & pt) = 0;
-		virtual void GetRelativePosition(Point & ptDelta) const = 0;
+		virtual Point GetRelativePosition() const = 0;
 
 		virtual bool IsButtonDown(int button) const = 0;
 		virtual bool IsButtonUp(int button) const = 0;

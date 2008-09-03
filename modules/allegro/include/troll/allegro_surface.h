@@ -80,6 +80,7 @@ public:
 	virtual void Clear(const Color & color = Color::BLACK);
 
 	virtual void DrawStretch(SurfaceImpl & destination,const Rect& ptDest,const Rect& rSource = Rect(0,0,-1,-1)) const;
+	virtual void DrawRotate(SurfaceImpl & destination,const Point& ptDest,short angle) const;
 	virtual void Draw(SurfaceImpl & destination,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1)) const;
 	virtual void DrawAlpha(SurfaceImpl & destination,const Point& ptDest = Point(0,0),unsigned char alpha = 128) const;
 private:

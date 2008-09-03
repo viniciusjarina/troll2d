@@ -112,7 +112,7 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination,const 
 		iround(ldexp(width,aa_BITS)), iround(ldexp(height,aa_BITS)), 
 		iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
 		iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
-		AA_MASKED|AA_ALPHA|AA_BLEND);
+		AA_MASKED|AA_ALPHA|AA_BLEND|AA_NO_AA);
 }
 
 void AllegroImageAlphaSurfaceImpl::DrawAlpha( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/,unsigned char alpha /*= 128*/ ) const
@@ -136,4 +136,16 @@ void AllegroImageAlphaSurfaceImpl::DrawAlpha( SurfaceImpl & destination,const Po
 		AA_MASKED|AA_ALPHA|AA_BLEND);
 
 	aa_set_trans(0);
+}
+
+void AllegroImageAlphaSurfaceImpl::DrawRotate( SurfaceImpl & destination,const Point& ptDest,short angle ) const
+{
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+	
+	_aa_rotate_bitmap (source, dest, 
+		ptDest.x, ptDest.y, 
+		itofix((angle<<8)/360),
+		itofix(1),itofix(1),
+		AA_MASKED|AA_ALPHA|AA_BLEND);
 }

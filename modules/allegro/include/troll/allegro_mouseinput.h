@@ -53,9 +53,9 @@ public:
 	AllegroMouseInput();
 		
 	virtual void Update();
-	virtual void GetPosition(Point & pt) const;
+	virtual Point GetPosition() const;
 	virtual void SetPosition(const Point & pt);
-	virtual void GetRelativePosition(Point & ptDelta) const;
+	virtual Point GetRelativePosition() const;
 
 	virtual bool IsButtonDown(int button) const;
 	virtual bool IsButtonUp(int button) const;

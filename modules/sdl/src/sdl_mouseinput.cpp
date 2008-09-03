@@ -65,14 +65,18 @@ void SDLMouseInput::Update()
 	m_down = state;
 }
 
-void SDLMouseInput::GetPosition( Point & pt ) const
+Point SDLMouseInput::GetPosition() const
 {
+	Point pt;
+
 	int x,y;
 
 	SDL_GetMouseState(&x,&y);
 
 	pt.x = x;
 	pt.y = y;
+
+	return pt;
 }
 
 void SDLMouseInput::SetPosition(const Point & pt)
@@ -80,14 +84,18 @@ void SDLMouseInput::SetPosition(const Point & pt)
 	SDL_WarpMouse(pt.x, pt.y);
 }
 
-void SDLMouseInput::GetRelativePosition( Point & ptDelta ) const
+Point SDLMouseInput::GetRelativePosition() const
 {
+	Point ptDelta;
+
 	int xDelta,yDelta;
 
 	SDL_GetRelativeMouseState(&xDelta,&yDelta);
 
 	ptDelta.x = xDelta;
 	ptDelta.y = yDelta;
+
+	return ptDelta;
 }
 
 

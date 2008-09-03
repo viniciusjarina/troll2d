@@ -105,8 +105,8 @@
 			Screen::ShowCursor(show_cursor);
 		}
 
-		MouseInput::GetRelativePosition(ptDelta);
-		MouseInput::GetPosition(pt);
+		ptDelta = MouseInput::GetRelativePosition();
+		pt = MouseInput::GetPosition();
 
 		button_pressed  = MouseInput::IsButtonPressed(0); // Button of mouse have just pressed
 		button_released = MouseInput::IsButtonReleased(0);// Button of mouse have just released

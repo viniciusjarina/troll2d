@@ -189,3 +189,11 @@ void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,c
 	
 	masked_stretch_blit(source, dest, rSource.x, rSource.y, width, height, rcDest.x, rcDest.y,rcDest.width, rcDest.height);
 }
+
+void AllegroSurface::DrawRotate( SurfaceImpl & destination,const Point& ptDest,short angle ) const
+{
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+
+	rotate_sprite(dest,source,ptDest.x,ptDest.y,itofix((angle<<8)/360));
+}

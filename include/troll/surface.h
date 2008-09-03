@@ -87,6 +87,8 @@ namespace Troll
 		void Draw(const Surface & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
 		// Draw stretching/shinking source into destination
 		void DrawStretch(const Surface & src,const Rect& rcDest,const Rect& rSource = Rect(0,0,-1,-1));
+		// Draw rotating source into destination
+		void DrawRotate(const Surface & src,const Point& ptDest,short angle);
 		// Draw the entire surface (sprite) at position ptDest with alpha-value (alpha)
 		void DrawAlpha(const Surface & sprite,const Point& ptDest = Point(0,0),unsigned char alpha = 128);
 	};

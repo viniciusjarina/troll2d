@@ -253,7 +253,7 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 		}
 
 		Point pt;
-		MouseInput::GetPosition(pt);
+		pt = MouseInput::GetPosition();
 		srand(pt.x);
 
 		

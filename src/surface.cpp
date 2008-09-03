@@ -127,3 +127,8 @@ void Surface::DrawAlpha( const Surface & sprite,const Point& ptDest,unsigned cha
 	sprite.m_impl->DrawAlpha(*m_impl,ptDest,alpha);
 }
 
+
+void Surface::DrawRotate( const Surface & sprite,const Point& ptDest,short angle )
+{
+	sprite.m_impl->DrawRotate(*m_impl,ptDest,angle);
+}

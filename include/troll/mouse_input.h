@@ -59,9 +59,9 @@ namespace Troll
 
 		static void Update();
 
-		static void GetPosition(Point & pt);
+		static Point GetPosition();
 		static void SetPosition(const Point & pt);
-		static void GetRelativePosition(Point & ptDelta);
+		static Point GetRelativePosition();
 
 		static bool IsButtonDown(int button);
 		static bool IsButtonUp(int button);
