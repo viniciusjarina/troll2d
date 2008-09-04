@@ -195,5 +195,5 @@ void AllegroSurface::DrawRotate( SurfaceImpl & destination,const Point& ptDest,s
 	BITMAP * source = m_surface;
 	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
 
-	rotate_sprite(dest,source,ptDest.x,ptDest.y,itofix((angle<<8)/360));
+	rotate_sprite(dest,source,ptDest.x - (source->w>>1),ptDest.y - (source->h>>1),itofix((angle<<8)/360));
 }

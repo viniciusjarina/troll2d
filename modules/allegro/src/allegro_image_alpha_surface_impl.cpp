@@ -147,5 +147,5 @@ void AllegroImageAlphaSurfaceImpl::DrawRotate( SurfaceImpl & destination,const P
 		ptDest.x, ptDest.y, 
 		itofix((angle<<8)/360),
 		itofix(1),itofix(1),
-		AA_MASKED|AA_ALPHA|AA_BLEND);
+		AA_MASKED|AA_ALPHA|AA_BLEND|AA_NO_AA);
 }

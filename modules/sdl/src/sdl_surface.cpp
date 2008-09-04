@@ -250,5 +250,5 @@ void SDLSurface::DrawRotate( SurfaceImpl & destination,const Point& ptDest,short
 	SDL_Surface * source = m_surface;
 	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
 
-	SPG_TransformSurface(source,dest,angle,1.0f,1.0f,0,0,ptDest.x,ptDest.y,SPG_TCOLORKEY);	
+	SPG_TransformSurface(source,dest,angle,1.0f,1.0f,(source->w >> 1),(source->h >> 1),ptDest.x,ptDest.y,SPG_TCOLORKEY);	
 }

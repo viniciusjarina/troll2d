@@ -311,7 +311,7 @@ _aa_rotate_bitmap (BITMAP *_src, BITMAP *_dst, int _x, int _y, fixed _angle,
 	/* Completely clipped by y?  */
 	if ((point[ledge[0]].dy >= yend)
 		|| ((ledge[2] == -1) && (point[ledge[1]].dy < ybeg))
-		|| (point[ledge[2]].dy < ybeg))
+		|| ((ledge[2] != -1) && point[ledge[2]].dy < ybeg))
 		return;
 
 	/* Color manipulation routines.  */
