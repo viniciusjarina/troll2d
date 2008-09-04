@@ -242,10 +242,13 @@ void SDLSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const
 	float zoomy = ((float)rect2.h/(float)rect1.h);
 		
 	// TODO: Found a better (faster) way to transform surfaces, considering colokey+alpha 
-	SPG_TransformSurface(source,dest,0.0f,zoomx,zoomy,0,0,rect2.x,rect2.y,SPG_TSAFE|SPG_TCOLORKEY|SPG_TAA);
+	SPG_TransformSurface(source,dest,0.0f,zoomx,zoomy,0,0,rect2.x,rect2.y,SPG_TCOLORKEY);
 }
 
 void SDLSurface::DrawRotate( SurfaceImpl & destination,const Point& ptDest,short angle ) const
 {
-	
+	SDL_Surface * source = m_surface;
+	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
+
+	SPG_TransformSurface(source,dest,angle,1.0f,1.0f,0,0,ptDest.x,ptDest.y,SPG_TCOLORKEY);	
 }
