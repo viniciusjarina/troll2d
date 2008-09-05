@@ -1059,12 +1059,14 @@ _aa_get_##name (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)\
 	sx = (_sx1 + _sx2) >> (1+aa_BITS);\
 	_address = (sx * (32 / 8)) + (unsigned long)(_src->line[sy]);\
 	scolor = _READ_##bpp(_src->line[sy]+(sx * (bpp/8)));\
-	if (scolor == _aa.mask_color) _aa.transparent = -1;\
-	else _aa.transparent = 0;\
 	_aa.r = getr##bpp2(scolor);\
 	_aa.g = getg##bpp2(scolor);\
 	_aa.b = getb##bpp2(scolor);\
 	_aa.trans = geta##bpp2(scolor);\
+	if (scolor == _aa.mask_color || _aa.trans == 255) \
+		_aa.transparent = -1;\
+	else \
+		_aa.transparent = 0;\
 	return;\
 }
 
@@ -1075,19 +1077,27 @@ _aa_get_##name (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)\
 {\
 	int sy, sx;\
 	int scolor;\
-	int a;\
+	int a,temp_a;\
 	unsigned long _address;\
 	sy = (_sy1 + _sy2) >> (1+aa_BITS);\
 	sx = (_sx1 + _sx2) >> (1+aa_BITS);\
 	_address = (sx * (32 / 8)) + (unsigned long)(_src->line[sy]);\
 	scolor = _READ_##bpp(_src->line[sy]+(sx * (bpp/8)));\
-	if (scolor == _aa.mask_color) {_aa.transparent = -1; return;}\
-	else _aa.transparent = 0;\
+	temp_a = geta##bpp2(scolor);\
+	if (scolor == _aa.mask_color || temp_a == 255) \
+	{\
+			_aa.transparent = -1; \
+			return;\
+	}\
+	else\
+	{\
+		_aa.transparent = 0;\
+	}\
 	a = (_sx2-_sx1) * (_sy2-_sy1);\
 	_aa.r = getr##bpp2(scolor) * a;\
 	_aa.g = getg##bpp2(scolor) * a;\
 	_aa.b = getb##bpp2(scolor) * a;\
-	_aa.trans = geta##bpp2(scolor) * a;\
+	_aa.trans = temp_a * a;\
 	_aa_masked_add_bpp_independant_calculations();\
 	return;\
 }
