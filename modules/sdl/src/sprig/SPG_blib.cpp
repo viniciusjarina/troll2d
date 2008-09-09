@@ -513,8 +513,8 @@ void SPG_TrigonFilled(SDL_Surface *dest,Sint16 x1,Sint16 y1,Sint16 x2,Sint16 y2,
         cy > y3? y3++ : y3--;
 	}
 
-	//if( y1==y3 )
-	//	return;
+	if( y1==y3 )
+		return;
 
 	/* Sort coords */
 	if ( y1 > y2 ) {
@@ -618,8 +618,8 @@ void SPG_TrigonFilledBlend(SDL_Surface *dest,Sint16 x1,Sint16 y1,Sint16 x2,Sint1
         cy > y3? y3++ : y3--;
 	}
 
-	//if( y1==y3 )
-	//	return;
+	if( y1==y3 )
+		return;
 
 	/* Sort coords */
 	if ( y1 > y2 ) {
