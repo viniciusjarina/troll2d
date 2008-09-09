@@ -67,6 +67,8 @@ struct _uint8_node* _SPG_blend_state = NULL;
 struct _bool_node* _SPG_AA_state = NULL;
 struct _bool_node* _SPG_blit_surface_alpha_state = NULL;
 
+static bool aa_primitives = false; // use AA for primitives?
+
 struct _string_node* _spg_errors = NULL;
 struct _string_node* _spg_errors_tail = NULL;
 Uint16 _spg_numerrors = 0;
@@ -144,6 +146,12 @@ SPG_bool SPG_PopAA()
     free(temp);
     return result;
 }
+
+void SPG_SetAA(SPG_bool enable)
+{
+	aa_primitives = (enable != 0);
+}
+
 SPG_bool SPG_GetAA()
 {
     if(_SPG_AA_state == NULL)
@@ -151,7 +159,7 @@ SPG_bool SPG_GetAA()
         // Without initialization, this overfills the stack.
         //if(_spg_useerrors)
         //SPG_Error("SPG_GetAA checked an empty stack!");
-        return 0;
+        return aa_primitives;
     }
     return _SPG_AA_state->datum;
 }

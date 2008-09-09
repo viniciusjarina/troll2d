@@ -43,6 +43,7 @@
 #include "SDL_gfxPrimitives.h"
 #include "SDL_gfxPrimitives_ex.h"
 
+#include "sprig.h"
 
 #include "troll/sdl_surface.h"
 #include "troll/sdl_graphics.h"
@@ -55,34 +56,7 @@ using Troll::Rect;
 using Troll::SDLSurface;
 using Troll::SDLGraphics;
 
-struct GRAPHICS_VTABLE // table of functions ptr to switch Anti-alias on/off
-{
-	int (*do_lineRGBA)(SDL_Surface * dst, Sint16 x1, Sint16 y1,Sint16 x2, Sint16 y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-	int (*do_circleRGBA)(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-	int (*do_ellipseRGBA)(SDL_Surface * dst, Sint16 x, Sint16 y,Sint16 rx, Sint16 ry, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-	int (*do_trigonRGBA)(SDL_Surface * dst,  Sint16 x1, Sint16 y1, Sint16 x2, Sint16 y2, Sint16 x3, Sint16 y3,Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-	int (*do_polygonRGBA)(SDL_Surface * dst, const Sint16 * vx, const Sint16 * vy,int n, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-};
-
-static GRAPHICS_VTABLE default_gfx = 
-{	
-	lineRGBA,
-	circleRGBA,
-	ellipseRGBA,
-	trigonRGBA,
-	polygonRGBA
-};
-
-static GRAPHICS_VTABLE aa_gfx = 
-{	
-	aalineRGBA,
-	aacircleRGBA,
-	aaellipseRGBA,
-	aatrigonRGBA,
-	aapolygonRGBA
-};
-
-static GRAPHICS_VTABLE * p_gfx = &default_gfx;
+using Troll::ColorComponent;
 
 SDLGraphics::SDLGraphics( SDLSurface * surface )
 {
@@ -91,77 +65,256 @@ SDLGraphics::SDLGraphics( SDLSurface * surface )
 
 void SDLGraphics::DrawPixel(const Point& pt,const Color & color)
 {
-	pixelRGBA(m_surface, pt.x, pt.y, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+
+	ColorComponent alpha = color.GetAlpha();
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_Pixel(m_surface, pt.x ,pt.y,sdl_color);
+	}
+	else
+	{
+		SPG_PixelBlend(m_surface, pt.x ,pt.y, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawLine( const Point& ptStart, const Point & ptEnd,const Color & color )
 {
-	p_gfx->do_lineRGBA(m_surface,ptStart.x,ptStart.y,ptEnd.x,ptEnd.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_Line(m_surface, ptStart.x, ptStart.y, ptEnd.x, ptEnd.y, sdl_color);
+	}
+	else
+	{
+		SPG_LineBlend(m_surface, ptStart.x, ptStart.y, ptEnd.x, ptEnd.y, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawVLine(const Point& ptStart,int size,const Color & color)
 {
-	vlineRGBA(m_surface,ptStart.x,ptStart.y, ptStart.y + size,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_LineV(m_surface, ptStart.x,ptStart.y + size,ptStart.y, sdl_color);
+	}
+	else
+	{
+		SPG_LineVBlend(m_surface, ptStart.x,ptStart.y + size,ptStart.y, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawHLine(const Point& ptStart,int size,const Color & color)
 {
-	hlineRGBA(m_surface, ptStart.x, ptStart.x + size, ptStart.y, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_LineH(m_surface, ptStart.x, ptStart.y,ptStart.x + size,sdl_color);
+	}
+	else
+	{
+		SPG_LineHBlend(m_surface, ptStart.x, ptStart.y,ptStart.x + size, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawCircle( const Point& ptCenter, short radius, const Color & color )
 {
-	p_gfx->do_circleRGBA(m_surface, ptCenter.x, ptCenter.y, radius, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_Circle(m_surface, ptCenter.x, ptCenter.y, radius,sdl_color);
+	}
+	else
+	{
+		SPG_CircleBlend(m_surface, ptCenter.x, ptCenter.y, radius, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawCircleFill(const Point& ptCenter,short radius,const Color& color)
 {
-	filledCircleRGBA(m_surface, ptCenter.x, ptCenter.y, radius, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_CircleFilled(m_surface, ptCenter.x, ptCenter.y, radius,sdl_color);
+	}
+	else
+	{
+		SPG_CircleFilledBlend(m_surface, ptCenter.x, ptCenter.y, radius, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawRect(const Rect& rect,const Color& color)
 {
-	rectangleRGBA(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(), color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_Rect(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(),sdl_color);
+	}
+	else
+	{
+		SPG_RectBlend(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(),sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawRectFill(const Rect& rect,const Color& color)
 {
-	boxRGBA(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(), color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_RectFilled(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(),sdl_color);
+	}
+	else
+	{
+		SPG_RectFilledBlend(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(),sdl_color , alpha);
+	}
 }
 
 void SDLGraphics::DrawEllipse(const Point& pt,short radx,short rady,const Color& color)
 {
-	p_gfx->do_ellipseRGBA(m_surface, pt.x, pt.y, radx, rady, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_Ellipse(m_surface, pt.x, pt.y, radx, rady,sdl_color);
+	}
+	else
+	{
+		SPG_EllipseBlend(m_surface, pt.x, pt.y, radx, rady, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawEllipseFill(const Point& pt,short radx,short rady,const Color& color)
 {
-	filledEllipseRGBA(m_surface, pt.x, pt.y, radx, rady, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_EllipseFilled(m_surface, pt.x, pt.y, radx, rady,sdl_color);
+	}
+	else
+	{
+		SPG_EllipseFilledBlend(m_surface, pt.x, pt.y, radx, rady, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawArc(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
 {
-	arcRGBAEx(m_surface, pt.x, pt.y, rad,start_angle,end_angle, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_Arc(m_surface, pt.x, pt.y, rad,-end_angle,-start_angle,sdl_color);
+	}
+	else
+	{
+		SPG_ArcBlend(m_surface, pt.x, pt.y, rad,-end_angle,-start_angle, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawArcFill(const Point& pt,short rad,short start_angle,short end_angle,const Color& color)
 {
-	filledArcRGBAEx(m_surface, pt.x, pt.y, rad,start_angle,end_angle,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_ArcFilled(m_surface, pt.x, pt.y, rad,-end_angle,-start_angle,sdl_color);
+	}
+	else
+	{
+		SPG_ArcFilledBlend(m_surface, pt.x, pt.y, rad,-end_angle,-start_angle, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawText(const Point& pt,const char * text,const Color& color)
 {
+	// TODO: SDL_ttf
 	stringRGBA(m_surface, pt.x, pt.y, text, color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
 }
 
 void SDLGraphics::DrawTriangle( const Point& pt1,const Point& pt2,const Point& pt3,const Color& color )
 {
-	p_gfx->do_trigonRGBA(m_surface, pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_Trigon(m_surface, pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y,sdl_color);
+	}
+	else
+	{
+		SPG_TrigonBlend(m_surface, pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawTriangleFill( const Point& pt1,const Point& pt2,const Point& pt3,const Color& color )
 {
-	filledTrigonRGBA(m_surface, pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y,color.GetRed(),color.GetGreen(),color.GetBlue(),color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_TrigonFilled(m_surface, pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y,sdl_color);
+	}
+	else
+	{
+		SPG_TrigonFilledBlend(m_surface, pt1.x, pt1.y, pt2.x, pt2.y, pt3.x, pt3.y, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawPolygon( const Point * pts,int n,const Color& color )
@@ -178,7 +331,20 @@ void SDLGraphics::DrawPolygon( const Point * pts,int n,const Color& color )
 		arr_y[i] = (Sint16)pts[i].y;
 	}
 
-	p_gfx->do_polygonRGBA(m_surface, arr_x, arr_y, n, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_Polygon(m_surface, n, arr_x, arr_y,sdl_color);
+	}
+	else
+	{
+		SPG_PolygonBlend(m_surface, n, arr_x, arr_y, sdl_color, alpha);
+	}
 
 	delete [] arr_x;
 	delete [] arr_y;
@@ -197,28 +363,63 @@ void SDLGraphics::DrawPolygonFill( const Point * pts,int n,const Color& color )
 		arr_x[i] = (Sint16)pts[i].x;
 		arr_y[i] = (Sint16)pts[i].y;
 	}
+
+	int sdl_color;
 	
-	filledPolygonRGBA(m_surface, arr_x, arr_y, n, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
-		
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_PolygonFilled(m_surface, n, arr_x, arr_y,sdl_color);
+	}
+	else
+	{
+		SPG_PolygonFilledBlend(m_surface, n, arr_x, arr_y, sdl_color, alpha);
+	}		
 	delete [] arr_x;
 	delete [] arr_y;
 }
 
 void SDLGraphics::EnableAntiAlias( bool enable )
 {
-	if(enable)
-		p_gfx = &aa_gfx;
-	else
-		p_gfx = &default_gfx;
+	SPG_SetAA(enable);
 }
 
 void SDLGraphics::DrawRoundRect(const Rect& rect,int rad,const Color& color)
 {
-	roundRectRGBA(m_surface, rect.x, rect.y, rect.width, rect.height, rad, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_RectRound(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(), rad,sdl_color);
+	}
+	else
+	{
+		SPG_RectRoundBlend(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(), rad, sdl_color, alpha);
+	}
 }
 
 void SDLGraphics::DrawRoundRectFill(const Rect& rect,int rad,const Color& color)
 {
-	filledRoundRectRGBA(m_surface, rect.x, rect.y, rect.width, rect.height, rad, color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha());
+	int sdl_color;
+	
+	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
+	
+	ColorComponent alpha = color.GetAlpha();
+	
+	if(alpha == Color::alphaOpaque)
+	{
+		SPG_RectRoundFilled(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(), rad,sdl_color);
+	}
+	else
+	{
+		SPG_RectRoundFilledBlend(m_surface, rect.x, rect.y, rect.GetRight(), rect.GetBottom(), rad, sdl_color, alpha);
+	}
 }
 

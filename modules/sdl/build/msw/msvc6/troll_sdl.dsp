@@ -177,10 +177,6 @@ SOURCE=..\..\..\src\SDL_gfxPrimitives.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\..\src\SDL_gfxPrimitives_ex.c
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\..\src\sdl_graphics.cpp
 # End Source File
 # Begin Source File

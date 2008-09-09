@@ -221,6 +221,7 @@ DECLSPEC Uint8 SPG_GetBlend();
 DECLSPEC void SPG_PushAA(SPG_bool state);
 DECLSPEC SPG_bool SPG_PopAA();
 DECLSPEC SPG_bool SPG_GetAA();
+DECLSPEC void SPG_SetAA(SPG_bool enable);
 DECLSPEC void SPG_PushSurfaceAlpha(SPG_bool state);
 DECLSPEC SPG_bool SPG_PopSurfaceAlpha();
 DECLSPEC SPG_bool SPG_GetSurfaceAlpha();
