@@ -1,6 +1,6 @@
 /*
-    SPriG - SDL Primitive Generator
-    by Jonathan Dearborn
+SPriG - SDL Primitive Generator
+by Jonathan Dearborn
 */
 
 
@@ -16,11 +16,11 @@
 */
 
 /*********************************************************************
- *  This library is free software; you can redistribute it and/or    *
- *  modify it under the terms of the GNU Library General Public      *
- *  License as published by the Free Software Foundation; either     *
- *  version 2 of the License, or (at your option) any later version. *
- *********************************************************************/
+*  This library is free software; you can redistribute it and/or    *
+*  modify it under the terms of the GNU Library General Public      *
+*  License as published by the Free Software Foundation; either     *
+*  version 2 of the License, or (at your option) any later version. *
+*********************************************************************/
 
 /*
 *  Some of this code is taken from the "Introduction to SDL" and
@@ -29,13 +29,13 @@
 
 #include "sprig.h"
 #ifdef _SPG_C_ONLY
-    #include <math.h>
-    #include <string.h>
-    #include <stdarg.h>
+#include <math.h>
+#include <string.h>
+#include <stdarg.h>
 #else
-    #include <cmath>
-    #include <string>
-    #include <cstdarg>
+#include <cmath>
+#include <string>
+#include <cstdarg>
 #endif
 
 
@@ -264,29 +264,29 @@ SPG_bool SPG_RectAND(const SDL_Rect A, const SDL_Rect B, SDL_Rect* intersection)
 {
     int resX, resY, resW, resH;
 	int Amin, Amax, Bmin, Bmax;
-
+	
 	// Horizontal intersection
 	Amin = A.x;
 	Amax = Amin + A.w;
 	Bmin = B.x;
 	Bmax = Bmin + B.w;
 	if(Bmin > Amin)
-	        Amin = Bmin;
+		Amin = Bmin;
 	resX = Amin;
 	if(Bmax < Amax)
-	        Amax = Bmax;
+		Amax = Bmax;
 	resW = Amax - Amin > 0 ? Amax - Amin : 0;
-
+	
 	// Vertical intersection
 	Amin = A.y;
 	Amax = Amin + A.h;
 	Bmin = B.y;
 	Bmax = Bmin + B.h;
 	if(Bmin > Amin)
-	        Amin = Bmin;
+		Amin = Bmin;
 	resY = Amin;
 	if(Bmax < Amax)
-	        Amax = Bmax;
+		Amax = Bmax;
 	resH = Amax - Amin > 0 ? Amax - Amin : 0;
     
     if(intersection != NULL)
@@ -316,21 +316,21 @@ void SPG_SetClip(SDL_Surface *surface, const SDL_Rect rect)
 	Amax = Amin + rect.w;
 	Bmax = surface->w;
 	if(Amin < 0)
-	        Amin = 0;
+		Amin = 0;
 	surface->clip_rect.x = Amin;
 	if(Bmax < Amax)
-	        Amax = Bmax;
+		Amax = Bmax;
 	surface->clip_rect.w = Amax - Amin > 0 ? Amax - Amin : 0;
-
+	
 	// Vertical intersection
 	Amin = rect.y;
 	Amax = Amin + rect.h;
 	Bmax = surface->h;
 	if(Amin < 0)
-	        Amin = 0;
+		Amin = 0;
 	surface->clip_rect.y = Amin;
 	if(Bmax < Amax)
-	        Amax = Bmax;
+		Amax = Bmax;
 	surface->clip_rect.h = Amax - Amin > 0 ? Amax - Amin : 0;
 }
 
@@ -354,34 +354,34 @@ void _SetPixel(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color)
 {
 	if(x>=SPG_clip_xmin(surface) && x<=SPG_clip_xmax(surface) && y>=SPG_clip_ymin(surface) && y<=SPG_clip_ymax(surface)){
 		switch (surface->format->BytesPerPixel) {
-			case 1: { /* Assuming 8-bpp */
-				*((Uint8 *)surface->pixels + y*surface->pitch + x) = color;
-			}
+		case 1: { /* Assuming 8-bpp */
+			*((Uint8 *)surface->pixels + y*surface->pitch + x) = color;
+				}
 			break;
-
-			case 2: { /* Probably 15-bpp or 16-bpp */
-				*((Uint16 *)surface->pixels + y*surface->pitch/2 + x) = color;
-			}
+			
+		case 2: { /* Probably 15-bpp or 16-bpp */
+			*((Uint16 *)surface->pixels + y*surface->pitch/2 + x) = color;
+				}
 			break;
-
-			case 3: { /* Slow 24-bpp mode, usually not used */
-				Uint8 *pix = (Uint8 *)surface->pixels + y * surface->pitch + x*3;
-
-  				/* Gack - slow, but endian correct */
-				*(pix+surface->format->Rshift/8) = color>>surface->format->Rshift;
-  				*(pix+surface->format->Gshift/8) = color>>surface->format->Gshift;
-  				*(pix+surface->format->Bshift/8) = color>>surface->format->Bshift;
-				*(pix+surface->format->Ashift/8) = color>>surface->format->Ashift;
-			}
+			
+		case 3: { /* Slow 24-bpp mode, usually not used */
+			Uint8 *pix = (Uint8 *)surface->pixels + y * surface->pitch + x*3;
+			
+			/* Gack - slow, but endian correct */
+			*(pix+surface->format->Rshift/8) = color>>surface->format->Rshift;
+			*(pix+surface->format->Gshift/8) = color>>surface->format->Gshift;
+			*(pix+surface->format->Bshift/8) = color>>surface->format->Bshift;
+			*(pix+surface->format->Ashift/8) = color>>surface->format->Ashift;
+				}
 			break;
-
-			case 4: { /* Probably 32-bpp */
-				*((Uint32 *)surface->pixels + y*surface->pitch/4 + x) = color;
-			}
+			
+		case 4: { /* Probably 32-bpp */
+			*((Uint32 *)surface->pixels + y*surface->pitch/4 + x) = color;
+				}
 			break;
 		}
 	}
-
+	
 }
 
 
@@ -408,11 +408,11 @@ void _SetPixel16(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color)
 void _SetPixel24(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color)
 {
 	Uint8 *pix = (Uint8 *)surface->pixels + y * surface->pitch + x*3;
-
-  	/* Gack - slow, but endian correct */
+	
+	/* Gack - slow, but endian correct */
 	*(pix+surface->format->Rshift/8) = color>>surface->format->Rshift;
-  	*(pix+surface->format->Gshift/8) = color>>surface->format->Gshift;
-  	*(pix+surface->format->Bshift/8) = color>>surface->format->Bshift;
+	*(pix+surface->format->Gshift/8) = color>>surface->format->Gshift;
+	*(pix+surface->format->Bshift/8) = color>>surface->format->Bshift;
 	*(pix+surface->format->Ashift/8) = color>>surface->format->Ashift;
 }
 void _SetPixel32(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color)
@@ -444,7 +444,7 @@ void _SetPixelX(SDL_Surface *dest,Sint16 x,Sint16 y,Uint32 color)
 //==================================================================================
 void SPG_Pixel(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color)
 {
-
+	
 	if ( SDL_MUSTLOCK(surface) && _SPG_lock ) {
 		if ( SDL_LockSurface(surface) < 0 ) {
             if(_spg_useerrors)
@@ -452,9 +452,9 @@ void SPG_Pixel(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color)
 			return;
 		}
 	}
-
+	
 	_SetPixel(surface, x, y, color);
-
+	
 	if ( SDL_MUSTLOCK(surface) && _SPG_lock ) {
 		SDL_UnlockSurface(surface);
 	}
@@ -496,30 +496,30 @@ void SPG_pSetPixel(SDL_Surface *surface, Sint16 x, Sint32 ypitch, Uint32 color)
 {
 	if(x>=SPG_clip_xmin(surface) && x<=SPG_clip_xmax(surface) && ypitch>=0){
 		switch (surface->format->BytesPerPixel) {
-			case 1: { /* Assuming 8-bpp */
-				*((Uint8 *)surface->pixels + ypitch + x) = color;
-			}
+		case 1: { /* Assuming 8-bpp */
+			*((Uint8 *)surface->pixels + ypitch + x) = color;
+				}
 			break;
-
-			case 2: { /* Probably 15-bpp or 16-bpp */
-				*((Uint16 *)surface->pixels + ypitch + x) = color;
-			}
+			
+		case 2: { /* Probably 15-bpp or 16-bpp */
+			*((Uint16 *)surface->pixels + ypitch + x) = color;
+				}
 			break;
-
-			case 3: { /* Slow 24-bpp mode, usually not used */
-  				/* Gack - slow, but endian correct */
-  				Uint8 *pix = (Uint8 *)surface->pixels + ypitch + x*3;
-
-				*(pix+surface->format->Rshift/8) = color>>surface->format->Rshift;
-  				*(pix+surface->format->Gshift/8) = color>>surface->format->Gshift;
-  				*(pix+surface->format->Bshift/8) = color>>surface->format->Bshift;
-				*(pix+surface->format->Ashift/8) = color>>surface->format->Ashift;
-			}
+			
+		case 3: { /* Slow 24-bpp mode, usually not used */
+			/* Gack - slow, but endian correct */
+			Uint8 *pix = (Uint8 *)surface->pixels + ypitch + x*3;
+			
+			*(pix+surface->format->Rshift/8) = color>>surface->format->Rshift;
+			*(pix+surface->format->Gshift/8) = color>>surface->format->Gshift;
+			*(pix+surface->format->Bshift/8) = color>>surface->format->Bshift;
+			*(pix+surface->format->Ashift/8) = color>>surface->format->Ashift;
+				}
 			break;
-
-			case 4: { /* Probably 32-bpp */
-				*((Uint32 *)surface->pixels + ypitch + x) = color;
-			}
+			
+		case 4: { /* Probably 32-bpp */
+			*((Uint32 *)surface->pixels + ypitch + x) = color;
+				}
 			break;
 		}
 	}
@@ -533,43 +533,43 @@ Uint32 SPG_GetPixel(SDL_Surface *surface, Sint16 x, Sint16 y)
 {
 	if(x<0 || x>=surface->w || y<0 || y>=surface->h)
 	{
-	    if(_spg_useerrors)
+		if(_spg_useerrors)
             SPG_Error("SPG_GetPixel was used out of the surface bounds");
 		return 0;
 	}
-
+	
 	switch (surface->format->BytesPerPixel) {
-		case 1: { /* Assuming 8-bpp */
-			return *((Uint8 *)surface->pixels + y*surface->pitch + x);
-		}
+	case 1: { /* Assuming 8-bpp */
+		return *((Uint8 *)surface->pixels + y*surface->pitch + x);
+			}
 		break;
-
-		case 2: { /* Probably 15-bpp or 16-bpp */
-			return *((Uint16 *)surface->pixels + y*surface->pitch/2 + x);
-		}
+		
+	case 2: { /* Probably 15-bpp or 16-bpp */
+		return *((Uint16 *)surface->pixels + y*surface->pitch/2 + x);
+			}
 		break;
-
-		case 3: { /* Slow 24-bpp mode, usually not used */
-			Uint8 *pix;
-			int shift;
-			Uint32 color=0;
-
-			pix = (Uint8 *)surface->pixels + y * surface->pitch + x*3;
-			shift = surface->format->Rshift;
-			color = *(pix+shift/8)<<shift;
-			shift = surface->format->Gshift;
-			color|= *(pix+shift/8)<<shift;
-			shift = surface->format->Bshift;
-			color|= *(pix+shift/8)<<shift;
-			shift = surface->format->Ashift;
-			color|= *(pix+shift/8)<<shift;
-			return color;
-		}
+		
+	case 3: { /* Slow 24-bpp mode, usually not used */
+		Uint8 *pix;
+		int shift;
+		Uint32 color=0;
+		
+		pix = (Uint8 *)surface->pixels + y * surface->pitch + x*3;
+		shift = surface->format->Rshift;
+		color = *(pix+shift/8)<<shift;
+		shift = surface->format->Gshift;
+		color|= *(pix+shift/8)<<shift;
+		shift = surface->format->Bshift;
+		color|= *(pix+shift/8)<<shift;
+		shift = surface->format->Ashift;
+		color|= *(pix+shift/8)<<shift;
+		return color;
+			}
 		break;
-
-		case 4: { /* Probably 32-bpp */
-			return *((Uint32 *)surface->pixels + y*surface->pitch/4 + x);
-		}
+		
+	case 4: { /* Probably 32-bpp */
+		return *((Uint32 *)surface->pixels + y*surface->pitch/4 + x);
+			}
 		break;
 	}
 	return 0;
@@ -581,155 +581,164 @@ Uint32 SPG_GetPixel(SDL_Surface *surface, Sint16 x, Sint16 y)
 //==================================================================================
 void _PutPixelAlpha(SDL_Surface *surface, Sint16 x, Sint16 y, Uint32 color, Uint8 alpha)
 {
-	if(x>=SPG_clip_xmin(surface) && x<=SPG_clip_xmax(surface) && y>=SPG_clip_ymin(surface) && y<=SPG_clip_ymax(surface)){
-		Uint32 Rmask = surface->format->Rmask, Gmask = surface->format->Gmask, Bmask = surface->format->Bmask, Amask = surface->format->Amask;
-		Uint32 R,G,B,A=SDL_ALPHA_OPAQUE;
-	Uint32* pixel;
-		switch (surface->format->BytesPerPixel) {
-			case 1: { /* Assuming 8-bpp */
-			    
-					Uint8 *pixel = (Uint8 *)surface->pixels + y*surface->pitch + x;
-					
-					Uint8 dR = surface->format->palette->colors[*pixel].r;
-					Uint8 dG = surface->format->palette->colors[*pixel].g;
-					Uint8 dB = surface->format->palette->colors[*pixel].b;
-					Uint8 sR = surface->format->palette->colors[color].r;
-					Uint8 sG = surface->format->palette->colors[color].g;
-					Uint8 sB = surface->format->palette->colors[color].b;
-					
-                    dR = dR + ((sR-dR)*alpha >> 8);
-                    dG = dG + ((sG-dG)*alpha >> 8);
-                    dB = dB + ((sB-dB)*alpha >> 8);
-				
-					*pixel = SDL_MapRGB(surface->format, dR, dG, dB);
-					
-			}
+	if(x>=SPG_clip_xmin(surface) && x<=SPG_clip_xmax(surface) && y>=SPG_clip_ymin(surface) && y<=SPG_clip_ymax(surface))
+	{
+		Uint32 Rmask = surface->format->Rmask,
+			Gmask = surface->format->Gmask, 
+			Bmask = surface->format->Bmask, 
+			Amask = surface->format->Amask;
+		Uint32 R,G,B,A=0;
+		Uint32* pixel;
+		switch (surface->format->BytesPerPixel) 
+		{
+		case 1: { /* Assuming 8-bpp */
+			
+			Uint8 *pixel = (Uint8 *)surface->pixels + y*surface->pitch + x;
+			
+			Uint8 dR = surface->format->palette->colors[*pixel].r;
+			Uint8 dG = surface->format->palette->colors[*pixel].g;
+			Uint8 dB = surface->format->palette->colors[*pixel].b;
+			Uint8 sR = surface->format->palette->colors[color].r;
+			Uint8 sG = surface->format->palette->colors[color].g;
+			Uint8 sB = surface->format->palette->colors[color].b;
+			
+			dR = dR + ((sR-dR)*alpha >> 8);
+			dG = dG + ((sG-dG)*alpha >> 8);
+			dB = dB + ((sB-dB)*alpha >> 8);
+			
+			*pixel = SDL_MapRGB(surface->format, dR, dG, dB);
+			
+				}
 			break;
+			
+		case 2: { /* Probably 15-bpp or 16-bpp */		
+			
+			Uint32 dR=(color & Rmask),
+				   dG=(color & Gmask),
+				   dB=(color & Bmask),
+				   dA=(color & Amask);
 
-			case 2: { /* Probably 15-bpp or 16-bpp */		
-			    
-					Uint16 *pixel = (Uint16 *)surface->pixels + y*surface->pitch/2 + x;
-					Uint32 dc = *pixel;
-				
-					R = ((dc & Rmask) + (( (color & Rmask) - (dc & Rmask) ) * alpha >> 8)) & Rmask;
-					G = ((dc & Gmask) + (( (color & Gmask) - (dc & Gmask) ) * alpha >> 8)) & Gmask;
-					B = ((dc & Bmask) + (( (color & Bmask) - (dc & Bmask) ) * alpha >> 8)) & Bmask;
-					if( Amask )
-						A = ((dc & Amask) + (( (color & Amask) - (dc & Amask) ) * alpha >> 8)) & Amask;
+			Uint16 *pixel = ((Uint16 *)surface->pixels + y*surface->pitch/2) + x;
+						
+				R = ((*pixel & Rmask) + (( dR - (*pixel & Rmask) ) * alpha >> 8)) & Rmask;
+                G = ((*pixel & Gmask) + (( dG - (*pixel & Gmask) ) * alpha >> 8)) & Gmask;
+                B = ((*pixel & Bmask) + (( dB - (*pixel & Bmask) ) * alpha >> 8)) & Bmask;
+                if ( Amask )
+                    A = ((*pixel & Amask) + (( dA - (*pixel & Amask) ) * alpha >> 8)) & Amask;
 
-					*pixel= R | G | B | A;
-					
-			}
+                *pixel= R | G | B | A;
+			
+				}
 			break;
-
-			case 3: { /* Slow 24-bpp mode, usually not used */
-				Uint8 *pix = (Uint8 *)surface->pixels + y * surface->pitch + x*3;
-				Uint8 rshift8=surface->format->Rshift/8;
-				Uint8 gshift8=surface->format->Gshift/8;
-				Uint8 bshift8=surface->format->Bshift/8;
-				Uint8 ashift8=surface->format->Ashift/8;
-				
-				
-				
-					Uint8 dR, dG, dB, dA=0;
-					Uint8 sR, sG, sB, sA=0;
-					
-					pix = (Uint8 *)surface->pixels + y * surface->pitch + x*3;
-					
-					dR = *((pix)+rshift8); 
-            		dG = *((pix)+gshift8);
-            		dB = *((pix)+bshift8);
-					dA = *((pix)+ashift8);
-					
-					sR = (color>>surface->format->Rshift)&0xff;
-					sG = (color>>surface->format->Gshift)&0xff;
-					sB = (color>>surface->format->Bshift)&0xff;
-					sA = (color>>surface->format->Ashift)&0xff;
-					
-					dR = dR + ((sR-dR)*alpha >> 8);
-					dG = dG + ((sG-dG)*alpha >> 8);
-					dB = dB + ((sB-dB)*alpha >> 8);
-					dA = dA + ((sA-dA)*alpha >> 8);
-
-					*((pix)+rshift8) = dR; 
-            		*((pix)+gshift8) = dG;
-            		*((pix)+bshift8) = dB;
-					*((pix)+ashift8) = dA;
-					
-			}
+			
+		case 3: { /* Slow 24-bpp mode, usually not used */
+			Uint8 *pix = (Uint8 *)surface->pixels + y * surface->pitch + x*3;
+			Uint8 rshift8=surface->format->Rshift/8;
+			Uint8 gshift8=surface->format->Gshift/8;
+			Uint8 bshift8=surface->format->Bshift/8;
+			Uint8 ashift8=surface->format->Ashift/8;
+			
+			
+			
+			Uint8 dR, dG, dB, dA=0;
+			Uint8 sR, sG, sB, sA=0;
+			
+			pix = (Uint8 *)surface->pixels + y * surface->pitch + x*3;
+			
+			dR = *((pix)+rshift8); 
+			dG = *((pix)+gshift8);
+			dB = *((pix)+bshift8);
+			dA = *((pix)+ashift8);
+			
+			sR = (color>>surface->format->Rshift)&0xff;
+			sG = (color>>surface->format->Gshift)&0xff;
+			sB = (color>>surface->format->Bshift)&0xff;
+			sA = (color>>surface->format->Ashift)&0xff;
+			
+			dR = dR + ((sR-dR)*alpha >> 8);
+			dG = dG + ((sG-dG)*alpha >> 8);
+			dB = dB + ((sB-dB)*alpha >> 8);
+			dA = dA + ((sA-dA)*alpha >> 8);
+			
+			*((pix)+rshift8) = dR; 
+			*((pix)+gshift8) = dG;
+			*((pix)+bshift8) = dB;
+			*((pix)+ashift8) = dA;
+			
+				}
 			break;
-
-			case 4: /* Probably 32-bpp */
-                pixel = (Uint32*)surface->pixels + y*surface->pitch/4 + x;
-                Uint32 dc = *pixel;
-                R = color & Rmask;
-                G = color & Gmask;
-                B = color & Bmask;
-                A = 0;  // keep this as 0 to avoid corruption of non-alpha surfaces
-                
-                
-                switch(SPG_GetBlend())
-                {
-                    case SPG_COMBINE_ALPHA:  // Blend and combine src and dest alpha
-                        if( alpha != SDL_ALPHA_OPAQUE ){
-                            R = ((dc & Rmask) + (( R - (dc & Rmask) ) * alpha >> 8)) & Rmask;
-                            G = ((dc & Gmask) + (( G - (dc & Gmask) ) * alpha >> 8)) & Gmask;
-                            B = ((dc & Bmask) + (( B - (dc & Bmask) ) * alpha >> 8)) & Bmask;
-                        }
-                        if(Amask)
-                            A = ((((dc & Amask) >> surface->format->Ashift) + alpha) >> 1) << surface->format->Ashift;
-                        break;
-                    case SPG_DEST_ALPHA:  // Blend and keep dest alpha
-                        if( alpha != SDL_ALPHA_OPAQUE ){
-                            R = ((dc & Rmask) + (( R - (dc & Rmask) ) * alpha >> 8)) & Rmask;
-                            G = ((dc & Gmask) + (( G - (dc & Gmask) ) * alpha >> 8)) & Gmask;
-                            B = ((dc & Bmask) + (( B - (dc & Bmask) ) * alpha >> 8)) & Bmask;
-                        }
-                        if(Amask)
-                            A = (dc & Amask);
-                        break;
-                    case SPG_SRC_ALPHA:  // Blend and keep src alpha
-                        if( alpha != SDL_ALPHA_OPAQUE ){
-                            R = ((dc & Rmask) + (( R - (dc & Rmask) ) * alpha >> 8)) & Rmask;
-                            G = ((dc & Gmask) + (( G - (dc & Gmask) ) * alpha >> 8)) & Gmask;
-                            B = ((dc & Bmask) + (( B - (dc & Bmask) ) * alpha >> 8)) & Bmask;
-                        }
-                        if(Amask)
-                            A = (alpha << surface->format->Ashift);
-                        break;
-                    case SPG_COPY_SRC_ALPHA: // Direct copy with src alpha
-                        if(Amask)
-                            A = (alpha << surface->format->Ashift);
-                        break;
-                    case SPG_COPY_DEST_ALPHA: // Direct copy with dest alpha
-                        if(Amask)
-                            A = (dc & Amask);
-                        break;
-                    case SPG_COPY_COMBINE_ALPHA: // Direct copy with combined alpha
-                        if(Amask)
-                            A = ((((dc & Amask) >> surface->format->Ashift) + alpha) >> 1) << surface->format->Ashift;
-                        break;
-                    case SPG_COPY_NO_ALPHA:  // Direct copy, alpha opaque
-                        if(Amask)
-                            A = (SDL_ALPHA_OPAQUE << surface->format->Ashift);
-                        break;
-                    case SPG_COPY_ALPHA_ONLY:  // Direct copy of just the alpha
-                        R = dc & Rmask;
-                        G = dc & Gmask;
-                        B = dc & Bmask;
-                        if(Amask)
-                            A = (alpha << surface->format->Ashift);
-                        break;
-                    case SPG_COMBINE_ALPHA_ONLY:  // Blend of just the alpha
-                        R = dc & Rmask;
-                        G = dc & Gmask;
-                        B = dc & Bmask;
-                        if(Amask)
-                            A = ((((dc & Amask) >> surface->format->Ashift) + alpha) >> 1) << surface->format->Ashift;
-                        break;
-                }
-                
-                *pixel = R | G | B | A;
+			
+		case 4: /* Probably 32-bpp */
+			pixel = (Uint32*)surface->pixels + y*surface->pitch/4 + x;
+			Uint32 dc = *pixel;
+			R = color & Rmask;
+			G = color & Gmask;
+			B = color & Bmask;
+			A = 0;  // keep this as 0 to avoid corruption of non-alpha surfaces
+			
+			
+			switch(SPG_GetBlend())
+			{
+			case SPG_COMBINE_ALPHA:  // Blend and combine src and dest alpha
+				if( alpha != SDL_ALPHA_OPAQUE ){
+					R = ((dc & Rmask) + (( R - (dc & Rmask) ) * alpha >> 8)) & Rmask;
+					G = ((dc & Gmask) + (( G - (dc & Gmask) ) * alpha >> 8)) & Gmask;
+					B = ((dc & Bmask) + (( B - (dc & Bmask) ) * alpha >> 8)) & Bmask;
+				}
+				if(Amask)
+					A = ((((dc & Amask) >> surface->format->Ashift) + alpha) >> 1) << surface->format->Ashift;
+				break;
+			case SPG_DEST_ALPHA:  // Blend and keep dest alpha
+				if( alpha != SDL_ALPHA_OPAQUE ){
+					R = ((dc & Rmask) + (( R - (dc & Rmask) ) * alpha >> 8)) & Rmask;
+					G = ((dc & Gmask) + (( G - (dc & Gmask) ) * alpha >> 8)) & Gmask;
+					B = ((dc & Bmask) + (( B - (dc & Bmask) ) * alpha >> 8)) & Bmask;
+				}
+				if(Amask)
+					A = (dc & Amask);
+				break;
+			case SPG_SRC_ALPHA:  // Blend and keep src alpha
+				if( alpha != SDL_ALPHA_OPAQUE ){
+					R = ((dc & Rmask) + (( R - (dc & Rmask) ) * alpha >> 8)) & Rmask;
+					G = ((dc & Gmask) + (( G - (dc & Gmask) ) * alpha >> 8)) & Gmask;
+					B = ((dc & Bmask) + (( B - (dc & Bmask) ) * alpha >> 8)) & Bmask;
+				}
+				if(Amask)
+					A = (alpha << surface->format->Ashift);
+				break;
+			case SPG_COPY_SRC_ALPHA: // Direct copy with src alpha
+				if(Amask)
+					A = (alpha << surface->format->Ashift);
+				break;
+			case SPG_COPY_DEST_ALPHA: // Direct copy with dest alpha
+				if(Amask)
+					A = (dc & Amask);
+				break;
+			case SPG_COPY_COMBINE_ALPHA: // Direct copy with combined alpha
+				if(Amask)
+					A = ((((dc & Amask) >> surface->format->Ashift) + alpha) >> 1) << surface->format->Ashift;
+				break;
+			case SPG_COPY_NO_ALPHA:  // Direct copy, alpha opaque
+				if(Amask)
+					A = (SDL_ALPHA_OPAQUE << surface->format->Ashift);
+				break;
+			case SPG_COPY_ALPHA_ONLY:  // Direct copy of just the alpha
+				R = dc & Rmask;
+				G = dc & Gmask;
+				B = dc & Bmask;
+				if(Amask)
+					A = (alpha << surface->format->Ashift);
+				break;
+			case SPG_COMBINE_ALPHA_ONLY:  // Blend of just the alpha
+				R = dc & Rmask;
+				G = dc & Gmask;
+				B = dc & Bmask;
+				if(Amask)
+					A = ((((dc & Amask) >> surface->format->Ashift) + alpha) >> 1) << surface->format->Ashift;
+				break;
+			}
+			
+			*pixel = R | G | B | A;
 			break;
 		}
 	}
