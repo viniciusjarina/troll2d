@@ -1713,7 +1713,7 @@ void SPG_RectFilledBlend(SDL_Surface *surface, Sint16 x1, Sint16 y1, Sint16 x2, 
                 if ( Amask )
                     A = ((*pixel & Amask) + (( dA - (*pixel & Amask) ) * alpha >> 8)) & Amask;
 
-                *pixel= SDL_MapRGBA(surface->format, R, G, B, A);
+                *pixel= R | G | B | A;
             }
         }
     }
