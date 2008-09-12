@@ -77,11 +77,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib troll_base.lib troll_sdl.lib"
+				AdditionalDependencies="SDL.lib troll_base.lib troll_sdl.lib zlib.lib libpng.lib"
 				OutputFile="..\..\..\bin\test_graphics_sdl.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualC&quot;"
+				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualC&quot;;..\..\..\dependencies\libpng\lib\msvc"
 				ProgramDatabaseFile=".\Release/test_graphics.pdb"
 				SubSystem="2"
 				TargetMachine="1"
@@ -211,8 +211,6 @@
 				AdditionalFiles="troll.bmp|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
 			/>
 			<DebuggerTool
-				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
-				Arguments=""
 			/>
 		</Configuration>
 		<Configuration
@@ -413,8 +411,6 @@
 				AdditionalFiles="troll.bmp|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
 			/>
 			<DebuggerTool
-				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
-				Arguments=""
 			/>
 		</Configuration>
 		<Configuration
@@ -616,8 +612,6 @@
 				AdditionalFiles=""
 			/>
 			<DebuggerTool
-				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
-				Arguments=""
 			/>
 		</Configuration>
 		<Configuration
@@ -815,8 +809,6 @@
 				AdditionalFiles=""
 			/>
 			<DebuggerTool
-				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
-				Arguments=""
 			/>
 		</Configuration>
 	</Configurations>
@@ -1007,6 +999,50 @@
 			</File>
 		</Filter>
 		<File
+			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
+			>
+			<FileConfiguration
+				Name="Release|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Copyng SDL library"
+					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
+					Outputs="..\..\..\bin\SDL.dll"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Copyng SDL library"
+					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
+					Outputs="..\..\..\bin\SDL.dll"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug Allegro|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description=""
+					CommandLine=""
+					Outputs=""
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release Allegro|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description=""
+					CommandLine=""
+					Outputs=""
+				/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualCE\SDL.dll"
 			>
 			<FileConfiguration
@@ -1054,50 +1090,6 @@
 					Name="VCCustomBuildTool"
 					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
 					Outputs=".\evc\SDL.dll"
-				/>
-			</FileConfiguration>
-		</File>
-		<File
-			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
-			>
-			<FileConfiguration
-				Name="Release|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Copyng SDL library"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
-					Outputs="..\..\..\bin\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Copyng SDL library"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
-					Outputs="..\..\..\bin\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug Allegro|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release Allegro|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
 				/>
 			</FileConfiguration>
 		</File>
