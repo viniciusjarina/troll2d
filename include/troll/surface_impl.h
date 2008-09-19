@@ -77,13 +77,33 @@ public:
 	
 	virtual void DrawFast(SurfaceImpl & destination,const Point& ptDest = Point(0,0)) const = 0;
 	
-	virtual void Draw(SurfaceImpl & destination,const Point& ptDest = Point(0,0),DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
-	virtual void Draw(SurfaceImpl & destination,const Point& ptDest ,const Rect& rSource,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+	virtual void Draw(SurfaceImpl & destination,
+					  const Point& ptDest = Point(0,0),
+					  DrawFlags flags = none,
+					  AlphaComponent opacity = Color::alphaOpaque) const = 0;
+
+	virtual void Draw(SurfaceImpl & destination,
+					  const Point& ptDest,
+					  const Rect& rSource,
+					  DrawFlags flags = none,
+					  AlphaComponent opacity = Color::alphaOpaque) const = 0;
 	
-	virtual void DrawStretch(SurfaceImpl & destination,const Rect& rcDest,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
-	virtual void DrawStretch(SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+	virtual void DrawStretch(SurfaceImpl & destination,
+							 const Rect& rcDest,
+							 DrawFlags flags = none,
+							 AlphaComponent opacity = Color::alphaOpaque) const = 0;
+
+	virtual void DrawStretch(SurfaceImpl & destination,
+							 const Rect& rcDest,
+							 const Rect& rSource,
+							 DrawFlags flags = none,
+							 AlphaComponent opacity = Color::alphaOpaque) const = 0;
 		
-	virtual void DrawRotate(SurfaceImpl & destination,const Point& ptDest,short angle,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+	virtual void DrawRotate(SurfaceImpl & destination,
+							const Point& ptDest,
+							short angle,
+							DrawFlags flags = none,
+							AlphaComponent opacity = Color::alphaOpaque) const = 0;
 
 };
 

@@ -125,7 +125,7 @@
 			logoPos.y = rand()%240;
 			Rect rc(MouseInput::GetPosition(),Size(200,200));
 
-			screen.Draw(logo,rc.GetPosition(),drawVerticalFlip);
+			screen.DrawStretch(logo,rc);
 			
 
 			Screen::Flip();		// Flip screen

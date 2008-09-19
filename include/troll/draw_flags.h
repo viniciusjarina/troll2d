@@ -51,6 +51,11 @@ namespace Troll
 		drawHorizontalFlip = 0x02,
 		drawNoAntiAlias    = 0x04,
 	};
+
+	inline DrawFlags operator | (DrawFlags flag1,DrawFlags flag2)
+	{
+		return (DrawFlags)((int)flag1|(int)flag2);
+	}
 }
 
 #endif // __TROLL_DRAW_FLAGS_H__

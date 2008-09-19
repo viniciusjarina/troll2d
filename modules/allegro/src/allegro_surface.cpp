@@ -277,12 +277,104 @@ void AllegroSurface::Draw( SurfaceImpl & destination,const Point& ptDest /*= Poi
 
 void AllegroSurface::Draw( SurfaceImpl & destination,const Point& ptDest ,const Rect& rSource,DrawFlags flags /*= none*/,AlphaComponent opacity) const
 {
-	
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+	int astr_flags;
+
+	if(opacity == Color::alphaOpaque)
+	{
+		if(!(flags&drawHorizontalFlip) && !(flags&drawVerticalFlip))
+		{
+			masked_blit(source, dest, rSource.x,rSource.y, ptDest.x, ptDest.y, rSource.width, rSource.height);
+			return;
+		}
+
+		astr_flags = AA_NO_AA | AA_MASKED;
+
+		if(flags&drawHorizontalFlip)
+			astr_flags |= AA_HFLIP;
+		
+		if(flags&drawVerticalFlip)
+			astr_flags |= AA_VFLIP;
+
+		_aa_stretch_blit (source, dest, 
+			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.x,aa_BITS)), 
+			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
+			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
+			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
+			astr_flags);
+	}
+	else
+	{
+		astr_flags = AA_BLEND | AA_MASKED;
+		
+		if(flags&drawHorizontalFlip)
+			astr_flags |= AA_HFLIP;
+		
+		if(flags&drawVerticalFlip)
+			astr_flags |= AA_VFLIP;
+
+		aa_set_trans(255 - opacity);
+
+		_aa_stretch_blit (source, dest, 
+			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.x,aa_BITS)), 
+			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
+			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
+			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
+			astr_flags);
+
+		aa_set_trans(0);
+	}
 }
 
 void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,DrawFlags flags /*= none*/,AlphaComponent opacity) const
 {
-	
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+	int astr_flags;
+
+	if(opacity == Color::alphaOpaque)
+	{
+		if(!(flags&drawHorizontalFlip) && !(flags&drawVerticalFlip))
+		{
+			masked_stretch_blit(source, dest, 0, 0, source->w, source->h, rcDest.x, rcDest.y, rcDest.width, rcDest.height);
+			return;
+		}
+
+		astr_flags = AA_NO_AA | AA_MASKED;
+		
+		if(flags&drawHorizontalFlip)
+			astr_flags |= AA_HFLIP;
+		
+		if(flags&drawVerticalFlip)
+			astr_flags |= AA_VFLIP;
+		
+		_aa_stretch_blit (source, dest, 
+			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
+			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
+			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
+			iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
+			astr_flags);
+	}
+	else
+	{
+		if(flags&drawHorizontalFlip)
+			astr_flags |= AA_HFLIP;
+		
+		if(flags&drawVerticalFlip)
+			astr_flags |= AA_VFLIP;
+		
+		aa_set_trans(255 - opacity);
+		
+		_aa_stretch_blit (source, dest, 
+			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
+			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
+			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
+			iround(ldexp(rcDest.height,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
+			astr_flags);
+		
+		aa_set_trans(0);
+	}
 }
 
 

@@ -60,7 +60,7 @@
 	if(!System::Init())			// Inialize (input, sound, files, etc)
 		return 0;
 
-	if(!System::SetupScreen())	// Setup and create screen with defaul size
+	if(!System::SetupScreen(-1,-1,false,depth1bpp))	// Setup and create screen with defaul size
 		return 0;
 
 	System::SetScreenTitle("Test Alpha");
