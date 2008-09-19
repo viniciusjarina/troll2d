@@ -46,6 +46,7 @@
 #define __TROLL_SURFACE_IMPL_H__
 
 #include "troll/color.h"
+#include "troll/draw_flags.h"
 
 #include "troll/size.h"
 #include "troll/point.h"
@@ -73,10 +74,17 @@ public:
 
 	virtual void Clear(const Color & color = Color::BLACK) = 0;
 
-	virtual void DrawStretch(SurfaceImpl & destination,const Rect& ptDest,const Rect& rSource = Rect(0,0,-1,-1)) const = 0;
-	virtual void DrawRotate(SurfaceImpl & destination,const Point& ptDest,short angle) const = 0;
-	virtual void Draw(SurfaceImpl & destination,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1)) const = 0;
-	virtual void DrawAlpha(SurfaceImpl & destination,const Point& ptDest = Point(0,0),unsigned char alpha = 128) const = 0;
+	
+	virtual void DrawFast(SurfaceImpl & destination,const Point& ptDest = Point(0,0)) const = 0;
+	
+	virtual void Draw(SurfaceImpl & destination,const Point& ptDest = Point(0,0),DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+	virtual void Draw(SurfaceImpl & destination,const Point& ptDest ,const Rect& rSource,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+	
+	virtual void DrawStretch(SurfaceImpl & destination,const Rect& rcDest,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+	virtual void DrawStretch(SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+		
+	virtual void DrawRotate(SurfaceImpl & destination,const Point& ptDest,short angle,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+
 };
 
 }

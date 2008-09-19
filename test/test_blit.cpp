@@ -64,7 +64,7 @@
 
 	Image image;
 	
-	if(!image.LoadImage("images/troll.png"))
+	if(!image.LoadImage("images/troll.bmp"))
 		return 0;
 		
 	const Surface & logo = image.GetSurface();
@@ -125,7 +125,7 @@
 			logoPos.y = rand()%240;
 			Rect rc(MouseInput::GetPosition(),Size(200,200));
 
-			screen.DrawStretch(logo,rc);
+			screen.Draw(logo,rc.GetPosition(),drawVerticalFlip);
 			
 
 			Screen::Flip();		// Flip screen

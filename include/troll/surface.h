@@ -47,6 +47,8 @@
 #include "troll/rect.h"
 #include "troll/color.h"
 
+#include "troll/draw_flags.h"
+
 
 namespace Troll
 {
@@ -83,14 +85,24 @@ namespace Troll
 		
 		void Clear(const Color & color = Color::BLACK); // Clean surface with color
 
-		// Draw the surface (src) the rect (rSource) into postion (ptDest) of current surface (this)
-		void Draw(const Surface & src,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1));
-		// Draw stretching/shinking source into destination
-		void DrawStretch(const Surface & src,const Rect& rcDest,const Rect& rSource = Rect(0,0,-1,-1));
-		// Draw rotating source into destination
-		void DrawRotate(const Surface & src,const Point& ptDest,short angle);
-		// Draw the entire surface (sprite) at position ptDest with alpha-value (alpha)
-		void DrawAlpha(const Surface & sprite,const Point& ptDest = Point(0,0),unsigned char alpha = 128);
+		/** Draw a surface fastest possible (does not consider alpha values, or colorkey) **/
+		void DrawFast(const Surface & sprite,const Point& ptDest = Point(0,0));
+		
+		/** Draw a sprite surface, at point ptDest 
+			DrawFlags:
+				drawVerticalFlip   -- Flip surface verticaly
+				drawHorizontalFlip -- Flip surface horizontaly
+				drawNoAntiAlias    -- Does not do Anti-Alias when rotating or streching
+
+			opacity: Opacity of sprite(0~255)
+		**/
+		void Draw(const Surface & sprite,const Point& ptDest,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque);
+		void Draw(const Surface & sprite,const Point& ptDest ,const Rect& rSource,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque);
+				
+		void DrawStretch(const Surface & sprite,const Rect& rcDest,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque);
+		void DrawStretch(const Surface & sprite,const Rect& rcDest,const Rect& rSource,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque);
+		
+		void DrawRotate(const Surface & sprite,const Point& ptDest,short angle,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque);
 	};
 	
 }

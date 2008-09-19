@@ -43,8 +43,12 @@
 #include "troll/surface_factory.h"
 #include "troll/surface_impl.h"
 
+using Troll::DrawFlags;
+
 using Troll::Color;
 using Troll::ColorDepth;
+
+using Troll::AlphaComponent;
 
 using Troll::Point;
 using Troll::Rect;
@@ -111,7 +115,7 @@ void Surface::Clear(const Color & color /*= Color::BLACK*/)
 {
 	m_impl->Clear(color);
 }
-
+#if 0
 void Surface::Draw(const Surface & src,const Point& ptDest/* = Point(0,0)*/,const Rect& rSource /*= Rect(0,0,-1,-1)*/)
 {
 	src.m_impl->Draw(*m_impl,ptDest,rSource);
@@ -131,4 +135,36 @@ void Surface::DrawAlpha( const Surface & sprite,const Point& ptDest,unsigned cha
 void Surface::DrawRotate( const Surface & sprite,const Point& ptDest,short angle )
 {
 	sprite.m_impl->DrawRotate(*m_impl,ptDest,angle);
+}
+#endif
+
+void Surface::DrawFast( const Surface & sprite,const Point& ptDest /*= Point(0,0)*/ )
+{
+	sprite.m_impl->DrawFast(*m_impl, ptDest);
+}
+
+
+void Surface::Draw( const Surface & sprite,const Point& ptDest,DrawFlags flags /*= none*/ ,AlphaComponent opacity)
+{
+	sprite.m_impl->Draw(*m_impl, ptDest, flags, opacity);
+}
+
+void Surface::Draw( const Surface & sprite,const Point& ptDest ,const Rect& rSource,DrawFlags flags /*= none*/ ,AlphaComponent opacity)
+{
+	sprite.m_impl->Draw(*m_impl, ptDest, rSource, flags, opacity);
+}
+
+void Surface::DrawStretch( const Surface & sprite,const Rect& rcDest,DrawFlags flags /*= none*/ ,AlphaComponent opacity)
+{
+	sprite.m_impl->DrawStretch(*m_impl, rcDest, flags, opacity);
+}
+
+void Surface::DrawStretch( const Surface & sprite,const Rect& rcDest,const Rect& rSource,DrawFlags flags /*= none*/ ,AlphaComponent opacity)
+{
+	sprite.m_impl->DrawStretch(*m_impl, rcDest, rSource, flags, opacity);
+}
+
+void Surface::DrawRotate( const Surface & sprite,const Point& ptDest,short angle,DrawFlags flags /*= none*/,AlphaComponent opacity)
+{
+	sprite.m_impl->DrawRotate(*m_impl, ptDest, angle, flags, opacity);
 }

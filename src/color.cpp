@@ -276,7 +276,7 @@ void Color::RotateHue(char rRot)
 	SetHLS(h,l,s);
 }
 
-void Color::IncraseSaturation(char fInc)
+void Color::IncreaseSaturation(char fInc)
 {
 	ColorComponent h,l,s;
 	GetHLS(h,l,s);
@@ -311,7 +311,7 @@ void Color::DecraseSaturation(char cDec)
 	SetHLS(h,l,s);
 }
 
-void Color::IncraseLuminance(char  cInc)
+void Color::IncreaseLuminance(char  cInc)
 {
 	ColorComponent h,l,s;
 	GetHLS(h,l,s);

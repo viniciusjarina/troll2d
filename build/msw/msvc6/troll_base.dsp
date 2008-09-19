@@ -173,6 +173,10 @@ SOURCE=..\..\..\include\troll\defs.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\..\include\troll\draw_flags.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\..\include\troll\graphics.h
 # End Source File
 # Begin Source File

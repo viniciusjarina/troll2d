@@ -1,3 +1,4 @@
+
 /*
  *
  *  ______             ___    ___      
@@ -38,92 +39,18 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <math.h>
+#ifndef __TROLL_DRAW_FLAGS_H__
+#define __TROLL_DRAW_FLAGS_H__
 
-#include <allegro.h>
-
-#include "aastr2/aastr.h"
-#include "aastr2/round.h"
-
-#include "troll/surface.h"
-
-#include "troll/allegro_surface.h"
-#include "troll/allegro_image.h"
-
-#include "troll/surface.h"
-
-#include "troll/allegro_image_surface_impl.h"
-#include "troll/allegro_image_alpha_surface_impl.h"
-
-using Troll::Point;
-using Troll::Rect;
-
-using Troll::Surface;
-using Troll::SurfaceImpl;
-
-using Troll::AllegroSurface;
-using Troll::AllegroImageSurfaceHelper;
-
-using Troll::AllegroImageSurfaceImpl;
-using Troll::AllegroImageAlphaSurfaceImpl;
-
-
-static int allegro_bitmap_has_alpha(BITMAP *bmp)
+namespace Troll
 {
-	int x, y, c;
-	
-	if (bitmap_color_depth(bmp) != 32)
-		return FALSE;
-	
-	for (y = 0; y < bmp->h; y++) {
-		for (x = 0; x < bmp->w; x++) {
-			c = getpixel(bmp, x, y);
-			if (geta32(c))
-				return TRUE;
-		}
-	}
-	return FALSE;
-}
-
-class AllegroImageSurface : public Surface
-{
-public:
-	AllegroImageSurface(AllegroImageSurfaceImpl * impl):
-	Surface(impl)  
+	enum DrawFlags
 	{
-	}
-};
-
-// AllegroImageSurfaceHelper:
-// This class provide help to associate Image object with Surface object
-
-AllegroImageSurfaceHelper::AllegroImageSurfaceHelper():
-m_imageSurface(NULL)
-{
+		none			   = 0x00,
+		drawVerticalFlip   = 0x01,
+		drawHorizontalFlip = 0x02,
+		drawNoAntiAlias    = 0x04,
+	};
 }
 
-AllegroImageSurfaceHelper::~AllegroImageSurfaceHelper()
-{
-	if(m_imageSurface)
-		delete m_imageSurface;
-}
-
-bool AllegroImageSurfaceHelper::LoadImage( const char * sImageFile )
-{
-	PALETTE palette;
-	BITMAP * bmp_image = load_bitmap(sImageFile, palette);
-	
-	if (!bmp_image)
-		return false;
-
-	AllegroImageSurfaceImpl * surfaceImpl;
-
-	if(allegro_bitmap_has_alpha(bmp_image))
-		surfaceImpl = new AllegroImageSurfaceImpl(bmp_image);
-	else
-		surfaceImpl = new AllegroImageSurfaceImpl(bmp_image);
-
-	m_imageSurface = new AllegroImageSurface(surfaceImpl);
-	return true;
-}	
-
+#endif // __TROLL_DRAW_FLAGS_H__

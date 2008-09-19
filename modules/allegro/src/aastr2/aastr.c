@@ -151,11 +151,11 @@ void _aa_stretch_blit (BITMAP *src, BITMAP *dest,
 			_aa.total = cw * ch;
 		}
 	}
-	if (_aa_mode & AA_VFLIP) {
+	if (mode & AA_VFLIP) {
 		ybase -= yscale * (y2-idy);
 		yscale *= -1;
 	}
-	if (_aa_mode & AA_HFLIP) {
+	if (mode & AA_HFLIP) {
 		xbase -= xscale * (x2-idx);
 		xscale *= -1;
 	}

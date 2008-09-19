@@ -128,6 +128,8 @@ void AllegroSurface::Clear(const Color & color /*= Color::BLACK*/)
 	clear_to_color(m_surface,makecol(color.GetRed(),color.GetGreen(),color.GetBlue()));
 }
 
+#if 0
+
 void AllegroSurface::Draw(SurfaceImpl & destination,const Point& ptDest /*Point(0,0)*/,const Rect& rSource /*Rect(0,0,-1,-1)*/) const
 {
 	BITMAP * source = m_surface;
@@ -196,4 +198,100 @@ void AllegroSurface::DrawRotate( SurfaceImpl & destination,const Point& ptDest,s
 	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
 
 	rotate_sprite(dest,source,ptDest.x - (source->w>>1),ptDest.y - (source->h>>1),itofix((angle<<8)/360));
+}
+
+#endif
+
+void AllegroSurface::DrawFast( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/ ) const
+{
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+	
+	blit(source, dest, 0, 0, ptDest.x, ptDest.y, source->w, source->h);
+}
+
+void AllegroSurface::Draw( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/,DrawFlags flags /*= none*/,AlphaComponent opacity) const
+{
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+
+	if(opacity == Color::alphaOpaque)
+	{
+		if(! (flags&drawHorizontalFlip) )
+		{
+			if(! (flags&drawVerticalFlip) )
+			{
+				draw_sprite(dest, source, ptDest.x, ptDest.y);
+			}
+			else
+			{
+				draw_sprite_v_flip(dest, source, ptDest.x, ptDest.y);
+			}
+		}
+		else
+		{
+			if(! (flags&drawVerticalFlip) )
+			{
+				draw_sprite_h_flip(dest, source, ptDest.x, ptDest.y);
+			}
+			else
+			{
+				draw_sprite_vh_flip(dest, source, ptDest.x, ptDest.y);
+			}
+		}
+	}
+	else
+	{
+		if(!(flags&drawHorizontalFlip) && !(flags&drawVerticalFlip))
+		{
+			set_trans_blender(0,0,0,opacity);
+			
+			draw_trans_sprite(dest, source, ptDest.x, ptDest.y);
+			
+			set_trans_blender(0,0,0,255);
+			
+			return;
+		}
+		
+		int astr_flags = AA_MASKED|AA_BLEND|AA_NO_FILTER;
+		
+		if(flags&drawHorizontalFlip)
+			astr_flags |= AA_HFLIP;
+		
+		if(flags&drawVerticalFlip)
+			astr_flags |= AA_VFLIP;
+		
+		aa_set_trans(255 - opacity);
+		
+		_aa_stretch_blit (source, dest, 
+			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
+			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
+			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
+			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
+			astr_flags);
+		
+		aa_set_trans(0);
+	}
+}
+
+
+void AllegroSurface::Draw( SurfaceImpl & destination,const Point& ptDest ,const Rect& rSource,DrawFlags flags /*= none*/,AlphaComponent opacity) const
+{
+	
+}
+
+void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,DrawFlags flags /*= none*/,AlphaComponent opacity) const
+{
+	
+}
+
+
+void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource,DrawFlags flags /*= none*/ ,AlphaComponent opacity) const
+{
+	
+}
+
+void AllegroSurface::DrawRotate( SurfaceImpl & destination,const Point& ptDest,short angle,DrawFlags flags /*= none*/,AlphaComponent opacity /*= Color::alphaOpaque*/)  const
+{
+	
 }

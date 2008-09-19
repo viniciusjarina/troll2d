@@ -104,14 +104,8 @@ void SDLGraphics::DrawVLine(const Point& ptStart,int size,const Color & color)
 	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
 	
 	ColorComponent alpha = color.GetAlpha();
-	if(alpha == Color::alphaOpaque)
-	{
-		SPG_LineV(m_surface, ptStart.x,ptStart.y + size,ptStart.y, sdl_color);
-	}
-	else
-	{
-		SPG_LineVBlend(m_surface, ptStart.x,ptStart.y + size,ptStart.y, sdl_color, alpha);
-	}
+	
+	SPG_LineVBlend(m_surface, ptStart.x,ptStart.y + size,ptStart.y, sdl_color, alpha);
 }
 
 void SDLGraphics::DrawHLine(const Point& ptStart,int size,const Color & color)
@@ -121,14 +115,8 @@ void SDLGraphics::DrawHLine(const Point& ptStart,int size,const Color & color)
 	sdl_color = SDL_MapRGB(m_surface->format,color.GetRed(),color.GetGreen(),color.GetBlue());
 	
 	ColorComponent alpha = color.GetAlpha();
-	if(alpha == Color::alphaOpaque)
-	{
-		SPG_LineH(m_surface, ptStart.x, ptStart.y,ptStart.x + size,sdl_color);
-	}
-	else
-	{
-		SPG_LineHBlend(m_surface, ptStart.x, ptStart.y,ptStart.x + size, sdl_color, alpha);
-	}
+
+	SPG_LineHBlend(m_surface, ptStart.x, ptStart.y,ptStart.x + size, sdl_color, alpha);
 }
 
 void SDLGraphics::DrawCircle( const Point& ptCenter, short radius, const Color & color )

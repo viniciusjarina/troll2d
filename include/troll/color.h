@@ -45,6 +45,7 @@ namespace Troll
 {
 
 typedef unsigned char ColorComponent;
+typedef unsigned char AlphaComponent;
 
 enum ColorDepth
 {
@@ -61,7 +62,7 @@ public:
 	enum { alphaTranparent = 0,alpha75 = 192,alphaOpaque = 255} ;
 
 	Color();
-	Color(ColorComponent r,ColorComponent g,ColorComponent b,ColorComponent a = alphaOpaque);
+	Color(ColorComponent r,ColorComponent g,ColorComponent b,AlphaComponent a = alphaOpaque);
 	Color(const Color& color);
 	~Color();
 
@@ -79,17 +80,17 @@ public:
 	inline ColorComponent GetRed() const	{ return m_red;	  }
 	inline ColorComponent GetGreen() const { return m_green; }
 	inline ColorComponent GetBlue() const	{ return m_blue;  }
-	inline ColorComponent GetAlpha() const { return m_alpha;  }
+	inline AlphaComponent GetAlpha() const { return m_alpha;  }
 
 	inline void SetRed(ColorComponent red)		{ m_red   = red;   }
 	inline void SetGreen(ColorComponent green) { m_green = green; }
 	inline void SetBlue(ColorComponent blue)	{ m_blue  = blue;  }
-	inline void SetAlpha(ColorComponent alpha)	{ m_alpha = alpha; }
+	inline void SetAlpha(AlphaComponent alpha)	{ m_alpha = alpha; }
 
-	inline void IncraseAlpha(char cIncrase = 32) { m_alpha += cIncrase; }
+	inline void IncreaseAlpha(char cIncrase = 32) { m_alpha += cIncrase; }
 	inline void DecraseAlpha(char cIncrase = 32) { m_alpha -= cIncrase; }
 
-	void SetColor(ColorComponent r,ColorComponent g,ColorComponent b,ColorComponent a = alphaOpaque);
+	void SetColor(ColorComponent r,ColorComponent g,ColorComponent b,AlphaComponent a = alphaOpaque);
 	
 	void GetHLS(ColorComponent & hue,ColorComponent & luminance,ColorComponent & saturation) const;
 	void SetHLS(ColorComponent hue,ColorComponent luminance,ColorComponent saturation);
@@ -103,17 +104,17 @@ public:
 
 	void RotateHue(char cInc = 32);
 
-	void IncraseSaturation(char fInc);
+	void IncreaseSaturation(char fInc);
 	void DecraseSaturation(char fDec);
 
-	void IncraseLuminance(char fInc = 32);
+	void IncreaseLuminance(char fInc = 32);
 	void DecraseLuminance(char fDec = 32);
 
 private:
 	ColorComponent m_red;
 	ColorComponent m_green;
 	ColorComponent m_blue;
-	ColorComponent m_alpha;
+	AlphaComponent m_alpha;
 
 public:
 

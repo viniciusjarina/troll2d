@@ -151,7 +151,7 @@
 				}
 			}
 
-			screen.DrawAlpha(logo,logoPos,alpha);
+			screen.DrawAlpha(logo,MouseInput::GetPosition(),alpha);
 			
 
 			Screen::Flip();		// Flip screen

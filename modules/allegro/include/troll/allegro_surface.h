@@ -79,14 +79,20 @@ public:
 
 	virtual void Clear(const Color & color = Color::BLACK);
 
-	virtual void DrawStretch(SurfaceImpl & destination,const Rect& ptDest,const Rect& rSource = Rect(0,0,-1,-1)) const;
-	virtual void DrawRotate(SurfaceImpl & destination,const Point& ptDest,short angle) const;
-	virtual void Draw(SurfaceImpl & destination,const Point& ptDest = Point(0,0),const Rect& rSource = Rect(0,0,-1,-1)) const;
-	virtual void DrawAlpha(SurfaceImpl & destination,const Point& ptDest = Point(0,0),unsigned char alpha = 128) const;
+	virtual void DrawFast(SurfaceImpl & destination,const Point& ptDest = Point(0,0)) const;
+	
+	virtual void Draw(SurfaceImpl & destination,const Point& ptDest = Point(0,0),DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+	virtual void Draw(SurfaceImpl & destination,const Point& ptDest ,const Rect& rSource,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+	
+	virtual void DrawStretch(SurfaceImpl & destination,const Rect& rcDest,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+	virtual void DrawStretch(SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+		
+	virtual void DrawRotate(SurfaceImpl & destination,const Point& ptDest,short angle,DrawFlags flags = none,AlphaComponent opacity = Color::alphaOpaque) const = 0;
+	
 private:
-
+	
 	BITMAP	* m_surface;
-
+	
 };
 
 }

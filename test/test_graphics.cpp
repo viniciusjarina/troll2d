@@ -154,11 +154,11 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 			break;
 
 		case TEST_ROUND_RECT:
-			g.DrawRoundRect(Rect(pt.x , pt.y,size_w,size_h),size_h/5,c);
+			g.DrawRoundRect(Rect(pt.x , pt.y,size_w,size_h),10,c);
 			break;
 
 		case TEST_ROUND_RECT_FILL:
-			g.DrawRoundRectFill(Rect(pt.x , pt.y,size_w,size_h),size_h/5,c);			
+			g.DrawRoundRectFill(Rect(pt.x , pt.y,size_w,size_h),10,c);			
 			break;
 
 		case TEST_ELLIPSE: 
@@ -207,7 +207,7 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 	if(!System::Init())			// Inialize (input, sound, files, etc)
 		return 0;
 
-	if(!System::SetupScreen())	// Setup and create screen with defaul size
+	if(!System::SetupScreen(-1,-1,false,depth2bpp))	// Setup and create screen with defaul size
 		return 0;
 
 	System::SetScreenTitle("Graphics Test");

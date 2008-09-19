@@ -63,6 +63,8 @@ using Troll::SurfaceImpl;
 using Troll::AllegroSurface;
 using Troll::AllegroImageAlphaSurfaceImpl;
 
+#if 0
+
 void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/,const Rect& rSource /*= Rect(0,0,-1,-1)*/ ) const
 {
 	BITMAP * source = m_surface;
@@ -149,3 +151,5 @@ void AllegroImageAlphaSurfaceImpl::DrawRotate( SurfaceImpl & destination,const P
 		itofix(1),itofix(1),
 		AA_MASKED|AA_ALPHA|AA_BLEND|AA_NO_AA);
 }
+
+#endif
