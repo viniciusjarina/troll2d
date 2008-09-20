@@ -179,7 +179,7 @@ SOURCE="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 
 "..\..\..\bin\SDL.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	IF            EXIST            $(InputPath)            xcopy            /Y            /Q            /D           $(InputPath)           ..\..\..\bin\ 
+	IF             EXIST             $(InputPath)             xcopy             /Y             /Q             /D            $(InputPath)            ..\..\..\bin\ 
 
 # End Custom Build
 
@@ -189,7 +189,7 @@ InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 InputPath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
 
 "..\..\..\bin\SDL.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	IF            EXIST            $(InputPath)            xcopy            /Y            /Q            /D           $(InputPath)           ..\..\..\bin\ 
+	IF             EXIST             $(InputPath)             xcopy             /Y             /Q             /D            $(InputPath)            ..\..\..\bin\ 
 
 # End Custom Build
 
@@ -210,7 +210,7 @@ SOURCE=..\..\..\data\images\troll.bmp
 InputPath=..\..\..\data\images\troll.bmp
 
 "..\..\..\bin\images\troll.bmp" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	xcopy            /Y            /Q            /D           $(InputPath)           ..\..\..\bin\images\ 
+	xcopy             /Y             /Q             /D            $(InputPath)            ..\..\..\bin\images\ 
 
 # End Custom Build
 
@@ -220,7 +220,7 @@ InputPath=..\..\..\data\images\troll.bmp
 InputPath=..\..\..\data\images\troll.bmp
 
 "..\..\..\bin\images\troll.bmp" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	xcopy            /Y            /Q            /D           $(InputPath)           ..\..\..\bin\images\ 
+	xcopy             /Y             /Q             /D            $(InputPath)            ..\..\..\bin\images\ 
 
 # End Custom Build
 
@@ -230,7 +230,7 @@ InputPath=..\..\..\data\images\troll.bmp
 InputPath=..\..\..\data\images\troll.bmp
 
 "..\..\..\bin\images\troll.bmp" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	xcopy            /Y            /Q            /D           $(InputPath)           ..\..\..\bin\images\ 
+	xcopy             /Y             /Q             /D            $(InputPath)            ..\..\..\bin\images\ 
 
 # End Custom Build
 
@@ -240,7 +240,7 @@ InputPath=..\..\..\data\images\troll.bmp
 InputPath=..\..\..\data\images\troll.bmp
 
 "..\..\..\bin\images\troll.bmp" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	xcopy            /Y            /Q            /D           $(InputPath)           ..\..\..\bin\images\ 
+	xcopy             /Y             /Q             /D            $(InputPath)            ..\..\..\bin\images\ 
 
 # End Custom Build
 

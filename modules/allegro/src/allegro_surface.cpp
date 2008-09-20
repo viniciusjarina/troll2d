@@ -358,6 +358,8 @@ void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,D
 	}
 	else
 	{
+		astr_flags = AA_BLEND | AA_MASKED;
+
 		if(flags&drawHorizontalFlip)
 			astr_flags |= AA_HFLIP;
 		
@@ -370,7 +372,7 @@ void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,D
 			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
 			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
 			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
-			iround(ldexp(rcDest.height,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
+			iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
 			astr_flags);
 		
 		aa_set_trans(0);
@@ -380,10 +382,108 @@ void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,D
 
 void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource,DrawFlags flags /*= none*/ ,AlphaComponent opacity) const
 {
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+	int astr_flags;
 	
+	if(opacity == Color::alphaOpaque)
+	{
+		if(!(flags&drawHorizontalFlip) && !(flags&drawVerticalFlip))
+		{
+			masked_stretch_blit(source, dest, rSource.x, rSource.y, rSource.width, rSource.width, rcDest.x, rcDest.y, rcDest.width, rcDest.height);
+			return;
+		}
+		
+		astr_flags = AA_NO_AA | AA_MASKED;
+		
+		if(flags&drawHorizontalFlip)
+			astr_flags |= AA_HFLIP;
+		
+		if(flags&drawVerticalFlip)
+			astr_flags |= AA_VFLIP;
+		
+		_aa_stretch_blit (source, dest, 
+			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
+			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
+			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
+			iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
+			astr_flags);
+	}
+	else
+	{
+		astr_flags = AA_BLEND | AA_MASKED;
+		
+		if(flags&drawHorizontalFlip)
+			astr_flags |= AA_HFLIP;
+		
+		if(flags&drawVerticalFlip)
+			astr_flags |= AA_VFLIP;
+		
+		aa_set_trans(255 - opacity);
+		
+		_aa_stretch_blit (source, dest, 
+			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.x,aa_BITS)), 
+			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
+			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
+			iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
+			astr_flags);
+		
+		aa_set_trans(0);
+	}
 }
 
 void AllegroSurface::DrawRotate( SurfaceImpl & destination,const Point& ptDest,short angle,DrawFlags flags /*= none*/,AlphaComponent opacity /*= Color::alphaOpaque*/)  const
 {
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+	int astr_flags;
 	
+	if(opacity == Color::alphaOpaque)
+	{
+		if(!(flags&drawHorizontalFlip))
+		{
+			if(!(flags&drawVerticalFlip))
+			{
+				rotate_sprite(dest,source,ptDest.x - (source->w>>1),ptDest.y - (source->h>>1),itofix((angle<<8)/360));
+			}
+			else
+			{
+				rotate_sprite_v_flip(dest,source,ptDest.x - (source->w>>1),ptDest.y - (source->h>>1),itofix((angle<<8)/360));
+			}
+		}
+		else
+		{
+			if(!(flags&drawVerticalFlip))
+			{
+				rotate_sprite_v_flip(dest,source,ptDest.x - (source->w>>1),ptDest.y - (source->h>>1),itofix((angle<<8)/360) + itofix(128));
+			}
+			else
+			{
+				rotate_sprite(dest,source,ptDest.x - (source->w>>1),ptDest.y - (source->h>>1),itofix((angle<<8)/360) + itofix(128));
+			}
+		}
+	}
+	else
+	{
+		astr_flags = AA_MASKED | AA_BLEND;
+		int scalex = 1;
+		int scaley = 1;
+		
+		if(flags&drawHorizontalFlip)
+			scalex = -1;
+		
+		if(flags&drawVerticalFlip)
+			scaley = -1;
+		
+		aa_set_trans(255 - opacity);
+
+		_aa_rotate_bitmap (source, dest, 
+			ptDest.x, ptDest.y, 
+			itofix((angle<<8)/360),
+			itofix(scalex),itofix(scaley),
+			astr_flags);
+
+		aa_set_trans(0);
+	}
+
 }
