@@ -232,9 +232,10 @@ static void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xsc
 	if( (rx>=sxmin) && (rx<=sxmax) && (ry>=symin) && (ry<=symax) ){ \
 				SPG_GetRGBA(SPG_GetPixel(src,rx,ry), src->format, &R, &G, &B, &A);\
 				if(!(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R, G, B) == src->format->colorkey))\
-				A = (Uint8)(A*(src->format->alpha)/255);			\
-				_PutPixelAlpha(dst,x,y,SPG_MapRGBA(dst->format, R, G, B, A),A); \
-				\
+				{													\
+					A = (Uint8)(A*(src->format->alpha)/255);			\
+					_PutPixelAlpha(dst,x,y,SPG_MapRGBA(dst->format, R, G, B, A),A); \
+				}													\
 	} \
 	sx += ctx;  /* Incremental transformations */ \
 	sy -= sty; \
