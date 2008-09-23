@@ -24,6 +24,11 @@ might come up again.  */
 #include "aastr.h"
 #include "aautil.h"
 
+#include "types.h"
+
+extern int _aa_trans;
+extern int _aa_trans2;
+
 /*
  * Engine of anti-aliased rotation.
  */
@@ -135,6 +140,14 @@ _aa_rotate_bitmap (BITMAP *_src, BITMAP *_dst, int _x, int _y, fixed _angle,
 	}
 
 	_aa.total = num;
+
+	if (_aa_trans) 
+	{
+		if (_aa_trans2 >= 255) 
+			return;
+		_aa.total += (_aa.total * (Uint64)_aa_trans) >> 8;
+	}
+
 	_aa.inverse = 1 + (0xffffffffUL /  _aa.total );
 
 	/* Coordinates of corners in source.  */
@@ -372,7 +385,7 @@ _aa_rotate_bitmap (BITMAP *_src, BITMAP *_dst, int _x, int _y, fixed _angle,
 		aa_PREPARE (rscinc, rscdd, rsci1, rsci2,
 			rpoint2->sy - rpoint1->sy, rpoint2->dy - rpoint1->dy);
     }
-
+	
 	/* Skip region clipped on top.  */
 	while (dy < ybeg)
 	{

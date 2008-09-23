@@ -536,13 +536,14 @@ SDL_Rect SPG_transformNorm(SDL_Surface *src, SDL_Surface *dst, float angle, floa
 	// Compute a bounding rectangle
 	Sint16 xmin=0, xmax=dst->w, ymin=0, ymax=dst->h;
 	_calcRect(src, dst, theta, xscale, yscale, px, py, qx, qy, &xmin,&ymin, &xmax,&ymax);
-
+	
 	// Clip to src surface
 	Sint16 sxmin = SPG_clip_xmin(src);
 	Sint16 sxmax = SPG_clip_xmax(src);
 	Sint16 symin = SPG_clip_ymin(src);
 	Sint16 symax = SPG_clip_ymax(src);
 
+	
 	// Some terms in the transform are constant
 	Sint32 const dx = xmin - qx;
 	Sint32 const ctdx = ctx*dx;

@@ -358,7 +358,7 @@ void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,D
 	}
 	else
 	{
-		astr_flags = AA_BLEND | AA_MASKED;
+		astr_flags = AA_BLEND | AA_MASKED | AA_NO_FILTER;
 
 		if(flags&drawHorizontalFlip)
 			astr_flags |= AA_HFLIP;

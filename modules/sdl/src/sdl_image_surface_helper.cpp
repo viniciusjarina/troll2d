@@ -128,7 +128,7 @@ bool SDLImageSurfaceHelper::LoadImage( const char * sImageFile )
 	SDL_SetColorKey(image,SDL_SRCCOLORKEY | SDL_RLEACCEL | SDL_HWACCEL,SDL_MapRGB(image->format,255,0,255));
 	
 	SDLImageSurfaceImpl * surfaceImpl;
-
+	
 	if(hasAlpha)
 		surfaceImpl = new SDLImageAlphaSurfaceImpl(image);
 	else

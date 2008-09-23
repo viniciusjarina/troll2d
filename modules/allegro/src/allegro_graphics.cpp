@@ -315,7 +315,7 @@ void AllegroGraphics::DrawPolygonFill( const Point * pts,int n,const Color& colo
 
 void AllegroGraphics::EnableAntiAlias( bool enable )
 {
-	/*Does nothing. allegro does´t support anti-alias*/
+	/* Does nothing. allegro doesn't support anti-alias */
 }
 
 void AllegroGraphics::DrawRoundRect(const Rect& rect,int rad,const Color& color)

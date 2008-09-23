@@ -63,6 +63,10 @@ using Troll::SurfaceImpl;
 using Troll::AllegroSurface;
 using Troll::AllegroImageAlphaSurfaceImpl;
 
+using Troll::DrawFlags;
+using Troll::AlphaComponent;
+
+
 #if 0
 
 void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/,const Rect& rSource /*= Rect(0,0,-1,-1)*/ ) const
@@ -153,3 +157,66 @@ void AllegroImageAlphaSurfaceImpl::DrawRotate( SurfaceImpl & destination,const P
 }
 
 #endif
+
+void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point& ptDest /*= Point(0,0)*/, DrawFlags flags /*= none*/, AlphaComponent opacity /*= Color::alphaOpaque*/ ) const
+{
+	BITMAP * source = m_surface;
+	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
+
+	int aa_flags = AA_MASKED | AA_BLEND;
+
+	if(flags & drawHorizontalFlip)
+		aa_flags |= AA_HFLIP;
+
+	if(flags & drawVerticalFlip)
+		aa_flags |= AA_VFLIP;
+
+	// TODO: Fix AASTR bug AA_NO_AA not working when using alpha channel or global alpha
+
+	if(opacity == Color::alphaOpaque)
+	{
+		aa_flags |= AA_NO_AA;	
+
+		_aa_stretch_blit (source, dest, 
+			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
+			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->w,aa_BITS)), 
+			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
+			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->w,aa_BITS)), 
+			aa_flags);
+	}
+	else
+	{
+		aa_flags |= AA_ALPHA;
+
+		aa_set_trans(255 - opacity);
+
+		_aa_stretch_blit (source, dest, 
+			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
+			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->w,aa_BITS)), 
+			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
+			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->w,aa_BITS)), 
+			aa_flags);
+
+		aa_set_trans(0);
+	}
+}
+
+void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point& ptDest, const Rect& rSource, DrawFlags flags /*= none*/, AlphaComponent opacity /*= Color::alphaOpaque*/ ) const
+{
+	
+}
+
+void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const Rect& rcDest, DrawFlags flags /*= none*/, AlphaComponent opacity /*= Color::alphaOpaque*/ ) const
+{
+	
+}
+
+void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const Rect& rcDest, const Rect& rSource, DrawFlags flags /*= none*/, AlphaComponent opacity /*= Color::alphaOpaque*/ ) const
+{
+	
+}
+
+void AllegroImageAlphaSurfaceImpl::DrawRotate( SurfaceImpl & destination, const Point& ptDest, short angle, DrawFlags flags /*= none*/, AlphaComponent opacity /*= Color::alphaOpaque*/ ) const
+{
+	
+}

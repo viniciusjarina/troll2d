@@ -165,8 +165,10 @@ void _aa_stretch_blit (BITMAP *src, BITMAP *dest,
 		if (x1 < dest->cl) x1 = dest->cl;
 		if (x2 >= dest->cr) x2 = dest->cr - 1;
 	}
-	if (_aa_trans) {
-		if (_aa_trans2 >= 256) return;
+	if (_aa_trans) 
+	{
+		if (_aa_trans2 >= 255) 
+			return;
 		_aa.total += (_aa.total * (Uint64)_aa_trans) >> 8;
 	}
 	_aa.inverse = 1 + (0xffffffffUL /  _aa.total );

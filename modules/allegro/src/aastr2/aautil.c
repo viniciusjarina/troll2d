@@ -386,8 +386,10 @@ PUT_TYPE *get_aa_put_function(BITMAP *destination, int options) {
 
 
 
-void _aa_masked_add_bpp_independant_calculations() {
-	if (_aa.total-(_aa.trans>>8) <= 1) {
+void _aa_masked_add_bpp_independant_calculations() 
+{
+	if (_aa.total-(_aa.trans>>8) <= 1) 
+	{
 		_aa.transparent = -1;
 		return;
 	}

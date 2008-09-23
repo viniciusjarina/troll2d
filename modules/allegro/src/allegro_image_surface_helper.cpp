@@ -119,7 +119,7 @@ bool AllegroImageSurfaceHelper::LoadImage( const char * sImageFile )
 	AllegroImageSurfaceImpl * surfaceImpl;
 
 	if(allegro_bitmap_has_alpha(bmp_image))
-		surfaceImpl = new AllegroImageSurfaceImpl(bmp_image);
+		surfaceImpl = new AllegroImageAlphaSurfaceImpl(bmp_image);
 	else
 		surfaceImpl = new AllegroImageSurfaceImpl(bmp_image);
 
