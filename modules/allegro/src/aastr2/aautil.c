@@ -447,50 +447,53 @@ _aa_add_rgba32 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 
 	sx1f = aa_SIZE - (_sx1 & aa_MASK);
 	scolor = *sline;
+
 	if (scolor != _aa.mask_color)
-		{
+	{
 		ta = geta32(scolor);
 		r1 = MUL (getr32 (scolor), sx1f * ta);
 		g1 = MUL (getg32 (scolor), sx1f * ta);
 		b1 = MUL (getb32 (scolor), sx1f * ta);
 		a1 = MUL (ta, sx1f);
 		t1 = 0;
-		}
+	}
 	else
-		{
+	{
 		r1 = g1 = b1 = a1 = 0;
 		t1 = sx1f;
-		}
+	}
 
 	sx2i = _sx2 >> aa_BITS;
 	for (sline++, sx++; sx < sx2i; sline++, sx++)
-		{
+	{
 		scolor = *sline;
 		if (scolor != _aa.mask_color)
-			{
+		{
 			ta = geta32(scolor);
 			r1 += (ta*getr32 (scolor)) << aa_BITS;
 			g1 += (ta*getg32 (scolor)) << aa_BITS;
 			b1 += (ta*getb32 (scolor)) << aa_BITS;
 			a1 += (ta) << aa_BITS;
-			}
-		else t1 += aa_SIZE;
 		}
+		else 
+			t1 += aa_SIZE;
+	}
 
 	sx2f = _sx2 & aa_MASK;
 	if (sx2f != 0)
-		{
+	{
 		scolor = *sline;
 		if (scolor != _aa.mask_color)
-			{
+		{
 			ta = geta32(scolor);
 			r1 += MUL (getr32 (scolor), sx2f*ta);
 			g1 += MUL (getg32 (scolor), sx2f*ta);
 			b1 += MUL (getb32 (scolor), sx2f*ta);
 			a1 += MUL (ta, sx2f);
-			}
-		else t1 += sx2f;
 		}
+		else 
+			t1 += sx2f;
+	}
 
 	sy1f = aa_SIZE - (_sy1 & aa_MASK);
 	r1 = MUL (r1, sy1f) >> 8;
@@ -634,39 +637,40 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 
 	sx1f = aa_SIZE - (_sx1 & aa_MASK);
 	color.i = *sline;
-	if (color.i != _aa.mask_color)
-		{
+	if (color.i != _aa.mask_color && color.rgba.a != 0xFF)
+	{
 		r1 = MUL (color.rgba.r, sx1f);
 		g1 = MUL (color.rgba.g, sx1f);
 		b1 = MUL (color.rgba.b, sx1f);
 		a1 = MUL (color.rgba.a, sx1f);
 		t1 = 0;
-		}
+	}
 	else
-		{
+	{
 		r1 = g1 = b1 = a1 = 0;
 		t1 = sx1f;
-		}
+	}
 
 	sx2i = _sx2 >> aa_BITS;
 	for (sline++, sx++; sx < sx2i; sline++, sx++)
-		{
+	{
 		color.i = *sline;
-		if (color.i != _aa.mask_color)
-			{
+		if (color.i != _aa.mask_color && color.rgba.a != 0xFF)
+		{
 			r1 += color.rgba.r << aa_BITS;
 			g1 += color.rgba.g << aa_BITS;
 			b1 += color.rgba.b << aa_BITS;
 			a1 += color.rgba.a << aa_BITS;
-			}
-		else t1 += aa_SIZE;
 		}
+		else 
+			t1 += aa_SIZE;
+	}
 
 	sx2f = _sx2 & aa_MASK;
 	if (sx2f != 0)
 		{
 		color.i = *sline;
-		if (color.i != _aa.mask_color)
+		if (color.i != _aa.mask_color && color.rgba.a != 0xFF)
 			{
 			r1 += MUL (color.rgba.r, sx2f);
 			g1 += MUL (color.rgba.g, sx2f);
@@ -694,7 +698,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 			sline = (signed long*) (_src->line[sy]) + sx;
 
 			color.i = *sline;
-			if (color.i != _aa.mask_color)
+			if (color.i != _aa.mask_color && color.rgba.a != 0xFF)
 				{
 				r2 += MUL (color.rgba.r, sx1f);
 				g2 += MUL (color.rgba.g, sx1f);
@@ -706,7 +710,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 			for (sline++, sx++; sx < sx2i; sline++, sx++)
 				{
 				color.i = *sline;
-				if (color.i != _aa.mask_color)
+				if (color.i != _aa.mask_color && color.rgba.a != 0xFF)
 					{
 					r2 += color.rgba.r << aa_BITS;
 					g2 += color.rgba.g << aa_BITS;
@@ -719,7 +723,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 			if (sx2f != 0)
 				{
 				color.i = *sline;
-				if (color.i != _aa.mask_color)
+				if (color.i != _aa.mask_color && color.rgba.a != 0xFF)
 					{
 					r2 += MUL (color.rgba.r, sx2f);
 					g2 += MUL (color.rgba.g, sx2f);
@@ -746,7 +750,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 		sline = (signed long*) (_src->line[sy]) + sx;
 
 		color.i = *sline;
-		if (color.i != _aa.mask_color)
+		if (color.i != _aa.mask_color && color.rgba.a != 0xFF)
 			{
 			r2 = MUL (color.rgba.r, sx1f);
 			g2 = MUL (color.rgba.g, sx1f);
@@ -763,7 +767,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 		for (sline++, sx++; sx < sx2i; sline++, sx++)
 			{
 			color.i = *sline;
-			if (color.i != _aa.mask_color)
+			if (color.i != _aa.mask_color && color.rgba.a != 0xFF)
 				{
 				r2 += color.rgba.r << aa_BITS;
 				g2 += color.rgba.g << aa_BITS;
@@ -776,7 +780,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 		if (sx2f != 0)
 			{
 			color.i = *sline;
-			if (color.i != _aa.mask_color)
+			if (color.i != _aa.mask_color && color.rgba.a != 0xFF)
 				{
 				r2 += MUL (color.rgba.r, sx2f);
 				g2 += MUL (color.rgba.g, sx2f);
