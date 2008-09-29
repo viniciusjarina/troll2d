@@ -76,12 +76,12 @@ namespace Troll
 
 		inline DrawFlags operator | (DrawFlags flag2) const
 		{
-			return (DrawFlags(m_flags|flag2.m_flags));
+			return (DrawFlags((int)m_flags|(int)flag2.m_flags));
 		}
 
 		inline int operator & (EnumDrawFlags flag) const
 		{
-			return (m_flags & flag);
+			return ((int)m_flags & (int)flag);
 		}
 		
 	private:
