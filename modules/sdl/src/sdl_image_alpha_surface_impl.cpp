@@ -43,6 +43,7 @@
 #include "sprig.h"
 
 #include "troll/surface.h"
+#include "troll/draw_flags.h"
 
 #include "troll/sdl_surface.h"
 #include "troll/sdl_image.h"
@@ -53,6 +54,8 @@
 using Troll::Point;
 using Troll::Rect;
 
+using Troll::DrawFlags;
+using Troll::AlphaComponent;
 using Troll::Surface;
 
 using Troll::SurfaceImpl;
@@ -62,75 +65,283 @@ using Troll::SDLImageSurfaceHelper;
 
 using Troll::SDLImageAlphaSurfaceImpl;
 
-
-
-
-void SDLImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource /*= Rect(0,0,-1,-1)*/ ) const
+void SDLImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point& ptDest /*= Point(0,0)*/, DrawFlags flags /*= none*/, AlphaComponent opacity /*= Color::alphaOpaque*/ ) const
 {
 	SDL_Rect rect1;
-	SDL_Rect rect2;
+		
+	SDL_Surface * source = m_surface;
+	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
 	
-	int width;
-	int height;
+	rect1.x = ptDest.x;
+	rect1.y = ptDest.y;
+	
+	if(opacity == Color::alphaOpaque)
+	{
+		if( !(flags & DrawFlags::horizontalFlip))
+		{
+			if(!(flags & DrawFlags::verticalFlip))
+			{
+				SDL_BlitSurface(source,NULL,dest,&rect1);
+				return;
+			}
+			SPG_TransformSurface(source,dest,0.0f, 1.0f,-1.0,0,0,rect1.x,rect1.y + source->h,SPG_TCOLORKEY|SPG_TBLEND);		
+		}
+		else
+		{
+			if(!(flags & DrawFlags::verticalFlip))
+			{
+				SPG_TransformSurface(source,dest,0.0f, -1.0f,1.0,0,0,rect1.x + source->w,rect1.y,SPG_TCOLORKEY|SPG_TBLEND);		
+			}
+			else
+			{
+				SPG_TransformSurface(source,dest,0.0f, -1.0f,-1.0,0,0,rect1.x + source->w,rect1.y + source->h,SPG_TCOLORKEY|SPG_TBLEND);		
+			}
+		}		
+	}
+	else
+	{
+		SDL_SetAlpha(source,SDL_SRCALPHA,opacity);
+
+		if( !(flags & DrawFlags::horizontalFlip))
+		{
+			if(!(flags & DrawFlags::verticalFlip))
+			{
+				SPG_Blit(source,NULL,dest,&rect1);
+				return;
+			}
+			SPG_TransformSurface(source,dest,0.0f, 1.0f, -1.0,0,0,rect1.x,rect1.y + source->h,SPG_TCOLORKEY|SPG_TBLEND|SPG_TSURFACE_ALPHA);		
+		}
+		else
+		{
+			if(!(flags & DrawFlags::verticalFlip))
+			{
+				SPG_TransformSurface(source,dest,0.0f, -1.0f, 1.0,0,0,rect1.x + source->w,rect1.y,SPG_TCOLORKEY|SPG_TBLEND|SPG_TSURFACE_ALPHA);	
+			}
+			else
+			{
+				SPG_TransformSurface(source,dest,0.0f, -1.0f, -1.0,0,0,rect1.x + source->w,rect1.y + source->h,SPG_TCOLORKEY|SPG_TBLEND|SPG_TSURFACE_ALPHA);
+			}
+		}	
+	
+		SDL_SetAlpha(source,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
+	}
+}
+
+void SDLImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point& ptDest, const Rect& rSource, DrawFlags flags /*= none*/, AlphaComponent opacity /*= Color::alphaOpaque*/ ) const
+{
+	SDL_Rect rect1; // destination rect
+	SDL_Rect rect2; // source rect
 	
 	SDL_Surface * source = m_surface;
 	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
 	
-	if(rSource.width < 0)
-		width = source->w;
+	rect1.x = ptDest.x;
+	rect1.y = ptDest.y;
+
+	rect2.x = rSource.x;
+	rect2.y = rSource.x;
+	rect2.w = rSource.width;
+	rect2.h = rSource.height;
+
+	SDL_Rect rcOldClip;
+	rcOldClip = source->clip_rect;
+	source->clip_rect = rect2;
+		
+	if(opacity == Color::alphaOpaque)
+	{
+		if( !(flags & DrawFlags::horizontalFlip))
+		{
+			if(!(flags & DrawFlags::verticalFlip))
+			{
+				SDL_BlitSurface(source,&rect2,dest,&rect1);
+				return;
+			}
+			
+			SPG_TransformSurface(source,dest,0.0f, 1.0f,-1.0,rect2.x,rect2.y,rect1.x, rect1.y + rect2.h,SPG_TCOLORKEY|SPG_TBLEND);		
+		}
+		else
+		{
+			if(!(flags & DrawFlags::verticalFlip))
+			{
+				SPG_TransformSurface(source,dest,0.0f, -1.0f,1.0,rect2.x,rect2.y,rect1.x + rect2.w, rect1.y,SPG_TCOLORKEY|SPG_TBLEND);		
+			}
+			else
+			{
+				SPG_TransformSurface(source,dest,0.0f, -1.0f,-1.0,rect2.x,rect2.y,rect1.x + rect2.w,rect1.y + rect2.h,SPG_TCOLORKEY|SPG_TBLEND);		
+			}
+		}		
+	}
 	else
-		width = rSource.width;
+	{
+		SDL_SetAlpha(source,SDL_SRCALPHA,opacity);
+		
+		if( !(flags & DrawFlags::horizontalFlip))
+		{
+			if(!(flags & DrawFlags::verticalFlip))
+			{
+				SDL_BlitSurface(source,&rect2,dest,&rect1);
+				return;
+			}
+			
+			SPG_TransformSurface(source,dest,0.0f, 1.0f, -1.0,rect2.x,rect2.y,rect1.x, rect1.y + rect2.h,SPG_TCOLORKEY|SPG_TBLEND|SPG_TSURFACE_ALPHA);		
+		}
+		else
+		{
+			if(!(flags & DrawFlags::verticalFlip))
+			{
+				SPG_TransformSurface(source,dest,0.0f, -1.0f, 1.0,rect2.x,rect2.y,rect1.x + rect2.w, rect1.y,SPG_TCOLORKEY|SPG_TBLEND|SPG_TSURFACE_ALPHA);	
+			}
+			else
+			{
+				SPG_TransformSurface(source,dest,0.0f, -1.0f, -1.0,rect2.x,rect2.y,rect1.x + rect2.w,rect1.y + rect2.h,SPG_TCOLORKEY|SPG_TBLEND|SPG_TSURFACE_ALPHA);
+			}
+		}	
+		
+		SDL_SetAlpha(source,SDL_SRCALPHA,Color::alphaOpaque);
+	}
+
+	source->clip_rect = rcOldClip;
+}
+
+void SDLImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const Rect& rcDest, DrawFlags flags /*= none*/, AlphaComponent opacity /*= Color::alphaOpaque*/ ) const
+{
+	SDL_Surface * source = m_surface;
+	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
+
+	Uint8 sprig_flags = SPG_TCOLORKEY | SPG_TBLEND;
+		
+	if(source->w == 0 || source->w == 0)
+		return;
 	
-	if(rSource.height < 0)
-		height = source->h;
+	float zoomx = ((float)rcDest.width /(float)source->w);
+	float zoomy = ((float)rcDest.height/(float)source->h);
+
+	Uint16 w_offset = 0;
+	Uint16 h_offset = 0;
+	
+	if(flags & DrawFlags::verticalFlip)
+	{
+		zoomx = -zoomx;
+		w_offset = rcDest.width;
+	}
+
+	if(flags & DrawFlags::horizontalFlip)
+	{
+		zoomy = -zoomy;
+		h_offset = rcDest.height;
+	}
+
+	if(!(flags & DrawFlags::noAntiAlias))
+		sprig_flags |= SPG_TAA;
+
+	if(opacity == Color::alphaOpaque)
+	{
+		SPG_TransformSurface(source,dest, 0.0f, zoomx, zoomy, 0, 0, rcDest.x + w_offset, rcDest.y + h_offset, sprig_flags );
+	}
 	else
-		height = rSource.height;
+	{
+		SDL_SetAlpha(source,SDL_SRCALPHA,opacity);
+		SPG_TransformSurface(source, dest, 0.0f, zoomx, zoomy, 0, 0, rcDest.x + w_offset, rcDest.y + h_offset, sprig_flags | SPG_TSURFACE_ALPHA);
+		SDL_SetAlpha(source,SDL_SRCALPHA,Color::alphaOpaque);
+	}
 	
-	rect1.x = rSource.x;
-	rect1.y = rSource.y;
-	rect1.h = height;
-	rect1.w = width;
+}
+
+void SDLImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const Rect& rcDest, const Rect& rSource, DrawFlags flags /*= none*/, AlphaComponent opacity /*= Color::alphaOpaque*/ ) const
+{
+	SDL_Surface * source = m_surface;
+	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
+
+	Uint16 w_offset = 0;
+	Uint16 h_offset = 0;
+
+	Uint8 sprig_flags = SPG_TCOLORKEY|SPG_TBLEND;
 	
-	rect2.x = rcDest.x;
-	rect2.y = rcDest.y;
-	rect2.h = rcDest.height;
-	rect2.w = rcDest.width;
+	if(rSource.width == 0 || rSource.height == 0)
+		return;
 	
-	float zoomx = ((float)rect2.w/(float)rect1.w);
-	float zoomy = ((float)rect2.h/(float)rect1.h);
+	float zoomx = ((float)rcDest.width /(float)rSource.width);
+	float zoomy = ((float)rcDest.height/(float)rSource.height);
+	
+	if(flags & DrawFlags::verticalFlip)
+	{
+		zoomx    = -zoomx;
+		w_offset = rcDest.width;
+	}
+	
+	if(flags & DrawFlags::horizontalFlip)
+	{
+		zoomy    = -zoomy;
+		h_offset = rcDest.height;
+	}
+
+	if(!(flags & DrawFlags::noAntiAlias))
+		sprig_flags |= SPG_TAA;
+
+	SDL_Rect rcOldClip;
+	rcOldClip = source->clip_rect;
+	
+	source->clip_rect.x = rSource.x; 
+	source->clip_rect.y = rSource.y;
+	source->clip_rect.h = rSource.height;
+	source->clip_rect.w  = rSource.width;
 	
 	// TODO: Found a better (faster) way to transform surfaces, considering colokey+alpha 
-	SPG_TransformSurface(source,dest,0.0f,zoomx,zoomy,0,0,rect2.x,rect2.y,SPG_TBLEND);
+	if(opacity == Color::alphaOpaque)
+	{
+		SPG_TransformSurface(source,
+							 dest,
+							 0.0f,
+							 zoomx, zoomy,
+							 rSource.x, rSource.y,
+							 rcDest.x + w_offset,rcDest.y + h_offset,
+							 sprig_flags);
+		
+	}
+	else
+	{
+		SDL_SetAlpha(source,SDL_SRCALPHA,opacity);
+	
+		SPG_TransformSurface(source,
+			dest,
+			0.0f,
+			zoomx, zoomy,
+			rSource.x, rSource.y,
+			rcDest.x + w_offset,rcDest.y + h_offset,
+			sprig_flags|SPG_TSURFACE_ALPHA);	
+		
+		SDL_SetAlpha(source,SDL_SRCALPHA,Color::alphaOpaque);
+	}
+	source->clip_rect = rcOldClip;
 }
 
-void SDLImageAlphaSurfaceImpl::DrawRotate( SurfaceImpl & destination,const Point& ptDest,short angle ) const
+void SDLImageAlphaSurfaceImpl::DrawRotate( SurfaceImpl & destination, const Point& ptDest, short angle, DrawFlags flags /*= none*/, AlphaComponent opacity /*= Color::alphaOpaque*/ ) const
 {
 	SDL_Surface * source = m_surface;
 	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
-	
-	SPG_TransformSurface(source,dest,angle,1.0f,1.0f,(source->w >> 1),(source->h >> 1),ptDest.x,ptDest.y,SPG_TBLEND);	
-}
 
+	Uint8 sprig_flags = SPG_TCOLORKEY|SPG_TBLEND;
 
+	float zoomx = 1.0f;
+	float zoomy = 1.0f;
 
-void SDLImageAlphaSurfaceImpl::DrawAlpha( SurfaceImpl & destination,const Point& ptDest /*= Point(0,0)*/,unsigned char alpha /*= 128*/ ) const
-{
-	SDL_Rect rect1;
-	SDL_Rect rect2;
+	if(flags & DrawFlags::verticalFlip)
+		zoomx = -zoomx;
 	
-	SDL_Surface * source = m_surface;
-	SDL_Surface * dest = ((SDLSurface *)&destination)->m_surface;
+	if(flags & DrawFlags::horizontalFlip)
+		zoomy = -zoomy;
+
+	if(!(flags & DrawFlags::noAntiAlias))
+		sprig_flags |= SPG_TAA;
 	
-	rect1.x = 0;
-	rect1.y = 0;
-	rect1.h = source->h;
-	rect1.w = source->w;
-	
-	rect2.x = ptDest.x;
-	rect2.y = ptDest.y;
-	rect2.h = source->h;
-	rect2.w = source->w;
-	
-	SDL_SetAlpha(source,SDL_SRCALPHA,alpha);
-	SPG_Blit(source,&rect1,dest,&rect2);
+	if(opacity == Color::alphaOpaque)
+	{
+		SPG_TransformSurface(source,dest,(float)angle,zoomx,zoomy,(source->w >> 1),(source->h >> 1),ptDest.x,ptDest.y,sprig_flags);	
+	}
+	else
+	{
+		SDL_SetAlpha(source,SDL_SRCALPHA,opacity);
+		SPG_TransformSurface(source,dest,(float)angle,zoomx,zoomy,(source->w >> 1),(source->h >> 1),ptDest.x,ptDest.y,sprig_flags|SPG_TSURFACE_ALPHA);	
+		SDL_SetAlpha(source,SDL_SRCALPHA,Color::alphaOpaque);
+	}
 }

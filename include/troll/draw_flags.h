@@ -44,18 +44,60 @@
 
 namespace Troll
 {
-	enum DrawFlags
+	class DrawFlags
 	{
-		none			   = 0x00,
-		drawVerticalFlip   = 0x01,
-		drawHorizontalFlip = 0x02,
-		drawNoAntiAlias    = 0x04,
+	public:
+		enum EnumDrawFlags
+		{
+			none		   = 0x00,
+			verticalFlip   = 0x01,
+			horizontalFlip = 0x02,
+			noAntiAlias    = 0x04,
+		};
+
+		explicit DrawFlags(int flags):
+		m_flags((EnumDrawFlags)flags)
+		{
+		}
+
+		DrawFlags(EnumDrawFlags flag):
+		m_flags(flag)
+		{
+		}
+
+		DrawFlags& operator = (EnumDrawFlags flag)
+		{
+			m_flags = flag;
+			return *this;
+		}
+
+		friend inline DrawFlags operator | (EnumDrawFlags flag,DrawFlags flag2);
+		friend inline int operator & (EnumDrawFlags flag,DrawFlags flag2);
+
+		inline DrawFlags operator | (DrawFlags flag2) const
+		{
+			return (DrawFlags(m_flags|flag2.m_flags));
+		}
+
+		inline int operator & (EnumDrawFlags flag) const
+		{
+			return (m_flags & flag);
+		}
+		
+	private:
+
+		EnumDrawFlags m_flags;
 	};
 
-	inline DrawFlags operator | (DrawFlags flag1,DrawFlags flag2)
+	inline DrawFlags operator | (DrawFlags::EnumDrawFlags flag,DrawFlags::EnumDrawFlags flag2)
 	{
-		return (DrawFlags)((int)flag1|(int)flag2);
+		return DrawFlags((int)flag2 | (int)flag);
 	}
+
+	inline DrawFlags operator | (DrawFlags::EnumDrawFlags flag,DrawFlags flag2)
+	{
+		return DrawFlags(flag2.m_flags | flag);
+	}	
 }
 
 #endif // __TROLL_DRAW_FLAGS_H__

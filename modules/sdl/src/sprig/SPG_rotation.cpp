@@ -311,11 +311,16 @@ static void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xsc
 				p2 = wx+one-wy;\
 				p1 = two-wx-wy;\
 \
-				c1 = *(src_row + ry*src_pitch + rx);\
-				c2 = *(src_row + ry*src_pitch + rx+1);\
-				c3 = *(src_row + (ry+1)*src_pitch + rx);\
-				c4 = *(src_row + (ry+1)*src_pitch + rx+1);\
-\
+				c1 = *(src_row + ry*src_pitch + rx);                                                     \
+				c2 = *(src_row + ry*src_pitch + rx+1);                                                   \
+				c3 = *(src_row + (ry+1)*src_pitch + rx);                                                 \
+				c4 = *(src_row + (ry+1)*src_pitch + rx+1);                                               \
+				if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && c2 == src->format->colorkey) \
+					c2 = c1;		\
+				if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && c3 == src->format->colorkey) \
+					c3 = c1;		\
+				if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && c4 == src->format->colorkey) \
+					c4 = c1;		\
 				/* Calculate the average */\
 				R = ((p1*(c1 & Rmask) + p2*(c2 & Rmask) + p3*(c3 & Rmask) + p4*(c4 & Rmask))>>7) & Rmask;\
 				G = ((p1*(c1 & Gmask) + p2*(c2 & Gmask) + p3*(c3 & Gmask) + p4*(c4 & Gmask))>>7) & Gmask;\
@@ -470,13 +475,21 @@ static void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xsc
 				SPG_GetRGBA(SPG_GetPixel(src,rx+1,ry+1), src->format, &R4, &G4, &B4, &A4);\
 				\
 				/* Calculate the average */\
+				if(!(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R1, G1, B1) == src->format->colorkey)) \
+				{	\
+				if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R2, G2, B2) == src->format->colorkey)\
+					{R2 = R1; G2 = G1; B2 = B1;}																						 \
+				if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R3, G3, B3) == src->format->colorkey)\
+					{R3 = R1; G3 = G1; B3 = B1;}																						 \
+				if(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R4, G4, B4) == src->format->colorkey)\
+					{R4 = R1; G4 = G1; B4 = B1;}																						 \
 				R = (p1*R1 + p2*R2 + p3*R3 + p4*R4)>>13;\
 				G = (p1*G1 + p2*G2 + p3*G3 + p4*G4)>>13;\
 				B = (p1*B1 + p2*B2 + p3*B3 + p4*B4)>>13;\
 				A = (p1*A1 + p2*A2 + p3*A3 + p4*A4)>>13;\
 				A = (Uint8)(A*(src->format->alpha)/255);\
-                if(!(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && SDL_MapRGB(src->format, R, G, B) == src->format->colorkey))\
-				_PutPixelAlpha(dst,x,y,SPG_MapRGBA(dst->format, R, G, B, A),A); \
+                _PutPixelAlpha(dst,x,y,SPG_MapRGBA(dst->format, R, G, B, A),A); \
+				}	\
 				\
 	} \
 	sx += ctx;  /* Incremental transformations */ \

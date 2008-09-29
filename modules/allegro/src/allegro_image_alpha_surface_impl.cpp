@@ -74,10 +74,10 @@ void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point&
 
 	int aa_flags = AA_MASKED | AA_BLEND;
 
-	if(flags & drawHorizontalFlip)
+	if(flags & DrawFlags::horizontalFlip)
 		aa_flags |= AA_HFLIP;
 
-	if(flags & drawVerticalFlip)
+	if(flags & DrawFlags::verticalFlip)
 		aa_flags |= AA_VFLIP;
 
 	// TODO: Fix AASTR bug AA_NO_AA not working when using alpha channel or global alpha
@@ -117,10 +117,10 @@ void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point&
 	
 	int aa_flags = AA_MASKED | AA_BLEND;
 	
-	if(flags & drawHorizontalFlip)
+	if(flags & DrawFlags::horizontalFlip)
 		aa_flags |= AA_HFLIP;
 	
-	if(flags & drawVerticalFlip)
+	if(flags & DrawFlags::verticalFlip)
 		aa_flags |= AA_VFLIP;
 	
 	// TODO: Fix AASTR bug AA_NO_AA not working when using alpha channel or global alpha
@@ -133,7 +133,7 @@ void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point&
 			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.x,aa_BITS)), 
 			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
 			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
-			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.width,aa_BITS)), 
+			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
 			aa_flags);
 	}
 	else
@@ -146,7 +146,7 @@ void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point&
 			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
 			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
 			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
-			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.width,aa_BITS)), 
+			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
 			aa_flags);
 		
 		aa_set_trans(0);
@@ -158,19 +158,21 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const
 	BITMAP * source = m_surface;
 	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
 	
-	int aa_flags = AA_MASKED | AA_BLEND;
+	int aa_flags = AA_MASKED | AA_BLEND | AA_ALPHA;
 	
-	if(flags & drawHorizontalFlip)
+	if(flags & DrawFlags::horizontalFlip)
 		aa_flags |= AA_HFLIP;
 	
-	if(flags & drawVerticalFlip)
+	if(flags & DrawFlags::verticalFlip)
 		aa_flags |= AA_VFLIP;
+
 	
 	// TODO: Fix AASTR bug AA_NO_AA not working when using alpha channel or global alpha
 	
 	if(opacity == Color::alphaOpaque)
 	{
-		aa_flags |= AA_NO_AA;	
+		if(flags & DrawFlags::noAntiAlias)
+			aa_flags |= AA_NO_AA;
 		
 		_aa_stretch_blit (source, dest, 
 			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
@@ -181,8 +183,10 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const
 	}
 	else
 	{
-		aa_flags |= AA_ALPHA;
-		
+		/* TODO: Fix AA_NO_AA with opacity != opaque
+		if(flags & DrawFlags::drawNoAntiAlias)
+			aa_flags |= AA_NO_AA;*/
+
 		aa_set_trans(255 - opacity);
 		
 		_aa_stretch_blit (source, dest, 
@@ -201,21 +205,22 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const
 	BITMAP * source = m_surface;
 	BITMAP * dest = ((AllegroSurface *)&destination)->m_surface;
 	
-	int aa_flags = AA_MASKED | AA_BLEND;
+	int aa_flags = AA_MASKED | AA_BLEND | AA_ALPHA;
 	
-	if(flags & drawHorizontalFlip)
+	if(flags & DrawFlags::horizontalFlip)
 		aa_flags |= AA_HFLIP;
 	
-	if(flags & drawVerticalFlip)
+	if(flags & DrawFlags::verticalFlip)
 		aa_flags |= AA_VFLIP;
-	
+
 	// TODO: Fix AASTR bug AA_NO_AA not working when using alpha channel or global alpha
 	
 	if(opacity == Color::alphaOpaque)
 	{
-		aa_flags |= AA_NO_AA;	
-		
-		_aa_stretch_blit (source, dest, 
+		if(flags & DrawFlags::noAntiAlias)
+			aa_flags |= AA_NO_AA;
+
+		 _aa_stretch_blit (source, dest, 
 			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.x,aa_BITS)), 
 			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
 			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
@@ -224,8 +229,10 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const
 	}
 	else
 	{
-		aa_flags |= AA_ALPHA;
-		
+		/* TODO: Fix AA_NO_AA with opacity != opaque
+		if(flags & DrawFlags::drawNoAntiAlias)
+			aa_flags |= AA_NO_AA;*/
+
 		aa_set_trans(255 - opacity);
 		
 		_aa_stretch_blit (source, dest, 
@@ -247,16 +254,19 @@ void AllegroImageAlphaSurfaceImpl::DrawRotate( SurfaceImpl & destination, const 
 	int scalex = 1;
 	int scaley = 1;
 
-	int astr_flags = AA_MASKED | AA_BLEND;
+	int astr_flags = AA_MASKED | AA_BLEND | AA_ALPHA;
 	
-	if(flags&drawHorizontalFlip)
+	if(flags & DrawFlags::horizontalFlip)
 		scalex = -1;
 	
-	if(flags&drawVerticalFlip)
+	if(flags & DrawFlags::verticalFlip)
 		scaley = -1;
 	
 	if(opacity == Color::alphaOpaque)
 	{
+		if(flags & DrawFlags::noAntiAlias)
+			astr_flags |= AA_NO_AA;
+
 		_aa_rotate_bitmap (source, dest, 
 			ptDest.x, ptDest.y, 
 			itofix((angle<<8)/360),
@@ -265,7 +275,9 @@ void AllegroImageAlphaSurfaceImpl::DrawRotate( SurfaceImpl & destination, const 
 	}
 	else
 	{
-		astr_flags |= AA_ALPHA;
+		/* TODO: Fix AA_NO_AA with opacity != opaque
+		if(flags & DrawFlags::drawNoAntiAlias)
+			aa_flags |= AA_NO_AA;*/
 
 		aa_set_trans(255 - opacity);
 		

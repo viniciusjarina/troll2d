@@ -52,9 +52,33 @@ public:
 	{
 	}
 
-	virtual void DrawStretch(SurfaceImpl & destination,const Rect& rcDest,const Rect& rSource = Rect(0,0,-1,-1)) const;
-	virtual void DrawRotate( SurfaceImpl & destination,const Point& ptDest,short angle ) const;
-	virtual void DrawAlpha(SurfaceImpl & destination,const Point& ptDest = Point(0,0),unsigned char alpha = 128) const;
+	virtual void Draw(SurfaceImpl & destination,
+					  const Point& ptDest = Point(0,0),
+					  DrawFlags flags = DrawFlags::none,
+					  AlphaComponent opacity = Color::alphaOpaque) const;
+
+	virtual void Draw(SurfaceImpl & destination,
+					  const Point& ptDest,
+					  const Rect& rSource,
+					  DrawFlags flags = DrawFlags::none,
+					  AlphaComponent opacity = Color::alphaOpaque) const;
+	
+	virtual void DrawStretch(SurfaceImpl & destination,
+							 const Rect& rcDest,
+							 DrawFlags flags = DrawFlags::none,
+							 AlphaComponent opacity = Color::alphaOpaque) const;
+
+	virtual void DrawStretch(SurfaceImpl & destination,
+							 const Rect& rcDest,
+							 const Rect& rSource,
+							 DrawFlags flags = DrawFlags::none,
+							 AlphaComponent opacity = Color::alphaOpaque) const;
+		
+	virtual void DrawRotate(SurfaceImpl & destination,
+							const Point& ptDest,
+							short angle,
+							DrawFlags flags = DrawFlags::none,
+							AlphaComponent opacity = Color::alphaOpaque) const;
 };
 
 }
