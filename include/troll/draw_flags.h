@@ -71,14 +71,44 @@ namespace Troll
 			return *this;
 		}
 
-		friend inline DrawFlags operator | (EnumDrawFlags flag,DrawFlags flag2);
-		friend inline int operator & (EnumDrawFlags flag,DrawFlags flag2);
+		inline void SetFlag(EnumDrawFlags flag)
+		{
+			m_flags = (EnumDrawFlags)((int)m_flags | (int)flag);
+		}
 
+		inline void UnsetFlag(EnumDrawFlags flag)
+		{
+			m_flags = (EnumDrawFlags)(((int)m_flags) & (~((int)flag)));
+		}
+
+		inline void ToggleFlag(EnumDrawFlags flag)
+		{
+			if(HasFlag(flag))
+				UnsetFlag(flag);
+			else
+				SetFlag(flag);			
+		}
+
+		friend inline DrawFlags operator | (EnumDrawFlags flag,DrawFlags flag2);
+		
 		inline DrawFlags operator | (DrawFlags flag2) const
 		{
 			return (DrawFlags((int)m_flags|(int)flag2.m_flags));
 		}
 
+		inline DrawFlags operator | (EnumDrawFlags flag2) const
+		{
+			return (DrawFlags((int)m_flags|(int)flag2));
+		}
+
+		inline bool HasFlag(EnumDrawFlags flag) const
+		{
+			return ((int)m_flags & (int)flag) != 0;
+		}
+
+		friend inline int operator & (EnumDrawFlags flag,DrawFlags flag2);
+
+	
 		inline int operator & (EnumDrawFlags flag) const
 		{
 			return ((int)m_flags & (int)flag);

@@ -64,7 +64,7 @@
 
 	Image image;
 	
-	if(!image.LoadImage("images/troll.bmp"))
+	if(!image.LoadImage("images/troll.png"))
 		return 0;
 		
 	const Surface & logo = image.GetSurface();
@@ -79,6 +79,9 @@
 	bool cliping = false;
 
 	Rect rcClip(screen.GetWidth() / 2, 0 ,screen.GetWidth()/2,screen.GetHeight()/2);// clip a quarter of screen
+
+	DrawFlags df(DrawFlags::none);
+	AlphaComponent alpha = 255;
 		
 	while(!quit) // was ESC key pressed?
 	{
@@ -93,13 +96,50 @@
 		{
 			clip = !clip;
 		}
+
+		if(KeyInput::IsKeyReleased(UP))
+		{
+			df.SetFlag(DrawFlags::horizontalFlip);
+		}
+		if(KeyInput::IsKeyReleased(DOWN))
+		{
+			df.UnsetFlag(DrawFlags::horizontalFlip);
+		}
+
+		if(KeyInput::IsKeyReleased(LEFT))
+		{
+			df.SetFlag(DrawFlags::verticalFlip);
+		}
+		if(KeyInput::IsKeyReleased(RIGHT))
+		{
+			df.UnsetFlag(DrawFlags::verticalFlip);
+		}
+
+		if(KeyInput::IsKeyReleased(A))
+		{
+			df.ToggleFlag(DrawFlags::noAntiAlias);
+		}
+
+		if(KeyInput::IsKeyDown(NUMERIC_MINUS))
+		{
+			if(alpha > 0)
+				alpha--;
+		}
+
+		if(KeyInput::IsKeyDown(NUMERIC_PLUS))
+		{
+			if(alpha < 255)
+				alpha++;
+		}
+
+
 		
 
 		// UpdateLogic(); // Add the logic o current frame
 
 		if(!Screen::SkipFrame()) // Frame can be rendered
 		{
-			//screen.Clear(Color::WHITE);
+			screen.Clear(Color::WHITE);
 
 			// RenderFrame(); Add draw code, to render current frame
 			g.DrawText(Point(10,10),"(Press esc to exit, space bar to toggle clipping)",Color::RED);
@@ -121,14 +161,11 @@
 					cliping = false;
 				}
 			}
-			logoPos.x = rand()%320;
-			logoPos.y = rand()%240;
 
-			Rect rc(MouseInput::GetPosition(),Size(100,200));
+			Rect rc(logoPos,Size(100,200));
 
-			screen.DrawStretch(logo,rc,none,0);
-			screen.DrawRotate(logo,rc.GetPosition(),0,none,0);
-			
+			screen.DrawStretch(logo,rc,df,alpha);
+						
 
 			Screen::Flip();		// Flip screen
 		}
