@@ -45,7 +45,7 @@
 #include <SDL.h> // the entry point of a Cocoa application (this needed to be fixed)
 #endif
 
-static const char * key_names[Troll::TOTAL_KEYS] =
+static const char * key_names[Troll::Key::TOTAL_KEYS] =
 {
 	0,
 	"BACKSPACE", // <-
@@ -197,12 +197,12 @@ static const char * key_names[Troll::TOTAL_KEYS] =
 	char str[100];
 	int i;
 
-	int  pressed_count[TOTAL_KEYS];
-	int  released_count[TOTAL_KEYS];
-	bool key_down[TOTAL_KEYS];
-	bool key_up[TOTAL_KEYS];
+	int  pressed_count[Key::TOTAL_KEYS];
+	int  released_count[Key::TOTAL_KEYS];
+	bool key_down[Key::TOTAL_KEYS];
+	bool key_up[Key::TOTAL_KEYS];
 
-	for(i = FIRST_KEY; i < TOTAL_KEYS; i ++)
+	for(i = Key::FIRST_KEY; i < Key::TOTAL_KEYS; i ++)
 	{
 		pressed_count[i] = 0;
 		released_count[i] = 0;
@@ -223,27 +223,27 @@ static const char * key_names[Troll::TOTAL_KEYS] =
 		KeyInput::Update();
 				
 
-		quit = KeyInput::IsKeyDown(ESCAPE);
+		quit = KeyInput::IsKeyDown(Key::ESCAPE);
 
-		if(KeyInput::IsKeyDown(DOWN))
+		if(KeyInput::IsKeyDown(Key::DOWN))
 			rc.y ++;
-		if(KeyInput::IsKeyDown(UP))
+		if(KeyInput::IsKeyDown(Key::UP))
 			rc.y --;
 
-		if(KeyInput::IsKeyDown(LEFT))
+		if(KeyInput::IsKeyDown(Key::LEFT))
 			rc.x --;
-		if(KeyInput::IsKeyDown(RIGHT))
+		if(KeyInput::IsKeyDown(Key::RIGHT))
 			rc.x ++;
 				
-		for(i = FIRST_KEY; i < TOTAL_KEYS; i++ )
+		for(i = Key::FIRST_KEY; i < Key::TOTAL_KEYS; i++ )
 		{
-			if(KeyInput::IsKeyPressed((Key)i))
+			if(KeyInput::IsKeyPressed((Key::EnumKey)i))
 				pressed_count[i]++;
-			if(KeyInput::IsKeyReleased((Key)i))
+			if(KeyInput::IsKeyReleased((Key::EnumKey)i))
 				released_count[i]++;
 			
-			key_down[i] = KeyInput::IsKeyDown((Key)i);
-			key_up[i] = KeyInput::IsKeyUp((Key)i);
+			key_down[i] = KeyInput::IsKeyDown((Key::EnumKey)i);
+			key_up[i] = KeyInput::IsKeyUp((Key::EnumKey)i);
 		}
 
 		if(!Screen::SkipFrame()) // Frame can be rendered
@@ -265,7 +265,7 @@ static const char * key_names[Troll::TOTAL_KEYS] =
 			ptOut.y += 10;
 			g.DrawText(ptOut," u:up d:down)",Color::BLUE);
 			
-			for(i = FIRST_KEY; i < TOTAL_KEYS; i++ )
+			for(i = Key::FIRST_KEY; i < Key::TOTAL_KEYS; i++ )
 			{
 				ptOut.y += 10;
 				if(ptOut.y + 10 > max_y)

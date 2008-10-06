@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="test_blit"
 	ProjectGUID="{401562B1-C2F3-44B7-9F38-74CFEADE19F4}"
 	RootNamespace="test_blit"
@@ -274,11 +274,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib troll_sdld.lib troll_based.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="SDL.lib troll_sdld.lib troll_based.lib odbc32.lib odbccp32.lib  libpngd.lib zlibd.lib"
 				OutputFile="..\..\..\bin\test_blitd_sdl.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualC&quot;"
+				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualC&quot;;..\..\..\dependencies\libpng\lib\msvc"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=".\Debug/test_blit.pdb"
 				SubSystem="2"
@@ -999,50 +999,6 @@
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
-			>
-			<FileConfiguration
-				Name="Release|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Copyng SDL library"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
-					Outputs="..\..\..\bin\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Copyng SDL library"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
-					Outputs="..\..\..\bin\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug Allegro|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release Allegro|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-		</File>
-		<File
 			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualCE\SDL.dll"
 			>
 			<FileConfiguration
@@ -1090,6 +1046,50 @@
 					Name="VCCustomBuildTool"
 					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
 					Outputs=".\evc\SDL.dll"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
+			>
+			<FileConfiguration
+				Name="Release|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Copyng SDL library"
+					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
+					Outputs="..\..\..\bin\SDL.dll"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Copyng SDL library"
+					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
+					Outputs="..\..\..\bin\SDL.dll"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug Allegro|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description=""
+					CommandLine=""
+					Outputs=""
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release Allegro|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description=""
+					CommandLine=""
+					Outputs=""
 				/>
 			</FileConfiguration>
 		</File>

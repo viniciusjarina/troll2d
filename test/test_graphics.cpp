@@ -237,15 +237,15 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 		MouseInput::Update();
 		KeyInput::Update();
 
-		quit = KeyInput::IsKeyDown(ESCAPE);
+		quit = KeyInput::IsKeyDown(Key::ESCAPE);
 
-		if(KeyInput::IsKeyReleased(RIGHT) && state < TEST_TEXT)
+		if(KeyInput::IsKeyReleased(Key::RIGHT) && state < TEST_TEXT)
 			state++;
 
-		if(KeyInput::IsKeyReleased(LEFT) && state > TEST_PIXEL)
+		if(KeyInput::IsKeyReleased(Key::LEFT) && state > TEST_PIXEL)
 			state--;
 
-		if(KeyInput::IsKeyReleased(SPACE))
+		if(KeyInput::IsKeyReleased(Key::SPACE))
 		{
 			antialias = !antialias;
 

@@ -97,9 +97,9 @@
 		MouseInput::Update(); // Update input
 		KeyInput::Update();   // Update input
 
-		quit = KeyInput::IsKeyDown(ESCAPE);
+		quit = KeyInput::IsKeyDown(Key::ESCAPE);
 				
-		if(KeyInput::IsKeyReleased(SPACE))
+		if(KeyInput::IsKeyReleased(Key::SPACE))
 		{
 			show_cursor = !show_cursor; // toggle cursor display
 			Screen::ShowCursor(show_cursor);

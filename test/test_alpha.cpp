@@ -60,14 +60,14 @@
 	if(!System::Init())			// Inialize (input, sound, files, etc)
 		return 0;
 
-	if(!System::SetupScreen(-1,-1,false,depth1bpp))	// Setup and create screen with defaul size
+	if(!System::SetupScreen())	// Setup and create screen with defaul size
 		return 0;
 
 	System::SetScreenTitle("Test Alpha");
 
 	Image image;
 	
-	if(!image.LoadImage("images/troll.png"))
+	if(!image.LoadImage("images/troll.bmp"))
 		return 0;
 		
 	const Surface & logo = image.GetSurface();
@@ -83,13 +83,14 @@
 
 	Rect rcClip(screen.GetWidth() / 2, 0 ,screen.GetWidth()/2,screen.GetHeight()/2);// clip a quarter of screen
 	
-	unsigned char alpha  = 255;
+	unsigned char alpha  = 8;
 	char inc = -1;
 
 	
 	Rect rc2(logoPos,Size(50,50));
 	Rect rc3(logoPos,Size(50,50));
 
+	DrawFlags flags = DrawFlags::none;
 	
 	while(!quit) // was ESC key pressed?
 	{
@@ -98,25 +99,36 @@
 		MouseInput::Update();
 		KeyInput::Update();
 
-		quit = KeyInput::IsKeyDown(ESCAPE);
+		quit = KeyInput::IsKeyDown(Key::ESCAPE);
 		
-		if(KeyInput::IsKeyReleased(SPACE))
+		if(KeyInput::IsKeyReleased(Key::SPACE))
 		{
 			clip = !clip;
 		}
-		
-		alpha = alpha + inc;
 
-		if(alpha < 20)
+		if(KeyInput::IsKeyReleased(Key::LEFT))
+		{
+			flags = flags | DrawFlags::horizontalFlip;
+		}
+
+		if(KeyInput::IsKeyReleased(Key::RIGHT))
+		{
+//			flags = ~flags;
+//			flags = flags & (~drawHorizontalFlip);
+		}
+		
+		/*alpha = alpha + inc;
+
+		if(alpha < 5)
 			inc =  5;
-		else if(alpha > 240)
-			inc = -5;
+		else if(alpha > 255)
+			inc = -5;*/
 
 		// UpdateLogic(); // Add the logic o current frame
 
 		if(!Screen::SkipFrame()) // Frame can be rendered
 		{
-			screen.Clear(Color::WHITE);
+			//screen.Clear(Color::WHITE);
 
 			// RenderFrame(); Add draw code, to render current frame
 			sprintf(sRealFPS,"FPS %d ",nRealFPS);
@@ -151,7 +163,16 @@
 				}
 			}
 
-			screen.DrawAlpha(logo,MouseInput::GetPosition(),alpha);
+			Rect rc(MouseInput::GetPosition(),Size(100,200));
+
+			
+
+			
+
+
+			screen.DrawStretch(logo,rc,flags);
+
+			screen.Draw(logo,Point(300,300),flags);
 			
 
 			Screen::Flip();		// Flip screen

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="troll_sdl"
 	ProjectGUID="{92237630-F95F-4749-A90B-B18FA53753C2}"
 	>
@@ -204,8 +204,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;../../../../../dependencies/SDL-1.2.13/include/&quot;;../../../include/sprig/;../../../../../include/;../../../include/SDL_image/;../../../include/"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
+				AdditionalIncludeDirectories="../../../../../include/;../../../include/;../../../include/SDL_image/;../../../include/sprig/;../../../../../dependencies/libpng/include;&quot;../../../../../dependencies/SDL-1.2.13/include/&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;LOAD_BMP;LOAD_PNG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"

@@ -60,10 +60,10 @@ static Uint8 keys_pressed[SDLK_LAST];
 
 static SDLKey MapTroll2SDL(Key k)
 {
-	if(k >= Troll::TOTAL_KEYS)
+	if(k >= Troll::Key::TOTAL_KEYS)
 		return SDLK_UNKNOWN;
 
-	static const SDLKey keys [Troll::TOTAL_KEYS] =
+	static const SDLKey keys [Troll::Key::TOTAL_KEYS] =
 	{
 		SDLK_UNKNOWN,      // 
 		SDLK_BACKSPACE,// 	BACKSPACE	

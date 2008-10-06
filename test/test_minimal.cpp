@@ -80,7 +80,7 @@
 		MouseInput::Update();
 		KeyInput::Update();
 
-		quit = KeyInput::IsKeyDown(ESCAPE);
+		quit = KeyInput::IsKeyDown(Key::ESCAPE);
 
 		// UpdateLogic(); // Add the logic o current frame
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="test_mouse"
 	ProjectGUID="{2607834D-3868-41F4-BAD4-43AA9D5B6840}"
 	RootNamespace="test_mouse"
@@ -211,8 +211,6 @@
 				AdditionalFiles="troll.bmp|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
 			/>
 			<DebuggerTool
-				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
-				Arguments=""
 			/>
 		</Configuration>
 		<Configuration
@@ -276,7 +274,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib troll_sdld.lib troll_based.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="SDL.lib troll_sdld.lib troll_based.lib odbc32.lib odbccp32.lib  libpngd.lib zlibd.lib"
 				OutputFile="..\..\..\bin\test_moused_sdl.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
@@ -413,8 +411,6 @@
 				AdditionalFiles="troll.bmp|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
 			/>
 			<DebuggerTool
-				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
-				Arguments=""
 			/>
 		</Configuration>
 		<Configuration
@@ -616,8 +612,6 @@
 				AdditionalFiles=""
 			/>
 			<DebuggerTool
-				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
-				Arguments=""
 			/>
 		</Configuration>
 		<Configuration
@@ -815,8 +809,6 @@
 				AdditionalFiles=""
 			/>
 			<DebuggerTool
-				RemoteExecutable="%CSIDL_PROGRAM_FILES%\troll\$(TargetFileName)"
-				Arguments=""
 			/>
 		</Configuration>
 	</Configurations>
@@ -1007,50 +999,6 @@
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
-			>
-			<FileConfiguration
-				Name="Release|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Copyng SDL library"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
-					Outputs="..\..\..\bin\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Copyng SDL library"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
-					Outputs="..\..\..\bin\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug Allegro|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release Allegro|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-		</File>
-		<File
 			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualCE\SDL.dll"
 			>
 			<FileConfiguration
@@ -1098,6 +1046,50 @@
 					Name="VCCustomBuildTool"
 					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
 					Outputs=".\evc\SDL.dll"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
+			>
+			<FileConfiguration
+				Name="Release|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Copyng SDL library"
+					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
+					Outputs="..\..\..\bin\SDL.dll"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Copyng SDL library"
+					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
+					Outputs="..\..\..\bin\SDL.dll"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug Allegro|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description=""
+					CommandLine=""
+					Outputs=""
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release Allegro|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description=""
+					CommandLine=""
+					Outputs=""
 				/>
 			</FileConfiguration>
 		</File>

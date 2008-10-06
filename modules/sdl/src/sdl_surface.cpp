@@ -171,7 +171,7 @@ void SDLSurface::DrawFast( SurfaceImpl & destination,const Point& ptDest /*= Poi
 	//rect1.w = 0; so why waste time setting h or w :)
 	
 	Uint32 flags = source->flags;
-	source->flags = (flags & (~(SDL_SRCCOLORKEY|SDL_SRCALPHA)));
+//	source->flags = (flags & (~(SDL_SRCCOLORKEY|SDL_SRCALPHA|SDL_RLEACCEL)));
 
 	SDL_BlitSurface(source,NULL,dest,&rect1);
 
@@ -270,6 +270,7 @@ void SDLSurface::Draw( SurfaceImpl & destination, const Point& ptDest, const Rec
 			if(!(flags & DrawFlags::verticalFlip))
 			{
 				SDL_BlitSurface(source,&rect2,dest,&rect1);
+				source->clip_rect = rcOldClip;
 				return;
 			}
 			
@@ -296,6 +297,7 @@ void SDLSurface::Draw( SurfaceImpl & destination, const Point& ptDest, const Rec
 			if(!(flags & DrawFlags::verticalFlip))
 			{
 				SDL_BlitSurface(source,&rect2,dest,&rect1);
+				source->clip_rect = rcOldClip;
 				return;
 			}
 			
