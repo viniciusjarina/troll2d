@@ -43,7 +43,7 @@
 
 #define TROLL_VERSION_MAJOR	0
 #define TROLL_VERSION_MINOR	0
-#define TROLL_VERSION_MICRO	2
+#define TROLL_VERSION_MICRO	3
 
 #include "troll/defs.h"
 

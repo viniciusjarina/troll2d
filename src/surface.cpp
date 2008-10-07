@@ -115,34 +115,11 @@ void Surface::Clear(const Color & color /*= Color::BLACK*/)
 {
 	m_impl->Clear(color);
 }
-#if 0
-void Surface::Draw(const Surface & src,const Point& ptDest/* = Point(0,0)*/,const Rect& rSource /*= Rect(0,0,-1,-1)*/)
-{
-	src.m_impl->Draw(*m_impl,ptDest,rSource);
-}
-
-void Surface::DrawStretch( const Surface & src,const Rect& rcDest /*= Point(0,0)*/,const Rect& rSource /*= Rect(0,0,-1,-1)*/ )
-{
-	src.m_impl->DrawStretch(*m_impl,rcDest,rSource);
-}
-
-void Surface::DrawAlpha( const Surface & sprite,const Point& ptDest,unsigned char alpha )
-{
-	sprite.m_impl->DrawAlpha(*m_impl,ptDest,alpha);
-}
-
-
-void Surface::DrawRotate( const Surface & sprite,const Point& ptDest,short angle )
-{
-	sprite.m_impl->DrawRotate(*m_impl,ptDest,angle);
-}
-#endif
 
 void Surface::DrawFast( const Surface & sprite,const Point& ptDest /*= Point(0,0)*/ )
 {
 	sprite.m_impl->DrawFast(*m_impl, ptDest);
 }
-
 
 void Surface::Draw( const Surface & sprite,const Point& ptDest,DrawFlags flags /*= none*/ ,AlphaComponent opacity)
 {

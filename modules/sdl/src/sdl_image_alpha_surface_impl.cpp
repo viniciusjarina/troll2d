@@ -139,7 +139,7 @@ void SDLImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point& ptD
 	rect1.y = ptDest.y;
 
 	rect2.x = rSource.x;
-	rect2.y = rSource.x;
+	rect2.y = rSource.y;
 	rect2.w = rSource.width;
 	rect2.h = rSource.height;
 
@@ -180,7 +180,7 @@ void SDLImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point& ptD
 		{
 			if(!(flags & DrawFlags::verticalFlip))
 			{
-				SDL_BlitSurface(source,&rect2,dest,&rect1);
+				SPG_Blit(source,&rect2,dest,&rect1);
 				source->clip_rect = rcOldClip;
 				return;
 			}

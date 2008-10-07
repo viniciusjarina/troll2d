@@ -170,12 +170,7 @@ void SDLSurface::DrawFast( SurfaceImpl & destination,const Point& ptDest /*= Poi
 	//rect1.h = 0; Only the position is used in the dstrect (the width and height are ignored).
 	//rect1.w = 0; so why waste time setting h or w :)
 	
-	Uint32 flags = source->flags;
-//	source->flags = (flags & (~(SDL_SRCCOLORKEY|SDL_SRCALPHA|SDL_RLEACCEL)));
-
 	SDL_BlitSurface(source,NULL,dest,&rect1);
-
-	source->flags = flags;
 }
 
 

@@ -50,9 +50,9 @@ void SDLScreenHelper::StartFrame()
 {
 	start_frame_tick = SDL_GetTicks();
 
-	if ( (start_frame_tick - end_frame_tick) < m_nFrameTicks )
+	if ( (end_frame_tick - start_frame_tick) < m_nFrameTicks )
 	{
-		SDL_Delay(m_nFrameTicks -(start_frame_tick - end_frame_tick));
+		SDL_Delay(m_nFrameTicks - (end_frame_tick - start_frame_tick));
 	}
 
 	real_start_frame_tick = SDL_GetTicks();
@@ -72,7 +72,7 @@ bool SDLScreenHelper::SkipFrame()
 	Uint32 current_tick = SDL_GetTicks();
 	Uint32 last_frame_tick;
 
-	last_frame_tick = (start_frame_tick - end_frame_tick);
+	last_frame_tick = (current_tick - start_frame_tick);
 	if(last_frame_tick > m_nFrameTicks)
 	{
 		end_frame_tick = current_tick;

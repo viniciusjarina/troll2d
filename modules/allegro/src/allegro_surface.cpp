@@ -243,7 +243,7 @@ void AllegroSurface::Draw( SurfaceImpl & destination,const Point& ptDest ,const 
 		aa_set_trans(255 - opacity);
 
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp((float)rSource.x,aa_BITS)), iround(ldexp((float)rSource.x,aa_BITS)), 
+			iround(ldexp((float)rSource.x,aa_BITS)), iround(ldexp((float)rSource.y,aa_BITS)), 
 			iround(ldexp((float)rSource.width,aa_BITS)), iround(ldexp((float)rSource.height,aa_BITS)), 
 			iround(ldexp((float)ptDest.x,aa_BITS)), iround(ldexp((float)ptDest.y,aa_BITS)), 
 			iround(ldexp((float)rSource.width,aa_BITS)), iround(ldexp((float)rSource.height,aa_BITS)), 
@@ -324,7 +324,7 @@ void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,c
 	{
 		if(!(flags & DrawFlags::horizontalFlip) && !(flags & DrawFlags::verticalFlip) && (flags & DrawFlags::noAntiAlias))
 		{
-			masked_stretch_blit(source, dest, rSource.x, rSource.y, rSource.width, rSource.width, rcDest.x, rcDest.y, rcDest.width, rcDest.height);
+			masked_stretch_blit(source, dest, rSource.x, rSource.y, rSource.width, rSource.height, rcDest.x, rcDest.y, rcDest.width, rcDest.height);
 			return;
 		}
 		
@@ -340,7 +340,7 @@ void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,c
 			astr_flags |= AA_VFLIP;
 		
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp((float)rSource.x,aa_BITS)), iround(ldexp((float)rSource.x,aa_BITS)), 
+			iround(ldexp((float)rSource.x,aa_BITS)), iround(ldexp((float)rSource.y,aa_BITS)), 
 			iround(ldexp((float)rSource.width,aa_BITS)), iround(ldexp((float)rSource.height,aa_BITS)), 
 			iround(ldexp((float)rcDest.x,aa_BITS)), iround(ldexp((float)rcDest.y,aa_BITS)), 
 			iround(ldexp((float)rcDest.width,aa_BITS)), iround(ldexp((float)rcDest.height,aa_BITS)), 
@@ -364,7 +364,7 @@ void AllegroSurface::DrawStretch( SurfaceImpl & destination,const Rect& rcDest,c
 		aa_set_trans(255 - opacity);
 		
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp((float)rSource.x,aa_BITS)), iround(ldexp((float)rSource.x,aa_BITS)), 
+			iround(ldexp((float)rSource.x,aa_BITS)), iround(ldexp((float)rSource.y,aa_BITS)), 
 			iround(ldexp((float)rSource.width,aa_BITS)), iround(ldexp((float)rSource.height,aa_BITS)), 
 			iround(ldexp((float)rcDest.x,aa_BITS)), iround(ldexp((float)rcDest.y,aa_BITS)), 
 			iround(ldexp((float)rcDest.width,aa_BITS)), iround(ldexp((float)rcDest.height,aa_BITS)), 

@@ -53,10 +53,10 @@ static char keys_pressed[KEY_MAX];
 
 static int MapTroll2Allegro(Key k)
 {
-	if(k >= Troll::TOTAL_KEYS)
+	if(k >= Troll::Key::TOTAL_KEYS)
 		return 0;
 
-	static const unsigned char keys [Troll::TOTAL_KEYS] =
+	static const unsigned char keys [Troll::Key::TOTAL_KEYS] =
 	{
 		0,      // 
 		KEY_BACKSPACE,// 	BACKSPACE	

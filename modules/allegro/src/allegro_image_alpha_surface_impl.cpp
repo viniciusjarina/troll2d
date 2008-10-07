@@ -130,7 +130,7 @@ void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point&
 		aa_flags |= AA_NO_AA;	
 		
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.x,aa_BITS)), 
+			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
 			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
 			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
 			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
@@ -221,7 +221,7 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const
 			aa_flags |= AA_NO_AA;
 
 		 _aa_stretch_blit (source, dest, 
-			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.x,aa_BITS)), 
+			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
 			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
 			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
 			iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
@@ -236,7 +236,7 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const
 		aa_set_trans(255 - opacity);
 		
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.x,aa_BITS)), 
+			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
 			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
 			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
 			iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
