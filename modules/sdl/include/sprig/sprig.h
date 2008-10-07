@@ -126,11 +126,15 @@
 	#define SPG_clip_xmax(pnt) pnt->clip_rect.x + pnt->clip_rect.w-1
 	#define SPG_clip_ymin(pnt) pnt->clip_rect.y
 	#define SPG_clip_ymax(pnt) pnt->clip_rect.y + pnt->clip_rect.h-1
+	#define SPG_clip_w(pnt)	   pnt->clip_rect.w
+	#define SPG_clip_h(pnt)	   pnt->clip_rect.h
 #else
 	#define SPG_clip_xmin(pnt) pnt->clip_minx
 	#define SPG_clip_xmax(pnt) pnt->clip_maxx
 	#define SPG_clip_ymin(pnt) pnt->clip_miny
 	#define SPG_clip_ymax(pnt) pnt->clip_maxy
+	#define SPG_clip_w(pnt)	   pnt->clip_maxx - pnt->clip_minx + 1
+	#define SPG_clip_h(pnt)	   pnt->clip_maxy - pnt->clip_miny + 1
 #endif
 
 
@@ -243,11 +247,11 @@ DECLSPEC void SPG_SetupBWPalette(SDL_Surface *surface,Uint32 *ctab,int start, in
 DECLSPEC int SPG_Blit(SDL_Surface *Src, SDL_Rect* srcRect, SDL_Surface *Dest, SDL_Rect* destRect);
 DECLSPEC void SPG_SetBlit(void (*blitfn)(SDL_Surface*, SDL_Rect*, SDL_Surface*, SDL_Rect*));
 DECLSPEC void (*SPG_GetBlit())(SDL_Surface*, SDL_Rect*, SDL_Surface*, SDL_Rect*);
-DECLSPEC SDL_Rect SPG_TransformSurface(SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale, Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Uint8 flags);
+DECLSPEC SDL_Rect SPG_TransformSurface(const SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale, Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Uint8 flags,SDL_Rect * src_clip = NULL);
 DECLSPEC SDL_Surface* SPG_Transform(SDL_Surface *src, Uint32 bcol, float angle, float xscale, float yscale, Uint8 flags);
 
 
-DECLSPEC Uint32 SPG_GetPixel(SDL_Surface *surface, Sint16 x, Sint16 y);
+DECLSPEC Uint32 SPG_GetPixel(const SDL_Surface *surface, Sint16 x, Sint16 y);
 
 
 // DRAWING
@@ -333,7 +337,7 @@ DECLSPEC void SPG_TrigonFade(SDL_Surface *surface,Sint16 x1,Sint16 y1,Sint16 x2,
 DECLSPEC void SPG_TrigonTex(SDL_Surface *surface,Sint16 x1,Sint16 y1,Sint16 x2,Sint16 y2,Sint16 x3,Sint16 y3,SDL_Surface *source,Sint16 sx1,Sint16 sy1,Sint16 sx2,Sint16 sy2,Sint16 sx3,Sint16 sy3);
 
 
-DECLSPEC void SPG_QuadTex(SDL_Surface *surface,Sint16 x1,Sint16 y1,Sint16 x2,Sint16 y2,Sint16 x3,Sint16 y3,Sint16 x4,Sint16 y4,SDL_Surface *source,Sint16 sx1,Sint16 sy1,Sint16 sx2,Sint16 sy2,Sint16 sx3,Sint16 sy3,Sint16 sx4,Sint16 sy4);
+DECLSPEC void SPG_QuadTex(SDL_Surface *surface,Sint16 x1,Sint16 y1,Sint16 x2,Sint16 y2,Sint16 x3,Sint16 y3,Sint16 x4,Sint16 y4,const SDL_Surface *source,Sint16 sx1,Sint16 sy1,Sint16 sx2,Sint16 sy2,Sint16 sx3,Sint16 sy3,Sint16 sx4,Sint16 sy4);
 
 
 DECLSPEC void SPG_Polygon(SDL_Surface *dest, Uint16 n, Sint16* x, Sint16* y, Uint32 color);

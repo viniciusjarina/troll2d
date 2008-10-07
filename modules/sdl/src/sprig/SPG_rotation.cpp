@@ -42,7 +42,7 @@ extern SPG_bool _spg_useerrors;
 void _SetPixelX(SDL_Surface *dest,Sint16 x,Sint16 y,Uint32 color);
 
 
-SDL_Rect SPG_transform_tmap(SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale, Uint16 qx, Uint16 qy);
+SDL_Rect SPG_transform_tmap(const SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale, Uint16 qx, Uint16 qy);
 
 
 
@@ -50,7 +50,7 @@ SDL_Rect SPG_transform_tmap(SDL_Surface *src, SDL_Surface *dst, float angle, flo
 // Helper function to SPG_TransformSurface()
 // Returns the bounding box
 //==================================================================================
-static void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xscale, float yscale, Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Sint16 *xmin, Sint16 *ymin, Sint16 *xmax, Sint16 *ymax)
+static void _calcRect(const SDL_Surface *src, SDL_Surface *dst, float theta, float xscale, float yscale, Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Sint16 *xmin, Sint16 *ymin, Sint16 *xmax, Sint16 *ymax)
 {
 	Sint16 x, y, rx, ry;
 
@@ -59,6 +59,7 @@ static void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xsc
 	Sint16 sxmax = SPG_clip_xmax(src);
 	Sint16 symin = SPG_clip_ymin(src);
 	Sint16 symax = SPG_clip_ymax(src);
+
 	Sint16 sx[]={sxmin, sxmax, sxmin, sxmax};
 	Sint16 sy[]={symin, symax, symax, symin};
 
@@ -156,7 +157,7 @@ static void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xsc
 			if( (rx>=sxmin) && (rx<=sxmax) && (ry>=symin) && (ry<=symax) ) \
 			{\
                 col = *(src_row+ry*src_pitch+rx);\
-                 if(!(flags & SPG_TCOLORKEY && src->flags & SDL_SRCCOLORKEY && col == src->format->colorkey))\
+                 if(!((flags & SPG_TCOLORKEY) && (src->flags & SDL_SRCCOLORKEY) && col == src->format->colorkey))\
                     *(dst_row + x) = (UintXX)(col);\
 			}\
 			sx += ctx;  /* Incremental transformations */ \
@@ -500,7 +501,7 @@ static void _calcRect(SDL_Surface *src, SDL_Surface *dst, float theta, float xsc
 // We get better performance if AA and normal rendering is seperated into two functions (better optimization).
 // SPG_TransformSurface() is used as a wrapper.
 
-SDL_Rect SPG_transformNorm(SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale ,Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Uint8 flags)
+SDL_Rect SPG_transformNorm(const SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale ,Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Uint8 flags,SDL_Rect* src_clip)
 {
 	Sint32 dy, sx, sy;
 	Sint16 x, y, rx, ry;
@@ -556,6 +557,21 @@ SDL_Rect SPG_transformNorm(SDL_Surface *src, SDL_Surface *dst, float angle, floa
 	Sint16 symin = SPG_clip_ymin(src);
 	Sint16 symax = SPG_clip_ymax(src);
 
+	if(src_clip != 0)
+	{
+		if(src_clip->x > sxmin && src_clip->x < sxmax)
+			sxmin = src_clip->x;
+		if(src_clip->y > sxmin && src_clip->y < sxmax)
+			sxmin = src_clip->x;
+		if(src_clip->w < SPG_clip_w(src))
+			sxmax = src_clip->x + src_clip->w - 1;
+		if(src_clip->h < SPG_clip_h(src))
+			symax = src_clip->y + src_clip->h - 1;
+	}	
+
+	if(flags&SPG_FLAG7)
+		sxmax /= 2;
+
 	
 	// Some terms in the transform are constant
 	Sint32 const dx = xmin - qx;
@@ -564,7 +580,7 @@ SDL_Rect SPG_transformNorm(SDL_Surface *src, SDL_Surface *dst, float angle, floa
 
 	// Lock surfaces... hopfully less than two needs locking!
 	if ( SDL_MUSTLOCK(src) && _SPG_lock )
-		if ( SDL_LockSurface(src) < 0 )
+		if ( SDL_LockSurface((SDL_Surface*)src) < 0 )
 		{
 		    if(_spg_useerrors)
                 SPG_Error("SPG_Transform could not lock surface");
@@ -575,7 +591,7 @@ SDL_Rect SPG_transformNorm(SDL_Surface *src, SDL_Surface *dst, float angle, floa
 		    if(_spg_useerrors)
                 SPG_Error("SPG_Transform could not lock surface");
 			if ( SDL_MUSTLOCK(src) && _SPG_lock )
-				SDL_UnlockSurface(src);
+				SDL_UnlockSurface((SDL_Surface*)src);
 			return r;
 		}
 	}
@@ -620,7 +636,7 @@ SDL_Rect SPG_transformNorm(SDL_Surface *src, SDL_Surface *dst, float angle, floa
 
 	// Unlock surfaces
 	if ( SDL_MUSTLOCK(src) && _SPG_lock )
-		SDL_UnlockSurface(src);
+		SDL_UnlockSurface((SDL_Surface*)src);
 	if ( SDL_MUSTLOCK(dst) && _SPG_lock )
 		SDL_UnlockSurface(dst);
 
@@ -631,7 +647,7 @@ SDL_Rect SPG_transformNorm(SDL_Surface *src, SDL_Surface *dst, float angle, floa
 }
 
 
-SDL_Rect SPG_transformAA(SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale ,Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Uint8 flags)
+SDL_Rect SPG_transformAA(const SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale ,Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Uint8 flags, SDL_Rect * src_clip)
 {
 	Sint32 dy, sx, sy;
 	Sint16 x, y, rx, ry;
@@ -686,6 +702,18 @@ SDL_Rect SPG_transformAA(SDL_Surface *src, SDL_Surface *dst, float angle, float 
 	Sint16 symin = SPG_clip_ymin(src);
 	Sint16 symax = SPG_clip_ymax(src);
 
+	if(src_clip != 0)
+	{
+		if(src_clip->x > sxmin && src_clip->x < sxmax)
+			sxmin = src_clip->x;
+		if(src_clip->y > sxmin && src_clip->y < sxmax)
+			sxmin = src_clip->x;
+		if(src_clip->w < SPG_clip_w(src))
+			sxmax = src_clip->x + src_clip->w - 1;
+		if(src_clip->h < SPG_clip_h(src))
+			symax = src_clip->y + src_clip->h - 1;
+	}
+
 	// Some terms in the transform are constant
 	Sint32 const dx = xmin - qx;
 	Sint32 const ctdx = ctx*dx;
@@ -693,7 +721,7 @@ SDL_Rect SPG_transformAA(SDL_Surface *src, SDL_Surface *dst, float angle, float 
 
 	// Lock surfaces... hopfully less than two needs locking!
 	if ( SDL_MUSTLOCK(src) && _SPG_lock )
-		if ( SDL_LockSurface(src) < 0 )
+		if ( SDL_LockSurface((SDL_Surface*)src) < 0 )
 		{
 		    if(_spg_useerrors)
                 SPG_Error("SPG_Transform could not lock surface");
@@ -704,7 +732,7 @@ SDL_Rect SPG_transformAA(SDL_Surface *src, SDL_Surface *dst, float angle, float 
 		    if(_spg_useerrors)
                 SPG_Error("SPG_Transform could not lock surface");
 			if ( SDL_MUSTLOCK(src) && _SPG_lock )
-				SDL_UnlockSurface(src);
+				SDL_UnlockSurface((SDL_Surface*)src);
 			return r;
 		}
 	}
@@ -751,7 +779,7 @@ SDL_Rect SPG_transformAA(SDL_Surface *src, SDL_Surface *dst, float angle, float 
 
 	// Unlock surfaces
 	if ( SDL_MUSTLOCK(src) && _SPG_lock )
-		SDL_UnlockSurface(src);
+		SDL_UnlockSurface((SDL_Surface*)src);
 	if ( SDL_MUSTLOCK(dst) && _SPG_lock )
 		SDL_UnlockSurface(dst);
 
@@ -761,15 +789,15 @@ SDL_Rect SPG_transformAA(SDL_Surface *src, SDL_Surface *dst, float angle, float 
 }
 
 
-SDL_Rect SPG_TransformSurface(SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale, Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Uint8 flags)
+SDL_Rect SPG_TransformSurface(const SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale, Uint16 px, Uint16 py, Uint16 qx, Uint16 qy, Uint8 flags,SDL_Rect * src_clip)
 {
 	if(flags & SPG_TTMAP)
 		return SPG_transform_tmap(src, dst, angle, xscale, yscale, qx, qy);
 	else{
 		if(flags & SPG_TAA)
-			return SPG_transformAA(src, dst, angle, xscale, yscale, px, py, qx, qy, flags);
+			return SPG_transformAA(src, dst, angle, xscale, yscale, px, py, qx, qy, flags, src_clip);
 		else
-			return SPG_transformNorm(src, dst, angle, xscale, yscale, px, py, qx, qy, flags);
+			return SPG_transformNorm(src, dst, angle, xscale, yscale, px, py, qx, qy, flags, src_clip);
 	}
 }
 
@@ -816,7 +844,7 @@ SDL_Surface* SPG_Transform(SDL_Surface *src, Uint32 bcol, float angle, float xsc
 //==================================================================================
 // Rotate using texture mapping
 //==================================================================================
-SDL_Rect SPG_transform_tmap(SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale, Uint16 qx, Uint16 qy)
+SDL_Rect SPG_transform_tmap(const SDL_Surface *src, SDL_Surface *dst, float angle, float xscale, float yscale, Uint16 qx, Uint16 qy)
 {
 	double rad;
 	double a=(SPG_clip_xmax(src) - SPG_clip_xmin(src))/2.0;

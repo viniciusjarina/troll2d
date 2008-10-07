@@ -529,7 +529,7 @@ void SPG_pSetPixel(SDL_Surface *surface, Sint16 x, Sint32 ypitch, Uint32 color)
 //==================================================================================
 // Get pixel
 //==================================================================================
-Uint32 SPG_GetPixel(SDL_Surface *surface, Sint16 x, Sint16 y)
+Uint32 SPG_GetPixel(const SDL_Surface *surface, Sint16 x, Sint16 y)
 {
 	if(x<0 || x>=surface->w || y<0 || y>=surface->h)
 	{

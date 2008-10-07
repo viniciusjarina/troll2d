@@ -203,7 +203,7 @@ void SPG_FadedLine(SDL_Surface *dest,Sint16 x1,Sint16 x2,Sint16 y,Uint8 r1,Uint8
 //==================================================================================
 // Draws a horisontal, textured line
 //==================================================================================
-void _TexturedLine(SDL_Surface *dest,Sint16 x1,Sint16 x2,Sint16 y,SDL_Surface *source,Sint16 sx1,Sint16 sy1,Sint16 sx2,Sint16 sy2)
+void _TexturedLine( SDL_Surface *dest,Sint16 x1,Sint16 x2,Sint16 y,const SDL_Surface *source,Sint16 sx1,Sint16 sy1,Sint16 sx2,Sint16 sy2)
 {
 	Sint16 x;
 
@@ -969,7 +969,16 @@ void SPG_TrigonTex(SDL_Surface *dest,Sint16 x1,Sint16 y1,Sint16 x2,Sint16 y2,Sin
 //==================================================================================
 // Draws a textured quadrilateral
 //==================================================================================
-void SPG_QuadTex(SDL_Surface *dest,Sint16 x1,Sint16 y1,Sint16 x2,Sint16 y2,Sint16 x3,Sint16 y3,Sint16 x4,Sint16 y4,SDL_Surface *source,Sint16 sx1,Sint16 sy1,Sint16 sx2,Sint16 sy2,Sint16 sx3,Sint16 sy3,Sint16 sx4,Sint16 sy4)
+void SPG_QuadTex(SDL_Surface *dest,
+				 Sint16 x1,
+				 Sint16 y1,
+				 Sint16 x2,
+				 Sint16 y2,
+				 Sint16 x3,
+				 Sint16 y3,
+				 Sint16 x4,
+				 Sint16 y4,
+				 const SDL_Surface *source,Sint16 sx1,Sint16 sy1,Sint16 sx2,Sint16 sy2,Sint16 sx3,Sint16 sy3,Sint16 sx4,Sint16 sy4)
 {
 	Sint16 y;
 

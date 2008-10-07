@@ -97,7 +97,7 @@ namespace Troll
 			opacity: Opacity of sprite(0~255)
 		**/
 		void Draw(const Surface & sprite,const Point& ptDest,DrawFlags flags = DrawFlags::none,AlphaComponent opacity = Color::alphaOpaque);
-		void Draw(const Surface & sprite,const Point& ptDest ,const Rect& rSource,DrawFlags flags = DrawFlags::none,AlphaComponent opacity = Color::alphaOpaque);
+		void Draw(const Surface & sprite,const Point& ptDest,const Rect& rSource,DrawFlags flags = DrawFlags::none,AlphaComponent opacity = Color::alphaOpaque);
 				
 		void DrawStretch(const Surface & sprite,const Rect& rcDest,DrawFlags flags = DrawFlags::none,AlphaComponent opacity = Color::alphaOpaque);
 		void DrawStretch(const Surface & sprite,const Rect& rcDest,const Rect& rSource,DrawFlags flags = DrawFlags::none,AlphaComponent opacity = Color::alphaOpaque);

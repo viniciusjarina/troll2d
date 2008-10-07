@@ -3,7 +3,7 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
-Project: "test_alpha"=".\test_alpha.dsp" - Package Owner=<4>
+Project: "test_blit_png"=".\test_blit_png.dsp" - Package Owner=<4>
 
 Package=<5>
 {{{
