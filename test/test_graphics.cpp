@@ -207,7 +207,7 @@ void DrawPrimitiveColor(Graphics & g,int state,const Rect & rect,const Color & c
 	if(!System::Init())			// Inialize (input, sound, files, etc)
 		return 0;
 
-	if(!System::SetupScreen(-1,-1,false,depth2bpp))	// Setup and create screen with defaul size
+	if(!System::SetupScreen())	// Setup and create screen with defaul size
 		return 0;
 
 	System::SetScreenTitle("Graphics Test");

@@ -76,7 +76,7 @@ bool SDLScreenHelper::SkipFrame()
 	if(last_frame_tick > m_nFrameTicks)
 	{
 		end_frame_tick = current_tick;
-		return true;
+		return false;
 	}
 	return false;
 }

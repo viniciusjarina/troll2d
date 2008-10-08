@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="8,00"
 	Name="troll_sdl"
 	ProjectGUID="{92237630-F95F-4749-A90B-B18FA53753C2}"
 	>
@@ -122,7 +122,7 @@
 				ExecutionBucket="7"
 				Optimization="1"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="../../../../../include/;../../../include/;../../../include/SDL_image/;../../../include/sprig/;&quot;../../../../../dependencies/SDL-1.2.13/include/&quot;"
+				AdditionalIncludeDirectories="../../../../../include/;../../../include/;../../../include/SDL_image/;../../../../../dependencies/libpng/include;../../../include/sprig/;&quot;../../../../../dependencies/SDL-1.2.13/include/&quot;"
 				PreprocessorDefinitions="_WIN32_WCE=$(CEVER);$(CePlatform);ARM;_ARM_;ARMV4;UNDER_CE=$(CEVER);UNICODE;NDEBUG;LOAD_BMP;LOAD_PNG"
 				StringPooling="true"
 				RuntimeLibrary="0"

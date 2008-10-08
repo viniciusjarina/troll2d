@@ -4,7 +4,7 @@
 	Version="8,00"
 	Name="test_blit_png"
 	ProjectGUID="{ACACE00C-9698-402D-BA81-A73EB903A426}"
-	RootNamespace="test_alpha"
+	RootNamespace="test_blit_png"
 	>
 	<Platforms>
 		<Platform
@@ -45,7 +45,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\Release/test_alpha.tlb"
+				TypeLibraryName=".\Release/test_blit_png.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -57,7 +57,7 @@
 				StringPooling="true"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				PrecompiledHeaderFile=".\Release/test_alpha.pch"
+				PrecompiledHeaderFile=".\Release/test_blit_png.pch"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
 				ProgramDataBaseFileName=".\Release/"
@@ -77,12 +77,12 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib troll_base.lib troll_sdl.lib"
-				OutputFile="..\..\..\bin\test_alpha_sdl.exe"
+				AdditionalDependencies="SDL.lib troll_base.lib troll_sdl.lib  libpng.lib zlib.lib"
+				OutputFile="..\..\..\bin\test_blit_png_sdl.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualC&quot;"
-				ProgramDatabaseFile=".\Release/test_alpha.pdb"
+				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualC&quot;;..\..\..\dependencies\libpng\lib\msvc"
+				ProgramDatabaseFile=".\Release/test_blit_png.pdb"
 				SubSystem="2"
 				TargetMachine="1"
 			/>
@@ -98,7 +98,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\Release/test_alpha.bsc"
+				OutputFile=".\Release/test_blit_png.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -141,7 +141,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\Release/test_alpha.tlb"
+				TypeLibraryName=".\Release/test_blit_png.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -154,7 +154,7 @@
 				StringPooling="true"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
-				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/test_alpha.pch"
+				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.pch"
 				AssemblerListingLocation="$(PlatformName)\$(ConfigurationName)/"
 				ObjectFile="$(PlatformName)\$(ConfigurationName)/"
 				ProgramDataBaseFileName="$(PlatformName)\$(ConfigurationName)/"
@@ -175,13 +175,13 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/ALIGN:4096 /subsystem:$(CESubsystem) /MACHINE:ARM "
-				AdditionalDependencies="SDL.lib  troll_base.lib troll_sdl.lib commctrl.lib coredll.lib aygshell.lib secchk.lib ccrtrtti.lib"
-				OutputFile="$(PlatformName)\$(ConfigurationName)/test_alpha.exe"
+				AdditionalDependencies="SDL.lib lpngce.lib troll_base.lib troll_sdl.lib commctrl.lib coredll.lib aygshell.lib secchk.lib ccrtrtti.lib"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib_arm4\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualCE&quot;"
+				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib_arm4\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualCE&quot;;..\..\..\dependencies\libpng\lib\wince_arm4"
 				IgnoreDefaultLibraryNames="$(CENoDefaultLib)"
-				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/test_alpha.pdb"
+				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.pdb"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				EntryPointSymbol="WinMainCRTStartup"
@@ -196,7 +196,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile="$(PlatformName)\$(ConfigurationName)/test_alpha.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.bsc"
 			/>
 			<Tool
 				Name="VCCodeSignTool"
@@ -208,7 +208,7 @@
 				ForceDirty="-1"
 				RemoteDirectory="%CSIDL_PROGRAM_FILES%\troll\"
 				RegisterOutput="0"
-				AdditionalFiles="troll.bmp|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
+				AdditionalFiles="troll.png|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0;lpngce.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0;zlibce.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
 			/>
 			<DebuggerTool
 			/>
@@ -241,7 +241,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/test_alpha.tlb"
+				TypeLibraryName=".\Debug/test_blit_png.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -252,7 +252,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				PrecompiledHeaderFile=".\Debug/test_alpha.pch"
+				PrecompiledHeaderFile=".\Debug/test_blit_png.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
 				ProgramDataBaseFileName=".\Debug/"
@@ -275,12 +275,12 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="SDL.lib troll_sdld.lib troll_based.lib odbc32.lib odbccp32.lib libpngd.lib zlibd.lib"
-				OutputFile="..\..\..\bin\test_alphad_sdl.exe"
+				OutputFile="..\..\..\bin\test_blit_pngd_sdl.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualC&quot;;..\..\..\dependencies\libpng\lib\msvc"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile=".\Debug/test_alpha.pdb"
+				ProgramDatabaseFile=".\Debug/test_blit_png.pdb"
 				SubSystem="2"
 				TargetMachine="1"
 			/>
@@ -296,7 +296,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\Debug/test_alpha.bsc"
+				OutputFile=".\Debug/test_blit_png.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -339,7 +339,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName="$(PlatformName)\$(ConfigurationName)/test_alpha.tlb"
+				TypeLibraryName="$(PlatformName)\$(ConfigurationName)/test_blit_png.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -350,7 +350,7 @@
 				PreprocessorDefinitions="DEBUG;ARM;_ARM_;ARMV4;UNDER_CE=$(CEVER);_WIN32_WCE=$(CEVER);$(CePlatform);UNICODE"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/test_alpha.pch"
+				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.pch"
 				AssemblerListingLocation="$(PlatformName)\$(ConfigurationName)/"
 				ObjectFile="$(PlatformName)\$(ConfigurationName)/"
 				ProgramDataBaseFileName="$(PlatformName)\$(ConfigurationName)/"
@@ -375,13 +375,13 @@
 				Name="VCLinkerTool"
 				AdditionalOptions="/ALIGN:4096 /subsystem:$(CESubsystem) /MACHINE:ARM "
 				AdditionalDependencies="SDL.lib troll_based.lib troll_sdld.lib commctrl.lib coredll.lib aygshell.lib secchk.lib ccrtrtti.lib"
-				OutputFile="$(PlatformName)\$(ConfigurationName)/test_alpha.exe"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib_arm4\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualCE&quot;"
 				IgnoreDefaultLibraryNames="$(CENoDefaultLib)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/test_alpha.pdb"
+				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.pdb"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				EntryPointSymbol="WinMainCRTStartup"
@@ -396,7 +396,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile="$(PlatformName)\$(ConfigurationName)/test_alpha.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.bsc"
 			/>
 			<Tool
 				Name="VCCodeSignTool"
@@ -408,7 +408,7 @@
 				ForceDirty="-1"
 				RemoteDirectory="%CSIDL_PROGRAM_FILES%\troll\"
 				RegisterOutput="0"
-				AdditionalFiles="troll.bmp|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
+				AdditionalFiles="troll.png|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
 			/>
 			<DebuggerTool
 			/>
@@ -441,7 +441,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/test_alpha.tlb"
+				TypeLibraryName=".\Debug/test_blit_png.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -452,7 +452,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				PrecompiledHeaderFile=".\Debug/test_alpha.pch"
+				PrecompiledHeaderFile=".\Debug/test_blit_png.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
 				ProgramDataBaseFileName=".\Debug/"
@@ -474,13 +474,13 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="alld_s.lib troll_allegrod.lib troll_based.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib"
-				OutputFile="..\..\..\bin\test_alphad_allegro.exe"
+				AdditionalDependencies="alld_s.lib troll_allegrod.lib troll_based.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib  zlibd.lib libpngd.lib"
+				OutputFile="..\..\..\bin\test_blit_pngd_allegro.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;..\..\..\dependencies\allegro\lib\msvc"
+				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;..\..\..\dependencies\allegro\lib\msvc;..\..\..\dependencies\libpng\lib\msvc"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile=".\Debug/test_alpha.pdb"
+				ProgramDatabaseFile=".\Debug/test_blit_png.pdb"
 				SubSystem="2"
 				TargetMachine="1"
 			/>
@@ -496,7 +496,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\Debug/test_alpha.bsc"
+				OutputFile=".\Debug/test_blit_png.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -539,7 +539,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName="$(PlatformName)\$(ConfigurationName)/test_alpha.tlb"
+				TypeLibraryName="$(PlatformName)\$(ConfigurationName)/test_blit_png.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -550,7 +550,7 @@
 				PreprocessorDefinitions="DEBUG;ARM;_ARM_;ARMV4;UNDER_CE=$(CEVER);_WIN32_WCE=$(CEVER);$(CePlatform);UNICODE"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/test_alpha.pch"
+				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.pch"
 				AssemblerListingLocation="$(PlatformName)\$(ConfigurationName)/"
 				ObjectFile="$(PlatformName)\$(ConfigurationName)/"
 				ProgramDataBaseFileName="$(PlatformName)\$(ConfigurationName)/"
@@ -575,13 +575,13 @@
 				Name="VCLinkerTool"
 				AdditionalOptions="/ALIGN:4096 /subsystem:$(CESubsystem) /MACHINE:ARM "
 				AdditionalDependencies="SDL.lib troll_based.lib troll_sdld.lib commctrl.lib coredll.lib aygshell.lib secchk.lib ccrtrtti.lib"
-				OutputFile="$(PlatformName)\$(ConfigurationName)/test_alpha.exe"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib_arm4\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualCE&quot;"
 				IgnoreDefaultLibraryNames="$(CENoDefaultLib)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/test_alpha.pdb"
+				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.pdb"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				EntryPointSymbol="WinMainCRTStartup"
@@ -597,7 +597,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile="$(PlatformName)\$(ConfigurationName)/test_alpha.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.bsc"
 			/>
 			<Tool
 				Name="VCCodeSignTool"
@@ -642,7 +642,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\Release/test_alpha.tlb"
+				TypeLibraryName=".\Release/test_blit_png.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -654,7 +654,7 @@
 				StringPooling="true"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				PrecompiledHeaderFile=".\Release/test_alpha.pch"
+				PrecompiledHeaderFile=".\Release/test_blit_png.pch"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
 				ProgramDataBaseFileName=".\Release/"
@@ -674,12 +674,12 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib"
-				OutputFile="..\..\..\bin\test_alpha_allegro.exe"
+				AdditionalDependencies="alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib  libpng.lib zlib.lib"
+				OutputFile="..\..\..\bin\test_blit_png_allegro.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;..\..\..\dependencies\allegro\lib\msvc"
-				ProgramDatabaseFile=".\Release/test_alpha.pdb"
+				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;..\..\..\dependencies\allegro\lib\msvc;..\..\..\dependencies\libpng\lib\msvc"
+				ProgramDatabaseFile=".\Release/test_blit_png.pdb"
 				SubSystem="2"
 				TargetMachine="1"
 			/>
@@ -695,7 +695,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\Release/test_alpha.bsc"
+				OutputFile=".\Release/test_blit_png.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -738,7 +738,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\Release/test_alpha.tlb"
+				TypeLibraryName=".\Release/test_blit_png.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -751,7 +751,7 @@
 				StringPooling="true"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
-				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/test_alpha.pch"
+				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.pch"
 				AssemblerListingLocation="$(PlatformName)\$(ConfigurationName)/"
 				ObjectFile="$(PlatformName)\$(ConfigurationName)/"
 				ProgramDataBaseFileName="$(PlatformName)\$(ConfigurationName)/"
@@ -773,12 +773,12 @@
 				Name="VCLinkerTool"
 				AdditionalOptions="/ALIGN:4096 /subsystem:$(CESubsystem) /MACHINE:ARM "
 				AdditionalDependencies="SDL.lib  troll_base.lib troll_sdl.lib commctrl.lib coredll.lib aygshell.lib secchk.lib ccrtrtti.lib"
-				OutputFile="$(PlatformName)\$(ConfigurationName)/test_alpha.exe"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib_arm4\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualCE&quot;"
 				IgnoreDefaultLibraryNames="$(CENoDefaultLib)"
-				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/test_alpha.pdb"
+				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.pdb"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				EntryPointSymbol="WinMainCRTStartup"
@@ -794,7 +794,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile="$(PlatformName)\$(ConfigurationName)/test_alpha.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/test_blit_png.bsc"
 			/>
 			<Tool
 				Name="VCCodeSignTool"
@@ -909,7 +909,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\data\images\troll.bmp"
+				RelativePath="..\..\..\data\images\troll.png"
 				>
 				<FileConfiguration
 					Name="Release|Win32"
@@ -918,7 +918,7 @@
 						Name="VCCustomBuildTool"
 						Description="Copyng images to images/"
 						CommandLine="xcopy /Y /Q /D $(InputPath) ..\..\..\bin\images\&#x0D;&#x0A;"
-						Outputs="..\..\..\bin\images\troll.bmp"
+						Outputs="..\..\..\bin\images\troll.png"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -937,7 +937,7 @@
 						Name="VCCustomBuildTool"
 						Description="Copyng images to images/"
 						CommandLine="xcopy /Y /Q /D $(InputPath) ..\..\..\bin\images\&#x0D;&#x0A;"
-						Outputs="..\..\..\bin\images\troll.bmp"
+						Outputs="..\..\..\bin\images\troll.png"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -956,7 +956,7 @@
 						Name="VCCustomBuildTool"
 						Description="Copyng images to images/"
 						CommandLine="xcopy /Y /Q /D $(InputPath) ..\..\..\bin\images\&#x0D;&#x0A;"
-						Outputs="..\..\..\bin\images\troll.bmp"
+						Outputs="..\..\..\bin\images\troll.png"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -975,7 +975,7 @@
 						Name="VCCustomBuildTool"
 						Description="Copyng images to images/"
 						CommandLine="xcopy /Y /Q /D $(InputPath) ..\..\..\bin\images\&#x0D;&#x0A;"
-						Outputs="..\..\..\bin\images\troll.bmp"
+						Outputs="..\..\..\bin\images\troll.png"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -998,101 +998,142 @@
 				>
 			</File>
 		</Filter>
-		<File
-			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualCE\SDL.dll"
+		<Filter
+			Name="Dependencies"
 			>
-			<FileConfiguration
-				Name="Release|Win32"
+			<Filter
+				Name="WinCE"
 				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Pocket PC 2003 (ARMV4)"
+				<File
+					RelativePath="..\..\..\dependencies\libpng\lib\wince_arm4\lpngce.dll"
+					>
+					<FileConfiguration
+						Name="Release|Pocket PC 2003 (ARMV4)"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Copying $(InputFileName) ..."
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\"
+							Outputs=".\evc\$(InputFileName)"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualCE\SDL.dll"
+					>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description=""
+							CommandLine=""
+							Outputs=""
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Pocket PC 2003 (ARMV4)"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Copying $(InputFileName) ..."
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\"
+							Outputs=".\evc\$(InputFileName)"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description=""
+							CommandLine=""
+							Outputs=""
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Pocket PC 2003 (ARMV4)"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
+							Outputs=".\evc\SDL.dll"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release Allegro|Pocket PC 2003 (ARMV4)"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
+							Outputs=".\evc\SDL.dll"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\dependencies\libpng\lib\wince_arm4\zlibce.dll"
+					>
+					<FileConfiguration
+						Name="Release|Pocket PC 2003 (ARMV4)"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Copying $(InputFileName) ..."
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\"
+							Outputs=".\evc\$(InputFileName)"
+						/>
+					</FileConfiguration>
+				</File>
+			</Filter>
+			<Filter
+				Name="Win32"
 				>
-				<Tool
-					Name="VCCustomBuildTool"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
-					Outputs=".\evc\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Pocket PC 2003 (ARMV4)"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
-					Outputs=".\evc\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release Allegro|Pocket PC 2003 (ARMV4)"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
-					Outputs=".\evc\SDL.dll"
-				/>
-			</FileConfiguration>
-		</File>
-		<File
-			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
-			>
-			<FileConfiguration
-				Name="Release|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Copyng SDL library"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
-					Outputs="..\..\..\bin\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Copyng SDL library"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
-					Outputs="..\..\..\bin\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug Allegro|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release Allegro|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-		</File>
+				<File
+					RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
+					>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Copyng SDL library"
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
+							Outputs="..\..\..\bin\SDL.dll"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Copyng SDL library"
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
+							Outputs="..\..\..\bin\SDL.dll"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug Allegro|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description=""
+							CommandLine=""
+							Outputs=""
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release Allegro|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description=""
+							CommandLine=""
+							Outputs=""
+						/>
+					</FileConfiguration>
+				</File>
+			</Filter>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

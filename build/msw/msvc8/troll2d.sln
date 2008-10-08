@@ -17,7 +17,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_graphics", "test_graph
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_blit", "test_blit.vcproj", "{401562B1-C2F3-44B7-9F38-74CFEADE19F4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_alpha", "test_alpha.vcproj", "{ACACE00C-9698-402D-BA81-A73EB903A426}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_blit_png", "test_blit_png.vcproj", "{ACACE00C-9698-402D-BA81-A73EB903A426}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

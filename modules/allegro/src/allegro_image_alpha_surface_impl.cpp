@@ -87,10 +87,10 @@ void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point&
 		aa_flags |= AA_NO_AA;	
 
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
-			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
-			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
-			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
+			iround(ldexp((float)0,aa_BITS)), iround(ldexp((float)0,aa_BITS)), 
+			iround(ldexp((float)source->w,aa_BITS)), iround(ldexp((float)source->h,aa_BITS)), 
+			iround(ldexp((float)ptDest.x,aa_BITS)), iround(ldexp((float)ptDest.y,aa_BITS)), 
+			iround(ldexp((float)source->w,aa_BITS)), iround(ldexp((float)source->h,aa_BITS)), 
 			aa_flags);
 	}
 	else
@@ -100,10 +100,10 @@ void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point&
 		aa_set_trans(255 - opacity);
 
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
-			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
-			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
-			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
+			iround(ldexp((float)0,aa_BITS)), iround(ldexp((float)0,aa_BITS)), 
+			iround(ldexp((float)source->w,aa_BITS)), iround(ldexp((float)source->h,aa_BITS)), 
+			iround(ldexp((float)ptDest.x,aa_BITS)), iround(ldexp((float)ptDest.y,aa_BITS)), 
+			iround(ldexp((float)source->w,aa_BITS)), iround(ldexp((float)source->h,aa_BITS)), 
 			aa_flags);
 
 		aa_set_trans(0);
@@ -130,10 +130,10 @@ void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point&
 		aa_flags |= AA_NO_AA;	
 		
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
-			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
-			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
-			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
+			iround(ldexp((float)rSource.x,aa_BITS)), iround(ldexp((float)rSource.y,aa_BITS)), 
+			iround(ldexp((float)rSource.width,aa_BITS)), iround(ldexp((float)rSource.height,aa_BITS)), 
+			iround(ldexp((float)ptDest.x,aa_BITS)), iround(ldexp((float)ptDest.y,aa_BITS)), 
+			iround(ldexp((float)rSource.width,aa_BITS)), iround(ldexp((float)rSource.height,aa_BITS)), 
 			aa_flags);
 	}
 	else
@@ -143,10 +143,10 @@ void AllegroImageAlphaSurfaceImpl::Draw( SurfaceImpl & destination, const Point&
 		aa_set_trans(255 - opacity);
 		
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
-			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
-			iround(ldexp(ptDest.x,aa_BITS)), iround(ldexp(ptDest.y,aa_BITS)), 
-			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
+			iround(ldexp((float)rSource.x,aa_BITS)), iround(ldexp((float)rSource.y,aa_BITS)), 
+			iround(ldexp((float)rSource.width,aa_BITS)), iround(ldexp((float)rSource.height,aa_BITS)), 
+			iround(ldexp((float)ptDest.x,aa_BITS)), iround(ldexp((float)ptDest.y,aa_BITS)), 
+			iround(ldexp((float)rSource.width,aa_BITS)), iround(ldexp((float)rSource.height,aa_BITS)), 
 			aa_flags);
 		
 		aa_set_trans(0);
@@ -175,10 +175,10 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const
 			aa_flags |= AA_NO_AA;
 		
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
-			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
-			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
-			iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
+			iround(ldexp((float)0,aa_BITS)), iround(ldexp((float)0,aa_BITS)), 
+			iround(ldexp((float)source->w,aa_BITS)), iround(ldexp((float)source->h,aa_BITS)), 
+			iround(ldexp((float)rcDest.x,aa_BITS)), iround(ldexp((float)rcDest.y,aa_BITS)), 
+			iround(ldexp((float)rcDest.width,aa_BITS)), iround(ldexp((float)rcDest.height,aa_BITS)), 
 			aa_flags);
 	}
 	else
@@ -190,10 +190,10 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const
 		aa_set_trans(255 - opacity);
 		
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp(0,aa_BITS)), iround(ldexp(0,aa_BITS)), 
-			iround(ldexp(source->w,aa_BITS)), iround(ldexp(source->h,aa_BITS)), 
-			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
-			iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)),  
+			iround(ldexp((float)0,aa_BITS)), iround(ldexp((float)0,aa_BITS)), 
+			iround(ldexp((float)source->w,aa_BITS)), iround(ldexp((float)source->h,aa_BITS)), 
+			iround(ldexp((float)rcDest.x,aa_BITS)), iround(ldexp((float)rcDest.y,aa_BITS)), 
+			iround(ldexp((float)rcDest.width,aa_BITS)), iround(ldexp((float)rcDest.height,aa_BITS)),  
 			aa_flags);
 		
 		aa_set_trans(0);
@@ -221,10 +221,10 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const
 			aa_flags |= AA_NO_AA;
 
 		 _aa_stretch_blit (source, dest, 
-			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
-			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
-			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
-			iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
+			iround(ldexp((float)rSource.x,aa_BITS)), iround(ldexp((float)rSource.y,aa_BITS)), 
+			iround(ldexp((float)rSource.width,aa_BITS)), iround(ldexp((float)rSource.height,aa_BITS)), 
+			iround(ldexp((float)rcDest.x,aa_BITS)), iround(ldexp((float)rcDest.y,aa_BITS)), 
+			iround(ldexp((float)rcDest.width,aa_BITS)), iround(ldexp((float)rcDest.height,aa_BITS)), 
 			aa_flags);
 	}
 	else
@@ -236,10 +236,10 @@ void AllegroImageAlphaSurfaceImpl::DrawStretch( SurfaceImpl & destination, const
 		aa_set_trans(255 - opacity);
 		
 		_aa_stretch_blit (source, dest, 
-			iround(ldexp(rSource.x,aa_BITS)), iround(ldexp(rSource.y,aa_BITS)), 
-			iround(ldexp(rSource.width,aa_BITS)), iround(ldexp(rSource.height,aa_BITS)), 
-			iround(ldexp(rcDest.x,aa_BITS)), iround(ldexp(rcDest.y,aa_BITS)), 
-			iround(ldexp(rcDest.width,aa_BITS)), iround(ldexp(rcDest.height,aa_BITS)), 
+			iround(ldexp((float)rSource.x,aa_BITS)), iround(ldexp((float)rSource.y,aa_BITS)), 
+			iround(ldexp((float)rSource.width,aa_BITS)), iround(ldexp((float)rSource.height,aa_BITS)), 
+			iround(ldexp((float)rcDest.x,aa_BITS)), iround(ldexp((float)rcDest.y,aa_BITS)), 
+			iround(ldexp((float)rcDest.width,aa_BITS)), iround(ldexp((float)rcDest.height,aa_BITS)), 
 			aa_flags);
 		
 		aa_set_trans(0);

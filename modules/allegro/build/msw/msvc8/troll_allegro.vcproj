@@ -41,8 +41,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../../../../include/,../../../include/,&quot;../../../../../dependencies/allegro/include/&quot;;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;ALLEGRO_STATICLINK"
+				AdditionalIncludeDirectories="../../../../../include/;../../../include/;../../../include/aastr2;../../../../../dependencies/allegro/include/;../../../../../dependencies/libpng/include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;ALLEGRO_STATICLINK;ALLEGRO_NO_ASM"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -118,8 +118,8 @@
 				Name="VCCLCompilerTool"
 				Optimization="1"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="../../../../../include/,../../../include/,&quot;../../../../../dependencies/allegro/include/&quot;;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;ALLEGRO_STATICLINK"
+				AdditionalIncludeDirectories="../../../../../include/;../../../include/;../../../include/aastr2;../../../../../dependencies/allegro/include/;../../../../../dependencies/libpng/include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;ALLEGRO_STATICLINK;ALLEGRO_NO_ASM"
 				StringPooling="true"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -215,6 +215,10 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\src\allegro_image_alpha_surface_impl.cpp"
+				>
 			</File>
 			<File
 				RelativePath="..\..\..\src\allegro_image_surface_helper.cpp"
@@ -342,6 +346,38 @@
 				RelativePath="..\..\..\src\gfx_ex.cpp"
 				>
 			</File>
+			<File
+				RelativePath="..\..\..\src\loadpng.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\regpng.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\savepng.c"
+				>
+			</File>
+			<Filter
+				Name="aastr2"
+				>
+				<File
+					RelativePath="..\..\..\src\aastr2\aarot.c"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\src\aastr2\aastr.c"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\src\aastr2\aautil.c"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\src\aastr2\round.c"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"

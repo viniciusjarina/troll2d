@@ -77,11 +77,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib troll_base.lib troll_sdl.lib"
+				AdditionalDependencies="SDL.lib troll_base.lib troll_sdl.lib  libpng.lib zlib.lib"
 				OutputFile="..\..\..\bin\test_minimal_sdl.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualC&quot;"
+				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualC&quot;;..\..\..\dependencies\libpng\lib\msvc"
 				ProgramDatabaseFile=".\Release/test_minimal.pdb"
 				SubSystem="2"
 				TargetMachine="1"
@@ -175,11 +175,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/ALIGN:4096 /subsystem:$(CESubsystem) /MACHINE:ARM "
-				AdditionalDependencies="SDL.lib  troll_base.lib troll_sdl.lib commctrl.lib coredll.lib aygshell.lib secchk.lib ccrtrtti.lib"
+				AdditionalDependencies="SDL.lib lpngce.lib troll_base.lib troll_sdl.lib commctrl.lib coredll.lib aygshell.lib secchk.lib ccrtrtti.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)/test_minimal.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib_arm4\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualCE&quot;"
+				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib_arm4\;&quot;..\..\..\dependencies\SDL-1.2.13\lib\VisualCE&quot;;..\..\..\dependencies\libpng\lib\wince_arm4"
 				IgnoreDefaultLibraryNames="$(CENoDefaultLib)"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/test_minimal.pdb"
 				StackReserveSize="65536"
@@ -208,7 +208,7 @@
 				ForceDirty="-1"
 				RemoteDirectory="%CSIDL_PROGRAM_FILES%\troll\"
 				RegisterOutput="0"
-				AdditionalFiles="troll.bmp|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
+				AdditionalFiles="troll.bmp|$(SolutionDir)|%CSIDL_PROGRAM_FILES%\troll\images\|0;SDL.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0;lpngce.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0;zlibce.dll|$(SolutionDir)\evc\|%CSIDL_PROGRAM_FILES%\troll\|0"
 			/>
 			<DebuggerTool
 			/>
@@ -474,11 +474,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="alld_s.lib troll_allegrod.lib troll_based.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib"
+				AdditionalDependencies="alld_s.lib troll_allegrod.lib troll_based.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib libpngd.lib zlibd.lib"
 				OutputFile="..\..\..\bin\test_minimald_allegro.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;..\..\..\dependencies\allegro\lib\msvc"
+				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;..\..\..\dependencies\allegro\lib\msvc;..\..\..\dependencies\libpng\lib\msvc"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=".\Debug/test_minimal.pdb"
 				SubSystem="2"
@@ -674,11 +674,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib"
+				AdditionalDependencies="alleg_s.lib dxguid.lib ddraw.lib dsound.lib dinput.lib winmm.lib troll_base.lib troll_allegro.lib libpng.lib zlib.lib"
 				OutputFile="..\..\..\bin\test_minimal_allegro.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;..\..\..\dependencies\allegro\lib\msvc"
+				AdditionalLibraryDirectories="..\..\..\lib\vc8_lib\;..\..\..\dependencies\allegro\lib\msvc;..\..\..\dependencies\libpng\lib\msvc"
 				ProgramDatabaseFile=".\Release/test_minimal.pdb"
 				SubSystem="2"
 				TargetMachine="1"
@@ -926,6 +926,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Copying $(InputFileName) ..."
 						CommandLine="copy $(InputPath) $(SolutionDir)&#x0D;&#x0A;"
 						Outputs="$(InputFileName)"
 					/>
@@ -990,6 +991,142 @@
 			</File>
 		</Filter>
 		<Filter
+			Name="Dependencies"
+			>
+			<Filter
+				Name="Win32"
+				>
+				<File
+					RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
+					>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Copyng SDL library"
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
+							Outputs="..\..\..\bin\SDL.dll"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Copyng SDL library"
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
+							Outputs="..\..\..\bin\SDL.dll"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug Allegro|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description=""
+							CommandLine=""
+							Outputs=""
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release Allegro|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description=""
+							CommandLine=""
+							Outputs=""
+						/>
+					</FileConfiguration>
+				</File>
+			</Filter>
+			<Filter
+				Name="WinCE"
+				>
+				<File
+					RelativePath="..\..\..\dependencies\libpng\lib\wince_arm4\lpngce.dll"
+					>
+					<FileConfiguration
+						Name="Release|Pocket PC 2003 (ARMV4)"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Copying $(InputFileName) ..."
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\"
+							Outputs=".\evc\lpngce.dll"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualCE\SDL.dll"
+					>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description=""
+							CommandLine=""
+							Outputs=""
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Pocket PC 2003 (ARMV4)"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Copying $(InputFileName) ..."
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
+							Outputs=".\evc\SDL.dll"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description=""
+							CommandLine=""
+							Outputs=""
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Pocket PC 2003 (ARMV4)"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
+							Outputs=".\evc\SDL.dll"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release Allegro|Pocket PC 2003 (ARMV4)"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
+							Outputs=".\evc\SDL.dll"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\dependencies\libpng\lib\wince_arm4\zlibce.dll"
+					>
+					<FileConfiguration
+						Name="Release|Pocket PC 2003 (ARMV4)"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Copying $(InputFileName) ..."
+							CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\"
+							Outputs=".\evc\zlibce.dll"
+						/>
+					</FileConfiguration>
+				</File>
+			</Filter>
+		</Filter>
+		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl"
 			>
@@ -998,101 +1135,6 @@
 				>
 			</File>
 		</Filter>
-		<File
-			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualC\SDL.dll"
-			>
-			<FileConfiguration
-				Name="Release|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Copyng SDL library"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
-					Outputs="..\..\..\bin\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Copyng SDL library"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) ..\..\..\bin\&#x0D;&#x0A;"
-					Outputs="..\..\..\bin\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug Allegro|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release Allegro|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-		</File>
-		<File
-			RelativePath="..\..\..\dependencies\SDL-1.2.13\lib\VisualCE\SDL.dll"
-			>
-			<FileConfiguration
-				Name="Release|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Pocket PC 2003 (ARMV4)"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
-					Outputs=".\evc\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Win32"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description=""
-					CommandLine=""
-					Outputs=""
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug|Pocket PC 2003 (ARMV4)"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
-					Outputs=".\evc\SDL.dll"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release Allegro|Pocket PC 2003 (ARMV4)"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					CommandLine="IF EXIST $(InputPath) xcopy /Y /Q /D $(InputPath) .\evc\&#x0D;&#x0A;"
-					Outputs=".\evc\SDL.dll"
-				/>
-			</FileConfiguration>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>
