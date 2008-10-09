@@ -44,8 +44,12 @@
 #include <SDL.h> // the entry point of a Cocoa application (this needed to be fixed)
 #endif
 
-#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
+using namespace Troll;
+
+int DrawInfoBox(Graphics & g,DrawFlags flags,int state,AlphaComponent alpha);
 
 #ifdef _WIN32
 	extern "C" int __stdcall WinMain(void *hInst, void *hPrev, char *Cmd, int nShow)
@@ -53,15 +57,14 @@
 	int main(int argc, char *argv[])
 #endif
 {
-	using namespace Troll;
-	
+
 	if(!System::Init())			// Inialize (input, sound, files, etc)
 		return 0;
 
 	if(!System::SetupScreen())	// Setup and create screen with defaul size
 		return 0;
 
-	System::SetScreenTitle("Blit Test");
+	System::SetScreenTitle("Blit/Flip/Rotate/Alpha Test");
 
 	Image image;
 	
@@ -142,7 +145,7 @@
 
 		if(KeyInput::IsKeyDown(Key::NUMERIC_MINUS))
 		{
-			if(alpha > 0)
+			if(alpha > 2)
 				alpha -= 2;
 		}
 
@@ -174,8 +177,9 @@
 			screen.Clear(Color::WHITE);
 
 			// RenderFrame(); Add draw code, to render current frame
-			g.DrawText(Point(10,10),"(Press esc to exit, space bar to toggle clipping)",Color::RED);
-			g.DrawText(Point(10,30),"Simple Blit",Color::BLUE);
+			g.DrawText(Point(10,5),"(Press esc to exit, space bar to toggle clipping)",Color::RED);
+			g.DrawText(Point(10,15),"Right/Left:Change Blit V/H:flip R:Rotate +/-: Change alpha X/Y:Size ",Color::DARKRED);
+						
 
 			if(clip)
 			{
@@ -230,10 +234,63 @@
 				break;
 
 			}
+			DrawInfoBox(g,df,state,alpha);
+
 			Screen::Flip();		// Flip screen
 		}
 	}
 	
 	System::Cleanup();
+	return 0;
+}
+
+int DrawInfoBox(Graphics & g,DrawFlags flags,int state,AlphaComponent alpha)
+{
+	Rect rc(10,30,550,30);
+
+	static const char * szFuncs [] = 
+	{
+		"DrawFast",
+		"Draw",
+		"Draw + Clip Source",
+		"DrawStretch",
+		"DrawStretch + Clip Source",
+		"DrawRotate",
+	};
+
+	g.DrawRoundRectFill(rc, 5,Color(45,10,200,200));
+	g.DrawRoundRect(rc, 5,Color(45,10,200));
+
+	g.DrawText(Point(15,40),szFuncs[state],Color(255,255,0,200));
+
+	long lastpos = strlen(szFuncs[state])*8;
+
+	if(flags.HasFlag(DrawFlags::horizontalFlip) && state > 0)
+	{
+		g.DrawText(Point(15 + lastpos,40)," + flipH",Color(255,255,0,200));
+		lastpos += 8*8;
+	}
+
+	if(flags.HasFlag(DrawFlags::verticalFlip) && state > 0)
+	{
+		g.DrawText(Point(15 + lastpos,40)," + flipV",Color(255,255,0,200));
+		lastpos += 8*8;
+	}
+
+	if(flags.HasFlag(DrawFlags::noAntiAlias) && state > 2)
+	{
+		g.DrawText(Point(15 + lastpos,40)," + noAntiAlias",Color(255,255,0,200));
+		lastpos += 14*8;
+	}
+
+	if(alpha < 255 && state > 0)
+	{
+		char szAlpha[20];
+		sprintf(szAlpha," (alpha %d)",alpha);
+
+		g.DrawText(Point(15 + lastpos,40),szAlpha,Color(150,255,0,210));
+		lastpos += strlen(szAlpha)*8;
+	}
+
 	return 0;
 }
