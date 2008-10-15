@@ -63,7 +63,8 @@ Image::Image( const char * sImageFile )
 
 Image::~Image()
 {
-	
+	if(m_impl)
+		delete m_impl;
 }
 
 const Surface & Image::GetSurface() const
